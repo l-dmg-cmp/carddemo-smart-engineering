@@ -1,8 +1,0 @@
-sequenceDiagram
-    participant CardDemo Application
-    participant `ACCOUNT-RECORD` Data
-
-    activate CardDemo Application
-    CardDemo Application->>+`ACCOUNT-RECORD` Data: Access Account Information
-    `ACCOUNT-RECORD` Data-->>-CardDemo Application: Provide Account Data
-    deactivate CardDemo Application

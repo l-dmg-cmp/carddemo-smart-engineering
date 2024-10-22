@@ -1,9 +1,0 @@
-sequenceDiagram
-    participant CardDemo Application
-    participant CSMSG01Y
-
-    activate CardDemo Application
-    CardDemo Application->>+CSMSG01Y: Retrieve Message (Thank You or Invalid Key)
-    CSMSG01Y-->>-CardDemo Application: Message Content
-    CardDemo Application->>CardDemo Application: Display Message to User
-    deactivate CardDemo Application

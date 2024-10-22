@@ -1,9 +1,0 @@
-sequenceDiagram
-    participant CardDemo Application
-    participant CSMSG01Y
-
-    activate CardDemo Application
-    CardDemo Application->>+CSMSG01Y: Access message
-    CSMSG01Y-->>-CardDemo Application: Return message content
-    CardDemo Application->>CardDemo Application: Display message to user
-    deactivate CardDemo Application
