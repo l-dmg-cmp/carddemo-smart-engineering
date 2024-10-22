@@ -1,0 +1,23 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant Administrator
+    participant COUSR02C
+    participant USRSEC File
+
+    activate Administrator
+    Administrator->>+COUSR02C: Request to update user (User ID)
+    activate COUSR02C
+    COUSR02C->>+USRSEC File: Read user data
+    USRSEC File->>COUSR02C: User data (First Name, Last Name, Password, User Type)
+    COUSR02C->>-Administrator: Display user data for modification
+    Administrator->>+COUSR02C: Submit modified user data
+    COUSR02C->>COUSR02C: Validate modified data
+    alt Validation Successful
+        COUSR02C->>+USRSEC File: Update user data
+        USRSEC File-->>-COUSR02C: Update successful
+        COUSR02C->>Administrator: Display confirmation message
+    else Validation Failed
+        COUSR02C->>Administrator: Display error messages
+    end
+    deactivate COUSR02C
+    deactivate Administrator

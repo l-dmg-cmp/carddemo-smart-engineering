@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00004-CBACT04C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> CardDemo - Programa de Processamento em Lote para Cálculo de Juros</p>
+<p><strong>Descrição Resumida:</strong> Este programa calcula e aplica juros mensais às contas de cartão de crédito dos clientes com base no histórico de transações e taxas de juros predefinidas. Os juros calculados são então atualizados no saldo da conta e um registro da transação é gerado.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como analista de dados financeiros, preciso garantir que as contas dos clientes sejam cobradas com os juros corretos a cada mês, para que possamos manter registros financeiros precisos.</p>
+<p><strong>Epic Relacionado:</strong> 7 - Processamento em Lote</p>
+<p><strong>Requisitos Funcionais:</strong></p>
+<ol>
+<li><strong>Ler Dados da Transação:</strong> Ler e processar os detalhes da transação de cada cliente do Arquivo de Saldo da Categoria da Transação (<code>TCATBAL-FILE</code>).</li>
+<li><strong>Recuperar Informações da Conta:</strong> Para cada transação, buscar as informações da conta do cliente correspondente no Arquivo Mestre da Conta (<code>ACCOUNT-FILE</code>) usando o ID da Conta.</li>
+<li><strong>Determinar a Taxa de Juros:</strong> Identificar a taxa de juros aplicável com base no grupo da conta do cliente e na categoria da transação no Arquivo do Grupo de Divulgação (<code>DISCGRP-FILE</code>).
+<ul>
+<li><strong>Regra de Negócio:</strong> Se a taxa de juros de um grupo de divulgação específico não for encontrada, o sistema deverá usar a taxa de juros padrão associada ao código de grupo ‘DEFAULT’.</li>
+</ul>
+</li>
+<li><strong>Calcular Juros:</strong> Calcular os juros mensais para cada categoria de transação:
+<ul>
+<li><strong>Regra de Negócio:</strong> Divida o produto do saldo da categoria da transação pela taxa de juros anual correspondente por 1200 (representando 12 meses).</li>
+</ul>
+</li>
+<li><strong>Atualizar Saldo da Conta:</strong> Atualizar o saldo da conta do cliente no Arquivo Mestre da Conta (<code>ACCOUNT-FILE</code>) adicionando o total de juros calculado.</li>
+<li><strong>Gerar Registro de Transação:</strong> Criar um registro de transação para cada aplicação de juros, detalhando o ID da transação, valor, data e hora e detalhes relevantes. Gravar este registro no Arquivo de Transações (<code>TRANSACT-FILE</code>).</li>
+<li><strong>Fechar Arquivos:</strong> Fechar adequadamente todos os arquivos de entrada e saída (<code>TCATBAL-FILE</code>, <code>ACCOUNT-FILE</code>, <code>DISCGRP-FILE</code>, <code>TRANSACT-FILE</code>) para garantir a integridade dos dados.</li>
+</ol>
+<p><strong>Requisitos Não Funcionais:</strong></p>
+<ul>
+<li><strong>Desempenho:</strong> O programa deve processar grandes volumes de dados de transações de forma eficiente dentro de um prazo razoável.</li>
+<li><strong>Confiabilidade:</strong> O programa deve operar de forma confiável sem erros, garantindo cálculos precisos de juros e atualizações nos saldos das contas.</li>
+<li><strong>Manutenibilidade:</strong> O código do programa deve ser bem estruturado, documentado e fácil de entender para futuras manutenções e aprimoramentos.</li>
+<li><strong>Segurança:</strong>
+<ul>
+<li>O programa deve ser executado em um ambiente seguro com controles de acesso adequados para evitar o acesso não autorizado a dados financeiros confidenciais.</li>
+<li>Todas as operações de arquivo (leitura, gravação, atualização) devem ser registradas para fins de auditoria.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ul>
+<li>O programa lê e processa com sucesso todos os registros de transações do cliente do arquivo de entrada.</li>
+<li>O cálculo de juros para cada transação está correto, aderindo às regras de negócio definidas.</li>
+<li>Os saldos das contas do cliente no Arquivo Mestre da Conta são atualizados corretamente com os juros calculados.</li>
+<li>Um registro de transação para cada aplicação de juros é gerado e gravado no Arquivo de Transações.</li>
+<li>O programa lida com erros de arquivo normalmente, registrando quaisquer problemas encontrados durante o processamento.</li>
+<li>A execução do programa é concluída dentro de um prazo aceitável.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implementar um mecanismo de tratamento de erros centralizado e consistente para gerenciar exceções normalmente, registrar erros e potencialmente permitir recuperação ou notificação.</li>
+<li><strong>Log:</strong> Aprimorar o registro para capturar informações mais detalhadas sobre a execução do programa, incluindo o número de registros processados, taxas de juros aplicadas e quaisquer erros encontrados. Isso ajudará na depuração e monitoramento do desempenho do programa.</li>
+<li><strong>Modularidade:</strong> Dividir o programa em módulos ou sub-rotinas menores e mais gerenciáveis para melhorar a legibilidade do código, a capacidade de manutenção e a potencial reutilização do código.</li>
+<li><strong>Parametrização:</strong> Permitir que parâmetros de configuração sejam passados para o programa, como caminhos de arquivo, taxas de juros ou outras variáveis, para aumentar a flexibilidade e reduzir a necessidade de alterações no código.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Controle de Acesso:</strong> Garantir que apenas pessoal ou sistemas autorizados tenham acesso para executar o programa em lote e acessar os arquivos de dados confidenciais.</li>
+<li><strong>Criptografia de Dados:</strong> Considerar a criptografia de dados em repouso (nos arquivos de dados) e em trânsito (durante o processamento de arquivos) para proteger contra acesso não autorizado.</li>
+<li><strong>Trilhas de Auditoria:</strong> Implementar trilhas de auditoria abrangentes para rastrear todos os acessos a arquivos, modificações de dados e execuções de programas para fins de segurança e conformidade.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00004-CBACT04C_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

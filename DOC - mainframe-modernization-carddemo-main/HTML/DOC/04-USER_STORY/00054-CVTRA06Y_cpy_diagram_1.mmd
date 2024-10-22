@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant Transaction Processing System
+    participant DALYTRAN Record System
+
+    activate Transaction Processing System
+    Transaction Processing System->>+DALYTRAN Record System: Send Transaction Data
+    DALYTRAN Record System->>+Transaction Processing System: Send Confirmation
+    deactivate Transaction Processing System
+    activate DALYTRAN Record System
+    DALYTRAN Record System->>DALYTRAN Record System: Log Transaction Details
+    deactivate DALYTRAN Record System

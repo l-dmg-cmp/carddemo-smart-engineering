@@ -1,0 +1,73 @@
+sequenceDiagram
+    participant CBTRN02C
+    participant DALYTRAN-FILE
+    participant TRANSACT-FILE
+    participant XREF-FILE
+    participant ACCOUNT-FILE
+    participant TCATBAL-FILE
+    participant DALYREJS-FILE
+
+    activate CBTRN02C
+    CBTRN02C->>+DALYTRAN-FILE: Open
+    DALYTRAN-FILE->>CBTRN02C: Open Successful
+    CBTRN02C->>+TRANSACT-FILE: Open
+    TRANSACT-FILE->>CBTRN02C: Open Successful
+    CBTRN02C->>+XREF-FILE: Open
+    XREF-FILE->>CBTRN02C: Open Successful
+    CBTRN02C->>+ACCOUNT-FILE: Open
+    ACCOUNT-FILE->>CBTRN02C: Open Successful
+    CBTRN02C->>+TCATBAL-FILE: Open
+    TCATBAL-FILE->>CBTRN02C: Open Successful
+    CBTRN02C->>+DALYREJS-FILE: Open
+    DALYREJS-FILE->>CBTRN02C: Open Successful
+
+    loop For Each Transaction in DALYTRAN-FILE
+        CBTRN02C->>+DALYTRAN-FILE: Read Transaction
+        DALYTRAN-FILE->>CBTRN02C: Transaction Data
+        CBTRN02C->>+XREF-FILE: Validate Card Number
+        XREF-FILE->>CBTRN02C: Validation Result
+        alt Card Number Valid
+            CBTRN02C->>+ACCOUNT-FILE: Read Account Data
+            ACCOUNT-FILE->>CBTRN02C: Account Data
+            alt Account Valid
+                CBTRN02C->>CBTRN02C: Check Credit Limit
+                alt Credit Limit OK
+                    CBTRN02C->>CBTRN02C: Check Expiration Date
+                    alt Expiration Date OK
+                        CBTRN02C->>+ACCOUNT-FILE: Update Account Balance
+                        ACCOUNT-FILE->>CBTRN02C: Update Successful
+                        CBTRN02C->>+TCATBAL-FILE: Update Category Balance
+                        TCATBAL-FILE->>CBTRN02C: Update Successful
+                        CBTRN02C->>+TRANSACT-FILE: Write Transaction
+                        TRANSACT-FILE->>CBTRN02C: Write Successful
+                    else Card Expired
+                        CBTRN02C->>+DALYREJS-FILE: Write Rejected Transaction
+                        DALYREJS-FILE->>CBTRN02C: Write Successful
+                    end
+                else Over Credit Limit
+                    CBTRN02C->>+DALYREJS-FILE: Write Rejected Transaction
+                    DALYREJS-FILE->>CBTRN02C: Write Successful
+                end
+            else Account Invalid
+                CBTRN02C->>+DALYREJS-FILE: Write Rejected Transaction
+                DALYREJS-FILE->>CBTRN02C: Write Successful
+            end
+        else Card Number Invalid
+            CBTRN02C->>+DALYREJS-FILE: Write Rejected Transaction
+            DALYREJS-FILE->>CBTRN02C: Write Successful
+        end
+    end
+
+    CBTRN02C->>+DALYTRAN-FILE: Close
+    DALYTRAN-FILE->>CBTRN02C: Close Successful
+    CBTRN02C->>+TRANSACT-FILE: Close
+    TRANSACT-FILE->>CBTRN02C: Close Successful
+    CBTRN02C->>+XREF-FILE: Close
+    XREF-FILE->>CBTRN02C: Close Successful
+    CBTRN02C->>+ACCOUNT-FILE: Close
+    ACCOUNT-FILE->>CBTRN02C: Close Successful
+    CBTRN02C->>+TCATBAL-FILE: Close
+    TCATBAL-FILE->>CBTRN02C: Close Successful
+    CBTRN02C->>+DALYREJS-FILE: Close
+    DALYREJS-FILE->>-CBTRN02C: Close Successful
+    deactivate CBTRN02C

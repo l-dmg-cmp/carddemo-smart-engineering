@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00028-CSUTLDTC_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Documento de Título:</strong> Aplicativo CardDemo - Especificação do Utilitário de Conversão de Data</h1>
+<h2><strong>Descrição Resumida:</strong></h2>
+<p>O Utilitário de Conversão de Data é um programa COBOL que converte datas de vários formatos legíveis por humanos para o formato Lilian, uma representação numérica usada para cálculos de data eficientes em sistemas de computador. Este utilitário garante o tratamento preciso da data no aplicativo CardDemo, o que é crucial para várias operações, como cálculo de juros e geração de relatórios.</p>
+<h2><strong>Histórias de Usuário:</strong></h2>
+<p>Como analista de dados, preciso garantir que todas as datas no aplicativo CardDemo sejam formatadas de forma consistente e facilmente utilizáveis para cálculos. Este utilitário me permitirá converter datas de diferentes fontes para um formato padronizado, garantindo a integridade dos dados e simplificando as operações baseadas em data.</p>
+<h2><strong>Épico Relacionado:</strong></h2>
+<p>9 - Utilitários do Sistema</p>
+<h2><strong>Requisitos Técnicos:</strong></h2>
+<ul>
+<li><strong>Conversão de Data:</strong>
+<ul>
+<li>Entrada:
+<ul>
+<li><code>WS-DATE-TO-TEST</code>: String de data a ser convertida (por exemplo, “10-01-2024”).</li>
+<li><code>WS-DATE-FORMAT</code>: Formato da data de entrada (por exemplo, “MM-DD-YYYY”).</li>
+</ul>
+</li>
+<li>Processo:
+<ol>
+<li>Invoca a função do sistema <code>CEEDAYS</code>, passando a data de entrada e o formato.</li>
+<li><code>CEEDAYS</code> valida a data com base no formato fornecido.</li>
+<li>Se válido, <code>CEEDAYS</code> converte a data para o formato Lilian (uma representação numérica).</li>
+<li>Retorna a data Lilian.</li>
+</ol>
+</li>
+<li>Saída:
+<ul>
+<li><code>OUTPUT-LILLIAN</code>: Representação Lilian da data de entrada.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Tratamento de Erro:</strong>
+<ul>
+<li>Entrada: Código de retorno (<code>FEEDBACK-CODE</code>) da função <code>CEEDAYS</code>.</li>
+<li>Processo:
+<ol>
+<li>Avalia o código de retorno para determinar se ocorreu um erro durante a conversão.</li>
+<li>Com base no código de erro específico, preenche <code>WS-RESULT</code> com uma mensagem de erro descritiva.</li>
+</ol>
+<ul>
+<li><code>FC-INVALID-DATE</code>: “Date is valid”</li>
+<li><code>FC-INSUFFICIENT-DATA</code>: “Insufficient”</li>
+<li><code>FC-BAD-DATE-VALUE</code>:  “Datevalue error”</li>
+<li><code>FC-INVALID-ERA</code>: “Invalid Era”</li>
+<li><code>FC-UNSUPP-RANGE</code>: “Unsupp. Range”</li>
+<li><code>FC-INVALID-MONTH</code>: “Invalid month”</li>
+<li><code>FC-BAD-PIC-STRING</code>: “Bad Pic String”</li>
+<li><code>FC-NON-NUMERIC-DATA</code>: “Nonnumeric data”</li>
+<li><code>FC-YEAR-IN-ERA-ZERO</code>: “YearInEra is 0”</li>
+<li><code>OTHER</code>: “Date is invalid”</li>
+</ul>
+</li>
+<li>Saída:
+<ul>
+<li><code>WS-RESULT</code>: Uma mensagem de 15 caracteres explicando o erro.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Transferência de dados:</strong>
+<ul>
+<li>Entrada:
+<ul>
+<li><code>LS-DATE</code>: Data a ser convertida (recebida do programa de chamada).</li>
+<li><code>LS-DATE-FORMAT</code>:  Formato da data de entrada (recebido do programa de chamada).</li>
+</ul>
+</li>
+<li>Processo:
+<ol>
+<li>Transfere a data de entrada e o formato da seção de ligação para variáveis de armazenamento de trabalho.</li>
+<li>Após a conversão, move o resultado (data Lilian ou mensagem de erro) do armazenamento de trabalho para a seção de ligação.</li>
+</ol>
+</li>
+<li>Saída:
+<ul>
+<li><code>LS-RESULT</code>:  Contém a data Lilian convertida ou uma mensagem de erro (retornada ao programa de chamada).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2><strong>Modelos Relacionados</strong></h2>
+<p>Este utilitário lida principalmente com manipulação de dados e não interage diretamente com modelos de dados específicos.</p>
+<h2><strong>Configurações:</strong></h2>
+<ul>
+<li><strong>Formatos de Data:</strong>  O utilitário depende dos formatos de data suportados pela função <code>CEEDAYS</code>. Os formatos específicos aceitos por <code>CEEDAYS</code> devem ser documentados e seguidos.</li>
+<li><strong>Mensagens de Erro:</strong>  As mensagens de erro retornadas pelo utilitário são definidas no código. Certifique-se de que essas mensagens sejam claras, concisas e forneçam informações suficientes para solução de problemas.</li>
+</ul>
+<h2><strong>Melhorias de Código:</strong></h2>
+<ul>
+<li><strong>Tratamento de Erros Centralizado:</strong>  Considere criar uma seção ou sub-rotina dedicada ao tratamento de erros para gerenciar diferentes cenários de erro com mais eficácia.</li>
+<li><strong>Log:</strong> Implemente um mecanismo de log para registrar conversões bem-sucedidas e erros encontrados. Isso pode ajudar na depuração e rastreamento de problemas relacionados a formatos de data específicos.</li>
+<li><strong>Otimização de Desempenho:</strong> Embora a função <code>CEEDAYS</code> seja geralmente eficiente, analise o desempenho do utilitário com conjuntos de dados grandes para identificar quaisquer possíveis gargalos.</li>
+</ul>
+<h2><strong>Melhorias de Segurança:</strong></h2>
+<p>Embora este utilitário não lide diretamente com dados confidenciais, certifique-se de que os programas de chamada que usam este utilitário tenham validação de entrada e sanitização adequadas para evitar quaisquer vulnerabilidades potenciais de injeção.</p>
+<h2><strong>Diagrama Conceitual:</strong></h2>
+<img src="00028-CSUTLDTC_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

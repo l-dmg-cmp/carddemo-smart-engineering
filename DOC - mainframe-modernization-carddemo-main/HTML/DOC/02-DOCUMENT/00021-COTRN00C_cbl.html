@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00021-COTRN00C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Aplicação CardDemo: Funcionalidade de Listagem de Transações</h1>
+<h2>Título do Documento: CardDemo Módulo de Listagem de Transações - Especificação Técnica</h2>
+<h2>Arquivo</h2>
+<ul>
+<li><code>\src\COTRN00C.cbl</code></li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve as especificações técnicas para o módulo de Listagem de Transações dentro da aplicação CardDemo. Este módulo fornece aos usuários uma maneira de visualizar seu histórico de transações de cartão de crédito, semelhante a um extrato bancário. Ele permite a navegação por páginas de transações e exibe detalhes importantes como ID da transação, data, descrição e valor.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>Versão 1.0: Versão inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O módulo de Listagem de Transações recupera registros de transações do banco de dados VSAM e os apresenta ao usuário em um formato paginado. Os usuários podem navegar pelo histórico de transações usando as funcionalidades de avançar e retroceder página. O módulo também permite a seleção de transações, embora este recurso não esteja totalmente implementado na versão atual.</p>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Autenticação do Usuário:</strong> O usuário deve ser autenticado e autorizado a acessar a aplicação CardDemo.</li>
+<li><strong>Sessão Ativa:</strong> O usuário deve ter uma sessão ativa com a aplicação.</li>
+<li><strong>Dados de Transação:</strong> O arquivo TRANSACT no banco de dados VSAM deve conter o histórico de transações do usuário.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Recuperação de Dados:</strong> O sistema deve recuperar apenas transações associadas à conta do usuário conectado.</li>
+<li><strong>Paginação:</strong> O número de transações exibidas por página deve ser limitado para evitar sobrecarregar o usuário.</li>
+<li><strong>Limites de Navegação:</strong> O sistema deve impedir a navegação além da primeira e da última página do histórico de transações.</li>
+<li><strong>Tratamento de Erros:</strong> Mensagens de erro apropriadas devem ser exibidas para entradas inválidas ou erros do sistema.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Programa Principal:</strong></p>
+<ul>
+<li><strong><code>COTRN00C.cbl</code>:</strong> Este programa COBOL lida com a funcionalidade de listagem de transações.</li>
+</ul>
+<p><strong>Principais Funções/Parágrafos:</strong></p>
+<ul>
+<li><strong><code>MAIN-PARA</code>:</strong>  O procedimento principal que controla o fluxo do programa.</li>
+<li><strong><code>PROCESS-ENTER-KEY</code>:</strong>  Lida com a entrada do usuário para seleção de transação.</li>
+<li><strong><code>PROCESS-PF7-KEY</code>:</strong>  Lida com a funcionalidade “Page Up” (Página para cima).</li>
+<li><strong><code>PROCESS-PF8-KEY</code>:</strong>  Lida com a funcionalidade “Page Down” (Página para baixo).</li>
+<li><strong><code>PROCESS-PAGE-FORWARD</code>:</strong>  Recupera e exibe a próxima página de transações.</li>
+<li><strong><code>PROCESS-PAGE-BACKWARD</code>:</strong> Recupera e exibe a página anterior de transações.</li>
+<li><strong><code>POPULATE-TRAN-DATA</code>:</strong>  Preenche os campos da tela com detalhes da transação.</li>
+<li><strong><code>INITIALIZE-TRAN-DATA</code>:</strong>  Limpa os campos da tela para o próximo conjunto de transações.</li>
+<li><strong><code>SEND-TRNLST-SCREEN</code>:</strong>  Envia a tela de lista de transações para o terminal do usuário.</li>
+<li><strong><code>RECEIVE-TRNLST-SCREEN</code>:</strong>  Recebe a entrada do usuário da tela de lista de transações.</li>
+<li><strong><code>STARTBR-TRANSACT-FILE</code>:</strong>  Abre o arquivo TRANSACT para navegação.</li>
+<li><strong><code>READNEXT-TRANSACT-FILE</code>:</strong>  Lê o próximo registro de transação do arquivo.</li>
+<li><strong><code>READPREV-TRANSACT-FILE</code>:</strong>  Lê o registro de transação anterior do arquivo.</li>
+<li><strong><code>ENDBR-TRANSACT-FILE</code>:</strong>  Fecha o arquivo TRANSACT.</li>
+</ul>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>WS-TRANID</code>:</strong>  ID da transação para COTRN00C.</li>
+<li><strong><code>WS-TRANSACT-FILE</code>:</strong>  Nome do arquivo VSAM contendo os dados da transação.</li>
+<li><strong><code>WS-PAGE-NUM</code>:</strong>  Número da página atual sendo exibida.</li>
+<li><strong><code>CDEMO-CT00-TRNID-FIRST</code>:</strong>  ID da transação da primeira transação na página atual.</li>
+<li><strong><code>CDEMO-CT00-TRNID-LAST</code>:</strong>   ID da transação da última transação na página atual.</li>
+<li><strong><code>CDEMO-CT00-PAGE-NUM</code>:</strong>     Número da página atual.</li>
+<li><strong><code>TRAN-ID</code>:</strong>  ID da transação usada para recuperar registros.</li>
+<li><strong><code>TRAN-AMT</code>:</strong>  Valor da transação.</li>
+<li><strong><code>TRAN-ORIG-TS</code>:</strong>  Timestamp da transação.</li>
+<li><strong><code>TRAN-DESC</code>:</strong>  Descrição da transação.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Autenticação e Autorização do Usuário:</strong> A aplicação CardDemo deve ter mecanismos de segurança para autenticar usuários e autorizar o acesso aos dados de transações.</li>
+<li><strong>Privacidade de Dados:</strong> Os dados de transações devem ser tratados com segurança para proteger a privacidade do usuário.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Módulo de Gerenciamento de Conta:</strong> O módulo de Listagem de Transações pode ser integrado ao módulo de Gerenciamento de Conta, permitindo que os usuários visualizem as transações dentro do contexto de seus detalhes de conta.</li>
+<li><strong>Módulo de Relatórios:</strong> Os dados de transações exibidos neste módulo podem ser usados ​​como entrada para gerar relatórios em um módulo de Relatórios separado.</li>
+</ul>
+<h2>Modelos</h2>
+<p>Não aplicável para este módulo específico, pois ele lida principalmente com recuperação e apresentação de dados.</p>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong><code>COTRN0A</code>:</strong>  Conjunto de mapas BMS usado para a tela de listagem de transações.</li>
+<li><strong><code>TRANSACT</code>:</strong>  Arquivo VSAM contendo dados de transações.</li>
+<li><strong><code>COSGN00C</code>:</strong> Programa que lida com o processo de inscrição.</li>
+<li><strong><code>COMEN01C</code>:</strong>  Programa que lida com o menu principal.</li>
+<li><strong><code>COTRN01C</code>:</strong>  Programa que lida com a visualização de detalhes da transação.</li>
+</ul>
+<p><strong>Considerações Adicionais:</strong></p>
+<ul>
+<li><strong>Interface do Usuário:</strong>  A interface do usuário deve ser intuitiva e amigável. Considere usar rótulos claros, formatação consistente e fornecer dicas visuais para navegação.</li>
+<li><strong>Desempenho:</strong> Otimize a recuperação de dados e a renderização da tela para um desempenho ideal, especialmente ao lidar com grandes históricos de transações.</li>
+<li><strong>Registro de Erros:</strong>  Implemente o registro de erros para rastrear e resolver problemas com eficácia.</li>
+<li><strong>Internacionalização:</strong>  Se a aplicação precisar oferecer suporte a vários idiomas e moedas, certifique-se de que o módulo seja projetado para lidar com esses requisitos.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

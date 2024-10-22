@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant COBOL Program
+    participant Data Input
+    participant Data Validation
+
+    activate COBOL Program
+    COBOL Program->>+Data Input: Request Bill Payment Data
+    Data Input-->>-COBOL Program: Provide Bill Payment Data
+    COBOL Program->>+Data Validation: Validate Data
+    alt Data is Valid
+        Data Validation->>COBOL Program: Data Validated
+        COBOL Program->>COBOL Program: Process Bill Payment
+    else Data is Invalid
+        Data Validation-->>-COBOL Program: Data Invalid, Error Message
+        COBOL Program->>COBOL Program: Handle Error
+    end
+    deactivate COBOL Program

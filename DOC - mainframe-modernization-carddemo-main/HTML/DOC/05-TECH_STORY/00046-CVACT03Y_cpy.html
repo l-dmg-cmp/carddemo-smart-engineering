@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00046-CVACT03Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de Outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Especificação da Estrutura de Dados de Referência Cruzada de Cartão</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve a estrutura de uma estrutura de dados COBOL projetada para armazenar informações de referência cruzada para cartões de crédito. A estrutura vincula um número de cartão de crédito a uma ID de cliente e uma ID de conta, facilitando a recuperação eficiente de dados e garantindo a integridade dos dados em um sistema de gerenciamento de cartão de crédito.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como um sistema que precisa processar transações e recuperar informações do cliente, existe a necessidade de vincular de forma rápida e precisa um número de cartão de crédito ao cliente e conta corretos.</p>
+<p><strong>Épico Relacionado:</strong> 3 - Gerenciamento de Cartão de Crédito</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Definição da Estrutura de Dados:</strong>
+<ul>
+<li>O código define uma estrutura de dados COBOL chamada <code>CARD-XREF-RECORD</code>.</li>
+<li>Esta estrutura destina-se a representar um único registro em um arquivo ou tabela de referência cruzada.</li>
+<li>Cada registro mapeia um número de cartão de crédito para uma ID de cliente e uma ID de conta.</li>
+</ul>
+</li>
+<li><strong>Especificações de Campo:</strong>
+<ul>
+<li><code>XREF-CARD-NUM</code>:
+<ul>
+<li>Tipo de Dado: Alfanumérico (PIC X)</li>
+<li>Tamanho: 16 caracteres</li>
+<li>Descrição: Armazena o número do cartão de crédito.</li>
+</ul>
+</li>
+<li><code>XREF-CUST-ID</code>:
+<ul>
+<li>Tipo de Dado: Numérico (PIC 9)</li>
+<li>Tamanho: 9 dígitos</li>
+<li>Descrição: Armazena a ID do cliente associada ao cartão de crédito.</li>
+</ul>
+</li>
+<li><code>XREF-ACCT-ID</code>:
+<ul>
+<li>Tipo de Dado: Numérico (PIC 9)</li>
+<li>Tamanho: 11 dígitos</li>
+<li>Descrição: Armazena a ID da conta associada ao cartão de crédito.</li>
+</ul>
+</li>
+<li><code>FILLER</code>:
+<ul>
+<li>Tipo de Dado: Alfanumérico (PIC X)</li>
+<li>Tamanho: 14 caracteres</li>
+<li>Descrição: Espaço não utilizado, potencialmente para expansão futura ou preenchimento.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Validação de Dados:</strong>
+<ul>
+<li>Antes de armazenar dados nesta estrutura, o sistema deve validar:
+<ul>
+<li>Formato do número do cartão de crédito (16 dígitos)</li>
+<li>Existência da ID do cliente no banco de dados de clientes</li>
+<li>Existência da ID da conta no banco de dados de contas</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Recuperação de Dados:</strong>
+<ul>
+<li>Esta estrutura facilita a recuperação eficiente de informações do cliente e da conta usando o número do cartão de crédito como chave.</li>
+</ul>
+</li>
+<li><strong>Integridade de Dados:</strong>
+<ul>
+<li>Ao vincular o número do cartão, a ID do cliente e a ID da conta, esta estrutura ajuda a manter a integridade dos dados e garante que as transações sejam atribuídas corretamente.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><strong><code>CARD-XREF-RECORD</code>:</strong>
+<ul>
+<li><code>XREF-CARD-NUM</code> (String): O número do cartão de crédito.</li>
+<li><code>XREF-CUST-ID</code> (Integer): A ID do cliente proprietário do cartão de crédito.</li>
+<li><code>XREF-ACCT-ID</code> (Integer): A ID da conta associada ao cartão de crédito.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li>Nenhuma</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li>Adicione comentários ao campo <code>FILLER</code> para esclarecer seu propósito (reservado para uso futuro, alinhamento, etc.).</li>
+<li>Implemente rotinas de validação de dados para garantir a integridade dos dados armazenados nesta estrutura.</li>
+<li>Considere adicionar mecanismos de tratamento de erros para lidar normalmente com cenários onde a validação de dados falha.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li>Se os dados armazenados nesta estrutura forem confidenciais, considere implementar mecanismos de criptografia para protegê-los em trânsito e em repouso.</li>
+<li>Implemente medidas de controle de acesso para restringir o acesso não autorizado a esses dados.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00046-CVACT03Y_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

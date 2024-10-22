@@ -1,0 +1,68 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant CBTRN02C
+    participant DailyTransactionFile
+    participant TransactionFile
+    participant CrossReferenceFile
+    participant AccountFile
+    participant TransactionCategoryBalanceFile
+    participant DailyRejectFile
+
+    activate CBTRN02C
+
+    CBTRN02C->>+DailyTransactionFile: Open
+    DailyTransactionFile-->>-CBTRN02C: Open Successful
+    CBTRN02C->>+TransactionFile: Open
+    TransactionFile->>CBTRN02C: Open Successful
+    CBTRN02C->>+CrossReferenceFile: Open
+    CrossReferenceFile-->>-CBTRN02C: Open Successful
+    CBTRN02C->>+AccountFile: Open
+    AccountFile-->>-CBTRN02C: Open Successful
+    CBTRN02C->>+TransactionCategoryBalanceFile: Open
+    TransactionCategoryBalanceFile-->>-CBTRN02C: Open Successful
+    CBTRN02C->>+DailyRejectFile: Open
+    DailyRejectFile-->>-CBTRN02C: Open Successful
+
+    loop For Each Transaction in DailyTransactionFile
+        CBTRN02C->>+DailyTransactionFile: Read Transaction
+        DailyTransactionFile-->>-CBTRN02C: Transaction Data
+        CBTRN02C->>+CrossReferenceFile: Validate Card Number
+        alt Card Number is Valid
+            CrossReferenceFile-->>-CBTRN02C: Account ID
+            CBTRN02C->>+AccountFile: Read Account Data
+            alt Account is Valid
+                AccountFile-->>-CBTRN02C: Account Data
+                alt Credit Limit and Expiration Date are Valid
+                    CBTRN02C->>+AccountFile: Update Account Balance
+                    AccountFile-->>-CBTRN02C: Update Successful
+                    CBTRN02C->>+TransactionCategoryBalanceFile: Update Balance
+                    TransactionCategoryBalanceFile-->>-CBTRN02C: Update Successful
+                    CBTRN02C->>+TransactionFile: Write Transaction
+                    TransactionFile->>CBTRN02C: Write Successful
+                else Credit Limit or Expiration Date Invalid
+                    CBTRN02C->>+DailyRejectFile: Write Rejection Reason
+                    DailyRejectFile-->>-CBTRN02C: Write Successful
+                end
+            else Account is Invalid
+                CBTRN02C->>+DailyRejectFile: Write Rejection Reason
+                DailyRejectFile-->>-CBTRN02C: Write Successful
+            end
+        else Card Number is Invalid
+            CBTRN02C->>+DailyRejectFile: Write Rejection Reason
+            DailyRejectFile-->>-CBTRN02C: Write Successful
+        end
+    end
+
+    CBTRN02C->>+DailyTransactionFile: Close
+    DailyTransactionFile->>-CBTRN02C: Close Successful
+    CBTRN02C->>+TransactionFile: Close
+    TransactionFile->>-CBTRN02C: Close Successful
+    CBTRN02C->>+CrossReferenceFile: Close
+    CrossReferenceFile->>-CBTRN02C: Close Successful
+    CBTRN02C->>+AccountFile: Close
+    AccountFile->>-CBTRN02C: Close Successful
+    CBTRN02C->>+TransactionCategoryBalanceFile: Close
+    TransactionCategoryBalanceFile->>-CBTRN02C: Close Successful
+    CBTRN02C->>+DailyRejectFile: Close
+    DailyRejectFile->>-CBTRN02C: Close Successful
+    deactivate CBTRN02C

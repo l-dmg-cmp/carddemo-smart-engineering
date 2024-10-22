@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00077-cardxref_txt</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de Outubro de 2024</p>
+<h1>Sistema de Rastreamento de Cartão de Crédito</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Sistema de Rastreamento de Cartão de Crédito - Especificação da API de Gerenciamento do Índice de Cartões</li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve os requisitos para a API do Sistema de Rastreamento de Cartão de Crédito, com foco específico no gerenciamento do índice de cartões. Esta API serve como intermediária entre uma interface de usuário (como um aplicativo da web) e os sistemas de back-end responsáveis por armazenar e gerenciar dados de cartão de crédito. A principal função desta API é fornecer uma maneira simplificada de acessar e interpretar informações armazenadas no arquivo <code>cardxref.txt</code>, que atua como um índice central para todos os cartões de crédito dentro do sistema.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>Versão 1.0: Versão inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>A API de Gerenciamento do Índice de Cartões facilita a recuperação e interpretação de dados armazenados no arquivo <code>cardxref.txt</code>. A API interage com o sistema de arquivos para executar as seguintes ações:</p>
+<ol>
+<li><strong>Recuperar Dados do Índice do Cartão:</strong> A API lê o arquivo <code>cardxref.txt</code> linha por linha.</li>
+<li><strong>Analisar Informações do Cartão:</strong> Cada linha é analisada para extrair o identificador do cartão (primeiros 19 dígitos) e o valor do contador/referência (últimos 2 dígitos).</li>
+<li><strong>Estruturação de Dados:</strong> As informações extraídas são estruturadas em um formato adequado para processamento posterior ou exibição.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Acesso ao Sistema de Arquivos:</strong> A API requer acesso de leitura ao sistema de arquivos onde o <code>cardxref.txt</code> está localizado.</li>
+<li><strong>Integridade do Arquivo:</strong> O arquivo <code>cardxref.txt</code> deve aderir à estrutura definida (identificador do cartão de 19 dígitos seguido por um contador/referência de 2 dígitos).</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Existência do Arquivo:</strong> Valide se o arquivo <code>cardxref.txt</code> existe antes de tentar ler.</li>
+<li><strong>Formato do Arquivo:</strong> Certifique-se de que cada linha do arquivo esteja em conformidade com o formato esperado.</li>
+<li><strong>Validação do Tipo de Dados:</strong> Valide se os identificadores de cartão extraídos e os valores de contador/referência são numéricos.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Classes Principais:</strong></p>
+<ul>
+<li><strong><code>CardIndexReader</code>:</strong>  Lida com a leitura e análise do arquivo <code>cardxref.txt</code>.</li>
+</ul>
+<p><strong>Principais Funções/Métodos:</strong></p>
+<ul>
+<li><strong><code>getCardData()</code>:</strong> Lê o arquivo <code>cardxref.txt</code> e retorna uma representação estruturada dos dados.</li>
+<li><strong><code>parseCardLine(String line)</code>:</strong> Analisa uma única linha do arquivo para extrair o identificador do cartão e o contador/referência.</li>
+</ul>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>cardIdentifier</code>:</strong>  Uma string de 19 dígitos que representa o identificador exclusivo de um cartão de crédito.</li>
+<li><strong><code>counterReference</code>:</strong> Uma string de 2 dígitos que representa a contagem de uso, uma referência a outro arquivo ou o status do cartão.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Controle de Acesso:</strong> Implemente medidas rígidas de controle de acesso para limitar quem pode ler e potencialmente modificar o arquivo <code>cardxref.txt</code>.</li>
+<li><strong>Criptografia de Dados:</strong> Considere criptografar o arquivo <code>cardxref.txt</code> para proteger informações confidenciais do cartão.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Sistema de Gerenciamento de Cartão de Crédito:</strong> Esta API atende diretamente ao Sistema de Gerenciamento de Cartão de Crédito, fornecendo funcionalidade crucial de indexação de cartão.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CardIdentifier</td>
+<td>String (19)</td>
+<td>Identificador exclusivo de 19 dígitos para um cartão de crédito.</td>
+</tr>
+<tr>
+<td>CounterReference</td>
+<td>String (2)</td>
+<td>Código de 2 dígitos que potencialmente representa a contagem de uso, referência de arquivo ou status do cartão.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong><code>cardxref.txt</code>:</strong>  O arquivo que contém os dados do índice do cartão de crédito.</li>
+</ul>
+<p><strong>Considerações Adicionais:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implemente um tratamento de erros robusto para gerenciar erros de leitura de arquivo, inconsistências de formato e outros problemas potenciais.</li>
+<li><strong>Log:</strong>  Mantenha logs de uso da API e quaisquer erros encontrados para fins de depuração e auditoria.</li>
+<li><strong>Otimização de Desempenho:</strong> Se estiver lidando com um arquivo <code>cardxref.txt</code> grande, considere otimizações de desempenho para ler e analisar os dados com eficiência.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00039-CSSTRPFY_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Tradutor de Ação do Usuário CICS</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Especificação do Tradutor de Ação do Usuário CICS</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li><code>\CSSTRPFY.cpy</code></li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve a funcionalidade de um programa COBOL projetado para um ambiente CICS. Este programa traduz ações do usuário em um terminal em funções específicas do programa, atuando como uma ponte entre a interface do usuário e a lógica do aplicativo.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>CardDemo_v1.0-15-g27d6c6f-68: Versão inicial - 19 de julho de 2022</li>
+</ul>
+<h2>Descrição do Processo:</h2>
+<p>Este programa captura ações do usuário em um terminal, como teclas pressionadas (incluindo teclas de função) e as traduz em funções predefinidas do programa. Em vez de acionar diretamente essas funções, ele define sinalizadores em uma área de memória compartilhada (área comum) para indicar a intenção do usuário. Essa abordagem promove flexibilidade e capacidade de manutenção, pois a lógica do programa subjacente pode ser modificada sem impactar diretamente o mecanismo de tradução.</p>
+<h2>Requisitos para Iniciar o Processo:</h2>
+<ol>
+<li><strong>Ambiente CICS:</strong> O programa foi projetado para ser executado em um ambiente CICS em um sistema mainframe IBM.</li>
+<li><strong>Entrada do Terminal:</strong> O programa espera entrada na forma de Identificadores de Atenção (AIDs) gerados por ações do usuário em um terminal.</li>
+<li><strong>Acesso à Área Comum:</strong> O programa requer acesso a uma área comum predefinida para definir sinalizadores que representam as ações traduzidas do usuário.</li>
+</ol>
+<h2>Validações e Regras:</h2>
+<ul>
+<li><strong>Validação de AID:</strong> O programa valida os AIDs recebidos em relação a uma lista predefinida de ações suportadas.</li>
+<li><strong>Gerenciamento de Sinalizadores:</strong> O programa define sinalizadores específicos na área comum com base nos AIDs validados, indicando a ação pretendida do usuário.</li>
+</ul>
+<h2>Detalhes Técnicos:</h2>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>EIBAID</code>:</strong> Uma variável do sistema que contém o Identificador de Atenção (AID) da última ação do usuário.</li>
+<li><strong><code>CCARD-AID-ENTER</code></strong>, <strong><code>CCARD-AID-CLEAR</code></strong>, <strong><code>CCARD-AID-PA1</code></strong>, <strong><code>CCARD-AID-PA2</code></strong>, <strong><code>CCARD-AID-PFK01</code></strong> a <strong><code>CCARD-AID-PFK12</code></strong>: Sinalizadores na área comum que representam várias ações do usuário, como Enter, Clear, teclas PA e teclas de função (teclas PF).</li>
+</ul>
+<p><strong>Métodos:</strong></p>
+<ul>
+<li><strong><code>EVALUATE TRUE</code></strong>: Usado para comparar o <code>EIBAID</code> com AIDs predefinidos.</li>
+<li><strong><code>WHEN</code></strong>: Usado dentro do bloco <code>EVALUATE</code> para corresponder a AIDs específicos e definir os sinalizadores correspondentes.</li>
+<li><strong><code>SET</code></strong>: Usado para definir o valor dos sinalizadores na área comum.</li>
+</ul>
+<h2>Impacto em Outros Sistemas:</h2>
+<ul>
+<li><strong>Programas Dependentes:</strong> Outros programas no aplicativo CICS dependem dos sinalizadores definidos por este programa na área comum para determinar a ação pretendida do usuário e responder de acordo.</li>
+</ul>
+<h2>Modelos:</h2>
+<p>Não aplicável para este programa específico, pois ele se concentra principalmente na tradução de ações do usuário em sinalizadores.</p>
+<h2>Principais Referências:</h2>
+<ul>
+<li><strong>CICS Application Programming Guide:</strong> Fornece informações sobre AIDs, áreas comuns e outros conceitos de programação CICS.</li>
+<li><strong>IBM System/370 Principles of Operation:</strong> Oferece informações detalhadas sobre a arquitetura e o conjunto de instruções dos mainframes IBM.</li>
+</ul>
+<h2>Considerações Adicionais:</h2>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implemente o tratamento de erros para gerenciar AIDs inesperados ou problemas com o acesso à área comum.</li>
+<li><strong>Log:</strong> Inclua recursos de log para rastrear ações do usuário e auxiliar na depuração.</li>
+<li><strong>Documentação:</strong> Mantenha documentação abrangente dos AIDs suportados, sinalizadores correspondentes e suas funções pretendidas no aplicativo.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

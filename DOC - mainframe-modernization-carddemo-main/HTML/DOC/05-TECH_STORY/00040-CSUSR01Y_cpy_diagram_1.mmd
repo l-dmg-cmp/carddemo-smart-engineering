@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant System
+    participant UserManagementModule
+
+    activate System
+    System->>+UserManagementModule: Create User (userId, firstName, lastName, password, userType)
+    UserManagementModule->>+CSUSR01Y: Write SEC-USER-DATA Record (SEC-USR-ID, SEC-USR-FNAME, SEC-USR-LNAME, SEC-USR-PWD, SEC-USR-TYPE)
+    CSUSR01Y->>-UserManagementModule: Record Written
+    UserManagementModule->>-System: User Created
+    deactivate System

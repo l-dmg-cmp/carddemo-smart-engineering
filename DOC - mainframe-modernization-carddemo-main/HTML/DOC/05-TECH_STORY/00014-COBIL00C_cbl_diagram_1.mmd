@@ -1,0 +1,28 @@
+sequenceDiagram
+    participant User
+    participant COBOL Program
+    participant ACCTDAT File
+    participant CXACAIX File
+    participant TRANSACT File
+
+    activate User
+    User->>+COBOL Program: Input Account ID
+    COBOL Program->>+ACCTDAT File: Read Account Details
+    ACCTDAT File->>COBOL Program: Account Details
+    COBOL Program->>+CXACAIX File: Read Card Details
+    CXACAIX File->>COBOL Program: Card Details
+    COBOL Program->>+TRANSACT File: Read Last Transaction ID
+    TRANSACT File->>COBOL Program: Last Transaction ID
+    COBOL Program->>COBOL Program: Generate New Transaction ID
+    COBOL Program->>User: Confirm Payment
+    User->>+COBOL Program: Confirmation (Y/N)
+    alt Confirmation is Yes
+        COBOL Program->>+TRANSACT File: Write Transaction Record
+        TRANSACT File->>COBOL Program: Write Successful
+        COBOL Program->>+ACCTDAT File: Update Account Balance
+        ACCTDAT File-->>-COBOL Program: Update Successful
+        COBOL Program->>User: Payment Successful
+    else Confirmation is No
+        COBOL Program->>-User: Payment Cancelled
+    end
+    deactivate User

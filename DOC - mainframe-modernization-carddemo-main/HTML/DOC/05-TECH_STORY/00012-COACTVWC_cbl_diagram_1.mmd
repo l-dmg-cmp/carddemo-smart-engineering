@@ -1,0 +1,32 @@
+sequenceDiagram
+    participant User
+    participant COACTVWC
+    participant CARDXREF
+    participant ACCTDAT
+    participant CUSTDAT
+
+    activate User
+    User->>+COACTVWC: Account Number Input
+    deactivate User
+
+    activate COACTVWC
+    COACTVWC->>+CARDXREF: Read Account by Number
+    alt Account Found
+        CARDXREF-->>-COACTVWC: Customer ID
+        COACTVWC->>+ACCTDAT: Read Account Details
+        alt Account Details Found
+            ACCTDAT-->>-COACTVWC: Account Details
+            COACTVWC->>+CUSTDAT: Read Customer Details
+            alt Customer Details Found
+                CUSTDAT-->>-COACTVWC: Customer Details
+                COACTVWC->>User: Display Account and Customer Information
+            else Customer Not Found
+                COACTVWC->>User: Display Error Message
+            end
+        else Account Details Not Found
+            COACTVWC->>User: Display Error Message
+        end
+    else Account Not Found
+        COACTVWC->>User: Display Error Message
+    end
+    deactivate COACTVWC

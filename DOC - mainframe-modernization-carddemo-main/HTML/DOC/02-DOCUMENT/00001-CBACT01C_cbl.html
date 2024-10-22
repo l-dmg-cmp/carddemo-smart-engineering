@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00001-CBACT01C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Aplicação CardDemo: Processamento em Lote de Dados de Conta</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: CardDemo Application - Account Data Batch Processing Program Specification</li>
+<li><strong>Tradução:</strong> Especificação do Programa de Processamento em Lote de Dados de Conta - Aplicação CardDemo</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li>\CardDemo Application\Batch Programs\CBACT01C.cbl</li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve as especificações para o programa CBACT01C dentro da aplicação CardDemo. Este programa COBOL concentra-se no processamento em lote de dados de conta a partir de um arquivo seguro, semelhante a um contador que revisa um livro razão. Ele lê sequencialmente as informações de cada conta, exibe um resumo e garante a integridade dos dados durante todo o processo.</p>
+<h2>Histórico da Versão</h2>
+<ul>
+<li>CardDemo_v1.0-15-g27d6c6f-68 (19 de julho de 2022): Versão inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O programa CBACT01C executa as seguintes operações:</p>
+<ol>
+<li><strong>Acesso ao Arquivo:</strong> Abre o arquivo de dados da conta (ACCTFILE) para leitura.</li>
+<li><strong>Leitura de Conta:</strong> Lê sequencialmente os detalhes de cada conta do arquivo.</li>
+<li><strong>Exibição de Dados:</strong> Exibe as informações de cada conta na tela.</li>
+<li><strong>Tratamento de Fim de Arquivo:</strong> Detecta o final do arquivo e o fecha com segurança.</li>
+<li><strong>Gerenciamento de Erros:</strong> Identifica e sinaliza erros encontrados durante o processo.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Arquivo de Dados da Conta (ACCTFILE):</strong> Um arquivo VSAM KSDS contendo detalhes da conta do cartão de crédito.</li>
+<li><strong>Ambiente de Execução COBOL:</strong> Uma plataforma capaz de executar programas COBOL.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Processamento Sequencial:</strong> As contas são processadas uma a uma na ordem em que são armazenadas no arquivo.</li>
+<li><strong>Integridade de Dados:</strong> O programa prioriza a leitura e exibição precisas dos dados da conta.</li>
+<li><strong>Relato de Erros:</strong> Quaisquer erros, como problemas de acesso a arquivos ou dados inválidos, são sinalizados e relatados.</li>
+</ul>
+<h2>Detalhes técnicos</h2>
+<p><strong>Programa Principal:</strong></p>
+<ul>
+<li><strong><code>CBACT01C</code>:</strong> O programa COBOL responsável por ler e exibir dados da conta.</li>
+</ul>
+<p><strong>Parágrafos/Seções Principais:</strong></p>
+<ul>
+<li><strong><code>1000-ACCTFILE-GET-NEXT</code>:</strong> Lê o próximo registro de conta do arquivo.</li>
+<li><strong><code>1100-DISPLAY-ACCT-RECORD</code>:</strong> Exibe os detalhes do registro da conta lida.</li>
+<li><strong><code>0000-ACCTFILE-OPEN</code>:</strong> Abre o arquivo de dados da conta.</li>
+<li><strong><code>9000-ACCTFILE-CLOSE</code>:</strong> Fecha o arquivo de dados da conta.</li>
+<li><strong><code>9999-ABEND-PROGRAM</code>:</strong> Trata o término anormal do programa.</li>
+<li><strong><code>9910-DISPLAY-IO-STATUS</code>:</strong> Exibe informações de status do arquivo.</li>
+</ul>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>ACCOUNT-RECORD</code>:</strong> Uma estrutura de dados que contém os detalhes de uma única conta.</li>
+<li><strong><code>ACCTFILE-STATUS</code>:</strong> Uma variável que armazena o status das operações do arquivo.</li>
+<li><strong><code>END-OF-FILE</code>:</strong> Um indicador que indica se o final do arquivo foi atingido.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>N/A:</strong> O trecho de código fornecido não inclui implementações de segurança específicas. No entanto, o acesso ao arquivo de dados da conta e as permissões de execução para o programa devem ser restritos apenas ao pessoal autorizado.</li>
+</ul>
+<h2>Impacto em outros sistemas</h2>
+<ul>
+<li><strong>N/A:</strong> Com base no código fornecido, este programa parece funcionar como um utilitário independente para exibir dados de conta. Ele não interage diretamente com outros sistemas ou aplicativos.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FD-ACCT-ID</td>
+<td>PIC 9(11)</td>
+<td>Identificador da conta</td>
+</tr>
+<tr>
+<td>FD-ACCT-DATA</td>
+<td>PIC X(289)</td>
+<td>Detalhes da conta (por exemplo, saldo, limite de crédito)</td>
+</tr>
+<tr>
+<td>ACCT-ACTIVE-STATUS</td>
+<td></td>
+<td>Status da conta (por exemplo, ativa, fechada)</td>
+</tr>
+<tr>
+<td>ACCT-CURR-BAL</td>
+<td></td>
+<td>Saldo atual da conta</td>
+</tr>
+<tr>
+<td>ACCT-CREDIT-LIMIT</td>
+<td></td>
+<td>Limite de crédito da conta</td>
+</tr>
+<tr>
+<td>ACCT-CASH-CREDIT-LIMIT</td>
+<td></td>
+<td>Limite de crédito em dinheiro da conta</td>
+</tr>
+<tr>
+<td>ACCT-OPEN-DATE</td>
+<td></td>
+<td>Data de abertura da conta</td>
+</tr>
+<tr>
+<td>ACCT-EXPIRATION-DATE</td>
+<td></td>
+<td>Data de expiração da conta</td>
+</tr>
+<tr>
+<td>ACCT-REISSUE-DATE</td>
+<td></td>
+<td>Data da última reemissão da conta</td>
+</tr>
+<tr>
+<td>ACCT-CURR-CYC-CREDIT</td>
+<td></td>
+<td>Crédito do ciclo atual</td>
+</tr>
+<tr>
+<td>ACCT-CURR-CYC-DEBIT</td>
+<td></td>
+<td>Débito do ciclo atual</td>
+</tr>
+<tr>
+<td>ACCT-GROUP-ID</td>
+<td></td>
+<td>Identificador do grupo de contas</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>Manuseio de Arquivos VSAM KSDS:</strong> A compreensão da organização de arquivos VSAM KSDS e dos métodos de acesso é crucial para a manutenção do programa.</li>
+</ul>
+<p><strong>Considerações Adicionais:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> O programa inclui tratamento básico de erros, mas é recomendável implementar um mecanismo de registro de erros mais robusto e abrangente.</li>
+<li><strong>Opções de Saída:</strong> Atualmente, o programa exibe dados na tela. Considere adicionar opções para gravar a saída em um arquivo ou banco de dados para processamento ou relatório posterior.</li>
+<li><strong>Desempenho:</strong> Para arquivos de dados de conta grandes, analise e otimize o desempenho do programa para garantir um processamento eficiente.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

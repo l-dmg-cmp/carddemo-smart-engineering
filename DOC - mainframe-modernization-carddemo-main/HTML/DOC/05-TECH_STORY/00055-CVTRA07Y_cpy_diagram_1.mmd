@@ -1,0 +1,34 @@
+sequenceDiagram
+    participant COBOL Program
+    participant Transaction Data File
+    participant Report File
+
+    activate COBOL Program
+
+    COBOL Program->>+Transaction Data File: Open
+    Transaction Data File->>COBOL Program: Open Successful
+
+    loop For Each Transaction Record
+        COBOL Program->>+Transaction Data File: Read Record
+        Transaction Data File->>COBOL Program: Transaction Data
+        COBOL Program->>COBOL Program: Format Transaction Data
+        COBOL Program->>+Report File: Write Transaction
+        Report File->>COBOL Program: Write Successful 
+    end
+
+    COBOL Program->>+Report File: Write Page Total
+    Report File->>COBOL Program: Write Successful
+
+    COBOL Program->>+Report File: Write Account Total
+    Report File->>COBOL Program: Write Successful
+
+    COBOL Program->>+Report File: Write Grand Total
+    Report File->>COBOL Program: Write Successful
+
+    COBOL Program->>+Transaction Data File: Close
+    Transaction Data File->>COBOL Program: Close Successful
+
+    COBOL Program->>+Report File: Close
+    Report File->>-COBOL Program: Close Successful
+
+    deactivate COBOL Program

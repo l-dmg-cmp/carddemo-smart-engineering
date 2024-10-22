@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00016-COCRDSLC_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Programa de Recuperação de Detalhes do Cartão de Crédito - Especificação Funcional</h1>
+<h1><strong>Descrição Resumida:</strong></h1>
+<p>Este programa permite que representantes de atendimento ao cliente acessem informações detalhadas do cartão de crédito inserindo o número da conta ou o número do cartão. O programa prioriza a segurança dos dados validando as entradas do usuário antes de acessar dados confidenciais.</p>
+<h1><strong>Histórias do Usuário:</strong></h1>
+<p>Como representante de atendimento ao cliente, preciso conseguir recuperar rapidamente os detalhes do cartão de crédito de um cliente usando o número da conta ou o número do cartão para que eu possa auxiliá-lo em suas consultas.</p>
+<h1><strong>Epic Relacionado:</strong></h1>
+<p>3 - Gestão de Cartão de Crédito</p>
+<h1><strong>Requisitos Funcionais:</strong></h1>
+<ol>
+<li>
+<p><strong>Captura e Validação de Entrada:</strong></p>
+<ul>
+<li>O sistema deve permitir que o usuário insira um número de conta de 11 dígitos ou um número de cartão de 16 dígitos.</li>
+<li>O sistema deve validar se o número da conta ou número do cartão inserido é numérico.</li>
+<li>O sistema deve exibir uma mensagem de erro se os dados inseridos não forem numéricos ou não tiverem o comprimento correto.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pesquisa e Recuperação no Banco de Dados:</strong></p>
+<ul>
+<li>O sistema deve pesquisar no banco de dados CARDDAT um registro correspondente usando o número da conta ou número do cartão inserido.</li>
+<li>Se um registro correspondente for encontrado, o sistema deve recuperar os seguintes detalhes do cartão de crédito:
+<ul>
+<li>Nome do titular do cartão</li>
+<li>Número do cartão</li>
+<li>Data de validade</li>
+<li>Status</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Exibição de Dados:</strong></p>
+<ul>
+<li>O sistema deve exibir os detalhes do cartão de crédito recuperados ao usuário em um formato claro e legível.</li>
+</ul>
+</li>
+</ol>
+<h1><strong>Requisitos Não Funcionais:</strong></h1>
+<ol>
+<li>
+<p><strong>Desempenho:</strong></p>
+<ul>
+<li>O sistema deve recuperar e exibir os detalhes do cartão de crédito dentro de 3 segundos após o usuário enviar a solicitação.</li>
+</ul>
+</li>
+<li>
+<p><strong>Segurança:</strong></p>
+<ul>
+<li>O sistema deve permitir que apenas usuários autorizados acessem os detalhes do cartão de crédito.</li>
+<li>O sistema não deve exibir nenhum detalhe do cartão de crédito se as informações inseridas forem inválidas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Disponibilidade:</strong></p>
+<ul>
+<li>O sistema deve estar disponível 24 horas por dia, 7 dias por semana.</li>
+</ul>
+</li>
+<li>
+<p><strong>Manutenibilidade:</strong></p>
+<ul>
+<li>O sistema deve ser projetado de forma modular para permitir fácil manutenção e atualizações.</li>
+</ul>
+</li>
+</ol>
+<h1><strong>Critérios de Aceitação:</strong></h1>
+<ol>
+<li>O sistema recupera e exibe com sucesso os detalhes do cartão de crédito quando um número de conta ou número de cartão válido é inserido.</li>
+<li>O sistema exibe uma mensagem de erro apropriada quando informações inválidas ou incompletas são inseridas.</li>
+<li>O sistema atende aos requisitos de desempenho, segurança e disponibilidade descritos na seção de requisitos não funcionais.</li>
+</ol>
+<h1><strong>Melhorias de Código:</strong></h1>
+<ul>
+<li><strong>Tratamento de Erros Padronizado:</strong> Implementar uma abordagem consistente e amigável para lidar com erros, incluindo a exibição de mensagens de erro descritivas para o usuário.</li>
+<li><strong>Otimização de Código:</strong> Explorar oportunidades para otimizar o código para melhorar o desempenho, especialmente ao lidar com interações com o banco de dados.</li>
+<li><strong>Documentação:</strong> Adicionar comentários claros e concisos ao código para melhorar sua legibilidade e capacidade de manutenção.</li>
+<li><strong>Parametrização:</strong> Considerar mover nomes de arquivo e outras constantes para um arquivo de configuração para facilitar a manutenção e configurações específicas do ambiente.</li>
+</ul>
+<h1><strong>Melhorias de Segurança:</strong></h1>
+<ul>
+<li><strong>Autenticação e Autorização:</strong> Implementar mecanismos robustos de autenticação para verificar as identidades dos usuários e autorizar o acesso a informações confidenciais do cartão de crédito.</li>
+<li><strong>Limpeza de Entrada:</strong> Limpar todas as entradas do usuário para evitar vulnerabilidades como injeção de SQL.</li>
+<li><strong>Registro e Auditoria:</strong> Registrar todas as tentativas de acesso a dados, incluindo detalhes do usuário, carimbos de data/hora e ações executadas, para auditoria de segurança e fins de monitoramento.</li>
+<li><strong>Criptografia de Dados:</strong> Criptografar dados confidenciais do cartão de crédito em trânsito e em repouso para protegê-los de acesso não autorizado.</li>
+</ul>
+<h1><strong>Diagrama Conceitual:</strong></h1>
+<img src="00016-COCRDSLC_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

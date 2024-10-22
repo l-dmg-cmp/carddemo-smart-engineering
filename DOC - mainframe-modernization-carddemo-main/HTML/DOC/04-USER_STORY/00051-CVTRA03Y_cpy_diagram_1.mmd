@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant CardDemo Application
+    participant Transaction Processor
+    participant Transaction Type Table
+
+    activate CardDemo Application
+    CardDemo Application->>+Transaction Processor: Process Transaction
+    activate Transaction Processor
+    Transaction Processor->>+Transaction Type Table: Get Transaction Type Description
+    Transaction Type Table-->>-Transaction Processor: Transaction Type Description
+    Transaction Processor->>CardDemo Application: Transaction Processed
+    deactivate Transaction Processor
+    deactivate CardDemo Application

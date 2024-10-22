@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00072-COUSR02_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>–CONTEÚDO A SER TRADUZIDO–
+Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> COUSR02 - Especificação da Estrutura de Dados da Conta de Usuário</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve a estrutura e o uso da estrutura de dados <code>COUSR02</code>, projetada para armazenar informações de contas de usuário de forma flexível em caracteres. Ela atende a codificações ASCII e EBCDIC, tornando-a adequada para diversas interações de sistema.</p>
+<p><strong>Histórias de Usuário:</strong>
+Como administrador de sistema, preciso de uma maneira padronizada de armazenar e recuperar dados de contas de usuário, incluindo suas credenciais de login, detalhes pessoais e informações relacionadas ao sistema. Esses dados devem ser acessíveis em diferentes codificações de caracteres para oferecer suporte a vários aplicativos e plataformas.</p>
+<p><strong>Épico Relacionado:</strong> 6 - Gerenciamento de Usuários e Segurança</p>
+<p><strong>Requerimentos Técnicos:</strong></p>
+<ul>
+<li><strong>Definição da Estrutura de Dados:</strong>
+<ul>
+<li>Duas estruturas de dados, <code>COUSR2AI</code> e <code>COUSR2AO</code>, são definidas para representar as mesmas informações de conta de usuário usando diferentes esquemas de codificação de caracteres.</li>
+<li><code>COUSR2AI</code> provavelmente usa uma codificação em que os caracteres alfanuméricos (A-Z, 0-9) são representados diretamente, enquanto <code>COUSR2AO</code> usa uma codificação diferente, possivelmente EBCDIC.</li>
+</ul>
+</li>
+<li><strong>Especificações do Campo de Dados:</strong>
+<ul>
+<li>Cada campo dentro das estruturas de dados é definido com um tipo de dado específico (por exemplo, <code>PIC X</code> para alfanumérico, <code>COMP  PIC  S9(4)</code> para numérico com sinal) e comprimento.</li>
+<li>A restrição de comprimento garante a consistência dos dados e evita possíveis vulnerabilidades de estouro de buffer.</li>
+</ul>
+</li>
+<li><strong>Tratamento de Codificação de Caracteres:</strong>
+<ul>
+<li>O uso de <code>REDEFINES</code> permite que o mesmo local de memória seja interpretado como diferentes tipos de dados e codificações.</li>
+<li>Isso permite que o sistema processe dados de usuário originados ou destinados a sistemas com diferentes padrões de codificação.</li>
+</ul>
+</li>
+<li><strong>Validação de Dados e Segurança:</strong>
+<ul>
+<li>Embora não seja explicitamente mostrado neste trecho de código, é crucial implementar regras de validação de dados para campos como <code>USRIDIN</code>, <code>PASSWD</code> e <code>USRTYPE</code> para evitar entrada de dados inválidos e potenciais riscos de segurança.</li>
+<li>O armazenamento de senha deve sempre usar algoritmos de hash seguros (por exemplo, bcrypt, scrypt) para proteger as credenciais confidenciais do usuário.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><strong><code>COUSR2AI</code>:</strong>
+<ul>
+<li><code>TRNNAME</code>: Nome da transação (alfanumérico, o comprimento depende da codificação)</li>
+<li><code>TITLE01</code>: Título descritivo 1 (alfanumérico, o comprimento depende da codificação)</li>
+<li><code>CURDATE</code>: Data atual (alfanumérico, o comprimento depende da codificação)</li>
+<li><code>PGMNAME</code>: Nome do programa (alfanumérico, o comprimento depende da codificação)</li>
+<li><code>TITLE02</code>: Título descritivo 2 (alfanumérico, o comprimento depende da codificação)</li>
+<li><code>CURTIME</code>: Hora atual (alfanumérico, o comprimento depende da codificação)</li>
+<li><code>USRIDIN</code>: ID do usuário (alfanumérico, o comprimento depende da codificação)</li>
+<li><code>FNAME</code>: Primeiro nome (alfanumérico, o comprimento depende da codificação)</li>
+<li><code>LNAME</code>: Sobrenome (alfanumérico, o comprimento depende da codificação)</li>
+<li><code>PASSWD</code>: Senha (alfanumérico, o comprimento depende da codificação)</li>
+<li><code>USRTYPE</code>: Tipo de usuário (alfanumérico, o comprimento depende da codificação)</li>
+<li><code>ERRMSG</code>: Mensagem de erro (alfanumérico, o comprimento depende da codificação)</li>
+</ul>
+</li>
+<li><strong><code>COUSR02AO</code>:</strong>
+<ul>
+<li>Todos os campos de <code>COUSR2AI</code>, mas com diferentes representações de caracteres com base no esquema de codificação.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><strong>Codificação de Caracteres:</strong> A codificação de caracteres específica usada para <code>COUSR2AI</code> e <code>COUSR2AO</code> precisa ser definida e documentada explicitamente. Isso garante a interpretação e conversão corretas dos dados ao interagir com sistemas externos.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Definir Codificação Explicitamente:</strong> Embora o código use <code>REDEFINES</code> para lidar com codificações diferentes, especificar explicitamente o padrão de codificação (por exemplo, ASCII, EBCDIC) para cada estrutura melhoraria a clareza e a manutenção do código.</li>
+<li><strong>Validação de Dados:</strong> Implemente rotinas de validação de dados para verificar o formato e a validade dos dados que estão sendo populados na estrutura <code>COUSR02</code>. Isso evita problemas de integridade de dados e aumenta a segurança.</li>
+<li><strong>Segurança de Senha:</strong> Certifique-se de que o campo <code>PASSWD</code> não seja armazenado em texto simples. Implemente um algoritmo de hash de senha seguro para proteger as credenciais do usuário contra acesso não autorizado.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Armazenamento Seguro de Senha:</strong> Conforme mencionado anteriormente, nunca armazene senhas em texto simples. Use um algoritmo de hash unidirecional forte, como bcrypt ou scrypt, para proteger as senhas.</li>
+<li><strong>Controle de Acesso:</strong> Implemente medidas rígidas de controle de acesso para restringir o acesso não autorizado aos dados <code>COUSR02</code>. Somente pessoal autorizado e processos devem ser capazes de ler, modificar ou excluir informações da conta de usuário.</li>
+<li><strong>Criptografia de Dados:</strong> Considere criptografar dados confidenciais do usuário, tanto em trânsito quanto em repouso, para aumentar ainda mais a segurança. Isso é particularmente importante se os dados forem transmitidos por redes não confiáveis ou armazenados em locais potencialmente vulneráveis.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00072-COUSR02_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

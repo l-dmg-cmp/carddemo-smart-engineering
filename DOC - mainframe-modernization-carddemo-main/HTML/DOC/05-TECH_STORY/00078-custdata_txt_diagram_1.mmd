@@ -1,0 +1,37 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant Customer Data Validation Program
+    participant Input File custdata.txt
+    participant Output File output.txt
+    participant Error Log File error.log
+
+    activate Customer Data Validation Program
+
+    Customer Data Validation Program->>+Input File custdata.txt: Open
+    Input File custdata.txt->>Customer Data Validation Program: Open Successful
+    
+    loop For Each Line in custdata.txt
+        Customer Data Validation Program->>+Input File custdata.txt: Read Record
+        Input File custdata.txt->>Customer Data Validation Program: Customer Record Data
+        
+        Customer Data Validation Program->>Customer Data Validation Program: Validate Customer Record
+        
+        alt Validation Successful
+            Customer Data Validation Program->>+Output File output.txt: Write Record
+            Output File output.txt->>Customer Data Validation Program: Write Successful
+        else Validation Failed
+            Customer Data Validation Program->>+Error Log File error.log: Log Error
+            Error Log File error.log->>Customer Data Validation Program: Log Successful
+        end
+    end
+
+    Customer Data Validation Program->>+Input File custdata.txt: Close
+    Input File custdata.txt->>Customer Data Validation Program: Close Successful
+
+    Customer Data Validation Program->>+Output File output.txt: Close
+    Output File output.txt->>-Customer Data Validation Program: Close Successful
+
+    Customer Data Validation Program->>+Error Log File error.log: Close
+    Error Log File error.log->>-Customer Data Validation Program: Close Successful
+
+    deactivate Customer Data Validation Program

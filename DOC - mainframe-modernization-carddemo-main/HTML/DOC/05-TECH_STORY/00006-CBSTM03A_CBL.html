@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00006-CBSTM03A_CBL</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Geração de Extrato de Conta CardDemo - Especificação do Programa</h1>
+<p><strong>Descrição Resumida:</strong>
+O programa de Geração de Extrato de Conta CardDemo é um processo em lote que gera extratos de conta para portadores de cartão de crédito. Ele recupera dados do cliente, detalhes da conta e histórico de transações de várias fontes, calcula as despesas totais e produz extratos em formato de texto simples e HTML.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como analista de dados, preciso ter certeza de que apenas registros válidos sejam usados na análise para que os relatórios gerados sejam precisos e confiáveis.</p>
+<p><strong>Épico Relacionado:</strong>
+5 - Relatórios e Análise</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Extração e Validação de Dados:</strong>
+<ul>
+<li>O programa lê dados de quatro arquivos de entrada: <code>TRNXFILE</code> (Arquivo de Transação), <code>XREFFILE</code> (Arquivo de Referência Cruzada), <code>CUSTFILE</code> (Arquivo do Cliente) e <code>ACCTFILE</code> (Arquivo da Conta).</li>
+<li><strong>Manipulação de Arquivos:</strong>
+<ul>
+<li>O programa abre, lê e fecha cada arquivo sequencialmente.</li>
+<li>A sub-rotina <code>CBSTM03B</code> lida com operações de arquivo.</li>
+</ul>
+</li>
+<li><strong>Validação de Dados:</strong>
+<ul>
+<li>Garante que as transações estejam vinculadas às contas e clientes corretos.</li>
+<li>Verifica a integridade dos dados em todos os arquivos de entrada.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Geração de Extrato:</strong>
+<ul>
+<li><strong>Estrutura do Extrato:</strong>
+<ul>
+<li>Dois formatos: texto simples (extrato bancário tradicional) e HTML (para visualização online).</li>
+<li>O extrato de texto simples usa a estrutura de dados <code>STATEMENT-LINES</code> para layout.</li>
+<li>O extrato HTML usa a estrutura de dados <code>HTML-LINES</code> e CSS inline para estilo.</li>
+</ul>
+</li>
+<li><strong>Processamento de Transações:</strong>
+<ul>
+<li>Processa transações para cada cliente com base no número do cartão de crédito.</li>
+<li><code>WS-TRNX-TABLE</code> (uma matriz bidimensional) armazena dados de transações.</li>
+</ul>
+</li>
+<li><strong>Cálculos:</strong>
+<ul>
+<li>Calcula as despesas totais para o período do extrato de cada cliente.</li>
+<li>A variável <code>WS-TOTAL-AMT</code> acumula os valores das transações.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Tratamento de Erros e Registro:</strong>
+<ul>
+<li>Implementa tratamento de erros para operações de arquivo (abrir, ler, fechar) usando códigos de retorno de <code>CBSTM03B</code>.</li>
+<li>Exibe mensagens de erro e potencialmente termina de forma anormal usando <code>CEE3ABD</code> em caso de erros graves.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados</strong></p>
+<ul>
+<li><code>CARD-XREF-RECORD</code>: Contém informações de referência cruzada, incluindo <code>XREF-CUST-ID</code>, <code>XREF-ACCT-ID</code> e <code>XREF-CARD-NUM</code>.</li>
+<li><code>CUSTOMER-RECORD</code>: Contém informações do cliente, como <code>CUST-FIRST-NAME</code>, <code>CUST-MIDDLE-NAME</code>, <code>CUST-LAST-NAME</code>, <code>CUST-ADDR-LINE-1</code>, <code>CUST-ADDR-LINE-2</code>, <code>CUST-ADDR-LINE-3</code>, <code>CUST-ADDR-STATE-CD</code>, <code>CUST-ADDR-COUNTRY-CD</code>, <code>CUST-ADDR-ZIP</code> e <code>CUST-FICO-CREDIT-SCORE</code>.</li>
+<li><code>ACCOUNT-RECORD</code>: Contém detalhes da conta, como <code>ACCT-ID</code> e <code>ACCT-CURR-BAL</code>.</li>
+<li><code>TRNX-RECORD</code>: Representa um registro de transação com <code>TRNX-CARD-NUM</code>, <code>TRNX-ID</code>, <code>TRNX-DESC</code> e <code>TRNX-AMT</code>.</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li>Nomes de Arquivos:
+<ul>
+<li><code>TRNXFILE</code>: Caminho do arquivo de transação.</li>
+<li><code>XREFFILE</code>: Caminho do arquivo de referência cruzada.</li>
+<li><code>CUSTFILE</code>: Caminho do arquivo do cliente.</li>
+<li><code>ACCTFILE</code>: Caminho do arquivo da conta.</li>
+<li><code>STMTFILE</code>: Caminho do arquivo de saída para extratos de texto simples.</li>
+<li><code>HTMLFILE</code>: Caminho do arquivo de saída para extratos HTML.</li>
+</ul>
+</li>
+<li>Formatos de Dados:
+<ul>
+<li>Layouts de registro para todos os arquivos de entrada e saída precisam ser definidos.</li>
+<li>O extrato HTML usa CSS inline para estilo.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong>
+<ul>
+<li>Implementar tratamento de erros mais robusto, incluindo códigos de erro específicos e mensagens para diferentes cenários de erro.</li>
+<li>Considere o uso de um mecanismo de registro para registrar erros e outros eventos relevantes para fins de depuração e auditoria.</li>
+</ul>
+</li>
+<li><strong>Otimização de Desempenho:</strong>
+<ul>
+<li>Explorar o uso de técnicas de classificação e indexação para otimizar a recuperação de dados dos arquivos de entrada, especialmente para conjuntos de dados grandes.</li>
+<li>Considere o uso de um banco de dados para armazenamento e recuperação de dados em vez de arquivos simples para melhorar o desempenho.</li>
+</ul>
+</li>
+<li><strong>Estrutura do Código:</strong>
+<ul>
+<li>Refatorar o código dividindo parágrafos grandes em seções menores e mais gerenciáveis ​​para melhorar a legibilidade e a manutenção.</li>
+<li>Use nomes de variáveis ​​significativos e comentários para aprimorar a compreensão do código.</li>
+</ul>
+</li>
+<li><strong>Modernização:</strong>
+<ul>
+<li>Avaliar a viabilidade de migrar o programa para uma linguagem de programação e plataforma modernas para melhorar a manutenção, escalabilidade e segurança.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Controle de Acesso:</strong>
+<ul>
+<li>Implementar mecanismos de controle de acesso para restringir o acesso não autorizado a arquivos de dados confidenciais e ao próprio programa.</li>
+</ul>
+</li>
+<li><strong>Criptografia de Dados:</strong>
+<ul>
+<li>Considere criptografar dados confidenciais em repouso e em trânsito para proteger as informações do cliente.</li>
+</ul>
+</li>
+<li><strong>Auditoria:</strong>
+<ul>
+<li>Implementar uma trilha de auditoria para rastrear todo acesso a dados e modificações para fins de segurança e conformidade.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00006-CBSTM03A_CBL_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

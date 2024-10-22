@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant COBOL Program
+    participant Date Validation Module
+
+    activate COBOL Program
+    COBOL Program->>+Date Validation Module: Validate Date (YYYYMMDD)
+    alt Date is Valid
+        Date Validation Module->>COBOL Program:  Date Valid (YYYYMMDD)
+    else Date is Invalid
+        Date Validation Module-->>-COBOL Program: Error: Invalid Date
+    end
+    deactivate COBOL Program

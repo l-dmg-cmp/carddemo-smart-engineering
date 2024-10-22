@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant System
+    participant ErrorHandlingRoutine
+    participant ErrorLog
+
+    activate System
+    System->>+ErrorHandlingRoutine: Error Detected
+    activate ErrorHandlingRoutine
+    ErrorHandlingRoutine->>ErrorHandlingRoutine: Populate AbendData
+    ErrorHandlingRoutine->>+ErrorLog: Write Error Log
+    activate ErrorLog
+    ErrorLog->>ErrorHandlingRoutine: Log Write Successful
+    deactivate ErrorLog
+    ErrorHandlingRoutine->>System: Error Logged
+    deactivate ErrorHandlingRoutine
+    deactivate System

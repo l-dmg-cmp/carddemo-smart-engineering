@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant User
+    participant Application
+    participant COUSR01
+
+    activate User
+    User->>+Application: Request User Data (Login, View Profile, Update)
+    activate Application
+    Application->>+COUSR01: Read User Record
+    activate COUSR01
+    COUSR01->>Application: User Data
+    deactivate COUSR01
+    Application->>User: Display/Process User Data
+    deactivate User
+    deactivate Application

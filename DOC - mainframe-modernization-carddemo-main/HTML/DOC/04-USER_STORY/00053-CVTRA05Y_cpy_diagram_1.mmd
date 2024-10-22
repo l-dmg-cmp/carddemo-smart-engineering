@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant System
+    participant TransactionProcessor
+    participant TransactionRecord
+
+    activate System
+    System->>+TransactionProcessor: Initiate Transaction Recording
+    activate TransactionProcessor
+    TransactionProcessor->>+TransactionRecord: Create New Record
+    activate TransactionRecord
+    TransactionRecord-->>-TransactionProcessor: Record Created
+    TransactionProcessor->>+TransactionRecord: Populate Record Fields (ID, Type, Amount, etc.)
+    TransactionRecord-->>-TransactionProcessor: Fields Populated
+    TransactionProcessor->>+TransactionRecord: Save Record
+    TransactionRecord-->>-TransactionProcessor: Record Saved
+    TransactionProcessor->>System: Transaction Recorded Successfully
+    deactivate TransactionProcessor
+    deactivate System

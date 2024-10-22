@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant User
+    participant COSGN00C
+    participant USRSEC File
+    participant COADM01C
+    participant COMEN01C
+
+    activate User
+    User->>+COSGN00C: Enter User ID and Password
+    COSGN00C->>+USRSEC File: Read User Data
+    USRSEC File-->>-COSGN00C: User Data (Password, User Type)
+    
+    alt User ID not found
+        COSGN00C->>User: Invalid User ID
+            else User ID found
+        alt Password Mismatch
+            COSGN00C->>User: Incorrect Password
+            deactivate User
+        else Password Match
+            alt User Type is Admin
+                COSGN00C->>+COADM01C: Transfer Control 
+                            else User Type is Regular User
+                COSGN00C->>+COMEN01C: Transfer Control
+                deactivate COSGN00C
+            end
+        end
+    end

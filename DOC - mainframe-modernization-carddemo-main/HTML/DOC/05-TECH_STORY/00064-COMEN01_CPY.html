@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00064-COMEN01_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>–CONTENT TO TRANSLATE–
+Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> COMEN01 - Especificação da Estrutura de Dados Comum</p>
+<p><strong>Descrição Resumida:</strong>
+O arquivo <code>COMEN01.CPY</code> define uma estrutura de dados comum em COBOL, provavelmente utilizada para compartilhar dados entre diferentes módulos ou programas. Ele inclui campos para nomes de transações, títulos, datas, horas, opções e mensagens de erro. O uso de <code>REDEFINES</code> permite representação e acesso flexível aos dados.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como desenvolvedor, preciso de uma estrutura de dados padronizada para garantir a consistência e simplificar a troca de dados entre diferentes partes da aplicação.</p>
+<p><strong>Épico Relacionado:</strong> 9 - Utilitários do Sistema</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Definição da Estrutura de Dados:</strong>
+<ul>
+<li>O arquivo <code>COMEN01.CPY</code> define uma estrutura de dados COBOL chamada <code>COMEN1AI</code>.</li>
+<li>Esta estrutura contém campos para várias finalidades, incluindo:
+<ul>
+<li><code>TRNNAME</code>: Nome da transação.</li>
+<li><code>TITLE01</code>, <code>TITLE02</code>: Títulos ou cabeçalhos para exibição.</li>
+<li><code>CURDATE</code>: Data atual.</li>
+<li><code>PGMNAME</code>: Nome do programa ou módulo.</li>
+<li><code>CURTIME</code>: Hora atual.</li>
+<li><code>OPTN001</code> a <code>OPTN012</code>: Opções de menu.</li>
+<li><code>OPTION</code>: Opção selecionada pelo usuário.</li>
+<li><code>ERRMSG</code>: Mensagem de erro.</li>
+</ul>
+</li>
+<li>Cada campo possui um comprimento e tipo de dado correspondente (alfanumérico ou numérico).</li>
+</ul>
+</li>
+<li><strong>Uso de REDEFINES:</strong>
+<ul>
+<li>O código utiliza a cláusula <code>REDEFINES</code> para fornecer representações alternativas de dados.</li>
+<li>Por exemplo, <code>TRNNAMEF</code> é redefinido como <code>TRNNAMEA</code> para acessar o nome da transação como um único caractere.</li>
+<li>Redefinições semelhantes são aplicadas a outros campos como <code>TITLE01</code>, <code>CURDATE</code>, etc.</li>
+</ul>
+</li>
+<li><strong>Especificações de Tipo de Dado e Comprimento:</strong>
+<ul>
+<li>Cada campo é definido com cláusulas <code>PIC</code> (PICTURE) para especificar seu tipo de dado e comprimento.</li>
+<li>Por exemplo, <code>TRNNAMEI  PIC X(4)</code> define <code>TRNNAMEI</code> como um campo alfanumérico com um comprimento de 4 caracteres.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados</strong>
+Não há definição de modelo dentro do código.</p>
+<p><strong>Configurações:</strong>
+Não há definição de configuração dentro do código.</p>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Adicionar Comentários In-Line:</strong> Embora o código inclua um aviso de direitos autorais, considere adicionar comentários mais específicos para explicar o propósito e o uso de cada campo ou seção.</li>
+<li><strong>Convenções de Nomenclatura:</strong> Garanta convenções de nomenclatura consistentes e significativas para variáveis e campos. Por exemplo, considere usar nomes mais descritivos do que <code>OPTN001</code>, <code>OPTN002</code>, etc.</li>
+<li><strong>Validação de Dados:</strong> Implemente verificações de validação de dados quando aplicável para garantir a integridade dos dados armazenados na estrutura. Por exemplo, valide o formato de datas, horas e valores de opção.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Controle de Acesso a Dados:</strong> Implemente controles de acesso apropriados para restringir a modificação não autorizada dos dados dentro da estrutura. Isso pode envolver o uso de segurança em nível de programa ou mecanismos de segurança externos, dependendo da arquitetura do aplicativo.</li>
+<li><strong>Criptografia de Dados:</strong> Se a estrutura contiver informações confidenciais, considere criptografar os dados para protegê-los de acesso não autorizado.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00064-COMEN01_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

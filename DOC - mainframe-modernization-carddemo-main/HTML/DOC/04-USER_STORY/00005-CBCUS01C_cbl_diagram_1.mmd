@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant CBCUS01C
+    participant CUSTFILE
+
+    activate CBCUS01C
+    CBCUS01C->>+CUSTFILE: Open
+    CUSTFILE-->>-CBCUS01C: Open Successful
+
+    loop For Each Customer Record
+        CBCUS01C->>+CUSTFILE: Read Record
+        CUSTFILE-->>-CBCUS01C: Customer Record Data        
+        CBCUS01C->>CBCUS01C: Display Record
+    end
+    
+    CBCUS01C->>+CUSTFILE: Close
+    CUSTFILE->>-CBCUS01C: Close    
+    deactivate CBCUS01C

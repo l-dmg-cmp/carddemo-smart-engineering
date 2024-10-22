@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant User
+    participant COCRDUPC
+    participant CARDDAT
+
+    activate User
+    User->>+COCRDUPC: Request to view/update card details
+    activate COCRDUPC
+    COCRDUPC->>+CARDDAT: Read card record
+    activate CARDDAT
+    alt Card record found
+        CARDDAT->>-COCRDUPC: Card record data
+        COCRDUPC->>+User: Display card details for review/update
+        User->>+COCRDUPC: Submit updated card details
+        COCRDUPC->>COCRDUPC: Validate input data
+        alt Input data valid
+            COCRDUPC->>+CARDDAT: Lock card record for update
+            alt Record locked successfully
+                COCRDUPC->>CARDDAT: Update card record
+                CARDDAT->>COCRDUPC: Update successful
+                COCRDUPC->>+User: Display confirmation message
+            else Record lock failed
+                                COCRDUPC->>+User: Display error message (record locked)
+            end
+        else Input data invalid
+            COCRDUPC->>+User: Display error messages
+        end
+    else Card record not found
+        deactivate CARDDAT
+        COCRDUPC->>+User: Display error message (record not found)
+    end
+    deactivate User
+    deactivate COCRDUPC

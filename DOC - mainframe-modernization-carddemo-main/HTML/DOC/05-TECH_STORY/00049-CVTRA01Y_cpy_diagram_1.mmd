@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant COBOL Program
+    participant Transaction Category Balance File
+
+    activate COBOL Program
+    COBOL Program->>+Transaction Category Balance File: Open
+    Transaction Category Balance File->>COBOL Program: Open Successful
+
+    COBOL Program->>+Transaction Category Balance File: Read Record
+    Transaction Category Balance File-->>-COBOL Program: Transaction Category Balance Record Data
+
+    
+    deactivate COBOL Program

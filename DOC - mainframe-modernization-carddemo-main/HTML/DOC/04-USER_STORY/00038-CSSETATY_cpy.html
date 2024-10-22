@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00038-CSSETATY_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Especificação de Validação de Campo CardDemo</h1>
+<h1><strong>Descrição Resumida:</strong></h1>
+<p>Este documento detalha a funcionalidade de um trecho de código dentro do aplicativo CardDemo. Sua função principal é fornecer feedback visual aos usuários durante a entrada de dados, garantindo a precisão dos dados, destacando possíveis erros e orientando os usuários a preencher os campos obrigatórios.</p>
+<h1><strong>Histórias do Usuário:</strong></h1>
+<p>Como Representante de Atendimento ao Cliente, preciso de dicas visuais claras na tela para entender se os dados que inseri estão corretos e completos, para evitar erros e garantir a precisão dos dados no sistema.</p>
+<h1><strong>Épico Relacionado:</strong></h1>
+<p>9 - Utilitários do Sistema</p>
+<h1><strong>Requisitos Funcionais:</strong></h1>
+<ul>
+<li><strong>RF 01:</strong> O sistema deve validar a entrada do usuário em tempo real conforme os dados são inseridos.</li>
+<li><strong>RF 02:</strong> Se os dados inseridos forem inválidos, o campo correspondente na tela deverá ser destacado em vermelho.</li>
+<li><strong>RF 03:</strong> Se um campo obrigatório for deixado em branco, um asterisco (*) deverá ser exibido dentro do campo.</li>
+</ul>
+<h2><strong>Regras de Negócio:</strong></h2>
+<ul>
+<li><strong>RN 01:</strong> As regras de validação de dados para cada campo devem ser predefinidas e aplicadas de forma consistente.</li>
+<li><strong>RN 02:</strong> Os campos obrigatórios são definidos pelo projeto do sistema e não podem ser ignorados pelo usuário.</li>
+<li><strong>RN 03:</strong> O feedback visual (destaque em vermelho e asterisco) deve ser claro, imediato e perceptível ao usuário.</li>
+</ul>
+<h1><strong>Requisitos Não Funcionais:</strong></h1>
+<ul>
+<li><strong>RNF 01:</strong> O processo de validação de campo não deve impactar significativamente o desempenho do sistema.</li>
+<li><strong>RNF 02:</strong> O feedback visual deve ser consistente em diferentes resoluções de tela e dispositivos.</li>
+<li><strong>RNF 03:</strong> A lógica de validação deve ser sustentável e facilmente adaptável a mudanças futuras nas regras de negócios.</li>
+</ul>
+<h1><strong>Critérios de Aceitação:</strong></h1>
+<ul>
+<li><strong>CA 01:</strong> O sistema destaca com sucesso os campos de dados inválidos em vermelho após a entrada.</li>
+<li><strong>CA 02:</strong> Um asterisco (*) é exibido corretamente em campos obrigatórios que são deixados em branco.</li>
+<li><strong>CA 03:</strong> O processo de validação não causa atrasos ou interrupções perceptíveis no desempenho do sistema.</li>
+<li><strong>CA 04:</strong> O feedback visual é acessível a usuários com deficiência visual (por exemplo, esquemas de cores alternativos ou compatibilidade com leitores de tela).</li>
+</ul>
+<h1><strong>Melhorias de Código:</strong></h1>
+<ul>
+<li><strong>MC 01:</strong> Implementar tratamento de erros centralizado para gerenciar e registrar erros de validação de forma consistente.</li>
+<li><strong>MC 02:</strong> Adicionar documentação abrangente ao trecho de código explicando a lógica de validação, as regras de negócios e quaisquer dependências.</li>
+<li><strong>MC 03:</strong> Explorar técnicas de otimização de desempenho se o processo de validação causar atrasos perceptíveis, especialmente para conjuntos de dados grandes ou regras de validação complexas.</li>
+</ul>
+<h1><strong>Melhorias de Segurança:</strong></h1>
+<ul>
+<li><strong>MS 01:</strong> Garantir que os dados confidenciais dentro dos campos validados (por exemplo, senhas, números de cartão de crédito) sejam tratados com segurança, seguindo as melhores práticas para criptografia e mascaramento de dados.</li>
+<li><strong>MS 02:</strong> Implementar técnicas de higienização de entrada para evitar vulnerabilidades como ataques de script entre sites (XSS), onde código malicioso pode ser injetado por meio de campos de entrada do usuário.</li>
+<li><strong>MS 03:</strong> Registrar falhas de validação para rastrear possíveis tentativas maliciosas ou erros do sistema para fins de auditoria de segurança.</li>
+</ul>
+<h1><strong>Diagrama Conceitual:</strong></h1>
+<img src="00038-CSSETATY_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00061-COCRDLI_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<p><strong>Título do Documento: Especificação de Layout de Dados de Cartão de Crédito</strong></p>
+<p><strong>Descrição Resumida:</strong>
+Este documento define a estrutura das informações de cartão de crédito usadas no sistema. Inclui dois layouts: <code>CCRDLIAI</code> para representação interna e <code>CCRDLIAO</code> para comunicação externa. Esses layouts garantem o tratamento consistente e seguro de dados confidenciais do cartão de crédito entre diferentes componentes do sistema e durante interações com entidades externas.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como administrador do sistema, preciso de um formato padronizado para informações de cartão de crédito para que diferentes partes do sistema possam processar e trocar dados sem problemas.</p>
+<p><strong>Épico Relacionado:</strong> 3 - Gerenciamento de Cartão de Crédito</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Definição da Estrutura de Dados:</strong>
+<ul>
+<li>Definir duas estruturas de dados COBOL: <code>CCRDLIAI</code> e <code>CCRDLIAO</code>.</li>
+<li><code>CCRDLIAI</code>: Representa o layout interno das informações do cartão de crédito.</li>
+<li><code>CCRDLIAO</code>: Representa o layout externo das informações do cartão de crédito.</li>
+</ul>
+</li>
+<li><strong>Mapeamento de Campo:</strong>
+<ul>
+<li>Estabelecer um mapeamento claro entre os campos correspondentes em <code>CCRDLIAI</code> e <code>CCRDLIAO</code>.</li>
+<li>Garantir a consistência e precisão dos dados durante as transformações de dados internos para externos e externos para internos.</li>
+</ul>
+</li>
+<li><strong>Validação de Dados:</strong>
+<ul>
+<li>Implementar regras de validação de dados para cada campo em ambos os layouts.</li>
+<li>Validação de tipo de dados: Impor tipos de dados corretos (por exemplo, alfanumérico, numérico).</li>
+<li>Validação de comprimento do campo: Restringir os comprimentos dos campos aos limites definidos.</li>
+</ul>
+</li>
+<li><strong>Considerações de Segurança:</strong>
+<ul>
+<li>Criptografar informações confidenciais do cartão de crédito (por exemplo, número do cartão) em ambos os layouts durante o armazenamento e transmissão.</li>
+<li>Implementar mecanismos de controle de acesso para restringir o acesso não autorizado a <code>COCRDLI.CPY</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><code>CCRDLIAI</code>:
+<ul>
+<li><code>TRNNAME</code>: <code>String</code>, Nome ou identificador da transação.</li>
+<li><code>TITLE01</code>: <code>String</code>, Título descritivo ou cabeçalho para informações do cartão de crédito.</li>
+<li><code>CURDATE</code>: <code>Date</code>, Data atual.</li>
+<li><code>PGMNAME</code>: <code>String</code>, Nome do programa.</li>
+<li><code>TITLE02</code>: <code>String</code>, Segundo título descritivo ou cabeçalho.</li>
+<li><code>CURTIME</code>: <code>Time</code>, Hora atual.</li>
+<li><code>PAGENO</code>: <code>Integer</code>, Número da página.</li>
+<li><code>ACCTSID</code>: <code>String</code>, Identificador da conta.</li>
+<li><code>CARDSID</code>: <code>String</code>, Identificador do cartão.</li>
+<li><code>CRDSEL[1-7]</code>: <code>String</code>, Sinalizadores ou indicadores relacionados à seleção do cartão de crédito.</li>
+<li><code>CRDSTP[1-7]</code>: <code>String</code>, Sinalizadores ou indicadores relacionados ao status ou tipo do cartão de crédito.</li>
+<li><code>ACCTNO[1-7]</code>: <code>String</code>, Números de conta.</li>
+<li><code>CRDNUM[1-7]</code>: <code>String</code>, Números do cartão de crédito.</li>
+<li><code>CRDSTS[1-7]</code>: <code>String</code>, Status do cartão de crédito.</li>
+<li><code>INFOMSG</code>: <code>String</code>, Mensagem informativa.</li>
+<li><code>ERRMSG</code>: <code>String</code>, Mensagem de erro.</li>
+</ul>
+</li>
+<li><code>CCRDLIAO</code>:
+<ul>
+<li>(Mesmos campos que <code>CCRDLIAI</code> com representações diferentes para comunicação externa)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li>Nenhuma</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implementar mecanismos robustos de tratamento de erros para processos de validação e transformação de dados.</li>
+<li><strong>Documentação:</strong> Fornecer documentação abrangente para os layouts <code>CCRDLIAI</code> e <code>CCRDLIAO</code>, incluindo descrições de campo, tipos de dados e regras de validação.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Armazenamento Seguro:</strong> Armazene <code>COCRDLI.CPY</code> com segurança com controles de acesso apropriados para evitar modificações não autorizadas.</li>
+<li><strong>Revisão de Código:</strong> Conduzir revisões regulares de código de segurança para identificar e resolver potenciais vulnerabilidades.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00061-COCRDLI_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

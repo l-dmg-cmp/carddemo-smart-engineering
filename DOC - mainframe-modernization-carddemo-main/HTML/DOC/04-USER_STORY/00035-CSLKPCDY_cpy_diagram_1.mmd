@@ -1,0 +1,33 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant User
+    participant Application
+    participant CSLKPCDY Module
+
+    activate User
+    User->>+Application: Enter Data (Phone, State, ZIP)
+    activate Application
+    Application->>+CSLKPCDY Module: Validate Phone Area Code
+    alt VALID-PHONE-AREA-CODE
+        CSLKPCDY Module->>Application: Validation Successful
+        Application->>+CSLKPCDY Module: Validate State Code
+        alt VALID-US-STATE-CODE
+            CSLKPCDY Module->>Application: Validation Successful
+            Application->>+CSLKPCDY Module: Validate State + ZIP Code
+            alt VALID-US-STATE-ZIP-CD2-COMBO
+                CSLKPCDY Module->>Application: Validation Successful
+                Application->>User: Data Accepted
+            else Invalid State + ZIP Code
+                CSLKPCDY Module->>Application: Validation Failed
+                Application->>User: Invalid State + ZIP Code Error
+            end
+                    else Invalid State Code
+            CSLKPCDY Module->>Application: Validation Failed
+            Application->>User: Invalid State Code Error
+                    end
+    else Invalid Phone Area Code
+        CSLKPCDY Module->>-Application: Validation Failed
+        Application->>User: Invalid Area Code Error
+        deactivate Application
+    end
+    deactivate User

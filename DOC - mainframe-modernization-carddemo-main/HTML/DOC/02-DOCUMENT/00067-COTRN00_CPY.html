@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00067-COTRN00_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>–CONTEÚDO TRADUZIDO–
+Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Sistema de Gerenciamento de Transações</strong></h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Sistema de Gerenciamento de Transações - Especificação da Estrutura de Dados de Transações</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li><code>COTRN00.CPY</code></li>
+</ul>
+<h2>Descrição resumida</h2>
+<p>Este documento descreve a estrutura dos dados de transações dentro de um sistema financeiro maior. Ele atua como um modelo de como as informações de transações são organizadas e padronizadas, garantindo consistência e confiabilidade no tratamento de operações financeiras.</p>
+<h2>Histórico de versões</h2>
+<ul>
+<li>Versão 1.0: Versão inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O arquivo <code>COTRN00.CPY</code> define um formato padronizado para registrar transações financeiras, semelhante a um modelo digital para capturar detalhes de transações. Isso garante uniformidade e integridade de dados em diferentes partes do sistema.</p>
+<p>Dois layouts principais são definidos:</p>
+<ul>
+<li><strong><code>COTRN0AI</code>:</strong> Representa o formato interno para processamento de transações.</li>
+<li><strong><code>COTRN0AO</code>:</strong> Usado para apresentar informações de transações em relatórios ou telas, com formatação para facilitar a leitura.</li>
+</ul>
+<p>Ambos os layouts contêm campos essenciais como ID da transação, data, descrição, valor e sinalizadores de seleção.</p>
+<h2>Requisitos para iniciar o processo</h2>
+<ol>
+<li><strong>Dados da transação:</strong> O sistema requer a entrada de detalhes da transação, provavelmente provenientes de várias fontes, como entrada do usuário ou outros módulos do sistema.</li>
+<li><strong>Validação de dados:</strong> Mecanismos para garantir a precisão e validade dos dados da transação antes que sejam processados.</li>
+<li><strong>Armazenamento:</strong> Um banco de dados ou sistema de arquivos para armazenar registros de transações para recuperação e análise futuras.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Formato padronizado:</strong> Todas as transações devem aderir ao formato definido no copybook, garantindo consistência.</li>
+<li><strong>Validação de tipo de dados:</strong> Campos como data, valor e ID devem ser validados quanto aos tipos de dados e intervalos corretos.</li>
+<li><strong>Aplicação de regras de negócios:</strong> Regras de negócios específicas, como limites de transações ou verificações de autorização, precisam ser aplicadas.</li>
+</ul>
+<h2>Detalhes técnicos</h2>
+<p><strong>Estruturas de dados:</strong></p>
+<ul>
+<li><strong><code>COTRN0AI</code>:</strong> Estrutura de dados de transação interna.</li>
+<li><strong><code>COTRN0AO</code>:</strong> Estrutura de dados de transação orientada para saída.</li>
+</ul>
+<p><strong>Campos (comuns a ambas as estruturas):</strong></p>
+<ul>
+<li><strong><code>TRNID</code>:</strong> Identificador exclusivo para cada transação.</li>
+<li><strong><code>TDATE</code>:</strong> Data da transação.</li>
+<li><strong><code>TDESC</code>:</strong> Descrição da transação.</li>
+<li><strong><code>TAMT</code>:</strong> Valor da transação.</li>
+<li><strong><code>SEL####</code>:</strong> Sinalizadores para indicar seleção ou status de transações específicas.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Integridade de dados:</strong> O formato padronizado e as regras de validação contribuem para manter a precisão dos dados.</li>
+<li><strong>Controle de acesso:</strong> Implementar mecanismos para restringir o acesso aos dados da transação com base em funções e permissões do usuário.</li>
+</ul>
+<h2>Impacto em outros sistemas</h2>
+<ul>
+<li><strong>Sistemas de relatórios:</strong> Os dados estruturados facilitam a geração de relatórios financeiros precisos.</li>
+<li><strong>Auditoria:</strong> Os registros de transações padronizados simplificam os processos de auditoria.</li>
+<li><strong>Integração:</strong> O formato consistente permite uma integração mais fácil com outros sistemas que dependem de dados de transações.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Nome do Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRNID</td>
+<td>String (16)</td>
+<td>ID de transação exclusivo</td>
+</tr>
+<tr>
+<td>TDATE</td>
+<td>Data</td>
+<td>Data da transação (AAAAMMDD)</td>
+</tr>
+<tr>
+<td>TDESC</td>
+<td>String (26)</td>
+<td>Descrição da transação</td>
+</tr>
+<tr>
+<td>TAMT</td>
+<td>Decimal (12)</td>
+<td>Valor da transação</td>
+</tr>
+<tr>
+<td>SEL####</td>
+<td>Sinalizador (1)</td>
+<td>Sinalizador de seleção (S/N)</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais referências</h2>
+<ul>
+<li><strong>Linguagem de programação COBOL:</strong> O copybook é escrito em COBOL, ditando estruturas de dados.</li>
+<li><strong>Arquitetura do sistema:</strong> Entender a arquitetura geral do sistema é crucial para ver como este copybook se encaixa.</li>
+<li><strong>Dicionário de dados:</strong> Um repositório central definindo elementos de dados e seus significados complementaria esta especificação.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

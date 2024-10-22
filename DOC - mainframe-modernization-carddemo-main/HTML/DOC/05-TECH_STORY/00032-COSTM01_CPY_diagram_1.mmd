@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant CardDemo Application
+    participant Report Generation Module
+    participant COSTM01 Copybook
+    participant Transaction Data File
+
+    activate CardDemo Application
+    CardDemo Application->>+Report Generation Module: Generate Report
+    activate Report Generation Module
+    Report Generation Module->>+COSTM01 Copybook: Read Data Structure
+    activate COSTM01 Copybook
+    COSTM01 Copybook->>Report Generation Module: Return Data Structure
+    deactivate COSTM01 Copybook
+    Report Generation Module->>+Transaction Data File: Open
+    activate Transaction Data File
+    Transaction Data File->>Report Generation Module: File Opened
+    loop For Each Transaction
+        Report Generation Module->>+Transaction Data File: Read Transaction Record
+        Transaction Data File-->>-Report Generation Module: Transaction Record Data
+        Report Generation Module->>Report Generation Module: Format Transaction Data
+    end
+    Report Generation Module->>+Transaction Data File: Close
+    Transaction Data File->>Report Generation Module: File Closed
+    deactivate Transaction Data File
+    Report Generation Module->>CardDemo Application: Return Report
+    deactivate Report Generation Module
+    deactivate CardDemo Application

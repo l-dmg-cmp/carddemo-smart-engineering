@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00055-CVTRA07Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Especificação de Layout do Relatório de Transações de Cartão</p>
+<p><strong>Descrição Resumida:</strong> Este documento define o layout de um relatório de transações para um sistema de cartão de crédito, detalhando como os dados de transação devem ser organizados e apresentados.</p>
+<p><strong>Histórias do Usuário:</strong> Como analista de dados, preciso de um relatório de transações padronizado para analisar padrões de transações diárias, identificar tendências e gerar insights para decisões de negócios.</p>
+<p><strong>Epic Relacionado:</strong> 5 - Relatórios e Análise</p>
+<p><strong>Requisitos Funcionais:</strong></p>
+<ol>
+<li><strong>Cabeçalho do Relatório:</strong> O relatório deve incluir uma seção de cabeçalho exibindo:
+<ul>
+<li>Título do Relatório: “Relatório de Transações Diárias”</li>
+<li>Intervalo de Datas: As datas de início e término das transações cobertas no relatório.</li>
+</ul>
+</li>
+<li><strong>Detalhes da Transação:</strong> Cada registro de transação no relatório deve conter os seguintes detalhes:
+<ul>
+<li>ID da Transação: Identificador exclusivo para cada transação.</li>
+<li>ID da Conta: A conta associada à transação.</li>
+<li>Tipo de Transação: Código e descrição do tipo de transação (por exemplo, compra, pagamento, saque).</li>
+<li>Categoria: Código e descrição da categoria da transação (por exemplo, jantar, viagens, entretenimento).</li>
+<li>Origem da Transação: O canal pelo qual a transação foi feita (por exemplo, online, terminal POS, ATM).</li>
+<li>Valor: O valor monetário da transação.</li>
+</ul>
+</li>
+<li><strong>Cabeçalhos de Coluna:</strong> O relatório deve ter cabeçalhos de coluna claros e concisos para cada campo de dados na seção de detalhes da transação.</li>
+<li><strong>Totais:</strong> O relatório deve calcular e exibir totais em três níveis:
+<ul>
+<li>Total da Página: A soma dos valores das transações em cada página.</li>
+<li>Total da Conta: A soma dos valores das transações para cada conta exclusiva.</li>
+<li>Total Geral: A soma de todos os valores das transações no relatório.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Requisitos Não Funcionais:</strong></p>
+<ol>
+<li><strong>Legibilidade:</strong> O relatório deve ser fácil de ler e entender, usando formatação, alinhamento e espaçamento adequados.</li>
+<li><strong>Precisão:</strong> Todos os cálculos no relatório, incluindo totais de página, totais de conta e o total geral, devem ser precisos e consistentes com os dados da transação.</li>
+<li><strong>Consistência:</strong> O formato do relatório deve ser consistente entre as diferentes gerações de relatório, garantindo uniformidade para análise e comparação.</li>
+</ol>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ul>
+<li>O relatório gerado reflete com precisão o layout definido, incluindo todas as informações de cabeçalho necessárias, detalhes da transação e totais.</li>
+<li>O relatório é gerado em tempo hábil mediante solicitação ou gatilho.</li>
+<li>Todos os dados no relatório são precisos e consistentes com os dados de transação de origem.</li>
+<li>A formatação e o layout do relatório aumentam a legibilidade e facilitam a análise dos dados da transação.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li>Implementar um mecanismo de registro em log para rastrear eventos de geração de relatórios, incluindo timestamps, IDs de usuário e quaisquer erros encontrados.</li>
+<li>Introduzir tratamento de erros para gerenciar situações em que faltam dados ou são inválidos, evitando falhas na geração de relatórios.</li>
+<li>Adicionar comentários ao código para explicar o propósito e a lógica de diferentes seções, melhorando a manutenção do código.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li>Implementar controles de acesso para restringir a geração e visualização de relatórios apenas ao pessoal autorizado.</li>
+<li>Se o relatório contiver dados confidenciais, considere a incorporação de técnicas de mascaramento ou criptografia de dados para proteger informações confidenciais.</li>
+<li>Manter uma trilha de auditoria das atividades de acesso e geração de relatórios para garantir a responsabilidade e rastrear o acesso não autorizado em potencial.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00055-CVTRA07Y_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

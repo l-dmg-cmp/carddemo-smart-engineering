@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00014-COBIL00C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h1>Pagamento de Fatura Online CardDemo</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: CardDemo - Especificação de Pagamento de Fatura Online</li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve as especificações para a funcionalidade “Pagamento de Fatura Online” dentro do aplicativo CardDemo. Esta funcionalidade permite que os titulares de cartão de crédito paguem convenientemente o saldo devedor integralmente por meio de uma interface online. Este processo é perfeitamente integrado ao sistema de gerenciamento de cartão de crédito principal, garantindo atualizações precisas de saldo e registro de transações.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>Versão 1.0: Versão inicial - Funcionalidade de pagamento total do saldo.</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O processo de Pagamento de Fatura Online facilita o pagamento completo do saldo devedor de um cartão de crédito.</p>
+<ol>
+<li><strong>Entrada da Conta:</strong> O cliente fornece seu ID de Conta através da interface online.</li>
+<li><strong>Recuperação de Saldo:</strong> O sistema recupera o saldo atual para o ID de Conta fornecido do arquivo ACCTDAT.</li>
+<li><strong>Confirmação de Pagamento:</strong> O cliente é apresentado ao seu saldo atual e solicitado a confirmar seu pagamento.</li>
+<li><strong>Processamento de Transação:</strong> Após a confirmação, o sistema gera um ID de Transação exclusivo. Em seguida, ele registra os detalhes do pagamento (valor, data, hora) no arquivo TRANSACT e atualiza o saldo da conta no arquivo ACCTDAT.</li>
+<li><strong>Exibição de Confirmação:</strong> Uma mensagem de confirmação, incluindo o ID de Transação gerado, é exibida ao cliente.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Usuário Autenticado:</strong> O usuário deve ter efetuado login com sucesso no sistema CardDemo.</li>
+<li><strong>Conta Válida:</strong> O ID de Conta fornecido deve existir no sistema.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Pagamento Total do Saldo:</strong> Somente o saldo devedor total pode ser pago. Pagamentos parciais não são permitidos por meio desta funcionalidade.</li>
+<li><strong>Confirmação de Pagamento:</strong> O sistema exige explicitamente a confirmação do cliente antes de processar o pagamento. Esta é uma etapa crucial para evitar quaisquer pagamentos acidentais ou não intencionais.</li>
+<li><strong>ID de Transação Exclusivo:</strong> Cada pagamento recebe um identificador exclusivo (ID de Transação), garantindo rastreabilidade e facilitando futuros esforços de reconciliação.</li>
+<li><strong>Processamento em Tempo Real:</strong> Após a confirmação bem-sucedida do pagamento, o saldo da conta é atualizado em tempo real, refletindo a transação imediatamente.</li>
+<li><strong>Auditoria e Relatórios:</strong> Todos os detalhes da transação são registrados no arquivo TRANSACT, estabelecendo um rastro de auditoria abrangente para relatórios e análises futuras.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Programa Principal:</strong></p>
+<ul>
+<li><strong>COBIL00C:</strong> Este programa gerencia o processo de pagamento de fatura online, lidando com interações do usuário, validação de dados e atualizações de arquivos.</li>
+</ul>
+<p><strong>Funções/Métodos Principais:</strong></p>
+<ul>
+<li><strong>READ-ACCTDAT-FILE:</strong> Recupera os detalhes da conta (incluindo saldo) do arquivo ACCTDAT com base no ID da conta fornecido.</li>
+<li><strong>READ-CXACAIX-FILE:</strong> Acessa o CARD-XREF-RECORD para recuperar detalhes do cartão usando o ID da conta.</li>
+<li><strong>READPREV-TRANSACT-FILE, STARTBR-TRANSACT-FILE, ENDBR-TRANSACT-FILE:</strong> Essas funções trabalham juntas para encontrar o último ID de Transação usado e usá-lo para gerar um novo ID exclusivo para a transação atual.</li>
+<li><strong>WRITE-TRANSACT-FILE:</strong> Grava os detalhes da transação no arquivo TRANSACT, criando um registro do pagamento.</li>
+<li><strong>UPDATE-ACCTDAT-FILE:</strong> Atualiza o saldo da conta no arquivo ACCTDAT para refletir o pagamento.</li>
+<li><strong>GET-CURRENT-TIMESTAMP:</strong> Captura a data e hora atuais para serem registradas com os detalhes da transação.</li>
+</ul>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong>ACTIDINI:</strong> Campo de entrada para o ID de Conta fornecido pelo cliente.</li>
+<li><strong>CURBALI:</strong> Exibe o saldo atual recuperado do arquivo ACCTDAT.</li>
+<li><strong>CONFIRMI:</strong> Campo de entrada para o cliente confirmar o pagamento (S/N).</li>
+<li><strong>WS-TRAN-ID-NUM:</strong> Variável interna que armazena o ID de Transação exclusivo recém-gerado.</li>
+<li><strong>WS-TIMESTAMP:</strong> Armazena o registro de data e hora capturado durante a transação.</li>
+</ul>
+<p><strong>Arquivos:</strong></p>
+<ul>
+<li><strong>ACCTDAT:</strong> Contém detalhes da conta, incluindo o saldo atual.</li>
+<li><strong>TRANSACT:</strong> Armazena todos os detalhes da transação para fins de auditoria e relatório.</li>
+<li><strong>CXACAIX:</strong> Arquivo de referência cruzada vinculando IDs de conta a números de cartão.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Gerenciamento de Conta:</strong> A funcionalidade de Pagamento de Fatura Online impacta diretamente a precisão e o status em tempo real das contas do cliente.</li>
+<li><strong>Relatórios e Análise:</strong> Os dados de transação gerados por este processo alimentam os sistemas de relatórios e análises, fornecendo insights sobre a atividade de pagamento.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCT-ID</td>
+<td>String</td>
+<td>Identificador exclusivo para a conta de um cliente.</td>
+</tr>
+<tr>
+<td>ACCT-CURR-BAL</td>
+<td>Decimal</td>
+<td>Saldo devedor atual na conta.</td>
+</tr>
+<tr>
+<td>TRAN-ID</td>
+<td>String</td>
+<td>Identificador exclusivo para cada transação.</td>
+</tr>
+<tr>
+<td>TRAN-TYPE-CD</td>
+<td>String</td>
+<td>Código especificando o tipo de transação (por exemplo, ‘02’ para Pagamento de Fatura).</td>
+</tr>
+<tr>
+<td>TRAN-CAT-CD</td>
+<td>Inteiro</td>
+<td>Código que representa a categoria da transação.</td>
+</tr>
+<tr>
+<td>TRAN-SOURCE</td>
+<td>String</td>
+<td>Origem da transação (por exemplo, ‘POS TERM’, ‘ONLINE’).</td>
+</tr>
+<tr>
+<td>TRAN-DESC</td>
+<td>String</td>
+<td>Descrição da transação.</td>
+</tr>
+<tr>
+<td>TRAN-AMT</td>
+<td>Decimal</td>
+<td>Valor da transação.</td>
+</tr>
+<tr>
+<td>TRAN-CARD-NUM</td>
+<td>String</td>
+<td>Número do cartão de crédito associado à transação.</td>
+</tr>
+<tr>
+<td>TRAN-MERCHANT-ID</td>
+<td>Inteiro</td>
+<td>Identificador exclusivo para o comerciante envolvido na transação.</td>
+</tr>
+<tr>
+<td>TRAN-MERCHANT-NAME</td>
+<td>String</td>
+<td>Nome do comerciante associado à transação.</td>
+</tr>
+<tr>
+<td>TRAN-ORIG-TS</td>
+<td>Timestamp</td>
+<td>Timestamp indicando quando a transação foi iniciada.</td>
+</tr>
+<tr>
+<td>TRAN-PROC-TS</td>
+<td>Timestamp</td>
+<td>Timestamp indicando quando a transação foi processada.</td>
+</tr>
+<tr>
+<td>XREF-ACCT-ID</td>
+<td>String</td>
+<td>ID da conta usado para referência cruzada com os detalhes do cartão.</td>
+</tr>
+<tr>
+<td>XREF-CARD-NUM</td>
+<td>String</td>
+<td>Número do cartão de crédito vinculado ao ID da conta.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>Programa COBOL00:</strong> O programa principal que lida com a interface do usuário e navegação dentro do aplicativo CardDemo.</li>
+<li><strong>Arquivo ACCTDAT:</strong> A principal fonte de dados para saldos e detalhes de contas.</li>
+<li><strong>Arquivo TRANSACT:</strong> O armazenamento de dados para todos os registros de transações.</li>
+</ul>
+<p><strong>Considerações Adicionais:</strong></p>
+<ul>
+<li><strong>Segurança:</strong> Implemente medidas de segurança robustas para proteger os dados confidenciais do cliente durante o processo de pagamento online, incluindo criptografia e mecanismos de autenticação segura.</li>
+<li><strong>Tratamento de Erros:</strong> Desenvolva rotinas abrangentes de tratamento de erros para gerenciar vários cenários, como números de conta inválidos, problemas de conexão e falhas de transação.</li>
+<li><strong>Experiência do Usuário:</strong> Projete a interface online com a experiência do usuário em mente, garantindo um processo claro e intuitivo para fazer pagamentos.</li>
+<li><strong>Teste de Integração:</strong> O teste de integração completo é essencial para garantir a operação perfeita da funcionalidade de Pagamento de Fatura Online com outros componentes do aplicativo CardDemo.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

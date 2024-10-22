@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00041-CSUTLDPY_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Aplicativo CardDemo - Módulo de Validação de Data</strong></h1>
+<h2>Descrição Resumida:</h2>
+<p>O Módulo de Validação de Data para o aplicativo CardDemo é um componente crítico que garante a integridade dos dados, validando as datas, particularmente as datas de nascimento, em relação a um conjunto definido de regras. Este processo envolve verificações de formato, validações de componentes individuais (ano, mês, dia), lógica de ano bissexto e uma verificação em relação à data atual para evitar datas futuras. Este módulo contribui para uma experiência do usuário mais tranquila, garante a precisão dos dados para cálculos e relatórios e auxilia na conformidade regulatória.</p>
+<h2>Histórias do Usuário:</h2>
+<p>Como solicitante de cartão de crédito, desejo que o sistema valide com precisão minha data de nascimento para que meu pedido seja processado corretamente.</p>
+<h2>Épico Relacionado:</h2>
+<p>9 - Utilitários do Sistema</p>
+<h2>Requisitos Técnicos:</h2>
+<ul>
+<li><strong><code>EDIT-DATE-CCYYMMDD</code>:</strong>
+<ul>
+<li>Descrição: Este parágrafo organiza o processo de validação da data.
+<ul>
+<li>Ele começa definindo um sinalizador (<code>WS-EDIT-DATE-IS-INVALID</code>) para indicar que a data é inicialmente considerada inválida.</li>
+<li>Em seguida, ele chama uma série de subprogramas para validar diferentes componentes da data.</li>
+<li>Ele define sinalizadores adicionais com base nos resultados de cada subprograma.</li>
+</ul>
+</li>
+<li>Entrada: String de data no formato <code>CCYYMMDD</code>.</li>
+<li>Saída: Define sinalizadores indicando a validade da data e seus componentes.</li>
+</ul>
+</li>
+<li><strong><code>EDIT-YEAR-CCYY</code>:</strong>
+<ul>
+<li>Descrição: Este parágrafo valida o componente de ano da data.
+<ul>
+<li>Ele verifica se o ano é fornecido, numérico e dentro de um século razoável (19xx ou 20xx).</li>
+<li>Se alguma dessas condições não for atendida, ele define sinalizadores de erro apropriados e, opcionalmente, preenche uma mensagem de erro.</li>
+</ul>
+</li>
+<li>Entrada: String de ano no formato <code>CCYY</code>.</li>
+<li>Saída: Define sinalizadores indicando a validade do ano.</li>
+</ul>
+</li>
+<li><strong><code>EDIT-MONTH</code>:</strong>
+<ul>
+<li>Descrição: Este parágrafo valida o componente de mês da data.
+<ul>
+<li>Ele verifica se o mês é fornecido, numérico e está dentro do intervalo válido (1-12).</li>
+</ul>
+</li>
+<li>Entrada: String de mês no formato <code>MM</code>.</li>
+<li>Saída: Define sinalizadores indicando a validade do mês.</li>
+</ul>
+</li>
+<li><strong><code>EDIT-DAY</code>:</strong>
+<ul>
+<li>Descrição: Este parágrafo valida o componente de dia da data.
+<ul>
+<li>Ele verifica se o dia é fornecido, numérico e está dentro do intervalo válido para o mês fornecido.</li>
+</ul>
+</li>
+<li>Entrada: String de dia no formato <code>DD</code>.</li>
+<li>Saída: Define sinalizadores indicando a validade do dia.</li>
+</ul>
+</li>
+<li><strong><code>EDIT-DAY-MONTH-YEAR</code>:</strong>
+<ul>
+<li>Descrição: Este parágrafo realiza verificações combinadas no dia, mês e ano para detectar quaisquer combinações inválidas.
+<ul>
+<li>Por exemplo, ele verifica se fevereiro tem 29 dias em um ano bissexto.</li>
+</ul>
+</li>
+<li>Entrada: Strings de dia, mês e ano nos formatos <code>DD</code>, <code>MM</code> e <code>CCYY</code>, respectivamente.</li>
+<li>Saída: Define sinalizadores indicando a validade da data.</li>
+</ul>
+</li>
+<li><strong><code>EDIT-DATE-LE</code>:</strong>
+<ul>
+<li>Descrição: Este parágrafo fornece uma camada opcional de validação usando serviços externos do Language Environment (LE).
+<ul>
+<li>Ele chama um programa (<code>CSUTLDTC</code>) que provavelmente realiza validações de data mais abrangentes.</li>
+</ul>
+</li>
+<li>Entrada: String de data no formato <code>CCYYMMDD</code>.</li>
+<li>Saída: Define sinalizadores indicando a validade da data.</li>
+</ul>
+</li>
+<li><strong><code>EDIT-DATE-OF-BIRTH</code>:</strong>
+<ul>
+<li>Descrição: Este parágrafo verifica especificamente se a data fornecida é no futuro, evitando entradas inválidas de data de nascimento.
+<ul>
+<li>Ele compara a data fornecida com a data atual.</li>
+</ul>
+</li>
+<li>Entrada: String de data no formato <code>CCYYMMDD</code>.</li>
+<li>Saída: Define sinalizadores indicando a validade da data de nascimento.</li>
+</ul>
+</li>
+</ul>
+<h2>Modelos Relacionados:</h2>
+<ul>
+<li>N/A - Este módulo se concentra na validação de dados e não define diretamente modelos de dados.</li>
+</ul>
+<h2>Configurações:</h2>
+<ul>
+<li><code>WS-RETURN-MSG-OFF</code>: Esta configuração determina se a variável <code>WS-RETURN-MSG</code> deve ou não ser preenchida com mensagens de erro.
+<ul>
+<li>Se o valor for <code>TRUE</code>, as mensagens de erro serão suprimidas.</li>
+<li>Se o valor for <code>FALSE</code>, as mensagens de erro serão geradas.</li>
+</ul>
+</li>
+<li><code>THIS-CENTURY</code>: Esta variável parece conter um valor que define o século atual (por exemplo, 19 para os anos 1900, 20 para os anos 2000). Ele é usado para validar se um determinado ano está dentro de um intervalo de século aceitável. O valor específico não está diretamente visível neste trecho de código e provavelmente vem de um arquivo de configuração ou de uma variável definida globalmente.</li>
+<li><code>LAST-CENTURY</code>: Semelhante a <code>THIS-CENTURY</code>, esta variável provavelmente contém o valor do século anterior. Novamente, o valor específico não é fornecido no código e precisa ser determinado a partir do contexto externo.</li>
+</ul>
+<h2>Melhorias de Código:</h2>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implemente um mecanismo de tratamento de erros mais robusto. Em vez de apenas definir sinalizadores, considere usar uma rotina de tratamento de erros padronizada que registre erros, forneça mensagens informativas aos usuários e permita uma recuperação suave.</li>
+<li><strong>Modularidade:</strong> Divida o código em sub-rotinas menores e mais gerenciáveis para melhorar a legibilidade e a manutenção. Por exemplo, o cálculo do ano bissexto pode ser extraído para sua própria função.</li>
+<li><strong>Comentários:</strong> Embora o código tenha alguns comentários, adicionar explicações mais detalhadas, especialmente para lógica complexa como o cálculo do ano bissexto, melhoraria muito a legibilidade.</li>
+<li><strong>Passagem de Parâmetros:</strong> Considere passar dados para as sub-rotinas usando parâmetros em vez de depender apenas de variáveis de escopo global. Isso melhoraria a clareza do código e reduziria os potenciais efeitos colaterais.</li>
+<li><strong>Constantes:</strong> Defina constantes para números mágicos como <code>4</code>, <code>400</code> e os valores do século (por exemplo, <code>19</code>, <code>20</code>). Isso tornará o código mais autodocumentado.</li>
+<li><strong>Mensagens Externalizadas:</strong> Armazene mensagens de erro em um arquivo ou tabela separada para facilitar a manutenção e a potencial internacionalização.</li>
+</ul>
+<h2>Melhorias de Segurança:</h2>
+<ul>
+<li><strong>Validação de Entrada:</strong> Embora o módulo valide o formato e os componentes da data, higienize todas as entradas para evitar vulnerabilidades como injeção de SQL. Isso pode envolver a remoção de caracteres especiais ou o escape de caracteres potencialmente prejudiciais.</li>
+<li><strong>Controle de Acesso:</strong> Implemente mecanismos de controle de acesso para restringir a execução deste módulo a usuários ou processos autorizados.</li>
+<li><strong>Registro em Log:</strong> Registre todas as falhas de validação de data, incluindo a data de entrada e o erro específico encontrado. Isso pode ser útil para fins de auditoria e solução de problemas.</li>
+</ul>
+<h2>Diagrama Conceitual:</h2>
+<img src="00041-CSUTLDPY_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

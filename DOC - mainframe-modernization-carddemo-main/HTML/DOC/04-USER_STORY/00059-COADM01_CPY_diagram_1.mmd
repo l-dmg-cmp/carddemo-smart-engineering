@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant User
+    participant COBOL Program
+    participant COADM1AI (Internal)
+    participant COADM1AO (Display)
+
+    activate User
+    User->>+COBOL Program: Request Administrative Data
+    activate COBOL Program
+    COBOL Program->>+COADM1AI (Internal): Retrieve Data
+    activate COADM1AI (Internal)
+    COADM1AI (Internal)->>COBOL Program: Data (Numeric Format)
+    deactivate COADM1AI (Internal)
+    COBOL Program->>+COADM1AO (Display): Format Data
+    activate COADM1AO (Display)
+    COADM1AO (Display)->>COBOL Program: Data (Character Format)
+    deactivate COADM1AO (Display)
+    COBOL Program->>User: Display Data
+    deactivate User
+    deactivate COBOL Program

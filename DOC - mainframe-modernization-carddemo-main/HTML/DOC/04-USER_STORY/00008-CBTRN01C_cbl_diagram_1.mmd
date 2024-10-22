@@ -1,0 +1,54 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant CBTRN01C
+    participant DALYTRAN
+    participant CUSTFILE
+    participant XREFFILE
+    participant CARDFILE
+    participant ACCTFILE
+    participant TRANFILE
+
+    activate CBTRN01C
+
+    CBTRN01C->>+DALYTRAN: Open
+    DALYTRAN-->>-CBTRN01C: Open Successful
+    CBTRN01C->>+CUSTFILE: Open
+    CUSTFILE-->>-CBTRN01C: Open Successful
+    CBTRN01C->>+XREFFILE: Open
+    XREFFILE-->>-CBTRN01C: Open Successful
+    CBTRN01C->>+CARDFILE: Open
+    CARDFILE-->>-CBTRN01C: Open Successful
+    CBTRN01C->>+ACCTFILE: Open
+    ACCTFILE-->>-CBTRN01C: Open Successful
+    CBTRN01C->>+TRANFILE: Open
+    TRANFILE-->>-CBTRN01C: Open Successful
+
+    loop For Each Transaction
+        CBTRN01C->>+DALYTRAN: Read Transaction
+        DALYTRAN-->>-CBTRN01C: Transaction Data
+        CBTRN01C->>+XREFFILE: Verify Card
+        XREFFILE-->>-CBTRN01C: Card Valid/Invalid
+        alt Card Valid
+            CBTRN01C->>+XREFFILE: Get Account ID
+            XREFFILE-->>-CBTRN01C: Account ID
+            CBTRN01C->>+ACCTFILE: Get Account Details
+            ACCTFILE-->>-CBTRN01C: Account Details
+            CBTRN01C->>+TRANFILE: Update Transaction
+            TRANFILE-->>-CBTRN01C: Update Successful
+        else Card Invalid
+            CBTRN01C->>CBTRN01C: Log Invalid Card
+        end
+    end
+    CBTRN01C->>+DALYTRAN: Close
+    DALYTRAN->>-CBTRN01C: Close Successful
+    CBTRN01C->>+CUSTFILE: Close
+    CUSTFILE->>-CBTRN01C: Close Successful
+    CBTRN01C->>+XREFFILE: Close
+    XREFFILE->>-CBTRN01C: Close Successful
+    CBTRN01C->>+CARDFILE: Close
+    CARDFILE->>-CBTRN01C: Close Successful
+    CBTRN01C->>+ACCTFILE: Close
+    ACCTFILE->>-CBTRN01C: Close Successful
+    CBTRN01C->>+TRANFILE: Close
+    TRANFILE->>-CBTRN01C: Close Successful
+    deactivate CBTRN01C

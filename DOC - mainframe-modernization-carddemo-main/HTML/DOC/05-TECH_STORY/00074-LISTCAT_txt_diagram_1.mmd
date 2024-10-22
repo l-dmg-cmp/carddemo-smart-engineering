@@ -1,0 +1,26 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant IDCAMS
+    participant System Catalog
+    participant LISTCAT.txt
+    participant Data Storage Analyzer Program
+    participant Output Report
+
+    activate IDCAMS
+    IDCAMS->>+System Catalog:  Request Data Storage Information
+    System Catalog-->>-IDCAMS:  Data Storage Information
+    deactivate IDCAMS
+    
+    activate LISTCAT.txt
+    IDCAMS->>+LISTCAT.txt: Write Data Storage Information
+    LISTCAT.txt->>IDCAMS: Write Successful
+    deactivate LISTCAT.txt
+
+    activate Data Storage Analyzer Program
+    Data Storage Analyzer Program->>+LISTCAT.txt: Read
+    LISTCAT.txt->>-Data Storage Analyzer Program: Data Storage Information
+
+    activate Output Report
+    Data Storage Analyzer Program->>+Output Report: Write Report
+    Output Report->>-Data Storage Analyzer Program: Write Successful
+    deactivate Data Storage Analyzer Program

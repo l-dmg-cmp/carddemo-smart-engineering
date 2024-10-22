@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant COBOL Program
+    participant User Data Storage
+
+    activate COBOL Program
+    COBOL Program->>+User Data Storage: Read User Record (COUSR3AI Format)
+    User Data Storage-->>-COBOL Program: User Record Data (COUSR3AI Format)
+        activate COBOL Program
+    COBOL Program->>COBOL Program: Process User Data (Internal Format)
+        activate COBOL Program
+    COBOL Program->>COBOL Program: Convert to Output Format (COUSR3AO)
+        activate COBOL Program
+    COBOL Program->>COBOL Program: Display User Information (COUSR3AO Format)
+    deactivate COBOL Program

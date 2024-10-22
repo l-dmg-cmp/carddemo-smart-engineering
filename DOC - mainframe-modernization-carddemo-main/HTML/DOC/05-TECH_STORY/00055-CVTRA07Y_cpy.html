@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00055-CVTRA07Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Especificação de Layout do Relatório de Transação de Cartão</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve a estrutura e o conteúdo de um relatório de transações diárias para um sistema de cartão de crédito. O relatório fornece um resumo claro e organizado de todas as transações dentro de um intervalo de datas especificado.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como analista de dados, preciso gerar um relatório de transações diárias que exiba todas as transações dentro de um intervalo de datas específico em um formato claro e organizado, para que eu possa analisar padrões de transações e identificar quaisquer anomalias.</p>
+<p><strong>Épico Relacionado:</strong>  <code>5 - Relatórios e Análise</code></p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Geração de Relatório:</strong> Este processo lê dados de transação de um arquivo de origem e gera um relatório formatado.
+<ul>
+<li>Entrada: Dados de transação de <code>dailytran.txt</code>.</li>
+<li>Processamento:
+<ul>
+<li>Agrupar transações por conta.</li>
+<li>Calcular totais de página, totais de conta e um total geral.</li>
+<li>Formatar os dados de acordo com o layout especificado em <code>CVTRA07Y.cpy</code>.</li>
+</ul>
+</li>
+<li>Saída: Um arquivo de relatório exibindo detalhes da transação, agrupados por conta, com totais de página, totais de conta e um total geral.</li>
+</ul>
+</li>
+<li><strong>Formatação de Dados:</strong> O relatório deve seguir as seguintes diretrizes de formatação:
+<ul>
+<li>Datas: <code>DD/MM/AAAA</code></li>
+<li>Moeda: <code>R$#,###,###.##</code></li>
+<li>Alinhamento: Alinhar valores numéricos à direita, alinhar valores de texto à esquerda.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><code>Transaction</code>: Representa um único registro de transação.
+<ul>
+<li><code>TRAN-REPORT-TRANS-ID</code> <code>String</code>: Identificador exclusivo para cada transação.</li>
+<li><code>TRAN-REPORT-ACCOUNT-ID</code> <code>String</code>: Identificador da conta associada à transação.</li>
+<li><code>TRAN-REPORT-TYPE-CD</code> <code>String</code>: Código que representa o tipo de transação.</li>
+<li><code>TRAN-REPORT-TYPE-DESC</code> <code>String</code>: Descrição do tipo de transação.</li>
+<li><code>TRAN-REPORT-CAT-CD</code> <code>String</code>: Código que representa a categoria da transação.</li>
+<li><code>TRAN-REPORT-CAT-DESC</code> <code>String</code>: Descrição da categoria da transação.</li>
+<li><code>TRAN-REPORT-SOURCE</code> <code>String</code>: Origem ou canal da transação.</li>
+<li><code>TRAN-REPORT-AMT</code> <code>Decimal</code>: Valor da transação.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><code>REPORT-NAME-HEADER</code>: Define a seção de cabeçalho do relatório.
+<ul>
+<li><code>REPT-SHORT-NAME</code>:  <code>'DALYREPT'</code></li>
+<li><code>REPT-LONG-NAME</code>: <code>'Relatório Diário de Transações'</code></li>
+<li><code>REPT-DATE-HEADER</code>: <code>'Intervalo de Datas: '</code></li>
+</ul>
+</li>
+<li><code>TRANSACTION-HEADER-1</code>: Define os cabeçalhos das colunas para a seção de detalhes da transação.</li>
+<li><code>TRANSACTION-HEADER-2</code>:  Define um separador visual para o cabeçalho.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implementar tratamento de erros robusto para capturar e registrar quaisquer problemas encontrados durante a geração do relatório, como formatos de dados inválidos ou pontos de dados ausentes.</li>
+<li><strong>Log:</strong> Implementar log para rastrear a atividade de geração de relatórios, incluindo horários de início e término do processo de geração de relatórios, quaisquer erros encontrados e o número de registros processados.</li>
+<li><strong>Otimização de Desempenho:</strong> Explorar o uso de estruturas de dados e algoritmos otimizados para processamento e classificação de grandes conjuntos de dados para melhorar a velocidade de geração de relatórios. Por exemplo, considere usar uma estrutura de dados classificada para transações para acelerar o agrupamento por conta.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Controle de Acesso:</strong> Implementar mecanismos de controle de acesso para restringir a geração de relatórios e acesso apenas a pessoal autorizado.</li>
+<li><strong>Criptografia de Dados:</strong> Criptografar dados confidenciais dentro do relatório, como números de contas e valores de transações, para protegê-los de acesso não autorizado.</li>
+<li><strong>Trilhas de Auditoria:</strong> Manter trilhas de auditoria que registram quem gerou o relatório, quando ele foi gerado e quais dados ele contém para garantir a responsabilidade e facilitar os processos de auditoria.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00055-CVTRA07Y_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

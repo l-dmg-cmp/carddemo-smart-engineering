@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant Administrator
+    participant COUSR03C
+    participant USRSEC File
+
+    activate Administrator
+    Administrator->>+COUSR03C: Input User ID
+    COUSR03C->>+USRSEC File: Read User Details
+    USRSEC File->>COUSR03C: User Details
+    COUSR03C->>-Administrator: Display User Details for Confirmation
+    Administrator->>+COUSR03C: Confirm Deletion
+    COUSR03C->>+USRSEC File: Delete User Record
+    USRSEC File-->>-COUSR03C: Deletion Confirmation
+    COUSR03C->>-Administrator: Display Deletion Confirmation
+    deactivate Administrator

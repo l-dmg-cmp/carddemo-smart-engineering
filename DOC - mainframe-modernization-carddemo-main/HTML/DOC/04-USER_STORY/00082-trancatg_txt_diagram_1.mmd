@@ -1,0 +1,29 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant Validation Program
+    participant TransactionCategoryFile
+    participant ValidatedData
+
+    activate Validation Program
+    Validation Program->>+TransactionCategoryFile: Open
+    TransactionCategoryFile-->>-Validation Program: Open Successful
+
+    loop For Each Transaction Category Code
+        Validation Program->>+TransactionCategoryFile: Read Code and Description
+        TransactionCategoryFile-->>-Validation Program: Code and Description Data        
+        alt Code Format is Valid            
+            Validation Program->>Validation Program: Check for Duplicate Code
+            alt Code is Unique
+                Validation Program->>+ValidatedData: Write Code and Description
+                ValidatedData-->>-Validation Program: Write Successful
+            else Code is Duplicate
+                Validation Program->>Validation Program: Log Error (Duplicate Code)
+            end
+        else Code Format is Invalid
+            Validation Program->>Validation Program: Log Error (Invalid Format)
+        end
+    end
+    
+    Validation Program->>+TransactionCategoryFile: Close
+    TransactionCategoryFile->>-Validation Program: Close  
+    deactivate Validation Program

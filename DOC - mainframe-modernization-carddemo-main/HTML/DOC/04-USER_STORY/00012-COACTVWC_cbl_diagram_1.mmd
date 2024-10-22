@@ -1,0 +1,28 @@
+sequenceDiagram
+    participant User
+    participant COACTVWC
+    participant CARDXREF
+    participant ACCTDAT
+    participant CUSTDAT
+
+    activate User
+    User->>+COACTVWC: Input Account Number
+    activate COACTVWC
+    COACTVWC->>+CARDXREF: Read Customer ID (Account Number)
+    activate CARDXREF
+    CARDXREF->>COACTVWC: Customer ID
+    deactivate CARDXREF
+
+    COACTVWC->>+ACCTDAT: Read Account Details (Account Number)
+    activate ACCTDAT
+    ACCTDAT->>COACTVWC: Account Details
+    deactivate ACCTDAT
+
+    COACTVWC->>+CUSTDAT: Read Customer Details (Customer ID)
+    activate CUSTDAT
+    CUSTDAT->>COACTVWC: Customer Details
+    deactivate CUSTDAT
+
+    COACTVWC->>User: Display Account and Customer Details
+    deactivate User
+    deactivate COACTVWC

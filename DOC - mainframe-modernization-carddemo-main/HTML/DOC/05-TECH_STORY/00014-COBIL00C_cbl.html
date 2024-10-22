@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00014-COBIL00C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> CardDemo - Especificação de Pagamento de Fatura Online</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve as especificações para a funcionalidade “Pagamento de Fatura Online” dentro da aplicação <code>CardDemo</code>. Esta funcionalidade permite que os titulares de cartão de crédito paguem convenientemente o seu saldo devedor integralmente através de uma interface online. Este processo é integrado com o sistema de gestão de cartão de crédito principal, garantindo atualizações precisas de saldo e registo de transações.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como titular de cartão de crédito, quero poder pagar minha fatura online para evitar multas por atraso e manter minha conta em dia.</p>
+<p><strong>Epic Relacionado:</strong> 4 - Processamento de Transações</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Recuperação do Saldo da Conta:</strong>
+<ul>
+<li>Entrada: <code>ACCT-ID</code> da entrada do usuário.</li>
+<li>Processo:
+<ul>
+<li>Ler <code>ACCOUNT-RECORD</code> do arquivo <code>ACCTDAT</code> usando <code>ACCT-ID</code> como chave.</li>
+<li>Recuperar <code>ACCT-CURR-BAL</code> de <code>ACCOUNT-RECORD</code>.</li>
+</ul>
+</li>
+<li>Saída: <code>ACCT-CURR-BAL</code>.</li>
+</ul>
+</li>
+<li><strong>Geração de ID de Transação:</strong>
+<ul>
+<li>Entrada: Nenhuma</li>
+<li>Processo:
+<ul>
+<li>Ler o último <code>TRAN-ID</code> do arquivo <code>TRANSACT</code>.</li>
+<li>Incrementar o <code>TRAN-ID</code> recuperado em 1 para gerar um novo <code>TRAN-ID</code> exclusivo.</li>
+</ul>
+</li>
+<li>Saída: Novo <code>TRAN-ID</code> exclusivo.</li>
+</ul>
+</li>
+<li><strong>Registo de Transação:</strong>
+<ul>
+<li>Entrada:
+<ul>
+<li><code>TRAN-ID</code> (gerado).</li>
+<li><code>TRAN-TYPE-CD</code> = ‘02’ (Pagamento de Fatura).</li>
+<li><code>TRAN-CAT-CD</code> = 2.</li>
+<li><code>TRAN-SOURCE</code> = ‘POS TERM’.</li>
+<li><code>TRAN-DESC</code> = ‘BILL PAYMENT - ONLINE’.</li>
+<li><code>TRAN-AMT</code> = <code>ACCT-CURR-BAL</code>.</li>
+<li><code>TRAN-CARD-NUM</code> de <code>CARD-XREF-RECORD</code>.</li>
+<li><code>TRAN-MERCHANT-ID</code> = 999999999.</li>
+<li><code>TRAN-MERCHANT-NAME</code> = ‘BILL PAYMENT’.</li>
+<li><code>TRAN-MERCHANT-CITY</code> = ‘N/A’.</li>
+<li><code>TRAN-MERCHANT-ZIP</code> = ‘N/A’.</li>
+<li><code>TRAN-ORIG-TS</code> = Timestamp atual.</li>
+<li><code>TRAN-PROC-TS</code> = Timestamp atual.</li>
+</ul>
+</li>
+<li>Processo: Gravar um novo <code>TRAN-RECORD</code> no arquivo <code>TRANSACT</code> com os dados acima.</li>
+<li>Saída: Nenhuma.</li>
+</ul>
+</li>
+<li><strong>Atualização do Saldo da Conta:</strong>
+<ul>
+<li>Entrada:
+<ul>
+<li><code>ACCT-ID</code> da entrada do usuário.</li>
+<li><code>ACCT-CURR-BAL</code> (recuperado de <code>ACCOUNT-RECORD</code>).</li>
+</ul>
+</li>
+<li>Processo:
+<ul>
+<li>Subtrair <code>TRAN-AMT</code> de <code>ACCT-CURR-BAL</code>.</li>
+<li>Atualizar <code>ACCT-CURR-BAL</code> em <code>ACCOUNT-RECORD</code> no arquivo <code>ACCTDAT</code>.</li>
+</ul>
+</li>
+<li>Saída: Nenhuma.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><strong><code>ACCOUNT-RECORD</code>:</strong>
+<ul>
+<li><code>ACCT-ID</code>:<code>String</code> Identificador exclusivo para a conta de um cliente.</li>
+<li><code>ACCT-CURR-BAL</code>: <code>Decimal</code> Saldo devedor atual na conta.</li>
+</ul>
+</li>
+<li><strong><code>TRAN-RECORD</code>:</strong>
+<ul>
+<li><code>TRAN-ID</code>: <code>String</code> Identificador exclusivo para cada transação.</li>
+<li><code>TRAN-TYPE-CD</code>: <code>String</code> Código que especifica o tipo de transação (por exemplo, ‘02’ para Pagamento de Fatura).</li>
+<li><code>TRAN-CAT-CD</code>: <code>Integer</code> Código que representa a categoria da transação.</li>
+<li><code>TRAN-SOURCE</code>: <code>String</code> Origem da transação (por exemplo, ‘POS TERM’, ‘ONLINE’).</li>
+<li><code>TRAN-DESC</code>: <code>String</code> Descrição da transação.</li>
+<li><code>TRAN-AMT</code>: <code>Decimal</code> Valor da transação.</li>
+<li><code>TRAN-CARD-NUM</code>: <code>String</code> Número do cartão de crédito associado à transação.</li>
+<li><code>TRAN-MERCHANT-ID</code>: <code>Integer</code> Identificador exclusivo para o comerciante envolvido na transação.</li>
+<li><code>TRAN-MERCHANT-NAME</code>: <code>String</code> Nome do comerciante associado à transação.</li>
+<li><code>TRAN-MERCHANT-CITY</code>: <code>String</code> Cidade do comerciante.</li>
+<li><code>TRAN-MERCHANT-ZIP</code>: <code>String</code> CEP do comerciante.</li>
+<li><code>TRAN-ORIG-TS</code>: <code>Timestamp</code> Timestamp indicando quando a transação foi iniciada.</li>
+<li><code>TRAN-PROC-TS</code>: <code>Timestamp</code> Timestamp indicando quando a transação foi processada.</li>
+</ul>
+</li>
+<li><strong><code>CARD-XREF-RECORD</code>:</strong>
+<ul>
+<li><code>XREF-ACCT-ID</code>: <code>String</code> ID da conta usado para referência cruzada com os detalhes do cartão.</li>
+<li><code>XREF-CARD-NUM</code>: <code>String</code> Número do cartão de crédito vinculado ao ID da conta.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><code>WS-TRANSACT-FILE</code>: <code>TRANSACT</code> - Nome do arquivo para registros de transações.</li>
+<li><code>WS-ACCTDAT-FILE</code>: <code>ACCTDAT</code> - Nome do arquivo para detalhes da conta.</li>
+<li><code>WS-CXACAIX-FILE</code>: <code>CXACAIX</code> - Nome do arquivo para referência cruzada de cartão e conta.</li>
+<li><code>TRAN-TYPE-CD</code>: <code>02</code> - Código do tipo de transação para pagamento de fatura.</li>
+<li><code>TRAN-CAT-CD</code>: <code>2</code> - Código da categoria de transação para pagamento de fatura.</li>
+<li><code>TRAN-SOURCE</code>: <code>POS TERM</code> - Origem da transação padrão para pagamento de fatura.</li>
+<li><code>TRAN-MERCHANT-ID</code>: <code>999999999</code> - ID do comerciante padrão para pagamento de fatura.</li>
+<li><code>TRAN-MERCHANT-NAME</code>: <code>BILL PAYMENT</code> - Nome do comerciante padrão para pagamento de fatura.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implementar tratamento de erros mais robusto para comandos CICS. Em vez de apenas exibir os códigos <code>RESP</code> e <code>REAS</code>, registrá-los em um arquivo ou banco de dados para fins de depuração. Fornecer mensagens de erro mais amigáveis ao usuário.</li>
+<li><strong>Validação de Entrada:</strong> Adicionar validação para entrada do usuário, como <code>ACCT-ID</code>. Verificar se há caracteres válidos, comprimento e formato.</li>
+<li><strong>Modularidade:</strong> Dividir o parágrafo <code>PROCESS-ENTER-KEY</code> em parágrafos menores e mais gerenciáveis para melhor legibilidade e manutenção.</li>
+<li><strong>Comentários:</strong> Adicionar comentários mais detalhados para explicar a lógica por trás de certas operações, especialmente o processo de geração de ID de transação.</li>
+<li><strong>Tratamento de Timestamp:</strong> Usar um formato consistente para timestamps em todo o programa. Considerar o uso de um copybook dedicado para funções de data e hora.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Autenticação e Autorização:</strong> Garantir que apenas usuários autorizados possam acessar esta funcionalidade. Implementar controle de acesso baseado em função (RBAC) para restringir o acesso com base nas funções do usuário.</li>
+<li><strong>Criptografia de Dados:</strong> Criptografar dados confidenciais como números de conta e detalhes de transações, tanto em trânsito quanto em repouso.</li>
+<li><strong>Registo de Auditoria:</strong> Registrar todas as tentativas de pagamento de faturas bem-sucedidas e malsucedidas, incluindo IDs de usuário, timestamps e detalhes relevantes.</li>
+<li><strong>Gestão de Senhas:</strong> Impor políticas de senha forte e não armazenar senhas em texto simples. Usar um algoritmo de hashing seguro para armazenamento de senha.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00014-COBIL00C_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

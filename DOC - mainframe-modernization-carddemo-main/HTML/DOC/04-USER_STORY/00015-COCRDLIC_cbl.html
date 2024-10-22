@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00015-COCRDLIC_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Exibição e Navegação da Lista de Cartões de Crédito</h1>
+<h1><strong>Descrição Resumida:</strong></h1>
+<p>Este módulo apresenta uma lista de cartões de crédito ao usuário, permitindo navegação e seleção. Administradores visualizam todos os cartões, enquanto usuários regulares veem cartões vinculados à sua conta.</p>
+<h1><strong>Histórias do Usuário:</strong></h1>
+<p>Como administrador de cartão de crédito, preciso visualizar uma lista de todos os cartões de crédito no sistema para gerenciá-los com eficiência.</p>
+<p>Como usuário regular, preciso visualizar uma lista de cartões de crédito associados à minha conta para poder revisar os detalhes do meu cartão.</p>
+<h1><strong>Épico Relacionado:</strong></h1>
+<p>3 - Gerenciamento de Cartão de Crédito</p>
+<h1><strong>Requisitos Funcionais:</strong></h1>
+<ul>
+<li><strong>Controle de Acesso Baseado em Função do Usuário:</strong>
+<ul>
+<li>Administradores podem visualizar todos os cartões de crédito.</li>
+<li>Usuários regulares só podem visualizar cartões vinculados ao seu próprio número de conta, passado para o programa por meio de uma área de comunicação (<code>COMMAREA</code>).</li>
+</ul>
+</li>
+<li><strong>Exibir Lista de Cartões de Crédito:</strong>
+<ul>
+<li>O programa recupera e exibe uma lista de cartões de crédito, aderindo às regras de controle de acesso.</li>
+</ul>
+</li>
+<li><strong>Paginação:</strong>
+<ul>
+<li>A lista é exibida em páginas, com um número máximo de registros por página (por exemplo, 7).</li>
+<li>Os usuários podem navegar pelas páginas usando as teclas de função:
+<ul>
+<li><code>F7</code> - Página Anterior</li>
+<li><code>F8</code> - Próxima Página</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Filtragem:</strong>
+<ul>
+<li>Os usuários podem opcionalmente filtrar a lista por:
+<ul>
+<li>ID da Conta: um número de 11 dígitos.</li>
+<li>Número do Cartão: um número de 16 dígitos.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Seleção para Visualização Detalhada/Atualização:</strong>
+<ul>
+<li>Os usuários podem selecionar um único cartão da lista para:
+<ul>
+<li>Visualizar informações detalhadas do cartão (transferidas para um programa dedicado de detalhes do cartão).</li>
+<li>Atualizar as informações do cartão (transferidas para um programa dedicado de atualização de cartão).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1><strong>Requisitos Não Funcionais:</strong></h1>
+<ul>
+<li><strong>Desempenho:</strong> O programa deve recuperar e exibir a lista de cartões de crédito com tempo de resposta mínimo, mesmo para conjuntos de dados grandes.</li>
+<li><strong>Usabilidade:</strong>
+<ul>
+<li>O layout da tela deve ser claro, conciso e fácil de entender.</li>
+<li>As opções de navegação e filtragem devem ser intuitivas.</li>
+</ul>
+</li>
+<li><strong>Confiabilidade:</strong> O programa deve funcionar de forma confiável, tratando erros normalmente e evitando a corrupção de dados.</li>
+<li><strong>Manutenibilidade:</strong> O código deve ser modular, bem documentado e fácil de entender para futuras manutenções e aprimoramentos.</li>
+</ul>
+<h1><strong>Critérios de Aceitação:</strong></h1>
+<ul>
+<li>O programa exibe corretamente uma lista paginada de cartões de crédito com base na função do usuário e nos filtros aplicados.</li>
+<li>Os usuários podem navegar pelas páginas com sucesso usando as teclas <code>F7</code> e <code>F8</code>.</li>
+<li>A filtragem por ID de conta e/ou número do cartão funciona corretamente.</li>
+<li>Selecionar um cartão transfere corretamente os detalhes do cartão para o programa apropriado para visualização detalhada ou atualização.</li>
+<li>O programa lida com erros normalmente, exibindo mensagens informativas para o usuário.</li>
+<li>O programa atende às expectativas de desempenho, exibindo a lista rapidamente, mesmo com um grande número de registros de cartão de crédito.</li>
+</ul>
+<h1><strong>Configurações e Constantes:</strong></h1>
+<table>
+<thead>
+<tr>
+<th>Constante/Parâmetro</th>
+<th>Valor Padrão</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>WS-MAX-SCREEN-LINES</code></td>
+<td>7</td>
+<td>Número máximo de registros de cartão de crédito exibidos por página.</td>
+</tr>
+<tr>
+<td><code>LIT-CARD-FILE</code></td>
+<td><code>'CARDDAT '</code></td>
+<td>Nome do arquivo VSAM que armazena os dados do cartão de crédito.</td>
+</tr>
+<tr>
+<td><code>LIT-CARD-FILE-ACCT-PATH</code></td>
+<td><code>'CARDAIX '</code></td>
+<td>Nome do índice alternativo no arquivo <code>CARDDAT</code>, provavelmente usado para recuperação eficiente por ID de conta.</td>
+</tr>
+</tbody>
+</table>
+<h1><strong>Melhorias de Código:</strong></h1>
+<ul>
+<li><strong>Tratamento de Erros:</strong>
+<ul>
+<li>Implementar um mecanismo de tratamento de erros mais centralizado para otimizar o relatório de erros e a recuperação.</li>
+<li>Fornecer mensagens de erro mais específicas ao usuário, indicando a natureza do erro e as possíveis soluções.</li>
+</ul>
+</li>
+<li><strong>Estrutura do Código:</strong>
+<ul>
+<li>Refatorar blocos de código repetitivos em sub-rotinas reutilizáveis para melhorar a legibilidade e a manutenção do código. Por exemplo, as seções de inicialização de array de tela e configuração de atributo podem ser simplificadas.</li>
+</ul>
+</li>
+<li><strong>Documentação:</strong>
+<ul>
+<li>Adicionar comentários abrangentes para explicar a lógica do programa, as estruturas de dados e as funções.</li>
+<li>Criar documentação externa que descreva as especificações do programa, instruções de uso e detalhes técnicos.</li>
+</ul>
+</li>
+<li><strong>Desempenho:</strong>
+<ul>
+<li>Investigar o uso de um algoritmo de classificação mais eficiente para a lista de cartões de crédito se o desempenho se tornar um problema com conjuntos de dados muito grandes.</li>
+</ul>
+</li>
+</ul>
+<h1><strong>Melhorias de Segurança:</strong></h1>
+<ul>
+<li><strong>Criptografia de Dados:</strong>
+<ul>
+<li>Criptografar informações confidenciais do cartão de crédito armazenadas no arquivo <code>CARDDAT</code> para proteger contra acesso não autorizado em caso de violação de dados.</li>
+</ul>
+</li>
+<li><strong>Registro de Auditoria:</strong>
+<ul>
+<li>Implementar o registro de auditoria para rastrear as ações do usuário, como visualizar, atualizar e excluir registros de cartão de crédito, para fins de segurança e conformidade.</li>
+</ul>
+</li>
+<li><strong>Validação de Entrada:</strong>
+<ul>
+<li>Fortalecer a validação de entrada para os filtros de ID de conta e número do cartão para evitar possíveis ataques de injeção.</li>
+</ul>
+</li>
+<li><strong>Comunicação Segura:</strong>
+<ul>
+<li>Se o programa se comunicar com outros sistemas ou bancos de dados, garantir que os canais de comunicação sejam seguros e criptografados.</li>
+</ul>
+</li>
+</ul>
+<h1><strong>Diagrama Conceitual:</strong></h1>
+<img src="00015-COCRDLIC_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

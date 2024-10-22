@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00049-CVTRA01Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>–CONTENT TO TRANSLATE–
+Gerado em: 1 de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Especificação de Registro de Saldo de Categoria de Transação</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve a estrutura e os elementos de dados dentro do <code>TRAN-CAT-BAL-RECORD</code>, usado para armazenar e rastrear saldos para várias categorias de transações no aplicativo CardDemo.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como analista financeiro, preciso de uma maneira de acessar e analisar dados de transações categorizados por conta, tipo e códigos de categoria específicos para gerar relatórios financeiros precisos e obter insights sobre padrões de gastos.</p>
+<p><strong>Épico Relacionado:</strong> 4 - Processamento de Transações</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Estrutura do Registro:</strong> O código define uma estrutura de dados COBOL chamada <code>TRAN-CAT-BAL-RECORD</code>.
+<ul>
+<li>Esta estrutura representa um layout de registro dentro de um arquivo projetado para armazenar informações de saldo de categoria de transação.</li>
+<li>Cada registro no arquivo seguirá a estrutura definida, garantindo a organização consistente dos dados.</li>
+</ul>
+</li>
+<li><strong>Definições de Campo:</strong>
+<ul>
+<li><code>TRAN-CAT-KEY</code>:
+<ul>
+<li>Esta seção serve como uma chave composta, identificando exclusivamente cada categoria de transação.</li>
+<li>Ele combina três informações:
+<ul>
+<li><code>TRANCAT-ACCT-ID</code>: O número da conta associada à transação.</li>
+<li><code>TRANCAT-TYPE-CD</code>: Um código que significa o tipo de conta ou transação.</li>
+<li><code>TRANCAT-CD</code>: Um código mais granular que especifica a categoria exata da transação.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>TRAN-CAT-BAL</code>: Este campo armazena o saldo calculado para a categoria de transação específica.</li>
+<li><code>FILLER</code>: Isso é usado para preencher o registro com um comprimento fixo de 50 caracteres.</li>
+</ul>
+</li>
+<li><strong>Tipos de Dados e Comprimentos:</strong>
+<ul>
+<li><code>TRANCAT-ACCT-ID</code>: <code>PIC 9(11)</code> - Um campo numérico que contém um número de conta de 11 dígitos.</li>
+<li><code>TRANCAT-TYPE-CD</code>: <code>PIC X(02)</code> - Um campo alfanumérico de 2 caracteres para o código do tipo de transação.</li>
+<li><code>TRANCAT-CD</code>: <code>PIC 9(04)</code> - Um campo numérico de 4 dígitos para o código de categoria de transação específico.</li>
+<li><code>TRAN-CAT-BAL</code>: <code>PIC S9(09)V99</code> - Um campo numérico com sinal que permite 9 dígitos com 2 casas decimais para o saldo.</li>
+<li><code>FILLER</code>: <code>PIC X(22)</code> - Um campo alfanumérico de 22 caracteres para preenchimento.</li>
+</ul>
+</li>
+<li><strong>Regras de Negócio:</strong>
+<ul>
+<li><strong>Categorização:</strong> As transações são categorizadas com base no ID da conta, um código de tipo de transação geral e um código de categoria mais específico.</li>
+<li><strong>Rastreamento de Saldo:</strong> O sistema mantém um saldo corrente para cada combinação exclusiva de <code>TRANCAT-ACCT-ID</code>, <code>TRANCAT-TYPE-CD</code> e <code>TRANCAT-CD</code>, permitindo relatórios financeiros detalhados e análise.</li>
+<li><strong>Registros de Comprimento Fixo:</strong> O uso de <code>FILLER</code> sugere um sistema legado que utiliza registros de comprimento fixo, uma característica comum de ambientes de mainframe mais antigos.</li>
+</ul>
+</li>
+<li><strong>Organização do Arquivo:</strong>
+<ul>
+<li>O arquivo provavelmente é organizado sequencialmente ou indexado-sequencialmente, com base na estrutura do registro e na natureza dos dados.</li>
+<li>Organização sequencial significa que os registros são armazenados na ordem em que são gravados.</li>
+<li>A organização indexada-sequencial permite acesso sequencial e por chave aos registros.</li>
+</ul>
+</li>
+<li><strong>Processamento:</strong>
+<ul>
+<li>Os programas leem esses registros sequencialmente ou por chave (<code>TRAN-CAT-KEY</code>) para acessar os saldos da categoria de transação.</li>
+<li>Quando uma transação ocorre, o <code>TRAN-CAT-BAL</code> correspondente é atualizado de acordo.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados</strong></p>
+<ul>
+<li><code>TRAN-CAT-BAL-RECORD</code>: Representa um registro no arquivo de saldo de categoria de transação.
+<ul>
+<li><code>TRANCAT-ACCT-ID</code> <code>Numeric(11)</code>: O número da conta.</li>
+<li><code>TRANCAT-TYPE-CD</code> <code>Text(2)</code>: O código do tipo de transação (por exemplo, ‘SA’, ‘CH’).</li>
+<li><code>TRANCAT-CD</code> <code>Numeric(4)</code>: O código de categoria de transação específico.</li>
+<li><code>TRAN-CAT-BAL</code> <code>Decimal(9,2)</code>: O saldo para a categoria de transação específica.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><code>RECLN = 50</code>: Indica um comprimento de registro fixo de 50 caracteres.</li>
+<li>Caminho do arquivo para o arquivo de saldo da categoria de transação (não fornecido no trecho de código fornecido).</li>
+<li>Mapeamento de tipos de transações e categorias para seus respectivos códigos (não fornecido).</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Incorpore mecanismos de tratamento de erros para lidar com cenários como tipos de dados inválidos, erros de E/S de arquivo e situações de registro não encontrado.</li>
+<li><strong>Log:</strong> Implemente o log para registrar eventos importantes, erros e informações de depuração, o que é crucial para solução de problemas e monitoramento do sistema.</li>
+<li><strong>Documentação:</strong> Adicione comentários abrangentes para explicar a finalidade, o uso e quaisquer suposições feitas no código. Isso melhora a manutenção e o entendimento.</li>
+<li><strong>Validação de Dados:</strong> Implemente rotinas de validação de dados para garantir a precisão e integridade dos dados que estão sendo gravados ou lidos do arquivo.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Controle de Acesso:</strong> Implemente mecanismos de controle de acesso apropriados para restringir o acesso ao arquivo apenas a usuários e processos autorizados.</li>
+<li><strong>Criptografia:</strong> Considere criptografar dados confidenciais no arquivo, especialmente se ele contiver informações de identificação pessoal (PII) ou dados financeiros.</li>
+<li><strong>Auditoria:</strong> Implemente trilhas de auditoria para rastrear as alterações feitas no arquivo, incluindo quem o acessou, quais operações foram realizadas e quando. Isso é vital para fins de segurança e conformidade.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00049-CVTRA01Y_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

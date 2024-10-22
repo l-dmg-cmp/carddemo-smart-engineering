@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00073-COUSR03_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> COUSR03 Copybook - Estrutura de Informação do Usuário</p>
+<p><strong>Descrição Resumida:</strong>
+O arquivo <code>COUSR03.CPY</code> define um copybook COBOL que descreve a estrutura das informações do usuário dentro de um aplicativo COBOL maior. Este copybook é crucial para gerenciar e exibir dados do usuário de forma consistente em todo o sistema.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como administrador do sistema, preciso de uma maneira padronizada de armazenar e acessar informações do usuário, como ID do usuário, nome, tipo e mensagens do sistema, para que eu possa gerenciar contas de usuário e rastrear suas atividades com eficácia.</p>
+<p><strong>Épico Relacionado:</strong>
+6 - Gerenciamento de Usuários e Segurança</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Estruturas de Dados:</strong> O copybook define duas estruturas de dados:
+<ul>
+<li><code>COUSR3AI</code> (Formato Interno): Esta estrutura foi projetada para processamento interno e armazenamento eficientes. Ele usa um formato compacto, potencialmente com codificação de caracteres diferente.</li>
+<li><code>COUSR3AO</code> (Formato de Saída): Esta estrutura é adaptada para apresentar informações do usuário em telas ou relatórios. Ele usa um formato amigável, normalmente alinhado com os requisitos de exibição.</li>
+</ul>
+</li>
+<li><strong>Mapeamento de Dados:</strong> A estrutura <code>COUSR3AO</code> é definida como um REDEFINES de <code>COUSR3AI</code>. Isso significa que ambas as estruturas ocupam o mesmo local de memória, mas fornecem interpretações diferentes dos dados. Isso permite a conversão eficiente de dados entre formatos internos e de exibição.</li>
+<li><strong>Campos de Dados:</strong> Ambas as estruturas incluem os seguintes campos:
+<ul>
+<li><code>USRIDINI</code>: ID do Usuário (identificador único)</li>
+<li><code>FNAMEI</code>: Primeiro Nome</li>
+<li><code>LNAMEI</code>: Sobrenome</li>
+<li><code>USRTYPEI</code>: Tipo de Usuário (por exemplo, ‘A’ para Administrador, ‘U’ para Usuário)</li>
+<li><code>TRNNAMEI</code>: Nome da Transação</li>
+<li><code>PGMNAMEI</code>: Nome do Programa</li>
+<li><code>CURDATEI</code>: Data Atual</li>
+<li><code>CURTIMEI</code>: Hora Atual</li>
+<li><code>ERRMSGI</code>: Mensagem de Erro</li>
+</ul>
+</li>
+<li><strong>Tipos de Dados e Comprimentos:</strong> Cada campo é definido com um tipo de dados específico (por exemplo, PIC X para alfanumérico, PIC S9 para numérico com sinal) e comprimento.</li>
+</ul>
+<p><strong>Modelos Relacionados</strong></p>
+<ul>
+<li>Usuário: Representa um usuário no sistema.
+<ul>
+<li><code>USRIDINI</code> <code>String</code>: O identificador exclusivo do usuário.</li>
+<li><code>FNAMEI</code> <code>String</code>: O primeiro nome do usuário.</li>
+<li><code>LNAMEI</code> <code>String</code>: O sobrenome do usuário.</li>
+<li><code>USRTYPEI</code> <code>String</code>: O tipo de usuário (por exemplo, ‘A’, ‘U’).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li>Nenhuma</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Documentação:</strong> Adicione comentários para esclarecer o propósito de cada campo e estrutura, especialmente a diferença entre os formatos interno e de saída.</li>
+<li><strong>Tratamento de Erros:</strong> Se o copybook for usado em rotinas de validação de dados, considere adicionar campos ou sinalizadores para indicar erros de validação para campos específicos.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Sensibilidade de Dados:</strong> Esteja ciente de que o copybook contém informações confidenciais, como o tipo de usuário (<code>USRTYPEI</code>). O acesso a essas informações deve ser controlado dentro do aplicativo para evitar divulgação ou modificação não autorizada.</li>
+<li><strong>Criptografia de Dados:</strong> Considere criptografar dados confidenciais do usuário em repouso e em trânsito para aumentar a segurança.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00073-COUSR03_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

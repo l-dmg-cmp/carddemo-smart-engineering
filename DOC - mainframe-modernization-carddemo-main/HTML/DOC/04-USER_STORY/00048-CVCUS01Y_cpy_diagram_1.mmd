@@ -1,0 +1,35 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant COBOL Program
+    participant Input File
+    participant Output File
+    participant Error Log
+
+    activate COBOL Program
+    COBOL Program->>+Input File: Open
+    Input File->>COBOL Program: Open Successful
+    COBOL Program->>+Output File: Open
+    Output File->>COBOL Program: Open Successful
+    COBOL Program->>+Error Log: Open
+    Error Log->>COBOL Program: Open Successful
+
+    loop For Each Customer Record
+        COBOL Program->>+Input File: Read Record
+        Input File->>COBOL Program: Customer Record Data        
+        COBOL Program->>COBOL Program: Validate Record Data
+        alt Validation Successful
+            COBOL Program->>+Output File: Write Record
+            Output File->>COBOL Program: Write Successful
+        else Validation Failed
+            COBOL Program->>+Error Log: Write Error
+            Error Log->>COBOL Program: Write Successful
+        end
+    end
+
+    COBOL Program->>+Input File: Close
+    Input File->>COBOL Program: Close Successful
+    COBOL Program->>+Output File: Close
+    Output File->>-COBOL Program: Close Successful
+    COBOL Program->>+Error Log: Close
+    Error Log->>-COBOL Program: Close Successful
+    deactivate COBOL Program

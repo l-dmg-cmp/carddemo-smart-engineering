@@ -1,0 +1,19 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant CardDemo Application
+    participant User
+
+    activate CardDemo Application
+    CardDemo Application->>+User: Display Screen With Fields
+    User->>CardDemo Application: Input Data
+    activate User
+    CardDemo Application->>+CardDemo Application: Validate Input Data
+    alt Input Valid
+        CardDemo Application->>+CardDemo Application: Process Data
+    else Input Invalid
+        CardDemo Application->>+CardDemo Application: Highlight Field (Red)
+        CardDemo Application->>+CardDemo Application: Mark Blank Field (*)
+        CardDemo Application->>User: Display Error Visuals
+        deactivate CardDemo Application
+    end
+    deactivate User

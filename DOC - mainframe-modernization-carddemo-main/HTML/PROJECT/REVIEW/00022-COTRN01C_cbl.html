@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00022-COTRN01C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h2>Revisão de Análise Técnica</h2>
+<p><strong>Arquivo:</strong>  \src\COTRN01C.cbl</p>
+<p><strong>Título:</strong>  Visualizar Detalhes da Transação</p>
+<p><strong>Resumo:</strong></p>
+<p>Este programa CICS COBOL, <code>COTRN01C</code>, faz parte da aplicação <code>CardDemo</code>. Sua função principal é recuperar e exibir detalhes de uma transação específica de um arquivo chamado <code>TRANSACT</code>. O programa interage com um usuário por meio de uma tela (provavelmente usando mapas CICS BMS) para receber um ID de transação, busca os dados de transação correspondentes e os apresenta ao usuário.</p>
+<p><strong>Tecnologia:</strong></p>
+<ul>
+<li><strong>Linguagem de Programação:</strong> COBOL</li>
+<li><strong>Framework/Biblioteca:</strong> CICS (Customer Information Control System)</li>
+<li><strong>Banco de Dados:</strong>
+<ul>
+<li><strong>VSAM (Virtual Storage Access Method):</strong> Embora não seja declarado diretamente, o uso de <code>DATASET</code> e <code>RIDFLD</code> dentro do comando <code>EXEC CICS READ</code> sugere fortemente que o arquivo <code>TRANSACT</code> é um arquivo VSAM.</li>
+</ul>
+</li>
+<li><strong>Outras Ferramentas:</strong>
+<ul>
+<li><strong>BMS (Basic Mapping Support):</strong> Inferido pelo uso dos comandos <code>EXEC CICS SEND</code> e <code>EXEC CICS RECEIVE</code> com as opções <code>MAP</code> e <code>MAPSET</code>. Isso indica que o programa interage com telas definidas usando mapas CICS BMS.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Referência, Classe e Método:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Referência</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>COCOM01Y</code></td>
+<td>Provavelmente contém estruturas de dados ou variáveis compartilhadas usadas na aplicação <code>CardDemo</code>, incluindo campos relacionados à navegação e comunicação do programa (<code>CDEMO-TO-PROGRAM</code>, <code>CDEMO-FROM-PROGRAM</code>, etc.).</td>
+</tr>
+<tr>
+<td><code>COTRN01</code></td>
+<td>Provavelmente define o layout da estrutura <code>TRAN-RECORD</code>, que mapeia os dados armazenados no arquivo <code>TRANSACT</code>.</td>
+</tr>
+<tr>
+<td><code>COTTL01Y</code></td>
+<td>Pode conter definições relacionadas a títulos ou rótulos exibidos nas telas, conforme sugerido pela variável <code>CCDA-TITLE01</code>.</td>
+</tr>
+<tr>
+<td><code>CSDAT01Y</code></td>
+<td>Provavelmente fornece estruturas de dados ou variáveis relacionadas à data. O uso de <code>WS-CURDATE-DATA</code> sugere que ele pode conter componentes para ano, mês e dia.</td>
+</tr>
+<tr>
+<td><code>CSMSG01Y</code></td>
+<td>Provavelmente define variáveis relacionadas a mensagens, indicado pelo uso de <code>ERRMSGO</code>.</td>
+</tr>
+<tr>
+<td><code>CVTRA05Y</code></td>
+<td>O objetivo deste copybook não é claro sem mais contexto.</td>
+</tr>
+<tr>
+<td><code>DFHAID</code></td>
+<td>Um copybook CICS padrão que fornece definições para campos relacionados ao sistema, incluindo <code>EIBAID</code> (usado para capturar ações do usuário, como teclas de função).</td>
+</tr>
+<tr>
+<td><code>DFHBMSCA</code></td>
+<td>Um copybook CICS padrão que define a estrutura de dados <code>DFHCOMMAREA</code>, usada para comunicação entre programas em um ambiente CICS.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Não disponível</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método (Público)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MAIN-PARA</code></td>
+<td>O ponto de entrada principal do programa COBOL. Ele controla o fluxo geral e a lógica, lidando com a entrada do usuário, recuperação de dados e interações com a tela.</td>
+</tr>
+<tr>
+<td><code>PROCESS-ENTER-KEY</code></td>
+<td>Acionado quando o usuário pressiona a tecla Enter. Ele valida o ID da transação de entrada, lê os detalhes da transação do arquivo <code>TRANSACT</code> e prepara os dados para exibição.</td>
+</tr>
+<tr>
+<td><code>RETURN-TO-PREV-SCREEN</code></td>
+<td>Lida com a navegação de volta à tela anterior no fluxo do aplicativo.</td>
+</tr>
+<tr>
+<td><code>SEND-TRNVIEW-SCREEN</code></td>
+<td>Envia os detalhes da transação para a tela para exibição usando um comando CICS SEND.</td>
+</tr>
+<tr>
+<td><code>RECEIVE-TRNVIEW-SCREEN</code></td>
+<td>Recebe a entrada e ações do usuário da tela usando um comando CICS RECEIVE.</td>
+</tr>
+<tr>
+<td><code>POPULATE-HEADER-INFO</code></td>
+<td>Preenche as informações do cabeçalho na tela, como nome do programa, data e hora.</td>
+</tr>
+<tr>
+<td><code>READ-TRANSACT-FILE</code></td>
+<td>Lê um registro de transação do arquivo <code>TRANSACT</code> com base no ID da transação fornecido.</td>
+</tr>
+<tr>
+<td><code>CLEAR-CURRENT-SCREEN</code></td>
+<td>Limpa os campos de entrada na tela atual.</td>
+</tr>
+<tr>
+<td><code>INITIALIZE-ALL-FIELDS</code></td>
+<td>Inicializa os campos de dados para seus valores padrão.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método (Privado)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Não disponível</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

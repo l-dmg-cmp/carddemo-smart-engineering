@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00023-COTRN02C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Adição de Transação CardDemo</h1>
+<h2>Arquivo</h2>
+<ul>
+<li><code>\src\COTRN02C.cbl</code></li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve as especificações para a funcionalidade “Adicionar Transação” dentro do aplicativo CardDemo. Essa funcionalidade permite que usuários autorizados insiram manualmente os detalhes de novas transações de cartão de crédito no sistema.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>Versão: CardDemo_v1.0-15-g27d6c6f-68 (19 de julho de 2022)</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>Este programa facilita a adição de novas transações ao aplicativo CardDemo. Ele funciona como um formulário digital para registrar compras com cartão de crédito.</p>
+<ol>
+<li><strong>Entrada de Dados:</strong> O usuário insere os detalhes da transação do cartão de crédito.</li>
+<li><strong>Validação de Dados:</strong> O sistema verifica a precisão e a integridade dos dados inseridos.</li>
+<li><strong>Registro da Transação:</strong> Após a validação bem-sucedida, o sistema atribui um ID exclusivo à transação e armazena os detalhes no banco de dados.</li>
+<li><strong>Confirmação:</strong> O usuário recebe a confirmação de que a transação foi adicionada com sucesso.</li>
+<li><strong>Tratamento de Erros:</strong> Se houver discrepâncias nos dados inseridos, o sistema sinaliza os erros e solicita a correção do usuário.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Autenticação do Usuário:</strong> O usuário deve estar conectado ao aplicativo CardDemo com autorização apropriada para acessar e usar a funcionalidade “Adicionar Transação”.</li>
+<li><strong>Dados de Entrada:</strong> O usuário precisa fornecer os detalhes da transação necessários, incluindo, mas não se limitando a:
+<ul>
+<li>ID da Conta</li>
+<li>Número do Cartão</li>
+<li>Tipo de Transação</li>
+<li>Categoria</li>
+<li>Fonte da Transação</li>
+<li>Descrição</li>
+<li>Valor</li>
+<li>Data de Origem</li>
+<li>Data de Processamento</li>
+<li>ID do Comerciante</li>
+<li>Nome do Comerciante</li>
+<li>Cidade do Comerciante</li>
+<li>CEP do Comerciante</li>
+</ul>
+</li>
+</ol>
+<h2>Validações e Regras do Processo</h2>
+<ul>
+<li><strong>Validação do Tipo de Dados:</strong> O sistema verifica se os dados inseridos em cada campo estão em conformidade com o tipo de dados esperado (por exemplo, valores numéricos para ID da Conta, Número do Cartão, Valor, etc.).</li>
+<li><strong>Validação do Formato de Dados:</strong> O sistema impõe formatos específicos para determinados campos de dados, como AAAA-MM-DD para datas e -99999999.99 para o valor da transação.</li>
+<li><strong>Validação de Existência de Dados:</strong> O sistema verifica se a ID da Conta e o Número do Cartão inseridos existem nos respectivos bancos de dados.</li>
+<li><strong>Campos Obrigatórios:</strong> O sistema garante que todos os campos obrigatórios sejam preenchidos com dados apropriados.</li>
+<li><strong>Validação em Tempo Real:</strong> A validação ocorre em tempo real conforme o usuário insere os dados, fornecendo feedback imediato e facilitando a correção de erros.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><code>WS-ACCT-ID-N</code>: Representação numérica da ID da conta.</li>
+<li><code>WS-CARD-NUM-N</code>: Representação numérica do número do cartão.</li>
+<li><code>WS-TRAN-ID-N</code>: Representação numérica da ID da transação gerada.</li>
+<li><code>WS-TRAN-AMT</code>: Valor da transação.</li>
+<li><code>WS-TRAN-DATE</code>: Data da transação.</li>
+<li><code>WS-DATE-FORMAT</code>: Formato da data (AAAA-MM-DD).</li>
+<li><code>TRAN-ID</code>: Identificador exclusivo para cada transação.</li>
+<li><code>TRAN-TYPE-CD</code>: Código que representa o tipo de transação.</li>
+<li><code>TRAN-CAT-CD</code>: Código que representa a categoria da transação.</li>
+<li><code>TRAN-SOURCE</code>: Origem da transação.</li>
+<li><code>TRAN-DESC</code>: Descrição da transação.</li>
+<li><code>TRAN-AMT</code>: Valor da transação.</li>
+<li><code>TRAN-CARD-NUM</code>: Número do cartão de crédito associado à transação.</li>
+<li><code>TRAN-MERCHANT-ID</code>: Identificador exclusivo para o comerciante.</li>
+<li><code>TRAN-MERCHANT-NAME</code>: Nome do comerciante.</li>
+<li><code>TRAN-MERCHANT-CITY</code>: Cidade do comerciante.</li>
+<li><code>TRAN-MERCHANT-ZIP</code>: CEP do comerciante.</li>
+<li><code>TRAN-ORIG-TS</code>: Timestamp indicando quando a transação foi iniciada.</li>
+<li><code>TRAN-PROC-TS</code>: Timestamp indicando quando a transação foi processada.</li>
+</ul>
+<p><strong>Métodos/Funções:</strong></p>
+<ul>
+<li><code>PROCESS-ENTER-KEY</code>: Esta função é acionada quando o usuário pressiona a tecla Enter. Ela inicia o processo de validação para os campos-chave (ID da Conta e Número do Cartão) e campos de dados. Se os dados de entrada passarem em todas as validações, a transação será adicionada.</li>
+<li><code>VALIDATE-INPUT-KEY-FIELDS</code>: Esta função valida a ID da Conta e o Número do Cartão inseridos pelo usuário. Ela verifica se as entradas são numéricas e se existem no sistema.</li>
+<li><code>VALIDATE-INPUT-DATA-FIELDS</code>: Esta função valida todos os outros campos de dados inseridos pelo usuário. Ela garante que todos os campos obrigatórios sejam preenchidos e que os dados estejam em conformidade com o formato e tipo necessários.</li>
+<li><code>ADD-TRANSACTION</code>: Esta função adiciona um novo registro de transação ao arquivo TRANSACT após a validação bem-sucedida das entradas do usuário.</li>
+<li><code>COPY-LAST-TRAN-DATA</code>: Esta função permite que os usuários copiem dados da última transação inserida, simplificando a entrada de dados para transações consecutivas semelhantes.</li>
+<li><code>RETURN-TO-PREV-SCREEN</code>: Esta função retorna o usuário à tela anterior.</li>
+<li><code>SEND-TRNADD-SCREEN</code>: Esta função exibe a tela de adição de transação para o usuário.</li>
+<li><code>RECEIVE-TRNADD-SCREEN</code>: Esta função recebe a entrada do usuário da tela de adição de transação.</li>
+<li><code>POPULATE-HEADER-INFO</code>: Esta função preenche as informações do cabeçalho na tela, como o título, ID da transação, nome do programa, data e hora atuais.</li>
+<li><code>READ-CXACAIX-FILE</code>: Esta função lê dados do arquivo CXACAIX, que parece ser um arquivo de referência cruzada para contas.</li>
+<li><code>READ-CCXREF-FILE</code>: Esta função lê dados do arquivo CCXREF, que parece ser um arquivo de referência cruzada para cartões de crédito.</li>
+<li><code>STARTBR-TRANSACT-FILE</code>, <code>READPREV-TRANSACT-FILE</code>, <code>ENDBR-TRANSACT-FILE</code>: Estas funções gerenciam a leitura e gravação de registros de transações de/para o arquivo TRANSACT.</li>
+<li><code>WRITE-TRANSACT-FILE</code>: Esta função grava um novo registro de transação no arquivo TRANSACT.</li>
+<li><code>CLEAR-CURRENT-SCREEN</code>: Esta função limpa todos os campos na tela atual.</li>
+<li><code>INITIALIZE-ALL-FIELDS</code>: Esta função inicializa todos os campos de dados, normalmente definindo-os como valores padrão ou espaços.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Autorização:</strong> Somente usuários autorizados com funções e permissões específicas podem acessar e usar essa funcionalidade.</li>
+<li><strong>Validação e Integridade de Dados:</strong> O rigoroso processo de validação garante a precisão dos dados e protege o sistema contra entradas de dados inválidas ou maliciosas.</li>
+<li><strong>Auditabilidade:</strong> Todas as ações realizadas dentro dessa funcionalidade são registradas, mantendo um registro de auditoria para fins de segurança e rastreamento.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Processamento de Transações:</strong> Novas transações adicionadas por meio dessa funcionalidade serão incluídas nas rotinas subsequentes de processamento de transações, potencialmente impactando cálculos financeiros, relatórios e outros processos downstream.</li>
+<li><strong>Gerenciamento de Contas:</strong> Novas transações podem afetar saldos de contas, limites de crédito e outros parâmetros relacionados à conta.</li>
+<li><strong>Relatórios e Análise:</strong> Esta funcionalidade influencia diretamente os dados usados para gerar relatórios e realizar análises relacionadas a transações com cartão de crédito, que podem ser usados por várias partes interessadas para inteligência de negócios e tomada de decisões.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRAN-ID</td>
+<td>Numérico</td>
+<td>Identificador exclusivo para uma transação.</td>
+</tr>
+<tr>
+<td>TRAN-TYPE-CD</td>
+<td>Código</td>
+<td>Representa o tipo de transação (por exemplo, compra, reembolso).</td>
+</tr>
+<tr>
+<td>TRAN-CAT-CD</td>
+<td>Código</td>
+<td>Categoriza a transação (por exemplo, mantimentos, entretenimento).</td>
+</tr>
+<tr>
+<td>TRAN-SOURCE</td>
+<td>Texto</td>
+<td>Indica a origem da transação (por exemplo, online, em loja física).</td>
+</tr>
+<tr>
+<td>TRAN-DESC</td>
+<td>Texto</td>
+<td>Fornece uma breve descrição da transação.</td>
+</tr>
+<tr>
+<td>TRAN-AMT</td>
+<td>Numérico</td>
+<td>Armazena o valor monetário da transação.</td>
+</tr>
+<tr>
+<td>TRAN-CARD-NUM</td>
+<td>Numérico</td>
+<td>Contém o número do cartão de crédito associado à transação.</td>
+</tr>
+<tr>
+<td>TRAN-MERCHANT-ID</td>
+<td>Numérico</td>
+<td>Identifica o comerciante envolvido na transação.</td>
+</tr>
+<tr>
+<td>TRAN-MERCHANT-NAME</td>
+<td>Texto</td>
+<td>Armazena o nome do comerciante.</td>
+</tr>
+<tr>
+<td>TRAN-MERCHANT-CITY</td>
+<td>Texto</td>
+<td>Indica a cidade da localização do comerciante.</td>
+</tr>
+<tr>
+<td>TRAN-MERCHANT-ZIP</td>
+<td>Texto</td>
+<td>Representa o CEP da localização do comerciante.</td>
+</tr>
+<tr>
+<td>TRAN-ORIG-TS</td>
+<td>Timestamp</td>
+<td>Registra a data e hora em que a transação foi iniciada.</td>
+</tr>
+<tr>
+<td>TRAN-PROC-TS</td>
+<td>Timestamp</td>
+<td>Registra a data e hora em que a transação foi processada.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li>Arquivo <code>TRANSACT</code>: Este arquivo armazena os detalhes de todas as transações.</li>
+<li>Arquivo <code>CXACAIX</code>: Um arquivo de referência cruzada que provavelmente contém informações relacionadas à conta.</li>
+<li>Arquivo <code>CCXREF</code>: Um arquivo de referência cruzada que provavelmente contém informações relacionadas ao cartão de crédito.</li>
+</ul>
+<p>Esta especificação é baseada na análise do trecho de código COBOL fornecido e visa apresentar as informações em uma linguagem clara e amigável para os stakeholders. No entanto, documentação técnica adicional e colaboração com a equipe de desenvolvimento são essenciais para uma compreensão e implementação abrangentes dessa funcionalidade.</p>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00058-COACTVW_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Módulo de Visualização de Conta de Cartão</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Especificação do Módulo de Visualização de Conta de Cartão</li>
+</ul>
+<h2>Descrição resumida</h2>
+<p>Este documento descreve as especificações do módulo de Visualização de Conta de Cartão dentro do aplicativo CardDemo. Este módulo é responsável por apresentar uma visão abrangente das informações da conta do cliente, incluindo status da conta, saldos, limites e detalhes do cliente. Ele garante a apresentação padronizada dos dados e a consistência no tratamento dos dados da conta em todo o sistema.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>Versão 1.0: Versão inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O módulo de Visualização de Conta de Cartão recupera e exibe as informações da conta. O processo envolve as seguintes etapas:</p>
+<ol>
+<li><strong>Solicitar informações da conta:</strong> O módulo recebe uma solicitação para visualizar as informações da conta. Essa solicitação geralmente se origina de uma ação do usuário dentro do sistema.</li>
+<li><strong>Recuperar dados:</strong> O módulo busca os dados necessários dos arquivos VSAM com base no ID da conta fornecido.</li>
+<li><strong>Formatar dados:</strong> Os dados recuperados são formatados em um layout amigável usando a estrutura CACTVWAO. Isso inclui formatar valores numéricos, organizar campos e lidar com quaisquer conversões de dados necessárias.</li>
+<li><strong>Exibir informações:</strong> As informações da conta formatadas são apresentadas ao usuário ou ao componente do sistema solicitante.</li>
+</ol>
+<h2>Requisitos para iniciar o processo</h2>
+<ol>
+<li><strong>ID da conta:</strong> Um identificador exclusivo para a conta a ser visualizada.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Validação de recuperação de dados:</strong> O módulo valida os dados recuperados para garantir sua integridade e completude.</li>
+<li><strong>Autorização:</strong> O acesso às informações da conta pode estar sujeito a verificações de autorização com base nas funções e permissões do usuário.</li>
+</ul>
+<h2>Detalhes técnicos</h2>
+<p><strong>Copybooks:</strong></p>
+<ul>
+<li><strong><code>COACTVW.CPY</code>:</strong> Define as estruturas de dados usadas para recuperação e exibição de informações da conta.</li>
+</ul>
+<p><strong>Estruturas de dados:</strong></p>
+<ul>
+<li><strong><code>CACTVWAI</code>:</strong> Essa estrutura define o formato dos dados conforme são recuperados do armazenamento. Inclui campos de dados brutos para detalhes da conta, saldos, limites, informações do cliente e mensagens do sistema.</li>
+<li><strong><code>CACTVWAO</code>:</strong> Essa estrutura define o formato para apresentar informações da conta ao usuário ou a outros componentes do sistema. Ele espelha a estrutura <code>CACTVWAI</code>, mas se concentra na formatação amigável, como exibir valores numéricos com vírgulas e pontos decimais.</li>
+</ul>
+<p><strong>Regras de negócios:</strong></p>
+<ul>
+<li><strong>Informações de conta padronizadas:</strong> A estrutura <code>CACTVWAI</code> garante que os dados da conta sejam tratados de forma consistente em todo o sistema.</li>
+<li><strong>Apresentação clara dos dados:</strong> A estrutura <code>CACTVWAO</code> fornece um formato claro e compreensível para apresentar as informações da conta.</li>
+<li><strong>Instantâneo abrangente da conta:</strong> O módulo visa fornecer uma visão completa das informações relacionadas à conta, incluindo saldos, limites, detalhes do cliente e quaisquer mensagens do sistema.</li>
+</ul>
+<h2>Impacto em outros sistemas</h2>
+<ul>
+<li><strong>Interface do usuário:</strong> O módulo fornece dados para exibição em interfaces de usuário, como telas de resumo de conta ou relatórios impressos.</li>
+<li><strong>Outros módulos do sistema:</strong> Outros módulos dentro do aplicativo CardDemo podem solicitar informações da conta por meio deste módulo.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Nome do Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ACCTSIDI</code></td>
+<td>Alfanumérico</td>
+<td>ID da conta exclusiva.</td>
+</tr>
+<tr>
+<td><code>ACSTTUSI</code></td>
+<td>Alfanumérico</td>
+<td>Status da conta (por exemplo, ‘A’ para Ativo, ‘C’ para Fechado).</td>
+</tr>
+<tr>
+<td><code>ACRDLIMI</code></td>
+<td>Alfanumérico</td>
+<td>Limite de crédito (formatado como texto).</td>
+</tr>
+<tr>
+<td><code>ACURBALI</code></td>
+<td>Alfanumérico</td>
+<td>Saldo atual da conta (formatado como texto).</td>
+</tr>
+<tr>
+<td><code>ACSFNAMI</code></td>
+<td>Alfanumérico</td>
+<td>Primeiro nome do cliente.</td>
+</tr>
+<tr>
+<td><code>ACSMNAMI</code></td>
+<td>Alfanumérico</td>
+<td>Nome do meio do cliente.</td>
+</tr>
+<tr>
+<td><code>ACSLNAMI</code></td>
+<td>Alfanumérico</td>
+<td>Último nome do cliente.</td>
+</tr>
+<tr>
+<td><code>ACSADL1I</code></td>
+<td>Alfanumérico</td>
+<td>Linha 1 do endereço do cliente.</td>
+</tr>
+<tr>
+<td><code>ACSSTTEI</code></td>
+<td>Alfanumérico</td>
+<td>Código do estado do endereço do cliente.</td>
+</tr>
+<tr>
+<td><code>ACSADL2I</code></td>
+<td>Alfanumérico</td>
+<td>Linha 2 do endereço do cliente.</td>
+</tr>
+<tr>
+<td><code>ACSZIPCI</code></td>
+<td>Alfanumérico</td>
+<td>CEP do endereço do cliente.</td>
+</tr>
+<tr>
+<td><code>ACSCITYI</code></td>
+<td>Alfanumérico</td>
+<td>Cidade do cliente.</td>
+</tr>
+<tr>
+<td><code>ACSCTRYI</code></td>
+<td>Alfanumérico</td>
+<td>Código do país do cliente.</td>
+</tr>
+<tr>
+<td><code>ACSPHN1I</code></td>
+<td>Alfanumérico</td>
+<td>Número de telefone 1 do cliente.</td>
+</tr>
+<tr>
+<td><code>ACSGOVTI</code></td>
+<td>Alfanumérico</td>
+<td>Número de identificação governamental do cliente (por exemplo, CPF).</td>
+</tr>
+<tr>
+<td><code>ACSPHN2I</code></td>
+<td>Alfanumérico</td>
+<td>Número de telefone 2 do cliente.</td>
+</tr>
+<tr>
+<td><code>ACSEFTCI</code></td>
+<td>Alfanumérico</td>
+<td>Data efetiva do cliente (data em que as informações do cliente entraram em vigor).</td>
+</tr>
+<tr>
+<td><code>ACSPFLGI</code></td>
+<td>Alfanumérico</td>
+<td>Sinalizador de perfil do cliente (indica atributos ou sinalizadores específicos do cliente).</td>
+</tr>
+<tr>
+<td><code>INFOMSGI</code></td>
+<td>Alfanumérico</td>
+<td>Mensagens informativas relacionadas à conta.</td>
+</tr>
+<tr>
+<td><code>ERRMSGI</code></td>
+<td>Alfanumérico</td>
+<td>Mensagens de erro relacionadas à conta.</td>
+</tr>
+<tr>
+<td><code>ADTOPENI</code></td>
+<td>Alfanumérico</td>
+<td>Data de abertura da conta.</td>
+</tr>
+<tr>
+<td><code>AEXPDTI</code></td>
+<td>Alfanumérico</td>
+<td>Data de expiração da conta.</td>
+</tr>
+<tr>
+<td><code>ACSHLIMI</code></td>
+<td>Alfanumérico</td>
+<td>Limite de dinheiro da conta.</td>
+</tr>
+<tr>
+<td><code>AREISDTI</code></td>
+<td>Alfanumérico</td>
+<td>Data de reemissão da conta.</td>
+</tr>
+<tr>
+<td><code>ACRCYCRI</code></td>
+<td>Alfanumérico</td>
+<td>Moeda da conta.</td>
+</tr>
+<tr>
+<td><code>AADDGRPI</code></td>
+<td>Alfanumérico</td>
+<td>Grupo de endereços da conta.</td>
+</tr>
+<tr>
+<td><code>ACRCYDBI</code></td>
+<td>Alfanumérico</td>
+<td>Débito em moeda da conta.</td>
+</tr>
+<tr>
+<td><code>ACSTNUMI</code></td>
+<td>Alfanumérico</td>
+<td>Número do extrato da conta.</td>
+</tr>
+<tr>
+<td><code>ACSTSSNI</code></td>
+<td>Alfanumérico</td>
+<td>Temporada do extrato da conta.</td>
+</tr>
+<tr>
+<td><code>ACSTDOBI</code></td>
+<td>Alfanumérico</td>
+<td>Data de abertura do extrato da conta.</td>
+</tr>
+<tr>
+<td><code>ACSTFCOI</code></td>
+<td>Alfanumérico</td>
+<td>Primeiro contato do extrato da conta.</td>
+</tr>
+<tr>
+<td><code>TRNNAMEI</code></td>
+<td>Alfanumérico</td>
+<td>Nome da transação.</td>
+</tr>
+<tr>
+<td><code>TITLE01I</code></td>
+<td>Alfanumérico</td>
+<td>Título 01.</td>
+</tr>
+<tr>
+<td><code>CURDATEI</code></td>
+<td>Alfanumérico</td>
+<td>Data atual.</td>
+</tr>
+<tr>
+<td><code>PGMNAMEI</code></td>
+<td>Alfanumérico</td>
+<td>Nome do programa.</td>
+</tr>
+<tr>
+<td><code>TITLE02I</code></td>
+<td>Alfanumérico</td>
+<td>Título 02.</td>
+</tr>
+<tr>
+<td><code>CURTIMEI</code></td>
+<td>Alfanumérico</td>
+<td>Horário atual.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais referências</h2>
+<ul>
+<li><strong>Arquivos VSAM:</strong> As informações da conta são armazenadas em arquivos VSAM. Os arquivos VSAM específicos acessados por este módulo são determinados pelo modelo de dados do aplicativo CardDemo.</li>
+<li><strong>Programas COBOL:</strong> Outros programas COBOL dentro do aplicativo CardDemo podem interagir com este módulo para solicitar ou atualizar informações da conta.</li>
+<li><strong>Mapas BMS:</strong> O módulo usa mapas BMS para formatação de tela e interação do usuário.</li>
+<li><strong>Comandos CICS:</strong> Os comandos CICS são usados para processamento de transações, recuperação de dados e tratamento de tela.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

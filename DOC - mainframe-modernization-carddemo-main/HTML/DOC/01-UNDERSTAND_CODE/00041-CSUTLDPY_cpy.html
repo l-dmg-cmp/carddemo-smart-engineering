@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00041-CSUTLDPY_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>–CONTENT TO TRANSLATE–
+Gerado em: 1º de outubro de 2024</p>
+<h2>Validação de Data na Aplicação CardDemo</h2>
+<p><strong>Arquivo:</strong>  \src\CSUTLDPY.cpy</p>
+<p>Este código garante que as datas inseridas no sistema CardDemo sejam precisas e lógicas. Ele funciona como um guardião, impedindo que datas incorretas ou sem sentido causem problemas.</p>
+<p><strong>Contexto:</strong></p>
+<p>Imagine um cliente solicitando um cartão de crédito através do aplicativo CardDemo. Ele precisa inserir sua data de nascimento. Este código entra em ação para garantir que a data fornecida faça sentido.</p>
+<p><strong>Ação:</strong></p>
+<ol>
+<li><strong>Verificação de Formato:</strong> O código primeiro confirma se a data foi inserida no formato correto (AAAA MM DD).</li>
+<li><strong>Validação de Componentes:</strong> Em seguida, ele divide a data em suas partes individuais (ano, mês, dia) e valida cada uma.
+<ul>
+<li><strong>Ano:</strong>  O código verifica se o século é razoável (19xx ou 20xx) para evitar erros como alguém inserir acidentalmente seu ano de nascimento como 1850.</li>
+<li><strong>Mês:</strong> Ele garante que o mês esteja entre 1 e 12.</li>
+<li><strong>Dia:</strong> Ele verifica se o dia está dentro do intervalo válido para o mês fornecido (por exemplo, não 30 de fevereiro).</li>
+</ul>
+</li>
+<li><strong>Lógica de Ano Bissexto:</strong>  O código inclui tratamento especial para fevereiro, garantindo que 29 de fevereiro só seja aceito em anos bissextos.</li>
+<li><strong>Prevenção de Data Futura:</strong>  Para evitar que alguém insira uma data de nascimento futura, o código compara a data fornecida com a data atual.</li>
+<li><strong>Verificação Externa (Opcional):</strong> O código pode utilizar opcionalmente um serviço externo (<code>CSUTLDTC</code>) para validação de data adicional e rigorosa.</li>
+</ol>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Integridade de Dados:</strong>  Datas precisas são cruciais para muitos aspectos do gerenciamento de cartão de crédito, incluindo cálculo de juros, determinação de elegibilidade e geração de relatórios. Este código atua como uma proteção contra corrupção de dados.</li>
+<li><strong>Experiência do Usuário:</strong>  Embora invisível para o usuário, este código evita cenários frustrantes como solicitações rejeitadas devido a erros simples de digitação de data. Isso contribui para uma experiência mais suave e amigável.</li>
+<li><strong>Conformidade:</strong> As instituições financeiras costumam ter regulamentações rígidas em relação à precisão dos dados. Este código ajuda o aplicativo CardDemo a cumprir esses padrões.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

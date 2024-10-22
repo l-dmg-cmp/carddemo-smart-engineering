@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant UserInterface
+    participant COBOLProgram
+    participant AccountData
+
+    UserInterface->>+COBOLProgram: Request Account Data (`ACCTSIDI`)
+    activate COBOLProgram
+    COBOLProgram->>+AccountData: Read Account Record (`ACCTSIDI`)
+    activate AccountData
+    AccountData->>COBOLProgram: Account Data (`CACTVWAI`)
+    deactivate AccountData
+    COBOLProgram->>COBOLProgram: Format Data (`CACTVWAO`)
+    COBOLProgram->>UserInterface: Display Account Data (`CACTVWAO`)
+    deactivate COBOLProgram

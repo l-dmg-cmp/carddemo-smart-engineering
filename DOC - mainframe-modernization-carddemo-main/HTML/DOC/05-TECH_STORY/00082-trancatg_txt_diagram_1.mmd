@@ -1,0 +1,29 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant COBOL Program
+    participant Input Transaction File
+    participant trancatg.txt File
+    participant Output Transaction File
+
+    activate COBOL Program
+    COBOL Program->>+Input Transaction File: Open
+    Input Transaction File->>COBOL Program: Open Successful
+    COBOL Program->>+trancatg.txt File: Open
+    trancatg.txt File->>COBOL Program: Open Successful
+
+    loop For Each Transaction Record
+        COBOL Program->>+Input Transaction File: Read Transaction Record
+        Input Transaction File->>COBOL Program: Transaction Record Data
+        COBOL Program->>+trancatg.txt File: Lookup Transaction Description
+        trancatg.txt File->>COBOL Program: Transaction Description
+        COBOL Program->>+Output Transaction File: Write Enriched Transaction Record
+        Output Transaction File->>COBOL Program: Write Successful
+    end
+    
+    COBOL Program->>+Input Transaction File: Close
+    Input Transaction File->>COBOL Program: Close Successful
+    COBOL Program->>+trancatg.txt File: Close
+    trancatg.txt File->>COBOL Program: Close Successful
+    COBOL Program->>+Output Transaction File: Close
+    Output Transaction File->>-COBOL Program: Close Successful
+    deactivate COBOL Program

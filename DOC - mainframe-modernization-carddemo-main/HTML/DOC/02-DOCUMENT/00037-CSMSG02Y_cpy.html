@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00037-CSMSG02Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Tratamento de Erros do Sistema de Cartões</h1>
+<h2>Título do Documento: Especificação de Registro de Erros do Sistema de Cartões</h2>
+<h2>Arquivo</h2>
+<ul>
+<li>Arquivo: \CSMSG02Y.cpy</li>
+</ul>
+<h2>Descrição resumida</h2>
+<p>Este documento descreve a estrutura e a função de um componente crítico dentro do Sistema de Cartões, focando especificamente em como o sistema lida e registra erros que ocorrem durante o processamento. Este componente não executa nenhuma lógica de negócios em si, mas atua como um mecanismo padronizado de registro de erros, garantindo que quaisquer problemas inesperados sejam devidamente documentados para análise e resolução.</p>
+<h2>Histórico da Versão</h2>
+<ul>
+<li>CardDemo_v1.0-15-g27d6c6f-68: Versão inicial - 19 de julho de 2022</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>Este componente define um formato estruturado para capturar e armazenar informações quando um erro (um “abend”) ocorre dentro do Sistema de Cartões. Esta informação é crucial para entender o que deu errado, onde o problema se originou e potencialmente por que aconteceu.</p>
+<p>O processo envolve o preenchimento de uma estrutura de dados predefinida (como um formulário eletrônico) com detalhes importantes sobre o erro:</p>
+<ol>
+<li><strong>Código de Erro (ABEND-CODE):</strong> Um código curto que categoriza o tipo de erro encontrado.</li>
+<li><strong>Programa de Origem (ABEND-CULPRIT):</strong> O nome do programa ou componente do sistema onde o erro se originou.</li>
+<li><strong>Explicação (ABEND-REASON):</strong> Uma descrição mais detalhada da causa do erro.</li>
+<li><strong>Mensagem Geral (ABEND-MSG):</strong> Uma mensagem amigável associada ao erro.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Detecção de Erros:</strong> O sistema deve ter mecanismos para detectar e reconhecer quando uma condição de erro ocorre durante o processamento.</li>
+<li><strong>Rotina de Tratamento de Erros:</strong> Um programa ou bloco de código específico deve ser invocado para lidar com o erro e iniciar o processo de registro.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<p>Embora este componente não execute a validação de dados em si, o ato de registrar erros em um formato estruturado impõe implicitamente consistência e facilita a análise. Isso, por sua vez, suporta as seguintes regras de negócios:</p>
+<ul>
+<li><strong>Relato de Erros Consistente:</strong> Garante que todos os erros sejam documentados de forma uniforme, independentemente de onde ocorram no sistema.</li>
+<li><strong>Diagnóstico de Problemas Simplificado:</strong> O formato estruturado facilita para as equipes técnicas entenderem rapidamente a natureza do erro e iniciarem a solução de problemas.</li>
+<li><strong>Estabilidade Aprimorada do Sistema:</strong> Ao interromper o processamento e registrar o erro, o sistema evita potencial corrupção de dados ou falhas em cascata.</li>
+</ul>
+<h2>Detalhes Técnicos, Variáveis e Métodos</h2>
+<ul>
+<li><strong>ABEND-CODE (PIC X(4)):</strong> Um código de 4 caracteres representando o tipo específico de erro.</li>
+<li><strong>ABEND-CULPRIT (PIC X(8)):</strong> Um campo de 8 caracteres para armazenar o nome do programa ou componente onde o erro ocorreu.</li>
+<li><strong>ABEND-REASON (PIC X(50)):</strong> Um campo de 50 caracteres para uma explicação mais detalhada da causa do erro.</li>
+<li><strong>ABEND-MSG (PIC X(72)):</strong> Um campo de 72 caracteres para uma mensagem geral associada ao erro.</li>
+</ul>
+<h2>Segurança</h2>
+<p>Embora não seja explicitamente mencionado, o tratamento seguro dos logs de erros é fundamental:</p>
+<ul>
+<li><strong>Controle de Acesso:</strong> Somente pessoal autorizado deve ter acesso aos logs de erros para evitar a divulgação de informações e o uso indevido potencial.</li>
+<li><strong>Integridade do Log:</strong> Medidas devem estar em vigor para garantir a integridade dos logs de erros, evitando modificação ou exclusão não autorizada.</li>
+</ul>
+<h2>Impacto da aplicação sobre outras no projeto</h2>
+<p>Este componente tem um impacto em todo o sistema, pois fornece um mecanismo centralizado para lidar e registrar erros em todos os programas e componentes.</p>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Nome do Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ABEND-CODE</td>
+<td>String(4)</td>
+<td>Código de categoria de erro</td>
+</tr>
+<tr>
+<td>ABEND-CULPRIT</td>
+<td>String(8)</td>
+<td>Programa ou componente onde o erro ocorreu</td>
+</tr>
+<tr>
+<td>ABEND-REASON</td>
+<td>String(50)</td>
+<td>Explicação detalhada do erro</td>
+</tr>
+<tr>
+<td>ABEND-MSG</td>
+<td>String(72)</td>
+<td>Mensagem geral de erro</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li>Rotinas de Tratamento de Erros: Qualquer programa ou bloco de código que invoca este mecanismo de registro de erros.</li>
+</ul>
+<p><strong>Considerações Adicionais:</strong></p>
+<ul>
+<li><strong>Retenção de Logs:</strong> Estabeleça políticas claras sobre os períodos de retenção de logs, considerando os requisitos legais e operacionais.</li>
+<li><strong>Registro Centralizado:</strong> Explore o uso de um sistema de registro centralizado para agregar logs de erros de várias fontes para análise abrangente.</li>
+<li><strong>Padronização do Código de Erro:</strong> Defina um conjunto abrangente de códigos de erro que cubram uma ampla gama de problemas potenciais dentro do Sistema de Cartões.</li>
+<li><strong>Alertas Automatizados:</strong> Implemente mecanismos de alerta automatizados para notificar o pessoal relevante sobre erros críticos em tempo real.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

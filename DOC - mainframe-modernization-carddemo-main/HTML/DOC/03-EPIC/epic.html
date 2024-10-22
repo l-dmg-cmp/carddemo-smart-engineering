@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>epic</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Documento de Título:</strong> Aplicativo CardDemo - Especificação do Programa</h1>
+<h1><strong>Épico 1: Gestão de Produtos de Investimento</strong></h1>
+<ul>
+<li><strong>Objetivo:</strong> Fornecer um conjunto abrangente de ferramentas para criar, gerenciar, configurar e gerar relatórios sobre produtos de investimento oferecidos pelo Sicredi.</li>
+<li><strong>Atores:</strong> Gerentes de produto, analistas financeiros, administradores de sistema, caixas bancários, representantes de atendimento ao cliente.</li>
+<li><strong>Requisitos:</strong>
+<ul>
+<li>Capacidade de definir e configurar vários tipos de produtos de investimento, incluindo renda fixa, renda variável, contas de poupança e produtos especializados.</li>
+<li>Suporte para diferentes métodos de cálculo de taxa de juros, estruturas de taxas e regimes fiscais.</li>
+</ul>
+</li>
+<li><strong>Arquivos Envolvidos:</strong>
+<ul>
+<li><code>ccrmbaa.prg</code> (Cadastro de Aplicações de Investimento)</li>
+<li><code>ccrmbba.prg</code> (Resgate de Título de Investimento)</li>
+<li><code>ccrmbbc.prg</code> (Gerenciamento de Resgates de Produtos Exclusivos)</li>
+<li><code>ccrmbeb.prg</code> (Renegociação de Taxas de Juros)</li>
+<li><code>ccrmbeq.prg</code> (Gerenciamento de Grupos de Taxas de Investimento)</li>
+<li><code>ccrmber.prg</code> (Gerenciamento de Taxas de Poupança)</li>
+<li><code>ccrmcab.prg</code> (Relatório de Listagem de Produtos)</li>
+</ul>
+</li>
+</ul>
+<h1><strong>Épico 2: Gestão de Contas</strong></h1>
+<ul>
+<li><strong>Objetivo:</strong> Fornecer funcionalidades para gerenciar contas de clientes, incluindo visualização, atualização e realização de transações.</li>
+<li><strong>Atores:</strong> Representantes de atendimento ao cliente, administradores de sistema, clientes (por meio de internet banking).</li>
+<li><strong>Requisitos:</strong>
+<ul>
+<li>Capacidade de visualizar saldos de contas, histórico de transações e detalhes da conta.</li>
+<li>Funcionalidade para atualizar informações do cliente, como endereço, número de telefone e e-mail.</li>
+<li>Suporte para várias operações de conta, incluindo depósitos, saques, transferências e pagamentos de contas.</li>
+</ul>
+</li>
+<li><strong>Arquivos Envolvidos:</strong>
+<ul>
+<li><code>COACTUPC.cbl</code> (Atualização de Conta CardDemo)</li>
+<li><code>COACTVWC.cbl</code> (Sistema de Gerenciamento de Cartão de Crédito - Funcionalidade de Visualização de Conta)</li>
+<li><code>CVACT01Y.cpy</code> (Sistema de Gerenciamento de Conta CardDemo - Especificação de Registro de Conta)</li>
+</ul>
+</li>
+</ul>
+<h1><strong>Épico 3: Gestão de Cartão de Crédito</strong></h1>
+<ul>
+<li><strong>Objetivo:</strong> Gerenciar o ciclo de vida do cartão de crédito, incluindo a emissão de novos cartões, ativação/desativação de cartões, definição de limites de crédito e tratamento de transações relacionadas a cartões.</li>
+<li><strong>Atores:</strong> Analistas de crédito, representantes de atendimento ao cliente, administradores de sistema.</li>
+<li><strong>Requisitos:</strong>
+<ul>
+<li>Capacidade de gerar novos números de cartão de crédito e associá-los a contas de clientes.</li>
+<li>Funcionalidade para ativar, desativar e bloquear cartões de crédito.</li>
+<li>Suporte para definir e ajustar limites de crédito.</li>
+<li>Processos para lidar com pagamentos com cartão de crédito, compras, adiantamentos em dinheiro e outras transações.</li>
+</ul>
+</li>
+<li><strong>Arquivos Envolvidos:</strong>
+<ul>
+<li><code>CBACT02C.cbl</code> (Processador de Arquivo de Dados do Cartão)</li>
+<li><code>CBACT03C.cbl</code> (Processador de Arquivo de Dados de Referência Cruzada de Conta do Cartão)</li>
+<li><code>COCRDLIC.cbl</code> (Exibição e Navegação da Lista de Cartão de Crédito)</li>
+<li><code>COCRDSLC.cbl</code> (Sistema de Recuperação de Detalhes do Cartão de Crédito)</li>
+<li><code>COCRDUPC.cbl</code> (Programa de Atualização de Detalhes do Cartão de Crédito)</li>
+<li><code>CVACT02Y.cpy</code> (Especificação da Estrutura de Dados do Cartão)</li>
+<li><code>CVACT03Y.cpy</code> (Sistema de Gerenciamento de Cartão de Crédito - Especificação de Dados de Referência Cruzada do Cartão)</li>
+<li><code>COCRDLI_CPY.md</code> (Especificação de Layout de Dados do Cartão de Crédito para Sistemas Internos e Externos)</li>
+<li><code>COCRDSL_CPY.md</code> (Especificação da Estrutura de Exibição do Cartão de Crédito)</li>
+<li><code>COCRDUP_CPY.md</code> (Estrutura de Dados de Verificação de Duplicatas de Cartão de Crédito)</li>
+</ul>
+</li>
+</ul>
+<h1><strong>Épico 4: Processamento de Transações</strong></h1>
+<ul>
+<li><strong>Objetivo:</strong> Processar vários tipos de transações de forma eficiente, precisa e segura, garantindo a integridade dos dados e a conformidade regulatória.</li>
+<li><strong>Atores:</strong> Administradores de sistema, sistema de processamento em lote, sistemas de câmaras de compensação.</li>
+<li><strong>Requisitos:</strong>
+<ul>
+<li>Suporte para processar transações com cartão de crédito de vários canais, como online, terminais POS e caixas eletrônicos.</li>
+<li>Mecanismos de autorização de transação em tempo real e detecção de fraude.</li>
+<li>Processos precisos e eficientes de liquidação e reconciliação de transações.</li>
+<li>Conformidade com os padrões da indústria, como PCI DSS, para tratamento seguro de dados confidenciais do titular do cartão.</li>
+</ul>
+</li>
+<li><strong>Arquivos Envolvidos:</strong>
+<ul>
+<li><code>CBACT04C.cbl</code> (Cálculo de Juros do CardDemo)</li>
+<li><code>CBSTM03A.CBL</code> (Geração de Extrato de Conta do CardDemo)</li>
+<li><code>CBSTM03B.CBL</code> (Sub-rotina do Processador de Arquivo de Transação do Cartão)</li>
+<li><code>CBTRN01C.cbl</code> (Processamento Diário de Transações do CardDemo)</li>
+<li><code>CBTRN02C.cbl</code> (Processamento Diário de Transações do CardDemo)</li>
+<li><code>CBTRN03C.cbl</code> (Geração de Relatório de Detalhes de Transação de Cartão de Crédito do CardDemo)</li>
+<li><code>COBIL00C.cbl</code> (Pagamento de Conta Online do CardDemo)</li>
+<li><code>COTRN00C.cbl</code> (Aplicativo CardDemo: Funcionalidade de Listagem de Transações)</li>
+<li><code>COTRN01C.cbl</code> (Recuperação de Detalhes da Transação do CardDemo)</li>
+<li><code>COTRN02C.cbl</code> (Adição de Transação do CardDemo)</li>
+<li><code>COSTM01_CPY.md</code> (Estrutura de Relatórios de Transações do CardDemo)</li>
+<li><code>COBIL00_CPY.md</code> (Processador de Transações de Pagamento de Conta)</li>
+<li><code>COTRN00_CPY.md</code> (Sistema de Tratamento de Transações)</li>
+<li><code>COTRN01_CPY.md</code> (Especificação de Registro de Transação de Cartão de Crédito)</li>
+<li><code>COTRN02_CPY.md</code> (Estrutura de Dados de Transação do Cartão)</li>
+</ul>
+</li>
+</ul>
+<h1><strong>Épico 5: Relatórios e Análise</strong></h1>
+<ul>
+<li><strong>Objetivo:</strong> Gerar vários relatórios e fornecer insights analíticos para apoiar a tomada de decisão, acompanhar o desempenho dos negócios e garantir a conformidade regulatória.</li>
+<li><strong>Atores:</strong> Gerenciamento, analistas de negócios, auditores.</li>
+<li><strong>Requisitos:</strong>
+<ul>
+<li>Capacidade de gerar relatórios sobre indicadores-chave de desempenho, como volume de transações, receita e taxas de fraude.</li>
+<li>Recursos de relatórios personalizáveis para permitir que os usuários definam filtros de dados específicos, intervalos de datas e formatos de relatório.</li>
+<li>Integração com ferramentas de visualização de dados para criar painéis interativos e relatórios.</li>
+<li>Geração de relatórios regulatórios exigidos por órgãos governamentais e padrões da indústria.</li>
+</ul>
+</li>
+<li><strong>Arquivos Envolvidos:</strong>
+<ul>
+<li><code>CBSTM03A.CBL</code> (Geração de Extrato de Conta do CardDemo)</li>
+<li><code>CBTRN03C.cbl</code> (Geração de Relatório de Detalhes de Transação de Cartão de Crédito do CardDemo)</li>
+<li><code>CORPT00C.cbl</code> (Geração de Relatório de Transações do CardDemo)</li>
+<li><code>COSTM01_CPY.md</code> (Estrutura de Relatórios de Transações do CardDemo)</li>
+<li><code>CORPT00_CPY.md</code> (Entrada de Parâmetro de Relatório Corporativo)</li>
+<li><code>CVTRA07Y.cpy</code> (Especificação de Layout de Relatório de Transação de Cartão)</li>
+</ul>
+</li>
+</ul>
+<h1><strong>Épico 6: Gestão de Usuários e Segurança</strong></h1>
+<ul>
+<li><strong>Objetivo:</strong> Gerenciar o acesso, funções e permissões do usuário para garantir a segurança do sistema e a confidencialidade dos dados.</li>
+<li><strong>Atores:</strong> Administradores de sistema, administradores de segurança.</li>
+<li><strong>Requisitos:</strong>
+<ul>
+<li>Controle de acesso baseado em função (RBAC) para restringir o acesso do usuário a funcionalidades autorizadas.</li>
+<li>Mecanismos de autenticação fortes, como autenticação de dois fatores, para evitar acesso não autorizado.</li>
+<li>Trilhas de auditoria para rastrear ações do usuário e alterações no sistema para fins de segurança e conformidade.</li>
+<li>Políticas e procedimentos seguros de gerenciamento de senhas.</li>
+</ul>
+</li>
+<li><strong>Arquivos Envolvidos:</strong>
+<ul>
+<li><code>COADM01C.cbl</code> (Aplicativo CardDemo: Menu Administrativo)</li>
+<li><code>COSGN00C.cbl</code> (Aplicativo CardDemo: Autenticação de Usuário Segura e Controle de Acesso)</li>
+<li><code>COUSR00C.cbl</code> (Gerenciamento de Usuários do CardDemo: Listar Usuários)</li>
+<li><code>COUSR01C.cbl</code> (Sistema de Gerenciamento de Usuários do CardDemo)</li>
+<li><code>COUSR02C.cbl</code> (Programa de Atualização de Usuário do CardDemo)</li>
+<li><code>COUSR03C.cbl</code> (Gerenciamento de Usuários do CardDemo - Exclusão de Usuário)</li>
+<li><code>COADM02Y_cpy.md</code> (Menu de Gerenciamento de Usuários do CardDemo)</li>
+<li><code>COMEN02Y_cpy.md</code> (Aplicativo CardDemo: Menu do Administrador)</li>
+<li><code>COADM01_CPY.md</code> (Sistema de Exibição de Dados Administrativos do CardDemo)</li>
+<li><code>COSGN00_CPY.md</code> (Gerenciamento de Informações de Login do Usuário)</li>
+<li><code>COUSR00_CPY.md</code> (Tela de Gerenciamento de Usuário)</li>
+<li><code>COUSR01_CPY.md</code> (Gerenciamento de Informações do Usuário)</li>
+<li><code>COUSR02_CPY.md</code> (Sistema de Gerenciamento de Conta de Usuário)</li>
+<li><code>COUSR03_CPY.md</code> (Gerenciamento de Informações do Usuário)</li>
+</ul>
+</li>
+</ul>
+<h1><strong>Épico 7: Processamento em Lote</strong></h1>
+<ul>
+<li><strong>Objetivo:</strong> Lidar com grandes volumes de dados e realizar operações durante o horário de pico para garantir o desempenho eficiente do sistema.</li>
+<li><strong>Atores:</strong> Agendadores, sistema de processamento em lote.</li>
+<li><strong>Requisitos:</strong>
+<ul>
+<li>Agendamento automatizado e execução de trabalhos em lote.</li>
+</ul>
+</li>
+<li><strong>Arquivos Envolvidos:</strong>
+<ul>
+<li><code>CBACT01C.cbl</code> (Aplicativo CardDemo: Processamento em Lote de Dados de Conta)</li>
+<li><code>CBACT02C.cbl</code> (Processador de Arquivo de Dados do Cartão)</li>
+<li><code>CBACT03C.cbl</code> (Processador de Arquivo de Dados de Referência Cruzada de Conta do Cartão)</li>
+<li><code>CBACT04C.cbl</code> (Cálculo de Juros do CardDemo)</li>
+<li><code>CBCUS01C.cbl</code> (Extração de Dados do Cliente do CardDemo)</li>
+<li><code>CBSTM03A.CBL</code> (Geração de Extrato de Conta do CardDemo)</li>
+<li><code>CBTRN01C.cbl</code> (Processamento Diário de Transações do CardDemo)</li>
+<li><code>CBTRN02C.cbl</code> (Processamento Diário de Transações do CardDemo)</li>
+<li><code>CBTRN03C.cbl</code> (Geração de Relatório de Detalhes de Transação de Cartão de Crédito do CardDemo)</li>
+</ul>
+</li>
+</ul>
+<h1><strong>Épico 8: Gestão de Dados do Cliente</strong></h1>
+<ul>
+<li><strong>Objetivo:</strong> Manter informações precisas e atualizadas do cliente para várias operações comerciais, incluindo gerenciamento de contas, marketing e atendimento ao cliente.</li>
+<li><strong>Atores:</strong> Representantes de atendimento ao cliente, equipe de marketing, analistas de dados.</li>
+<li><strong>Requisitos:</strong>
+<ul>
+<li>Armazenamento centralizado de dados do cliente, incluindo informações de contato, dados demográficos e preferências de conta.</li>
+<li>Processos de validação e limpeza de dados para garantir a precisão e consistência dos dados.</li>
+<li>Capacidade de segmentar dados de clientes para campanhas de marketing direcionadas e atendimento personalizado ao cliente.</li>
+<li>Conformidade com os regulamentos de privacidade de dados, como GDPR, para lidar com informações confidenciais do cliente.</li>
+</ul>
+</li>
+<li><strong>Arquivos Envolvidos:</strong>
+<ul>
+<li><code>CBCUS01C.cbl</code> (Extração de Dados do Cliente do CardDemo)</li>
+<li><code>CUSTREC_cpy.md</code> (Especificação de Registro de Dados do Cliente)</li>
+<li><code>CVCUS01Y_cpy.md</code> (Especificação de Dados do Cliente)</li>
+<li><code>CUSTREC.cpy</code> (Especificação de Registro de Dados do Cliente)</li>
+</ul>
+</li>
+</ul>
+<h1><strong>Épico 9: Utilitários do Sistema</strong></h1>
+<ul>
+<li><strong>Objetivo:</strong> Fornecer um conjunto de funções utilitárias para oferecer suporte à manutenção do sistema, gerenciamento de dados e outras tarefas operacionais.</li>
+<li><strong>Atores:</strong> Administradores de sistema, desenvolvedores.</li>
+<li><strong>Requisitos:</strong>
+<ul>
+<li>Utilitários para conversão de dados, como formatos de data e hora, para garantir a compatibilidade entre diferentes sistemas.</li>
+<li>Funções para registro, tratamento de erros e depuração para facilitar a solução de problemas e manutenção do sistema.</li>
+<li>Ferramentas para backup e recuperação de dados para evitar perda de dados e garantir a continuidade dos negócios.</li>
+</ul>
+</li>
+<li><strong>Arquivos Envolvidos:</strong>
+<ul>
+<li><code>CSUTLDTC.cbl</code> (Aplicativo CardDemo: Utilitário de Conversão de Data)</li>
+<li><code>CSDAT01Y_cpy.md</code> (Gerenciamento de Data e Hora do CardDemo)</li>
+<li><code>CSLKPCDY_cpy.md</code> (Guardião da Integridade de Dados: Garantindo Números de Telefone, Códigos de Estado e CEPs Precisos)</li>
+<li><code>CSMSG01Y_cpy.md</code> (Exibição de Mensagem do Aplicativo CardDemo)</li>
+<li><code>CSMSG02Y_cpy.md</code> (Tratamento de Erros do Sistema do Cartão)</li>
+<li><code>CSSETATY_cpy.md</code> (Validação de Campo do CardDemo)</li>
+<li><code>CSSTRPFY_cpy.md</code> (Tradutor de Ação do Usuário CICS)</li>
+<li><code>CSUSR01Y_cpy.md</code> (Gerenciamento de Perfil de Segurança do Usuário)</li>
+<li><code>CSUTLDPY_cpy.md</code> (Aplicativo CardDemo - Módulo de Validação de Data)</li>
+<li><code>CSUTLDWY_cpy.md</code> (Kit de Ferramentas de Gerenciamento de Data)</li>
+<li><code>CSDAT01Y.cpy</code> (Aplicativo CardDemo - Especificação Padrão de Data e Hora)</li>
+<li><code>CSLKPCDY.cpy</code> (Guardião da Integridade de Dados: Garantindo Números de Telefone, Códigos de Estado e CEPs Precisos)</li>
+<li><code>CSMSG01Y.cpy</code> (Aplicativo CardDemo - Especificação do Repositório de Mensagens Comuns)</li>
+<li><code>CSMSG02Y.cpy</code> (Especificação de Registro de Erros do Sistema do Cartão)</li>
+<li><code>CSSETATY.cpy</code> (Especificação de Validação de Campo do CardDemo)</li>
+<li><code>CSSTRPFY.cpy</code> (Especificação do Tradutor de Ação do Usuário CICS)</li>
+<li><code>CSUSR01Y.cpy</code> (Perfil de Segurança do Usuário - Especificação da Estrutura de Dados)</li>
+<li><code>CSUTLDPY.cpy</code> (Aplicativo CardDemo - Especificação do Módulo de Validação de Data)</li>
+<li><code>CSUTLDWY.cpy</code> (Kit de Ferramentas de Gerenciamento de Data - Especificação COBOL Copybook)</li>
+</ul>
+</li>
+</ul>
+<h1><strong>Épico 10: Gestão de Arquivos de Dados</strong></h1>
+<ul>
+<li><strong>Objetivo:</strong> Definir e gerenciar arquivos de dados usados para armazenar e recuperar informações no aplicativo CardDemo.</li>
+<li><strong>Atores:</strong> Administradores de sistema, administradores de banco de dados.</li>
+<li><strong>Requisitos:</strong>
+<ul>
+<li>Definição de estruturas de arquivo, layouts de registro e tipos de dados.</li>
+<li>Alocação de espaço de armazenamento e gerenciamento de permissões de acesso a arquivos.</li>
+<li>Implementação de procedimentos de backup e recuperação de dados para arquivos de dados críticos.</li>
+<li>Monitoramento do uso do arquivo e ajuste de desempenho conforme necessário.</li>
+</ul>
+</li>
+<li><strong>Arquivos Envolvidos:</strong>
+<ul>
+<li><code>LISTCAT.txt</code> (Aplicativo CardDemo: Inventário de Armazenamento de Dados)</li>
+<li><code>acctdata.txt</code> (Sistema de Gerenciamento de Cartão de Crédito - Especificação de Dados da Conta)</li>
+<li><code>carddata.txt</code> (Extração e Validação de Dados do Cartão de Crédito)</li>
+<li><code>cardxref.txt</code> (Sistema de Rastreamento de Cartão de Crédito)</li>
+<li><code>custdata.txt</code> (Sistema de Gerenciamento de Dados do Cliente)</li>
+<li><code>dailytran.txt</code> (Sistema de Processamento de Transações Diárias)</li>
+<li><code>discgrp.txt</code> (Especificação de Alocação de Grupo de Disco)</li>
+<li><code>tcatbal.txt</code> (Especificação de Relatório de Saldo da Categoria de Transação)</li>
+<li><code>trancatg.txt</code> (Sistema de Processamento de Transações com Cartão de Crédito)</li>
+<li><code>trantype.txt</code> (Tradutor de Código de Tipo de Transação)</li>
+</ul>
+</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

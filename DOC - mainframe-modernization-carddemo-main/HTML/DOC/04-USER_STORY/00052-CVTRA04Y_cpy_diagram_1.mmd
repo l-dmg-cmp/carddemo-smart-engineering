@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant CardDemo Application
+    participant Transaction Data
+    participant CVTRA04Y
+
+    activate CardDemo Application
+    CardDemo Application->>+Transaction Data: Request Transaction Category
+    Transaction Data-->>-CardDemo Application:  Provide Transaction Type Code (e.g., 'PR') and Category Code (e.g., '0001')
+    CardDemo Application->>+CVTRA04Y:  Lookup Transaction Category
+    alt Valid Transaction Type Code and Category Code
+        CVTRA04Y->>CardDemo Application: Return Matching Transaction Category Details 
+    else Invalid or Missing Transaction Type Code or Category Code
+        CVTRA04Y-->>-CardDemo Application: Return Error (Invalid or Missing Category)
+        CardDemo Application->>CardDemo Application: Log Error
+    end

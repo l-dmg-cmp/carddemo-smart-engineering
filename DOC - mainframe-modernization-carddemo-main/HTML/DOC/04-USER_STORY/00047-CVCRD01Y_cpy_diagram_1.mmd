@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant CreditCardSystem
+    participant AccountData
+    participant CustomerData
+    participant UserInterface
+
+    activate CreditCardSystem
+    CreditCardSystem->>+AccountData: Retrieve Account Information (CC-ACCT-ID, CC-CARD-NUM)
+    AccountData-->>-CreditCardSystem: Account Information Retrieved
+    CreditCardSystem->>+CustomerData: Retrieve Customer Details (CC-CUST-ID)
+    CustomerData-->>-CreditCardSystem: Customer Details Retrieved
+    CreditCardSystem->>+UserInterface: Display Information
+    UserInterface->>-CreditCardSystem: User Action Received (CCARD-AID-ENTER)
+    CreditCardSystem->>+CreditCardSystem: Process User Action, Update Data
+    deactivate CreditCardSystem

@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00075-acctdata_txt</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Validador e Processador de Arquivo de Dados de Conta</h1>
+<h2><strong>Descrição Resumida:</strong></h2>
+<p>Este programa valida registros de clientes de um arquivo de entrada (<code>acctdata.txt</code>) com base em regras de negócios predefinidas, com foco principal no formato e conteúdo dos dados. Os registros que passam na validação são gravados em um arquivo de saída, enquanto os registros inválidos são registrados para posterior investigação e correção.</p>
+<h2><strong>Histórias do Usuário:</strong></h2>
+<p>Como analista de dados, desejo garantir que apenas dados de contas válidos e formatados corretamente sejam usados para análise e geração de relatórios. Este programa me ajudará identificando e separando automaticamente os registros inválidos, economizando meu tempo e reduzindo erros em minhas análises.</p>
+<h2><strong>Épico Relacionado:</strong></h2>
+<p>10 - Gerenciamento de Arquivos de Dados</p>
+<h2><strong>Requisitos Funcionais:</strong></h2>
+<ol>
+<li><strong>Ler Arquivo de Entrada:</strong> O programa deve ser capaz de ler registros de clientes de um arquivo de entrada chamado <code>acctdata.txt</code>.</li>
+<li><strong>Validar Formato do Registro:</strong> Cada registro deve estar em conformidade com um formato predefinido (por exemplo, colunas de largura fixa, campos delimitados). O programa deve identificar e sinalizar quaisquer desvios deste formato.
+<ul>
+<li><strong>Número da Conta:</strong> 10 dígitos, somente numéricos.</li>
+<li><strong>Tipo de Conta:</strong> 1 caractere, alfanumérico.</li>
+<li><strong>Limite de Crédito:</strong> 6 dígitos, somente numéricos.</li>
+<li><strong>Saldo Atual:</strong> 6 dígitos, somente numéricos.</li>
+<li><strong>Data de Abertura da Conta:</strong> Formato AAAA-MM-DD.</li>
+<li><strong>Data da Última Transação:</strong> Formato AAAA-MM-DD.</li>
+<li><strong>Data do Último Extrato:</strong> Formato AAAA-MM-DD.</li>
+<li><strong>Status da Conta:</strong> 1 caractere.</li>
+</ul>
+</li>
+<li><strong>Validar Conteúdo de Dados:</strong> O programa deve verificar a validade de campos de dados individuais com base em regras de negócios. Por exemplo:
+<ul>
+<li><strong>Limite de Crédito:</strong> Não pode ser negativo.</li>
+<li><strong>Saldo Atual:</strong> Não pode exceder o Limite de Crédito.</li>
+<li><strong>Status da Conta:</strong> Deve ser um dos códigos de status permitidos (por exemplo, A - Ativo, C - Fechado, S - Suspenso).</li>
+</ul>
+</li>
+<li><strong>Registrar Registros Inválidos:</strong> Para cada registro que falhar na validação, o programa deve registrar o seguinte:
+<ul>
+<li><strong>Número do Registro:</strong> O número da linha do arquivo de entrada.</li>
+<li><strong>Código de Erro:</strong> Um código que identifica a regra de validação específica que falhou.</li>
+<li><strong>Descrição do Erro:</strong> Uma breve descrição do erro.</li>
+</ul>
+</li>
+<li><strong>Gravar Registros Válidos:</strong> Os registros que passarem em todas as verificações de validação devem ser gravados em um arquivo de saída.</li>
+<li><strong>Relatório de Erros:</strong> O programa deve gerar um relatório resumido listando todos os registros inválidos e seus erros correspondentes.</li>
+</ol>
+<h2><strong>Requisitos Não Funcionais:</strong></h2>
+<ol>
+<li><strong>Desempenho:</strong> O programa deve ser capaz de processar arquivos de entrada grandes (por exemplo, milhões de registros) em um período de tempo razoável.</li>
+<li><strong>Confiabilidade:</strong> O programa deve ser confiável e produzir resultados consistentes. O tratamento de erros deve ser robusto para evitar a terminação inesperada do programa.</li>
+<li><strong>Manutenibilidade:</strong> O código deve ser bem estruturado, documentado e fácil de entender para futuras manutenções e aprimoramentos.</li>
+<li><strong>Registro em Log:</strong> O programa deve ter um mecanismo para registrar eventos, erros e informações importantes para fins de depuração e auditoria.</li>
+</ol>
+<h2><strong>Critérios de Aceite:</strong></h2>
+<ol>
+<li><strong>Validação e Processamento Bem-Sucedidos:</strong> O programa lê o arquivo <code>acctdata.txt</code>, valida cada registro de acordo com as regras definidas e grava os registros válidos em um arquivo de saída.</li>
+<li><strong>Tratamento de Erros Preciso:</strong> Registros inválidos são identificados e registrados com códigos de erro e descrições específicas.</li>
+<li><strong>Geração de Relatório de Erros:</strong> Um relatório de erros abrangente é gerado, listando todos os registros inválidos e seus erros associados.</li>
+<li><strong>Desempenho e Eficiência:</strong> O programa demonstra desempenho aceitável em termos de tempo de processamento para diferentes tamanhos de arquivo.</li>
+</ol>
+<h2><strong>Melhorias de Código:</strong></h2>
+<ol>
+<li><strong>Design Modular:</strong> Implemente as regras de validação como funções ou métodos separados para melhorar a organização e a legibilidade do código.</li>
+<li><strong>Arquivo de Configuração:</strong> Use um arquivo de configuração para armazenar regras de validação e parâmetros, permitindo modificações mais fáceis sem alterar o código-fonte.</li>
+<li><strong>Estruturas de Dados:</strong> Utilize estruturas de dados apropriadas (por exemplo, matrizes, estruturas) para armazenar e gerenciar dados com eficiência.</li>
+<li><strong>Tratamento de Exceções:</strong> Implemente o tratamento de exceções para gerenciar erros normalmente e evitar falhas no programa.</li>
+<li><strong>Documentação de Código:</strong> Adicione comentários claros e concisos para explicar a lógica e a funcionalidade do código.</li>
+</ol>
+<h2><strong>Melhorias de Segurança:</strong></h2>
+<ol>
+<li><strong>Validação de Entrada:</strong> Implemente validação de entrada rígida para evitar o processamento de dados maliciosos ou malformados que podem comprometer o sistema.</li>
+<li><strong>Manipulação Segura de Arquivos:</strong> Garanta que o programa manipule arquivos com segurança, incluindo permissões de arquivo adequadas e exclusão segura de dados confidenciais.</li>
+<li><strong>Registro em Log e Auditoria:</strong> Registre todas as operações de arquivo, resultados de validação e condições de erro para auditoria e análise de segurança.</li>
+</ol>
+<h2><strong>Diagrama Conceitual:</strong></h2>
+<img src="00075-acctdata_txt_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

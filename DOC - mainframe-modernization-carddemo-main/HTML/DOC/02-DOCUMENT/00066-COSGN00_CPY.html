@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00066-COSGN00_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Gerenciamento de Informações de Login do Usuário</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Gerenciamento de Informações de Login do Usuário</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li><code>\COSGN00.CPY</code></li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve a estrutura e as regras de negócio que regem o armazenamento e o tratamento das informações de login do usuário no sistema. Ele se concentra na organização, segurança e integridade dos dados.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>Versão 1.0: Versão Inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>Este código define como o sistema gerencia as informações de login do usuário. Essas informações são organizadas em um formato estruturado, garantindo armazenamento eficiente, recuperação e integridade geral dos dados.</p>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ul>
+<li>O usuário fornece ID de usuário e senha.</li>
+<li>O sistema precisa validar o ID de usuário e a senha em relação às credenciais armazenadas.</li>
+</ul>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Armazenamento Seguro:</strong> IDs de usuário e senhas são tratados como dados confidenciais e seu armazenamento deve ser seguro para evitar acesso não autorizado.</li>
+<li><strong>Tratamento de Erros:</strong> O sistema deve fornecer mensagens de erro claras ao usuário em caso de tentativas de login inválidas, como ID de usuário ou senha incorretos.</li>
+<li><strong>Integridade de Dados:</strong> O sistema deve garantir a consistência e a precisão das informações de login do usuário armazenadas e acessadas.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Estruturas de Dados:</strong></p>
+<ul>
+<li><strong>COSGN0AI:</strong> Esta estrutura define o formato para receber informações de login do usuário. Inclui campos para:
+<ul>
+<li>Nome da Transação (por exemplo, login, logout)</li>
+<li>Títulos de Tela (para fins de exibição)</li>
+<li>Data e Hora da ação</li>
+<li>ID do Usuário</li>
+<li>Senha</li>
+<li>Mensagem de Erro (se aplicável)</li>
+</ul>
+</li>
+<li><strong>COSGN0AO:</strong> Esta estrutura usa a cláusula <code>REDEFINES</code> para fornecer uma visão alternativa dos dados armazenados em <code>COSGN0AI</code>. Isso permite que o sistema interprete os mesmos dados de maneiras diferentes, dependendo do contexto.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Armazenamento Seguro:</strong> A especificação enfatiza o armazenamento seguro de credenciais do usuário (ID do usuário e senha), destacando sua função crítica no acesso ao sistema e segurança. Medidas devem ser tomadas para proteger essas informações contra acesso não autorizado.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<p>O processo de Gerenciamento de Informações de Login do Usuário é crucial para qualquer funcionalidade do sistema que exija autenticação do usuário. Qualquer componente do sistema que dependa da identificação do usuário e controle de acesso será impactado.</p>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Nome do Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRNNAMEL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Nome da transação, representação numérica</td>
+</tr>
+<tr>
+<td>TRNNAMEA</td>
+<td>PICTURE X</td>
+<td>Nome da transação, caractere único</td>
+</tr>
+<tr>
+<td>TRNNAMEI</td>
+<td>PIC X(4)</td>
+<td>Nome da transação, até 4 caracteres</td>
+</tr>
+<tr>
+<td>TITLE01L</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Título da tela, representação numérica</td>
+</tr>
+<tr>
+<td>TITLE01A</td>
+<td>PICTURE X</td>
+<td>Título da tela, caractere único</td>
+</tr>
+<tr>
+<td>TITLE01I</td>
+<td>PIC X(40)</td>
+<td>Título da tela, até 40 caracteres</td>
+</tr>
+<tr>
+<td>CURDATEL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Data atual, representação numérica</td>
+</tr>
+<tr>
+<td>CURDATEA</td>
+<td>PICTURE X</td>
+<td>Data atual, caractere único</td>
+</tr>
+<tr>
+<td>CURDATEI</td>
+<td>PIC X(8)</td>
+<td>Data atual, até 8 caracteres</td>
+</tr>
+<tr>
+<td>PGMNAMEL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Nome do programa, representação numérica</td>
+</tr>
+<tr>
+<td>PGMNAMEA</td>
+<td>PICTURE X</td>
+<td>Nome do programa, caractere único</td>
+</tr>
+<tr>
+<td>PGMNAMEI</td>
+<td>PIC X(8)</td>
+<td>Nome do programa, até 8 caracteres</td>
+</tr>
+<tr>
+<td>TITLE02L</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Título 02, representação numérica</td>
+</tr>
+<tr>
+<td>TITLE02A</td>
+<td>PICTURE X</td>
+<td>Título 02, caractere único</td>
+</tr>
+<tr>
+<td>TITLE02I</td>
+<td>PIC X(40)</td>
+<td>Título 02, até 40 caracteres</td>
+</tr>
+<tr>
+<td>CURTIMEL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Hora atual, representação numérica</td>
+</tr>
+<tr>
+<td>CURTIMEA</td>
+<td>PICTURE X</td>
+<td>Hora atual, caractere único</td>
+</tr>
+<tr>
+<td>CURTIMEI</td>
+<td>PIC X(9)</td>
+<td>Hora atual, até 9 caracteres</td>
+</tr>
+<tr>
+<td>APPLIDL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>ID da aplicação, representação numérica</td>
+</tr>
+<tr>
+<td>APPLIDA</td>
+<td>PICTURE X</td>
+<td>ID da aplicação, caractere único</td>
+</tr>
+<tr>
+<td>APPLIDI</td>
+<td>PIC X(8)</td>
+<td>ID da aplicação, até 8 caracteres</td>
+</tr>
+<tr>
+<td>SYSIDL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>ID do sistema, representação numérica</td>
+</tr>
+<tr>
+<td>SYSIDA</td>
+<td>PICTURE X</td>
+<td>ID do sistema, caractere único</td>
+</tr>
+<tr>
+<td>SYSIDI</td>
+<td>PIC X(8)</td>
+<td>ID do sistema, até 8 caracteres</td>
+</tr>
+<tr>
+<td>USERIDL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>ID do usuário, representação numérica</td>
+</tr>
+<tr>
+<td>USERIDA</td>
+<td>PICTURE X</td>
+<td>ID do usuário, caractere único</td>
+</tr>
+<tr>
+<td>USERIDI</td>
+<td>PIC X(8)</td>
+<td>ID do usuário, até 8 caracteres</td>
+</tr>
+<tr>
+<td>PASSWDL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Senha, representação numérica</td>
+</tr>
+<tr>
+<td>PASSWDA</td>
+<td>PICTURE X</td>
+<td>Senha, caractere único</td>
+</tr>
+<tr>
+<td>PASSWDI</td>
+<td>PIC X(8)</td>
+<td>Senha, até 8 caracteres</td>
+</tr>
+<tr>
+<td>ERRMSGL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Mensagem de erro, representação numérica</td>
+</tr>
+<tr>
+<td>ERRMSGA</td>
+<td>PICTURE X</td>
+<td>Mensagem de erro, caractere único</td>
+</tr>
+<tr>
+<td>ERRMSGI</td>
+<td>PIC X(78)</td>
+<td>Mensagem de erro, até 78 caracteres</td>
+</tr>
+</tbody>
+</table>
+<h2>Referências Principais</h2>
+<ul>
+<li>N/A - Este trecho de código parece independente.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

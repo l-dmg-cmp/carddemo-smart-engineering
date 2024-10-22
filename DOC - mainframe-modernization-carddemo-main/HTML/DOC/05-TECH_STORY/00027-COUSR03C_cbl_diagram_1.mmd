@@ -1,0 +1,36 @@
+sequenceDiagram
+    participant Administrator
+    participant COUSR03C
+    participant COUSR3A Screen
+    participant USRSEC File
+
+    activate Administrator
+    Administrator->>+COUSR03C: Request to delete user (User ID)
+    activate COUSR03C
+    COUSR03C->>+COUSR3A Screen: Display User Deletion screen
+        Administrator->>+COUSR03C: Enter User ID and press Enter
+    activate COUSR03C
+    COUSR03C->>+USRSEC File: Read user record (User ID)
+    activate USRSEC File
+    alt User record found
+        USRSEC File->>COUSR03C: User record details
+        deactivate USRSEC File
+        COUSR03C->>+COUSR3A Screen: Display user details and confirmation message
+                Administrator->>+COUSR03C: Press PF5 to confirm deletion
+        activate COUSR03C
+        COUSR03C->>+USRSEC File: Delete user record (User ID)
+        activate USRSEC File
+        alt Deletion successful
+            USRSEC File->>COUSR03C: Deletion confirmation
+                        COUSR03C->>+COUSR3A Screen: Display deletion success message
+                    else Deletion failed
+            USRSEC File->>COUSR03C: Deletion error message
+                        COUSR03C->>+COUSR3A Screen: Display deletion error message
+                    end
+    else User record not found
+        USRSEC File->>COUSR03C: User not found message
+        deactivate USRSEC File
+        COUSR03C->>+COUSR3A Screen: Display user not found message
+    end
+    deactivate COUSR03C
+    deactivate Administrator

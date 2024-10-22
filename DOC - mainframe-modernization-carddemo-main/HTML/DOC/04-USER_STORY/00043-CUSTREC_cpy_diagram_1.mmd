@@ -1,0 +1,30 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant Program
+    participant InputFile
+    participant OutputFile
+    participant ErrorLog
+
+    activate Program
+
+    Program->>+InputFile: Open
+    InputFile-->>-Program: Open Successful
+
+    loop For Each Customer Record
+        Program->>+InputFile: Read Record
+        InputFile-->>-Program: Customer Record Data        
+        alt Customer Data is Valid            
+            Program->>+OutputFile: Write Record
+            OutputFile-->>-Program: Write Successful
+        else Customer Data is Invalid
+            Program->>+ErrorLog: Log Error (Invalid Data)
+            ErrorLog-->>-Program: Error Logged
+        end
+    end
+    
+    Program->>+OutputFile: Close
+    OutputFile->>-Program: Close    
+    
+    Program->>+InputFile: Close
+    InputFile->>-Program: Close  
+    deactivate Program

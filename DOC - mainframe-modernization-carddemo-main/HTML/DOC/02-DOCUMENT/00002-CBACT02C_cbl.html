@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00002-CBACT02C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h1><strong>Processador de Arquivo de Dados de Cartão</strong></h1>
+<h2>Título</h2>
+<ul>
+<li>Documento de Título: Aplicativo CardDemo - Especificação do Processador de Lote de Arquivos de Dados de Cartão</li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve as especificações do programa “CBACT02C”, um componente de processamento em lote dentro do aplicativo CardDemo. Este programa é responsável por ler sequencialmente e exibir informações de cartão de crédito armazenadas em um arquivo VSAM KSDS chamado “CARDFILE”.</p>
+<h2>Histórico da Versão</h2>
+<ul>
+<li>Versão CardDemo_v1.0-15-g27d6c6f-68: Versão inicial - 19 de julho de 2022</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O programa CBACT02C executa as seguintes ações:</p>
+<ol>
+<li><strong>Abertura do Arquivo:</strong> Abre o “CARDFILE” para leitura.</li>
+<li><strong>Leitura de Dados:</strong> Lê sequencialmente cada registro do “CARDFILE”.</li>
+<li><strong>Exibição de Dados:</strong> Exibe o conteúdo de cada registro lido. O destino da saída (tela ou impressora) não está explicitamente definido no código fornecido.</li>
+<li><strong>Tratamento de Erros:</strong> Implementa rotinas de tratamento de erros para gerenciar problemas encontrados durante o acesso ao arquivo ou leitura de dados. Mensagens de erro específicas são exibidas e o programa pode terminar anormalmente em caso de erros graves.</li>
+<li><strong>Fechamento do Arquivo:</strong> Fecha o “CARDFILE” após o processamento bem-sucedido de todos os registros ou ocorrência de um erro.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>CARDFILE:</strong> Um arquivo VSAM KSDS chamado “CARDFILE” contendo dados do cartão de crédito. A estrutura do arquivo e o layout do registro devem estar em conformidade com as expectativas do programa.</li>
+<li><strong>Ambiente de Execução:</strong> Um ambiente mainframe capaz de executar programas COBOL e interagir com conjuntos de dados VSAM.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Processamento Sequencial:</strong> O programa processa os registros do cartão de crédito sequencialmente na ordem em que estão armazenados no “CARDFILE”.</li>
+<li><strong>Relato de Erros:</strong> Quaisquer problemas encontrados durante as operações de acesso ao arquivo ou leitura de dados são relatados com mensagens de erro descritivas, facilitando o diagnóstico e a resolução do problema.</li>
+<li><strong>Integridade de Dados:</strong> O programa prioriza a integridade dos dados, garantindo a abertura e fechamento adequados do “CARDFILE”, minimizando o risco de corrupção ou perda de dados.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Programa Principal:</strong></p>
+<ul>
+<li><strong><code>CBACT02C</code>:</strong> O principal programa COBOL responsável por executar o processo de leitura e exibição do arquivo de dados do cartão.</li>
+</ul>
+<p><strong>Principais Funções/Parágrafos:</strong></p>
+<ul>
+<li><strong><code>1000-CARDFILE-GET-NEXT</code>:</strong> Lê o próximo registro do “CARDFILE”.</li>
+<li><strong><code>0000-CARDFILE-OPEN</code>:</strong> Abre o “CARDFILE” para operações de entrada.</li>
+<li><strong><code>9000-CARDFILE-CLOSE</code>:</strong> Fecha o “CARDFILE”.</li>
+<li><strong><code>9999-ABEND-PROGRAM</code>:</strong> Termina o programa anormalmente em caso de erros graves.</li>
+<li><strong><code>9910-DISPLAY-IO-STATUS</code>:</strong> Exibe as informações de status do arquivo.</li>
+</ul>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>CARDFILE-STATUS</code>:</strong> Um campo de dois bytes contendo o código de status do arquivo retornado após cada operação de E/S no “CARDFILE”.</li>
+<li><strong><code>END-OF-FILE</code>:</strong> Um sinalizador indicando se o final do “CARDFILE” foi atingido.</li>
+<li><strong><code>CARD-RECORD</code>:</strong> Uma estrutura de dados que contém o conteúdo do registro do cartão de crédito atual lido do “CARDFILE”.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Não Aplicável:</strong> O trecho de código fornecido não contém nenhuma lógica ou funcionalidade específica relacionada à segurança.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Mínimo:</strong> O impacto do programa em outros sistemas é limitado à leitura de dados do “CARDFILE”. Ele não interage diretamente ou modifica nenhum outro sistema ou aplicativo.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FD-CARD-NUM</td>
+<td>PIC X(16)</td>
+<td>Número do cartão de crédito.</td>
+</tr>
+<tr>
+<td>FD-CARD-DATA</td>
+<td>PIC X(134)</td>
+<td>Dados restantes do cartão de crédito (detalhes não especificados no código fornecido).</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>VSAM (Virtual Storage Access Method):</strong> O sistema de gerenciamento de arquivos usado para armazenar e acessar o “CARDFILE”.</li>
+<li><strong>COBOL (Common Business-Oriented Language):</strong> A linguagem de programação usada para escrever o programa “CBACT02C”.</li>
+<li><strong>JCL (Job Control Language):</strong> Usado para definir e gerenciar trabalhos em lote em um ambiente mainframe (não incluído diretamente no trecho de código, mas implicitamente necessário para a execução do programa).</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

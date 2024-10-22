@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00004-CBACT04C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h2>Revisão de Análise Técnica</h2>
+<p><strong>Arquivo:</strong>  \src\CBACT04C.cbl</p>
+<p><strong>Título:</strong>  Programa Calculador de Juros</p>
+<p><strong>Resumo:</strong></p>
+<p>Este programa COBOL calcula e aplica juros a contas de clientes. Ele lê informações de transações e contas de arquivos indexados, calcula juros com base em taxas predefinidas, atualiza saldos de contas e grava registros de transações. O programa lida com casos em que informações específicas da conta ou do grupo de divulgação estão faltando, oferecendo tratamento padrão.</p>
+<p><strong>Tecnologia:</strong></p>
+<ul>
+<li><strong>Linguagem de Programação:</strong> COBOL</li>
+<li><strong>Framework/Biblioteca:</strong> <code>Not available</code></li>
+<li><strong>Banco de Dados:</strong> Este programa interage com arquivos indexados, sugerindo um sistema de armazenamento de dados baseado em arquivo. Embora o sistema específico não seja nomeado, o uso de acesso indexado sugere VSAM, ISAM ou similar.</li>
+<li><strong>Outras Ferramentas:</strong>
+<ul>
+<li><strong>IBM Mainframe:</strong> O uso de COBOL e processamento de arquivo indexado sugere fortemente um ambiente IBM mainframe.</li>
+<li><strong>DB2 (Possível):</strong> A presença de uma rotina de formatação de timestamp (<code>Z-GET-DB2-FORMAT-TIMESTAMP</code>) implica em potencial interação com um banco de dados DB2, embora não seja usado diretamente para recuperação ou atualização de dados no código fornecido.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Referência, Classe e Método:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CVTRA01Y</code></td>
+<td>Provavelmente contém códigos de status de arquivo e definições para o <code>TCATBAL-FILE</code> (Arquivo de Saldo de Categoria de Transação).</td>
+</tr>
+<tr>
+<td><code>CVACT03Y</code></td>
+<td>Provavelmente contém códigos de status de arquivo e definições para o <code>XREF-FILE</code> (Arquivo de Referência Cruzada).</td>
+</tr>
+<tr>
+<td><code>CVTRA02Y</code></td>
+<td>Provavelmente contém códigos de status de arquivo e definições para o <code>DISCGRP-FILE</code> (Arquivo de Grupo de Divulgação).</td>
+</tr>
+<tr>
+<td><code>CVACT01Y</code></td>
+<td>Provavelmente contém códigos de status de arquivo e definições para o <code>ACCTFILE</code> (Arquivo de Conta).</td>
+</tr>
+<tr>
+<td><code>CVTRA05Y</code></td>
+<td>Provavelmente contém códigos de status de arquivo e definições para o <code>TRANFILE</code> (Arquivo de Transação).</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método(Público)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0000-TCATBALF-OPEN</code></td>
+<td>Abre o Arquivo de Saldo de Categoria de Transação (<code>TCATBAL-FILE</code>) para entrada.</td>
+</tr>
+<tr>
+<td><code>0100-XREFFILE-OPEN</code></td>
+<td>Abre o Arquivo de Referência Cruzada (<code>XREF-FILE</code>) para entrada.</td>
+</tr>
+<tr>
+<td><code>0200-DISCGRP-OPEN</code></td>
+<td>Abre o Arquivo de Grupo de Divulgação (<code>DISCGRP-FILE</code>) para entrada.</td>
+</tr>
+<tr>
+<td><code>0300-ACCTFILE-OPEN</code></td>
+<td>Abre o Arquivo Mestre de Contas (<code>ACCOUNT-FILE</code>) para entrada e saída (I-O).</td>
+</tr>
+<tr>
+<td><code>0400-TRANFILE-OPEN</code></td>
+<td>Abre o Arquivo de Transação (<code>TRANSACT-FILE</code>) para saída.</td>
+</tr>
+<tr>
+<td><code>1000-TCATBALF-GET-NEXT</code></td>
+<td>Lê o próximo registro do Arquivo de Saldo de Categoria de Transação (<code>TCATBAL-FILE</code>).</td>
+</tr>
+<tr>
+<td><code>1050-UPDATE-ACCOUNT</code></td>
+<td>Atualiza o Arquivo Mestre de Contas (<code>ACCOUNT-FILE</code>) com os juros calculados e redefine o crédito/débito do ciclo.</td>
+</tr>
+<tr>
+<td><code>1100-GET-ACCT-DATA</code></td>
+<td>Recupera dados da conta do Arquivo Mestre de Contas (<code>ACCOUNT-FILE</code>) com base no ID da conta.</td>
+</tr>
+<tr>
+<td><code>1110-GET-XREF-DATA</code></td>
+<td>Recupera dados do Arquivo de Referência Cruzada (<code>XREF-FILE</code>) usando o ID da conta como chave.</td>
+</tr>
+<tr>
+<td><code>1200-GET-INTEREST-RATE</code></td>
+<td>Lê informações sobre a taxa de juros do Arquivo de Grupo de Divulgação (<code>DISCGRP-FILE</code>). Lida com registros ausentes tentando usar um código de grupo padrão.</td>
+</tr>
+<tr>
+<td><code>1200-A-GET-DEFAULT-INT-RATE</code></td>
+<td>Lê a taxa de juros padrão do Arquivo de Grupo de Divulgação (<code>DISCGRP-FILE</code>) usando o código de grupo ‘DEFAULT’.</td>
+</tr>
+<tr>
+<td><code>1300-COMPUTE-INTEREST</code></td>
+<td>Calcula os juros mensais com base no saldo da categoria da transação e na taxa de juros recuperada.</td>
+</tr>
+<tr>
+<td><code>1300-B-WRITE-TX</code></td>
+<td>Constrói e grava registros de transações no Arquivo de Transações (<code>TRANSACT-FILE</code>) com detalhes dos juros calculados.</td>
+</tr>
+<tr>
+<td><code>1400-COMPUTE-FEES</code></td>
+<td>Espaço reservado para implementação futura da lógica de cálculo de taxas.</td>
+</tr>
+<tr>
+<td><code>9000-TCATBALF-CLOSE</code></td>
+<td>Fecha o Arquivo de Saldo de Categoria de Transação (<code>TCATBAL-FILE</code>).</td>
+</tr>
+<tr>
+<td><code>9100-XREFFILE-CLOSE</code></td>
+<td>Fecha o Arquivo de Referência Cruzada (<code>XREF-FILE</code>).</td>
+</tr>
+<tr>
+<td><code>9200-DISCGRP-CLOSE</code></td>
+<td>Fecha o Arquivo de Grupo de Divulgação (<code>DISCGRP-FILE</code>).</td>
+</tr>
+<tr>
+<td><code>9300-ACCTFILE-CLOSE</code></td>
+<td>Fecha o Arquivo Mestre de Contas (<code>ACCOUNT-FILE</code>).</td>
+</tr>
+<tr>
+<td><code>9400-TRANFILE-CLOSE</code></td>
+<td>Fecha o Arquivo de Transações (<code>TRANSACT-FILE</code>).</td>
+</tr>
+<tr>
+<td><code>Z-GET-DB2-FORMAT-TIMESTAMP</code></td>
+<td>Formata a data e hora atuais em um formato de timestamp DB2.</td>
+</tr>
+<tr>
+<td><code>9999-ABEND-PROGRAM</code></td>
+<td>Interrompe o programa em caso de erro fatal.</td>
+</tr>
+<tr>
+<td><code>9910-DISPLAY-IO-STATUS</code></td>
+<td>Exibe informações formatadas sobre o status do arquivo.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método(Privado)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00066-COSGN00_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Gerenciamento de Informações de Login do Usuário</p>
+<p><strong>Descrição Resumida:</strong> Este documento descreve a estrutura e o gerenciamento das informações de login do usuário no aplicativo CardDemo. Ele se concentra em como os detalhes do usuário são coletados, organizados e usados durante o processo de login.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como usuário do sistema, preciso fornecer minhas credenciais de login para poder acessar o sistema.</p>
+<p><strong>Epic Relacionado:</strong> 6 - Gerenciamento de Usuários e Segurança</p>
+<p><strong>Requisitos Funcionais:</strong></p>
+<ul>
+<li>O sistema deve fornecer duas estruturas de dados, COSGN0AI e COSGN0AO, para armazenar informações de login do usuário.</li>
+<li>COSGN0AI deve incluir campos para:
+<ul>
+<li>Nome da Transação (por exemplo, login, logout)</li>
+<li>Títulos de Tela</li>
+<li>Data e Hora da ação</li>
+<li>ID do Usuário</li>
+<li>Senha</li>
+<li>Mensagem de Erro</li>
+</ul>
+</li>
+<li>COSGN0AO deve usar a cláusula REDEFINES para fornecer uma visão alternativa dos dados armazenados em COSGN0AI, permitindo a interpretação flexível dos dados.</li>
+<li>O sistema deve garantir o armazenamento seguro de IDs de usuário e senhas para evitar acesso não autorizado.</li>
+<li>O sistema deve fornecer mensagens de erro claras e informativas ao usuário em caso de tentativas de login inválidas.</li>
+<li>O sistema deve manter a integridade dos dados, garantindo a consistência e a precisão das informações de login do usuário.</li>
+</ul>
+<p><strong>Requisitos Não Funcionais:</strong></p>
+<ul>
+<li><strong>Segurança:</strong> As informações de login do usuário, especialmente senhas, devem ser tratadas e armazenadas com segurança para evitar acesso não autorizado e proteger a privacidade do usuário.</li>
+<li><strong>Desempenho:</strong> O processo de login deve ser rápido e eficiente, minimizando o tempo que um usuário leva para acessar o sistema.</li>
+<li><strong>Confiabilidade:</strong> O sistema deve ser confiável no tratamento das informações de login do usuário, garantindo que usuários válidos possam acessar o sistema de forma consistente.</li>
+<li><strong>Manutenibilidade:</strong> O código para gerenciar as informações de login do usuário deve ser bem estruturado, documentado e fácil de manter para futuras atualizações ou modificações.</li>
+</ul>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ul>
+<li>O sistema armazena e recupera com sucesso as informações de login do usuário.</li>
+<li>O sistema valida as credenciais do usuário com precisão, concedendo acesso a usuários autorizados e negando acesso a usuários não autorizados.</li>
+<li>O sistema exibe mensagens de erro apropriadas para tentativas de login incorretas.</li>
+<li>O sistema garante a segurança das credenciais do usuário, protegendo-as de acesso não autorizado.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li>Implementar um mecanismo de criptografia de senha mais robusto para aumentar ainda mais a segurança das senhas armazenadas.</li>
+<li>Adicionar registro detalhado de tentativas de login, incluindo timestamps e IDs de usuário, para fins de auditoria e monitoramento de segurança.</li>
+<li>Considere o uso de um módulo de segurança centralizado para lidar com autenticação e autorização em todo o aplicativo.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li>Implementar a autenticação multifator para fornecer uma camada adicional de segurança além do nome de usuário e senha.</li>
+<li>Implementar políticas de senha forte, exigindo que os usuários criem senhas que atendam a determinados critérios de complexidade.</li>
+<li>Auditar regularmente o sistema em busca de vulnerabilidades de segurança e implementar as atualizações ou patches necessários.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00066-COSGN00_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

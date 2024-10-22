@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00040-CSUSR01Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Perfil de Segurança do Usuário - Especificação da Estrutura de Dados</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve a estrutura para armazenar as informações do usuário de forma segura no aplicativo CardDemo. Esta estrutura define como os dados do usuário, como ID, nome, senha e nível de acesso, são organizados e armazenados.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como administrador do sistema, preciso de uma maneira segura de armazenar as informações do usuário, incluindo suas credenciais de login e direitos de acesso, para garantir que apenas indivíduos autorizados possam acessar dados e funcionalidades confidenciais.</p>
+<p><strong>Épico Relacionado:</strong><br>
+6 - Gestão de Usuários e Segurança</p>
+<p><strong>Requisitos Funcionais:</strong></p>
+<ul>
+<li>O sistema deve armazenar um ID exclusivo para cada usuário.</li>
+<li>O sistema deve armazenar o nome e o sobrenome do usuário.</li>
+<li>O sistema deve armazenar uma senha para cada usuário.</li>
+<li>O sistema deve armazenar um código indicando o tipo ou nível de acesso do usuário.</li>
+<li>O sistema deve incluir espaço para potencial expansão futura dos dados do usuário.</li>
+</ul>
+<p><strong>Requisitos Não Funcionais:</strong></p>
+<ul>
+<li><strong>Segurança:</strong> As senhas dos usuários devem ser armazenadas com segurança para evitar acesso não autorizado. Isso pode envolver técnicas de criptografia ou hashing, que não são detalhadas nesta estrutura de dados específica.</li>
+<li><strong>Desempenho:</strong> A recuperação de informações do usuário deve ser eficiente para garantir o desempenho ideal do sistema.</li>
+<li><strong>Integridade de Dados:</strong> O sistema deve aplicar regras de validação de dados para manter a precisão e consistência dos dados do usuário.</li>
+</ul>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ul>
+<li>O sistema pode armazenar e recuperar com sucesso todos os campos de dados do usuário definidos.</li>
+<li>As senhas dos usuários são tratadas como confidenciais e não são exibidas em texto simples.</li>
+<li>O sistema pode diferenciar usuários com base em seu tipo e controlar o acesso às funcionalidades de acordo.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Segurança de Senha:</strong> Implemente um algoritmo robusto de hash de senha para proteger as credenciais do usuário contra acesso não autorizado.</li>
+<li><strong>Validação de Dados:</strong> Adicione verificações de validação de entrada para garantir que os dados inseridos para cada campo atendam ao formato e comprimento necessários.</li>
+<li><strong>Documentação:</strong> Forneça comentários claros no código para explicar a finalidade de cada campo e quaisquer considerações de segurança.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Criptografia:</strong> Considere criptografar dados confidenciais do usuário, especialmente senhas, tanto em trânsito quanto em repouso.</li>
+<li><strong>Controle de Acesso:</strong> Implemente medidas rigorosas de controle de acesso para restringir quem pode visualizar, modificar ou excluir dados do usuário.</li>
+<li><strong>Auditoria:</strong> Registre todas as ações relacionadas aos dados do usuário, como criação, modificação e tentativas de acesso, para fins de auditoria de segurança.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00040-CSUSR01Y_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

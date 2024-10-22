@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00004-CBACT04C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cálculo de Juros para Contas de Cartão de Crédito</h2>
+<p><strong>Arquivo:</strong>  \src\CBACT04C.cbl</p>
+<p><strong>Contexto:</strong></p>
+<p>Este programa é o coração do processo mensal de cálculo de juros para contas de cartão de crédito. É um trabalhador de bastidores que garante que os juros sejam aplicados com precisão ao saldo de cada cliente, levando em consideração os termos específicos do cartão de crédito e quaisquer grupos de divulgação relevantes.</p>
+<p><strong>Ação:</strong></p>
+<ol>
+<li>
+<p><strong>Coleta de Dados:</strong> O programa começa coletando informações de várias fontes:</p>
+<ul>
+<li><strong>Arquivo de Saldo de Categoria de Transação:</strong> Este arquivo contém uma divisão do saldo de cada cliente, categorizado por tipo de transação (por exemplo, compras, adiantamentos em dinheiro).</li>
+<li><strong>Arquivo de Referência Cruzada:</strong> Este arquivo vincula o número do cartão de crédito de um cliente à sua ID de conta, permitindo que o programa recupere todas as informações necessárias.</li>
+<li><strong>Arquivo do Grupo de Divulgação:</strong> Este arquivo contém as taxas de juros associadas a diferentes grupos de contas e categorias de transações.</li>
+<li><strong>Arquivo Mestre da Conta:</strong> Este é o repositório central para todas as informações da conta do cliente, incluindo saldos e taxas de juros.</li>
+</ul>
+</li>
+<li>
+<p><strong>Calculando Juros:</strong></p>
+<ul>
+<li>Para cada cliente e categoria de transação, o programa recupera a taxa de juros correspondente do Arquivo do Grupo de Divulgação. Se a taxa de um grupo específico estiver faltando, ele assume como padrão um grupo ‘DEFAULT’ predefinido.</li>
+<li>Em seguida, calcula os juros mensais multiplicando o saldo da categoria da transação pela taxa de juros mensal.</li>
+<li>Os juros mensais calculados são adicionados ao total de juros do cliente para o mês.</li>
+</ul>
+</li>
+<li>
+<p><strong>Atualizando Contas e Gerando Transações:</strong></p>
+<ul>
+<li>O programa atualiza o saldo da conta do cliente no Arquivo Mestre da Conta adicionando o total de juros calculado.</li>
+<li>Ele também gera um registro de transação para os juros aplicados, que inclui detalhes como ID da transação, valor e carimbos de data/hora. Este registro é então gravado no Arquivo de Transação para referência futura e relatórios.</li>
+</ul>
+</li>
+<li>
+<p><strong>Fechando os Livros:</strong></p>
+<ul>
+<li>Depois que todas as contas são processadas, o programa fecha todos os arquivos que acessou, garantindo a integridade dos dados.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Determinação da Taxa de Juros:</strong> As taxas de juros são determinadas com base em uma combinação do grupo de conta atribuído ao cliente e da categoria de transação específica. Isso permite uma aplicação de taxa de juros flexível e direcionada.</li>
+<li><strong>Taxa de Juros Padrão:</strong> Se a taxa de juros de um grupo de divulgação específico não for encontrada, o sistema utiliza uma taxa de juros padrão, garantindo que o cálculo de juros possa prosseguir sem interrupção.</li>
+<li><strong>Histórico de Transações:</strong> O programa registra meticulosamente cada aplicação de juros como uma transação separada, mantendo um rastro transparente e auditável de todas as atividades relacionadas a juros.</li>
+<li><strong>Cálculo de Juros Mensais:</strong> Os juros são calculados mensalmente, alinhados com os ciclos de cobrança padrão.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00063-COCRDUP_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Especificação da Estrutura de Dados para Verificação de Cartões de Crédito Duplicados</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve a estrutura das informações de cartão de crédito usadas para detectar duplicatas dentro de um sistema COBOL. Ele define como esses dados são organizados, tanto para processamento interno quanto para exibição ao usuário, garantindo a integridade dos dados e facilitando a verificação de duplicatas. O sistema lê os dados do cartão de crédito, valida-os em relação às regras predefinidas e gera saída com base nos resultados da validação.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como Analista de Risco de Crédito, desejo garantir que todos os dados de cartão de crédito usados ​​para análise estejam livres de duplicatas para manter a integridade dos dados e tomar decisões informadas.</p>
+<p><strong>Épico Relacionado:</strong> 3 - Gestão de Cartões de Crédito</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li>
+<p><strong>Estruturas de Dados:</strong></p>
+<ul>
+<li><code>CCRDUPAI</code>: Representa a estrutura interna dos dados do cartão de crédito usados ​​para processamento.</li>
+<li><code>CCRDUPAO</code>: Define o formato de exibição dos dados do cartão de crédito para apresentação ao usuário.</li>
+</ul>
+</li>
+<li>
+<p><strong>Campos de Dados:</strong> Ambas as estruturas contêm campos para:</p>
+<ul>
+<li><code>TRNNAME</code>: Nome da transação.</li>
+<li><code>TITLE01</code>: Título ou cabeçalho para a primeira seção de informações.</li>
+<li><code>CURDATE</code>: Data atual.</li>
+<li><code>PGMNAME</code>: Nome do programa ou módulo.</li>
+<li><code>TITLE02</code>: Título ou cabeçalho para a segunda seção de informações.</li>
+<li><code>CURTIME</code>: Hora atual.</li>
+<li><code>ACCTSID</code>: ID da conta associada ao cartão de crédito.</li>
+<li><code>CARDSID</code>: Número do cartão de crédito.</li>
+<li><code>CRDNAME</code>: Nome do titular do cartão.</li>
+<li><code>CRDSTCD</code>: Código de status do cartão de crédito (por exemplo, “Ativo”, “Bloqueado”).</li>
+<li><code>EXPMON</code>: Mês de expiração do cartão de crédito.</li>
+<li><code>EXPYEAR</code>: Ano de expiração do cartão de crédito.</li>
+<li><code>EXPDAY</code>: Dia de expiração do cartão de crédito.</li>
+<li><code>INFOMSG</code>: Mensagens informativas para o usuário.</li>
+<li><code>ERRMSG</code>: Mensagens de erro.</li>
+<li><code>FKEYS</code>: Teclas de função disponíveis para interação do usuário.</li>
+<li><code>FKEYSC</code>: Descrições das teclas de função.</li>
+</ul>
+</li>
+<li>
+<p><strong>Validação de Dados:</strong> O sistema deve realizar verificações para garantir que:</p>
+<ul>
+<li>Os números dos cartões de crédito estejam em um formato válido.</li>
+<li>As datas de expiração sejam válidas e não estejam no passado.</li>
+<li>Os nomes dos titulares dos cartões não contenham caracteres inválidos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Detecção de Duplicatas:</strong></p>
+<ul>
+<li>O sistema deve comparar os dados do cartão de crédito recebido com os registros existentes para identificar duplicatas.</li>
+<li>Registros duplicados devem ser sinalizados ou tratados de acordo com as regras de negócios predefinidas.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><strong>CreditCard:</strong> Representa uma entidade de cartão de crédito.
+<ul>
+<li><code>cardNumber</code>: String - O número do cartão de crédito.</li>
+<li><code>expiryDate</code>: Date - A data de expiração do cartão de crédito.</li>
+<li><code>cardholderName</code>: String - O nome do titular do cartão.</li>
+<li><code>status</code>: String - O status do cartão de crédito (por exemplo, “Ativo”, “Bloqueado”).</li>
+</ul>
+</li>
+<li><strong>Transaction:</strong> Representa uma transação de cartão de crédito.
+<ul>
+<li><code>transactionName</code>: String - O nome ou tipo de transação (por exemplo, “Compra”, “Reembolso”).</li>
+<li><code>transactionDate</code>: Date - A data da transação.</li>
+<li><code>transactionTime</code>: Time - A hora da transação.</li>
+<li><code>accountID</code>: String - O ID da conta associada à transação.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><strong>Arquivo de Mensagem de Erro:</strong> <code>CSMSG02Y.cpy</code> - Contém mensagens de erro exibidas ao usuário.
+<ul>
+<li><code>ERR001</code>: “Formato de número de cartão de crédito inválido.”</li>
+<li><code>ERR002</code>: “Cartão de crédito expirado.”</li>
+<li><code>ERR003</code>: “Cartão de crédito duplicado detectado.”</li>
+</ul>
+</li>
+<li><strong>Formato de data:</strong> <code>YYYYMMDD</code></li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implemente um mecanismo centralizado de tratamento de erros para registrar e relatar erros de forma consistente.</li>
+<li><strong>Log:</strong> Adicione um log detalhado para rastrear as etapas de processamento e quaisquer erros encontrados.</li>
+<li><strong>Otimização de Desempenho:</strong> Se estiver lidando com um grande volume de dados de cartão de crédito, considere otimizar o algoritmo de detecção de duplicatas para obter melhor desempenho.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Criptografia de Dados:</strong> Criptografe informações confidenciais do cartão de crédito, tanto em trânsito quanto em repouso.</li>
+<li><strong>Controle de Acesso:</strong> Implemente medidas estritas de controle de acesso para restringir o acesso aos dados do cartão de crédito apenas ao pessoal autorizado.</li>
+<li><strong>Log de Auditoria:</strong> Registre todas as ações relacionadas ao acesso, modificação e exclusão de dados do cartão de crédito para fins de auditoria.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00063-COCRDUP_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

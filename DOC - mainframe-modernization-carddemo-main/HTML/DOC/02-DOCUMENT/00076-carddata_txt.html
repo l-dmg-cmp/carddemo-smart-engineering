@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00076-carddata_txt</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Extração e Validação de Dados de Cartão de Crédito</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Extração e Validação de Dados de Cartão de Crédito - Especificação</li>
+</ul>
+<h2>Descrição resumida</h2>
+<p>Este documento descreve os requisitos para um programa projetado para extrair, validar e processar informações de cartão de crédito de um arquivo de texto chamado <code>carddata.txt</code>. O programa visa garantir a integridade, confidencialidade e conformidade dos dados com os padrões do setor, como PCI DSS, para lidar com dados confidenciais de cartão de crédito.</p>
+<h2>Histórico da Versão</h2>
+<ul>
+<li>Versão 1.0: Versão inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O programa executará as seguintes etapas:</p>
+<ol>
+<li><strong>Extração de Dados:</strong> Ler e analisar o arquivo <code>carddata.txt</code> linha por linha.</li>
+<li><strong>Validação de Dados:</strong> Validar cada registro de cartão de crédito para:
+<ul>
+<li>Formato válido do número do cartão (usando o Algoritmo de Luhn)</li>
+<li>Comprimento do número do cartão</li>
+<li>Formato e validade da data de expiração</li>
+</ul>
+</li>
+<li><strong>Armazenamento de Dados (Opcional):</strong> Com base em requisitos futuros, os dados validados podem ser armazenados com segurança em um banco de dados ou outro armazenamento persistente.</li>
+<li><strong>Relatórios:</strong> Gerar relatórios ou logs, potencialmente incluindo:
+<ul>
+<li>Número de registros processados</li>
+<li>Número de registros inválidos e motivos da invalidez</li>
+<li>Resumos potencialmente anônimos de dados válidos do cartão (por exemplo, distribuição do tipo de cartão)</li>
+</ul>
+</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Arquivo de Entrada:</strong> O arquivo <code>carddata.txt</code> contendo as informações do cartão de crédito.</li>
+<li><strong>Linguagem de Programação e Framework:</strong> Seleção de uma linguagem de programação adequada (por exemplo, Python, Java) e potencialmente um framework para processamento e validação de dados.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Algoritmo de Luhn:</strong> Implementar o Algoritmo de Luhn para validar os números do cartão de crédito.</li>
+<li><strong>Comprimento do Número do Cartão:</strong> Verificar se o comprimento do número do cartão atende aos requisitos padrão (tipicamente 13-19 dígitos).</li>
+<li><strong>Formato da Data de Expiração:</strong> Validar o formato da data de expiração (AAAA-MM-DD).</li>
+<li><strong>Validação de Data Futura:</strong> Garantir que a data de expiração seja uma data futura.</li>
+<li><strong>Confidencialidade de Dados:</strong> Implementar medidas para proteger as informações confidenciais do cartão de crédito durante o processamento e armazenamento (por exemplo, mascaramento de dados, criptografia).</li>
+<li><strong>Conformidade:</strong> Cumprir os padrões PCI DSS para lidar com informações de cartão de crédito.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Classes/Módulos Principais:</strong></p>
+<ul>
+<li><strong><code>CardDataExtractor</code>:</strong> Responsável por ler e extrair dados do arquivo <code>carddata.txt</code>.</li>
+<li><strong><code>CardValidator</code>:</strong> Contém funções para realizar validações nos dados do cartão extraídos.</li>
+<li><strong><code>ReportGenerator</code>:</strong> Gera relatórios sobre os dados processados.</li>
+</ul>
+<p><strong>Funções/Métodos Principais:</strong></p>
+<ul>
+<li><strong><code>extract_card_data(file_path)</code>:</strong> Lê o arquivo de entrada e retorna uma lista de registros de dados do cartão.</li>
+<li><strong><code>is_valid_card_number(card_number)</code>:</strong> Implementa o Algoritmo de Luhn para verificar a validade do número do cartão.</li>
+<li><strong><code>is_valid_expiration_date(expiration_date)</code>:</strong> Verifica o formato e a validade da data de expiração.</li>
+<li><strong><code>generate_processing_report(processed_data)</code>:</strong> Cria um relatório resumindo o processamento de dados.</li>
+</ul>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>card_number</code>:</strong> String que representa o número do cartão de crédito.</li>
+<li><strong><code>customer_name</code>:</strong> String que armazena o nome do cliente.</li>
+<li><strong><code>expiration_date</code>:</strong> String que representa a data de expiração do cartão no formato AAAA-MM-DD.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Minimização de Dados:</strong> Processar e armazenar apenas os dados mínimos necessários do cartão de crédito para a finalidade específica.</li>
+<li><strong>Criptografia:</strong> Criptografar dados confidenciais em repouso e em trânsito.</li>
+<li><strong>Armazenamento Seguro:</strong> Se armazenar dados de cartão de crédito, usar uma solução de armazenamento segura e compatível.</li>
+<li><strong>Controle de Acesso:</strong> Restringir o acesso aos dados do cartão de crédito apenas ao pessoal autorizado.</li>
+<li><strong>Auditorias de Segurança Regulares:</strong> Conduzir auditorias de segurança periódicas para garantir a conformidade e identificar vulnerabilidades.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Armazenamento de Dados:</strong> O programa pode interagir com um banco de dados ou outros sistemas de armazenamento se a persistência de dados for necessária.</li>
+<li><strong>Sistemas de Relatórios:</strong> Os relatórios gerados podem ser integrados aos sistemas de relatórios ou monitoramento existentes.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>card_number</td>
+<td>String</td>
+<td>Número do cartão de crédito (13-19 dígitos)</td>
+</tr>
+<tr>
+<td>customer_name</td>
+<td>String</td>
+<td>Nome completo do cliente</td>
+</tr>
+<tr>
+<td>expiration_date</td>
+<td>Data</td>
+<td>Data de expiração do cartão de crédito (AAAA-MM-DD)</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>Algoritmo de Luhn:</strong> Algoritmo padrão para validação de números de cartão de crédito.</li>
+<li><strong>PCI DSS (Payment Card Industry Data Security Standard):</strong> Conjunto de padrões de segurança para organizações que lidam com cartões de crédito de marca.</li>
+</ul>
+<p><strong>Considerações Adicionais:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implementar tratamento de erros abrangente para gerenciar erros de leitura de arquivo, formatos de dados inválidos e outros problemas potenciais.</li>
+<li><strong>Log:</strong> Registrar eventos, erros e informações de processamento potencialmente anônimas para fins de auditoria e solução de problemas.</li>
+<li><strong>Desempenho:</strong> Otimizar o desempenho, especialmente ao lidar com arquivos de dados grandes.</li>
+<li><strong>Escalabilidade:</strong> Projetar a solução para ser escalável para acomodar aumentos potenciais no volume de dados.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

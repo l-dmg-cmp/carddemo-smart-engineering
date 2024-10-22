@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00011-COACTUPC_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Especificação de Atualização de Conta CardDemo</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Especificação do Programa de Atualização de Conta CardDemo</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li>Arquivo: COACTUPC.cbl</li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>O Programa de Atualização de Conta CardDemo é um programa COBOL que permite que usuários autorizados (como representantes de atendimento ao cliente) visualizem e atualizem informações de contas de clientes dentro do aplicativo CardDemo. Este programa garante integridade de dados, autorização, trilha de auditoria, controle de concorrência e segurança de dados.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>Versão 1.0: Versão inicial (julho de 2022)</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O programa segue estas etapas:</p>
+<ol>
+<li><strong>Inicialização:</strong> Configura as variáveis necessárias e prepara o sistema.</li>
+<li><strong>Processamento de Entrada:</strong> Recebe a entrada do usuário para detalhes da conta e do cliente por meio de uma interface de tela.</li>
+<li><strong>Validação de Dados:</strong> Verifica as informações inseridas em relação a critérios predefinidos para garantir precisão e consistência.</li>
+<li><strong>Recuperação de Dados:</strong> Recupera dados existentes da conta e do cliente de arquivos VSAM com base no número da conta fornecido.</li>
+<li><strong>Comparação de Dados:</strong> Compara novos dados com dados existentes para identificar alterações.</li>
+<li><strong>Confirmação de Atualização:</strong> Solicita ao usuário que confirme as atualizações para evitar modificações acidentais.</li>
+<li><strong>Atualização de Dados:</strong> Atualiza os registros da conta e do cliente em arquivos VSAM com as novas informações confirmadas.</li>
+<li><strong>Verificação de Concorrência:</strong> Verifica se há atualizações simultâneas por outros usuários para evitar inconsistências de dados.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Usuário autorizado:</strong> Somente usuários autorizados, como representantes de atendimento ao cliente, podem acessar e modificar dados da conta.</li>
+<li><strong>Número da conta:</strong> O número da conta é necessário para recuperar e atualizar as informações corretas da conta.</li>
+<li><strong>Informações do cliente:</strong> Informações do cliente, como nome, endereço e detalhes de contato, podem ser necessárias para atualizações.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Integridade de dados:</strong> Regras rígidas de validação de dados são aplicadas para garantir a precisão e consistência das informações da conta. Por exemplo, os números de conta devem ser numéricos, os limites de crédito devem ser números positivos e os números de telefone devem estar no formato correto.</li>
+<li><strong>Autorização:</strong> Somente usuários autorizados têm permissão para acessar e modificar dados da conta.</li>
+<li><strong>Trilha de auditoria:</strong> Todas as atualizações são rastreadas para manter um histórico de alterações para cada conta.</li>
+<li><strong>Controle de concorrência:</strong> O programa lida com atualizações simultâneas para evitar corrupção de dados e garantir que as alterações feitas por um usuário não substituam as feitas por outro.</li>
+<li><strong>Segurança de dados:</strong> Dados confidenciais, como SSN do cliente e informações financeiras, são tratados com cuidado para proteger a privacidade do cliente.</li>
+</ul>
+<h2>Detalhes técnicos</h2>
+<p><strong>Programa principal:</strong></p>
+<ul>
+<li><strong>COACTUPC:</strong> O principal programa COBOL que lida com atualizações de contas.</li>
+</ul>
+<p><strong>Estruturas de dados:</strong></p>
+<ul>
+<li><strong>ACCT-UPDATE-RECORD:</strong> Estrutura de dados para armazenar informações da conta a serem atualizadas.</li>
+<li><strong>CUST-UPDATE-RECORD:</strong> Estrutura de dados para armazenar informações do cliente a serem atualizadas.</li>
+</ul>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong>WS-CARD-RID-ACCT-ID:</strong> ID da conta usada para recuperar e atualizar dados da conta em arquivos VSAM.</li>
+<li><strong>WS-CARD-RID-CUST-ID:</strong> ID do cliente usado para recuperar e atualizar dados do cliente em arquivos VSAM.</li>
+<li><strong>ACUP-NEW-DETAILS:</strong> Estrutura contendo os novos detalhes da conta e do cliente inseridos pelo usuário.</li>
+<li><strong>ACUP-OLD-DETAILS:</strong> Estrutura contendo os detalhes originais da conta e do cliente recuperados dos arquivos VSAM.</li>
+</ul>
+<p><strong>Métodos:</strong></p>
+<ul>
+<li><strong>9000-READ-ACCT:</strong> Recupera dados da conta e do cliente com base no número da conta fornecido.</li>
+<li><strong>9600-WRITE-PROCESSING:</strong> Atualiza os registros da conta e do cliente em arquivos VSAM.</li>
+<li><strong>9700-CHECK-CHANGE-IN-REC:</strong> Verifica se há alterações nos registros da conta e do cliente antes de atualizar para garantir a consistência dos dados.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Autorização:</strong> O programa deve ser acessível apenas a usuários autorizados com credenciais apropriadas.</li>
+<li><strong>Segurança de dados:</strong> Dados confidenciais, como SSN do cliente e informações financeiras, devem ser criptografados ou protegidos usando outras medidas de segurança.</li>
+</ul>
+<h2>Impacto em outros sistemas</h2>
+<ul>
+<li><strong>Aplicativo CardDemo:</strong> O programa impacta diretamente o aplicativo CardDemo, fornecendo a funcionalidade de atualizar informações da conta.</li>
+<li><strong>Arquivos VSAM:</strong> O programa interage com arquivos VSAM para ler e atualizar dados de contas e clientes.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCT-UPDATE-ID</td>
+<td>Numérico (9,0)</td>
+<td>ID da conta</td>
+</tr>
+<tr>
+<td>ACCT-UPDATE-ACTIVE-STATUS</td>
+<td>Alfanumérico (1)</td>
+<td>Status da conta (Ativo/Inativo)</td>
+</tr>
+<tr>
+<td>ACCT-UPDATE-CURR-BAL</td>
+<td>Numérico (10,2)</td>
+<td>Saldo atual da conta</td>
+</tr>
+<tr>
+<td>ACCT-UPDATE-CREDIT-LIMIT</td>
+<td>Numérico (10,2)</td>
+<td>Limite de crédito</td>
+</tr>
+<tr>
+<td>ACCT-UPDATE-CASH-CREDIT-LIMIT</td>
+<td>Numérico (10,2)</td>
+<td>Limite de crédito em dinheiro</td>
+</tr>
+<tr>
+<td>ACCT-UPDATE-OPEN-DATE</td>
+<td>Alfanumérico (10)</td>
+<td>Data de abertura da conta (AAAA-MM-DD)</td>
+</tr>
+<tr>
+<td>ACCT-UPDATE-EXPIRAION-DATE</td>
+<td>Alfanumérico (10)</td>
+<td>Data de expiração da conta (AAAA-MM-DD)</td>
+</tr>
+<tr>
+<td>ACCT-UPDATE-REISSUE-DATE</td>
+<td>Alfanumérico (10)</td>
+<td>Data de reemissão da conta (AAAA-MM-DD)</td>
+</tr>
+<tr>
+<td>ACCT-UPDATE-CURR-CYC-CREDIT</td>
+<td>Numérico (10,2)</td>
+<td>Crédito do ciclo atual</td>
+</tr>
+<tr>
+<td>ACCT-UPDATE-CURR-CYC-DEBIT</td>
+<td>Numérico (10,2)</td>
+<td>Débito do ciclo atual</td>
+</tr>
+<tr>
+<td>ACCT-UPDATE-GROUP-ID</td>
+<td>Alfanumérico (10)</td>
+<td>ID do grupo da conta</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-ID</td>
+<td>Numérico (9,0)</td>
+<td>ID do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-FIRST-NAME</td>
+<td>Alfanumérico (25)</td>
+<td>Primeiro nome do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-MIDDLE-NAME</td>
+<td>Alfanumérico (25)</td>
+<td>Nome do meio do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-LAST-NAME</td>
+<td>Alfanumérico (25)</td>
+<td>Sobrenome do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-ADDR-LINE-1</td>
+<td>Alfanumérico (50)</td>
+<td>Linha de endereço 1 do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-ADDR-LINE-2</td>
+<td>Alfanumérico (50)</td>
+<td>Linha de endereço 2 do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-ADDR-LINE-3</td>
+<td>Alfanumérico (50)</td>
+<td>Linha de endereço 3 do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-ADDR-STATE-CD</td>
+<td>Alfanumérico (2)</td>
+<td>Código do estado do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-ADDR-COUNTRY-CD</td>
+<td>Alfanumérico (3)</td>
+<td>Código do país do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-ADDR-ZIP</td>
+<td>Alfanumérico (10)</td>
+<td>CEP do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-PHONE-NUM-1</td>
+<td>Alfanumérico (15)</td>
+<td>Número de telefone 1 do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-PHONE-NUM-2</td>
+<td>Alfanumérico (15)</td>
+<td>Número de telefone 2 do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-SSN</td>
+<td>Numérico (9,0)</td>
+<td>Número do Seguro Social do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-GOVT-ISSUED-ID</td>
+<td>Alfanumérico (20)</td>
+<td>ID emitido pelo governo do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-DOB-YYYY-MM-DD</td>
+<td>Alfanumérico (10)</td>
+<td>Data de nascimento do cliente (AAAA-MM-DD)</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-EFT-ACCOUNT-ID</td>
+<td>Alfanumérico (10)</td>
+<td>ID da conta EFT do cliente</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-PRI-CARD-IND</td>
+<td>Alfanumérico (1)</td>
+<td>Indicador do titular do cartão principal</td>
+</tr>
+<tr>
+<td>CUST-UPDATE-FICO-CREDIT-SCORE</td>
+<td>Numérico (3,0)</td>
+<td>Pontuação de crédito FICO do cliente</td>
+</tr>
+</tbody>
+</table>
+<h2>Referências principais</h2>
+<ul>
+<li>
+<p><strong>Arquivos VSAM:</strong></p>
+<ul>
+<li>ACCTDAT: Arquivo mestre da conta</li>
+<li>CUSTDAT: Arquivo mestre do cliente</li>
+<li>CARDDAT: Arquivo de dados do cartão</li>
+<li>CARDAIX: Índice alternativo para CARDDAT com base no ID da conta</li>
+<li>CXACAIX: Índice alternativo para um arquivo de referência cruzada de cartão com base no ID da conta</li>
+</ul>
+</li>
+<li>
+<p><strong>CICS (Customer Information Control System):</strong> Lida com o processamento de transações, interação do usuário e comunicação com o mainframe.</p>
+</li>
+<li>
+<p><strong>BMS (Basic Mapping Support):</strong> Gerencia layouts de tela e interações do usuário.</p>
+</li>
+</ul>
+<p><strong>Considerações adicionais:</strong></p>
+<ul>
+<li><strong>Tratamento de erros:</strong> O programa inclui rotinas de tratamento de erros para gerenciar condições inesperadas e fornecer mensagens de erro informativas.</li>
+<li><strong>Log:</strong> Considere implementar mecanismos de log para rastrear atualizações e ações do usuário para fins de auditoria e solução de problemas.</li>
+<li><strong>Desempenho:</strong> Otimize o acesso a dados e as operações de atualização para um desempenho eficiente, especialmente em ambientes de transações de alto volume.</li>
+<li><strong>Integração:</strong> O programa deve se integrar perfeitamente a outros componentes do aplicativo CardDemo.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

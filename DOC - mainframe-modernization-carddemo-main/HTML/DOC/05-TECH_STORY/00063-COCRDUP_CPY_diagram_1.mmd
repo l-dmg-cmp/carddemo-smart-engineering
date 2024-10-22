@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant User
+    participant CreditCardProcessingSystem
+    participant CCRDUPAI
+    participant CCRDUPAO
+
+    User->>+CreditCardProcessingSystem: Submit Credit Card Data
+    activate CreditCardProcessingSystem
+    CreditCardProcessingSystem->>+CCRDUPAI: Populate Data for Processing
+    activate CCRDUPAI
+    CCRDUPAI->>CreditCardProcessingSystem: Data Populated
+    deactivate CCRDUPAI
+    CreditCardProcessingSystem->>CreditCardProcessingSystem: Validate Data
+    CreditCardProcessingSystem->>CreditCardProcessingSystem: Check for Duplicates
+    alt Validation Successful
+        CreditCardProcessingSystem->>+CCRDUPAO: Populate Data for Display
+        activate CCRDUPAO
+        CCRDUPAO->>CreditCardProcessingSystem: Data Populated
+        deactivate CCRDUPAO
+        CreditCardProcessingSystem->>User: Display Credit Card Details
+    else Validation Failed
+        CreditCardProcessingSystem->>User: Display Error Message
+    end
+    deactivate CreditCardProcessingSystem

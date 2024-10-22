@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant User Interface
+    participant COBOL Program
+    activate User Interface
+    User Interface->>+COBOL Program: Submit User Data (Encoded A)
+    activate COBOL Program
+    COBOL Program->>+COBOL Program: Reinterpret Data (COUSR2AI)
+    COBOL Program->>COBOL Program: Process User Information
+    COBOL Program->>+COBOL Program: Format Data (COUSR2AO)
+    COBOL Program->>User Interface: Return User Data (Encoded B)
+    deactivate COBOL Program

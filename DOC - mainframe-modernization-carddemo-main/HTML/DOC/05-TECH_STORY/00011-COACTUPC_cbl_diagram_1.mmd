@@ -1,0 +1,38 @@
+sequenceDiagram
+    participant User
+    participant COACTUPC
+    participant CARDXREF
+    participant ACCTDAT
+    participant CUSTDAT
+
+    activate User
+    User->>+COACTUPC: Account Number
+    activate COACTUPC
+    COACTUPC->>+CARDXREF: Read by Account ID
+    CARDXREF->>-COACTUPC: Customer ID, Card Number
+    COACTUPC->>+ACCTDAT: Read by Account ID
+    ACCTDAT->>-COACTUPC: Account Data
+    COACTUPC->>+CUSTDAT: Read by Customer ID
+    CUSTDAT->>-COACTUPC: Customer Data
+    COACTUPC->>User: Display Account and Customer Data
+    User->>+COACTUPC: Updated Account and Customer Data
+    COACTUPC->>+ACCTDAT: Read for Update by Account ID
+    ACCTDAT->>-COACTUPC: Account Data
+    COACTUPC->>+CUSTDAT: Read for Update by Customer ID
+    CUSTDAT->>-COACTUPC: Customer Data
+    COACTUPC->>COACTUPC: Compare Data and Check for Concurrent Updates
+    alt Data Changed or Concurrent Update
+        COACTUPC->>User: Error Message
+    else Data Not Changed
+        COACTUPC->>+ACCTDAT: Rewrite Account Data
+        ACCTDAT->>-COACTUPC: Success/Failure
+        COACTUPC->>+CUSTDAT: Rewrite Customer Data
+        CUSTDAT->>-COACTUPC: Success/Failure
+        alt Update Successful
+            COACTUPC->>User: Confirmation Message
+        else Update Failed
+            COACTUPC->>User: Error Message
+        end
+    end
+    deactivate COACTUPC
+    deactivate User

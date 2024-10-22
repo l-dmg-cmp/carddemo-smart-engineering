@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00055-CVTRA07Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>–CONTENT TO TRANSLATE–
+Gerado em: 1 de outubro de 2024</p>
+<h1><strong>Especificação de Layout do Relatório de Transações de Cartão</strong></h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Especificação de Layout do Relatório de Transações de Cartão</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li><code>\CVTRA07Y.cpy</code></li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve a estrutura e o conteúdo de um relatório diário de transações para um sistema de cartão de crédito. O relatório fornece um resumo claro e organizado de todas as transações dentro de um intervalo de datas especificado.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>CardDemo_v1.0-15-g27d6c6f-68 (19 de julho de 2022): Versão inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>Este código define como os dados de transação serão organizados e apresentados em um relatório. É como um modelo que garante consistência e clareza para qualquer pessoa que esteja revisando o relatório.</p>
+<ol>
+<li><strong>Cabeçalho do Relatório:</strong> O relatório começa com um cabeçalho que exibe o título do relatório (“Relatório Diário de Transações”) e o intervalo de datas das transações incluídas.</li>
+<li><strong>Detalhes da Transação:</strong> O corpo principal do relatório lista as transações individuais, cada uma fornecendo detalhes como:
+<ul>
+<li>ID da Transação</li>
+<li>ID da Conta</li>
+<li>Tipo de Transação (código e descrição)</li>
+<li>Categoria (código e descrição)</li>
+<li>Origem da Transação</li>
+<li>Valor</li>
+</ul>
+</li>
+<li><strong>Cabeçalhos e Totais:</strong> Para melhor legibilidade, o relatório inclui cabeçalhos de coluna para cada ponto de dados e calcula totais em três níveis:
+<ul>
+<li>Total da Página: Soma das transações em cada página</li>
+<li>Total da Conta: Soma das transações para cada conta</li>
+<li>Total Geral: Soma de todas as transações no relatório</li>
+</ul>
+</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Dados de Transação:</strong> O sistema precisa de acesso a um conjunto de dados contendo todos os detalhes de transação necessários.</li>
+<li><strong>Gatilho de Geração de Relatório:</strong> Um processo ou evento deve acionar a geração deste relatório (por exemplo, final do dia, solicitação do usuário).</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Precisão dos Dados:</strong> O sistema deve garantir a precisão e a integridade dos dados de transação antes de gerar o relatório.</li>
+<li><strong>Formatação de Dados:</strong> O relatório deve seguir um formato consistente para datas, moeda e outros pontos de dados.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>REPORT-NAME-HEADER</code>:</strong> Define a seção de cabeçalho do relatório, incluindo o título do relatório e o intervalo de datas.</li>
+<li><strong><code>TRANSACTION-DETAIL-REPORT</code>:</strong> Descreve a estrutura para cada registro de transação dentro do relatório.</li>
+<li><strong><code>TRANSACTION-HEADER-1</code>:</strong> Define os cabeçalhos das colunas para a seção de detalhes da transação.</li>
+<li><strong><code>TRANSACTION-HEADER-2</code>:</strong> Um separador visual (uma linha) para distinguir o cabeçalho dos detalhes da transação.</li>
+<li><strong><code>REPORT-PAGE-TOTALS</code>:</strong> Calcula e apresenta o valor total das transações em uma única página.</li>
+<li><strong><code>REPORT-ACCOUNT-TOTALS</code>:</strong> Calcula e apresenta o valor total de todas as transações associadas a uma conta específica.</li>
+<li><strong><code>REPORT-GRAND-TOTALS</code>:</strong> Calcula e apresenta o valor total geral de todas as transações dentro do intervalo de datas especificado.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Sistema de Relatórios:</strong> A saída deste código será usada pelo sistema de relatórios para gerar o relatório real.</li>
+<li><strong>Análise de Dados:</strong> O formato estruturado do relatório facilita a análise de dados para insights de negócios.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REPT-SHORT-NAME</code></td>
+<td>String</td>
+<td>Nome curto/código para o relatório.</td>
+</tr>
+<tr>
+<td><code>REPT-LONG-NAME</code></td>
+<td>String</td>
+<td>Nome descritivo completo do relatório.</td>
+</tr>
+<tr>
+<td><code>REPT-START-DATE</code></td>
+<td>Data</td>
+<td>Data de início para transações incluídas no relatório.</td>
+</tr>
+<tr>
+<td><code>REPT-END-DATE</code></td>
+<td>Data</td>
+<td>Data de término para transações incluídas no relatório.</td>
+</tr>
+<tr>
+<td><code>TRAN-REPORT-TRANS-ID</code></td>
+<td>String</td>
+<td>Identificador exclusivo para cada transação.</td>
+</tr>
+<tr>
+<td><code>TRAN-REPORT-ACCOUNT-ID</code></td>
+<td>String</td>
+<td>Identificador da conta associada à transação.</td>
+</tr>
+<tr>
+<td><code>TRAN-REPORT-TYPE-CD</code></td>
+<td>String</td>
+<td>Código que representa o tipo de transação.</td>
+</tr>
+<tr>
+<td><code>TRAN-REPORT-TYPE-DESC</code></td>
+<td>String</td>
+<td>Descrição do tipo de transação.</td>
+</tr>
+<tr>
+<td><code>TRAN-REPORT-CAT-CD</code></td>
+<td>String</td>
+<td>Código que representa a categoria da transação.</td>
+</tr>
+<tr>
+<td><code>TRAN-REPORT-CAT-DESC</code></td>
+<td>String</td>
+<td>Descrição da categoria da transação.</td>
+</tr>
+<tr>
+<td><code>TRAN-REPORT-SOURCE</code></td>
+<td>String</td>
+<td>Origem ou canal da transação.</td>
+</tr>
+<tr>
+<td><code>TRAN-REPORT-AMT</code></td>
+<td>Decimal</td>
+<td>Valor da transação.</td>
+</tr>
+<tr>
+<td><code>REPT-PAGE-TOTAL</code></td>
+<td>Decimal</td>
+<td>Valor total das transações em uma página.</td>
+</tr>
+<tr>
+<td><code>REPT-ACCOUNT-TOTAL</code></td>
+<td>Decimal</td>
+<td>Valor total das transações de uma conta.</td>
+</tr>
+<tr>
+<td><code>REPT-GRAND-TOTAL</code></td>
+<td>Decimal</td>
+<td>Valor total geral de todas as transações.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>Fonte de Dados de Transação:</strong> Este layout de relatório depende de uma fonte de dados que fornece todos os detalhes de transação necessários.</li>
+<li><strong>Mecanismo de Geração de Relatório:</strong> O layout será usado por um mecanismo ou ferramenta de geração de relatório para produzir o documento de relatório final.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

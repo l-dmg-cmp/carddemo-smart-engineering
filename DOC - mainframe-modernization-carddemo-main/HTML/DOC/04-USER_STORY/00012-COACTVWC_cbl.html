@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00012-COACTVWC_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Especificação do Programa de Visualização de Conta de Cartão de Crédito</h1>
+<h1><strong>Descrição Resumida:</strong></h1>
+<p>Este programa, chamado “Visualização de Conta”, faz parte de um Sistema de Gerenciamento de Cartão de Crédito maior. Seu objetivo é fornecer uma maneira de visualizar informações detalhadas sobre uma conta de cartão de crédito específica. Isso é particularmente útil para representantes de atendimento ao cliente que precisam acessar rapidamente os detalhes da conta para auxiliar os clientes.</p>
+<h1><strong>Histórias do Usuário:</strong></h1>
+<p>Como representante de atendimento ao cliente, preciso visualizar os detalhes completos da conta de cartão de crédito de um cliente para que eu possa responder às suas perguntas com precisão e eficiência.</p>
+<h1><strong>Épico Relacionado:</strong></h1>
+<p>2 - Gestão de Contas</p>
+<h1><strong>Requisitos Funcionais:</strong></h1>
+<ol>
+<li><strong>Entrada do Número da Conta:</strong> O sistema deve permitir que o usuário insira o número da conta do cartão de crédito.</li>
+<li><strong>Recuperação de Dados da Conta:</strong> O sistema deve recuperar as seguintes informações com base no número da conta fornecido:
+<ul>
+<li><strong>De CARDXREF (Arquivo de Referência Cruzada da Conta):</strong> ID do Cliente associado à conta.</li>
+<li><strong>De CUSTDAT (Arquivo de Dados do Cliente):</strong> Detalhes do cliente, como nome, endereço, informações de contato, etc.</li>
+<li><strong>De ACCTDAT (Arquivo de Dados da Conta):</strong> Detalhes específicos da conta, como saldo atual, limite de crédito, status da conta, etc.</li>
+</ul>
+</li>
+<li><strong>Exibição de Dados:</strong> O sistema deve exibir as informações recuperadas em um formato claro e organizado na tela.</li>
+<li><strong>Validação de Entrada:</strong> O sistema deve validar o número da conta inserido para garantir que seja um formato válido e exista no sistema.</li>
+<li><strong>Tratamento de Erros:</strong> O sistema deve lidar com números de conta inválidos normalmente e exibir mensagens de erro adequadas ao usuário.</li>
+<li><strong>Navegação:</strong> O sistema deve fornecer opções para o usuário navegar para funcionalidades relacionadas, como visualizar o histórico de transações ou atualizar as informações da conta.</li>
+</ol>
+<h1><strong>Requisitos Não Funcionais:</strong></h1>
+<ol>
+<li><strong>Desempenho:</strong> O sistema deve recuperar e exibir informações da conta com tempo de resposta mínimo.</li>
+<li><strong>Usabilidade:</strong> A interface do usuário deve ser intuitiva e fácil de usar, permitindo a entrada e revisão eficientes de dados.</li>
+<li><strong>Segurança:</strong> O acesso à funcionalidade “Visualização de Conta” e às informações confidenciais da conta deve ser restrito apenas ao pessoal autorizado.</li>
+</ol>
+<h1><strong>Critérios de Aceitação:</strong></h1>
+<ol>
+<li>O sistema recupera e exibe com sucesso todas as informações relevantes da conta quando um número de conta válido é fornecido.</li>
+<li>O sistema exibe mensagens de erro adequadas para números de conta inválidos ou inexistentes.</li>
+<li>A interface do usuário é fácil de navegar e fornece instruções claras para uso.</li>
+<li>O sistema atende aos requisitos de desempenho definidos para tempo de resposta.</li>
+<li>As medidas de controle de acesso estão em vigor para restringir o acesso apenas a usuários autorizados.</li>
+</ol>
+<h1><strong>Melhorias de Código:</strong></h1>
+<ol>
+<li><strong>Tratamento de Erros Centralizado:</strong> Implemente uma rotina de tratamento de erros centralizada para melhorar a manutenção do código e a consistência nos relatórios de erros.</li>
+<li><strong>Modularidade do Código:</strong> Divida o programa em módulos menores e mais gerenciáveis ​​para melhorar a legibilidade e a manutenção.</li>
+<li><strong>Nomes de Variáveis ​​Significativos:</strong> Use nomes de variáveis ​​descritivos para melhorar a legibilidade e o entendimento do código.</li>
+<li><strong>Comentários e Documentação:</strong> Adicione comentários claros e concisos para explicar a lógica complexa e documentar a funcionalidade do programa.</li>
+</ol>
+<h1><strong>Melhorias de Segurança:</strong></h1>
+<ol>
+<li><strong>Autenticação e Autorização:</strong> Implemente mecanismos robustos de autenticação para verificar as identidades dos usuários e autorizar o acesso com base em funções e privilégios.</li>
+<li><strong>Criptografia de Dados:</strong> Criptografe dados confidenciais, como números de contas e informações do cliente, tanto em trânsito quanto em repouso, para proteger contra acesso não autorizado.</li>
+<li><strong>Registro de Auditoria:</strong> Implemente o registro de auditoria para rastrear ações do usuário e eventos do sistema para auditoria de segurança e fins de conformidade.</li>
+</ol>
+<h1><strong>Diagrama Conceitual:</strong></h1>
+<img src="00012-COACTVWC_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

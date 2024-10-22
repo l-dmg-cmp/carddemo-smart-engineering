@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00072-COUSR02_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h1>Sistema de Gerenciamento de Contas de Usuário</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Sistema de Gerenciamento de Contas de Usuário - Especificação da Estrutura de Dados</li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento detalha a estrutura das informações da conta do usuário dentro de um sistema maior. Essa estrutura define como os dados do usuário são organizados e armazenados, servindo como um projeto para gerenciar contas de usuário de forma segura e eficiente.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>Versão 1.0: Versão inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>A estrutura de dados <code>COUSR2</code> define o layout para armazenar informações da conta do usuário. Ela inclui campos para armazenar ID do usuário, senha, detalhes pessoais como nome e sobrenome, tipo de usuário (por exemplo, administrador, usuário regular) e informações relacionadas ao sistema, como timestamps e mensagens de erro.</p>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Mecanismo de Armazenamento de Dados:</strong> Um método definido para armazenar e recuperar dados, como um banco de dados ou sistema de arquivos.</li>
+<li><strong>Padrão de Codificação de Caracteres:</strong> Um padrão de codificação de caracteres consistente (por exemplo, ASCII, EBCDIC) para garantir a integridade dos dados em diferentes sistemas.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Validação de Tipo de Dados:</strong> Garanta que os dados inseridos em cada campo estejam de acordo com o tipo de dados definido (por exemplo, alfanumérico para ID do usuário, numérico para timestamps).</li>
+<li><strong>Validação de Tamanho de Dados:</strong> Imponha comprimentos máximos para campos de dados para evitar truncamento e manter a consistência dos dados.</li>
+<li><strong>Complexidade da Senha:</strong> Implemente regras para a complexidade da senha (por exemplo, comprimento mínimo, uso de caracteres especiais) para aumentar a segurança.</li>
+<li><strong>Validação de Tipo de Usuário:</strong> Defina tipos de usuário válidos e garanta que apenas pessoal autorizado possa atribuir funções de usuário.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Estruturas de Dados:</strong></p>
+<ul>
+<li><strong><code>COUSR2AI</code>:</strong> Define o layout das informações da conta do usuário usando um esquema de codificação de caracteres específico.</li>
+<li><strong><code>COUSR2AO</code>:</strong> Fornece um layout alternativo para as mesmas informações da conta do usuário usando um esquema de codificação de caracteres diferente, permitindo flexibilidade para integração do sistema.</li>
+</ul>
+<p><strong>Campos de Dados:</strong></p>
+<ul>
+<li><strong><code>USRIDIN</code>:</strong> Identificador exclusivo para cada conta de usuário.</li>
+<li><strong><code>PASSWD</code>:</strong> Senha associada à conta do usuário para autenticação.</li>
+<li><strong><code>FNAME</code>:</strong> Primeiro nome do usuário.</li>
+<li><strong><code>LNAME</code>:</strong> Sobrenome do usuário.</li>
+<li><strong><code>USRTYPE</code>:</strong> Define a função do usuário e privilégios de acesso dentro do sistema (por exemplo, ‘A’ para administrador, ‘U’ para usuário regular).</li>
+<li><strong><code>TRNNAME</code>:</strong> Captura o nome ou código da transação associado a uma determinada ação ou evento do usuário.</li>
+<li><strong><code>CURDATE</code>:</strong> Armazena a data atual, fornecendo um registro de data e hora para atividades relacionadas ao usuário.</li>
+<li><strong><code>CURTIME</code>:</strong> Armazena a hora atual, detalhando ainda mais quando as ações do usuário ocorrem.</li>
+<li><strong><code>PGMNAME</code>:</strong> Registra o nome do programa ou módulo que está sendo acessado ou usado pelo usuário.</li>
+<li><strong><code>TITLE01</code>, <code>TITLE02</code>:</strong> Pode ser usado para armazenar títulos descritivos ou rótulos relacionados ao usuário ou suas ações.</li>
+<li><strong><code>ERRMSG</code>:</strong> Armazena mensagens de erro geradas durante as interações do usuário, ajudando na solução de problemas e no monitoramento do sistema.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Armazenamento de Senha:</strong> <strong>Não</strong> armazene senhas em texto não criptografado. Implemente algoritmos seguros de hashing de senha (por exemplo, bcrypt, scrypt) para proteger as senhas contra acesso não autorizado.</li>
+<li><strong>Criptografia de Dados:</strong> Considere criptografar dados confidenciais do usuário, tanto em trânsito quanto em repouso, para aumentar ainda mais a segurança.</li>
+<li><strong>Controle de Acesso:</strong> Controle estritamente o acesso às informações da conta do usuário com base em funções e privilégios do usuário.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Sistema de Autenticação:</strong> Esta estrutura de dados é crucial para a autenticação do usuário, permitindo que o sistema verifique as credenciais do usuário.</li>
+<li><strong>Sistema de Autorização:</strong> As informações do tipo de usuário são essenciais para impor o controle de acesso, garantindo que os usuários tenham permissões adequadas.</li>
+<li><strong>Sistema de Auditoria:</strong> Registros de data e hora e IDs de usuário facilitam trilhas de auditoria, rastreando ações do usuário e eventos do sistema.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USRIDIN</td>
+<td>Alfanumérico</td>
+<td>ID de usuário exclusivo (por exemplo, número do funcionário, nome de usuário).</td>
+</tr>
+<tr>
+<td>PASSWD</td>
+<td>Alfanumérico</td>
+<td>Senha do usuário (com hash e salt para segurança).</td>
+</tr>
+<tr>
+<td>FNAME</td>
+<td>Alfanumérico</td>
+<td>Primeiro nome do usuário.</td>
+</tr>
+<tr>
+<td>LNAME</td>
+<td>Alfanumérico</td>
+<td>Sobrenome do usuário.</td>
+</tr>
+<tr>
+<td>USRTYPE</td>
+<td>Alfanumérico</td>
+<td>Código de caractere único representando o tipo de usuário (por exemplo, ‘A’, ‘U’).</td>
+</tr>
+<tr>
+<td>TRNNAME</td>
+<td>Alfanumérico</td>
+<td>Nome ou código da transação.</td>
+</tr>
+<tr>
+<td>CURDATE</td>
+<td>Numérico</td>
+<td>Data atual no formato AAAAMMDD.</td>
+</tr>
+<tr>
+<td>CURTIME</td>
+<td>Numérico</td>
+<td>Hora atual no formato HHMMSS.</td>
+</tr>
+<tr>
+<td>PGMNAME</td>
+<td>Alfanumérico</td>
+<td>Nome do programa ou módulo.</td>
+</tr>
+<tr>
+<td>TITLE01</td>
+<td>Alfanumérico</td>
+<td>Título descritivo ou rótulo.</td>
+</tr>
+<tr>
+<td>TITLE02</td>
+<td>Alfanumérico</td>
+<td>Título descritivo ou rótulo.</td>
+</tr>
+<tr>
+<td>ERRMSG</td>
+<td>Alfanumérico</td>
+<td>Mensagem de erro.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>Padrões de Segurança de Dados:</strong> Consulte as práticas recomendadas do setor para segurança de dados, como padrões NIST ou ISO 27001, para garantir o manuseio e armazenamento seguros dos dados do usuário.</li>
+<li><strong>Padrões de Codificação de Caracteres:</strong> Siga o padrão de codificação de caracteres escolhido de forma consistente para evitar corrupção de dados e garantir a interoperabilidade.</li>
+<li><strong>Documentação de Arquitetura do Sistema:</strong> Consulte a documentação de arquitetura do sistema para obter detalhes sobre como essa estrutura de dados se integra a outros componentes e processos do sistema.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00059-COADM01_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> COADM01 - Estrutura de Dados Administrativos</h1>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve o copybook COBOL <code>COADM01.CPY</code>, que define estruturas de dados para lidar com informações administrativas, incluindo títulos de tela, nomes de programas, opções de menu e mensagens de erro. Ele enfatiza a representação dupla de dados para processamento interno eficiente e exibição amigável ao usuário.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como desenvolvedor, preciso de uma maneira padronizada de gerenciar e exibir informações administrativas em diferentes telas e módulos do aplicativo CardDemo. Isso garante uma experiência consistente ao usuário e simplifica o desenvolvimento, fornecendo estruturas de dados reutilizáveis.</p>
+<p><strong>Épico Relacionado:</strong>
+9 - Utilitários do Sistema</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li>
+<p><strong>Estruturas de Dados:</strong></p>
+<ul>
+<li><code>COADM1AI</code>: Define campos de dados administrativos em um formato numérico compacto (<code>COMP</code>) para processamento interno eficiente dentro do programa COBOL.</li>
+<li><code>COADM1AO</code>: Redefine <code>COADM1AI</code> para representar os mesmos dados em um formato baseado em caracteres adequado para exibição em telas ou relatórios. Esta estrutura usa campos de caracteres (<code>PIC X</code>) para legibilidade do usuário.</li>
+</ul>
+</li>
+<li>
+<p><strong>Mapeamento de Campo:</strong></p>
+<ul>
+<li>Cada campo em <code>COADM1AI</code> possui um campo correspondente em <code>COADM1AO</code> com a mesma finalidade, mas um tipo de dado diferente. Por exemplo, <code>TRNNAMEL</code> (numérico) mapeia para <code>TRNNAMEO</code> (alfanumérico).</li>
+<li>O mapeamento entre as estruturas garante que os dados possam ser facilmente transferidos entre o processamento interno e a lógica de exibição.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tipos e Tamanhos de Dados:</strong></p>
+<ul>
+<li>Campos numéricos (<code>COMP</code>) em <code>COADM1AI</code> são provavelmente definidos com <code>PIC S9(n)</code> para armazenar números com sinal de forma eficiente.</li>
+<li>Campos alfanuméricos (<code>PIC X(n)</code>) em <code>COADM1AO</code> são usados para armazenar dados de caracteres, como títulos de tela e opções de menu.</li>
+</ul>
+</li>
+<li>
+<p><strong>Atributos Visuais (Possível Integração BMS):</strong></p>
+<ul>
+<li>Campos em <code>COADM1AO</code> terminando com ‘C’, ‘P’, ‘H’, ‘V’, ‘O’ (por exemplo, <code>TRNNAMEC</code>, <code>TITLE01P</code>) sugerem integração com o Basic Mapping Support (BMS) para controlar atributos visuais como cor, destaque e posicionamento na tela.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados</strong></p>
+<ul>
+<li>Não aplicável para este arquivo. Este arquivo se concentra em estruturas de dados para exibição e não se relaciona diretamente a modelos de negócios.</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li>Não aplicável. Este arquivo define estruturas de dados e não contém configurações.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Documentação:</strong> Adicione comentários para esclarecer o propósito de cada campo e a estrutura geral.</li>
+<li><strong>Convenções de Nomenclatura:</strong> Use nomes mais descritivos para os campos (por exemplo, <code>TRANSACTION-NAME</code> em vez de <code>TRNNAMEL</code>) para melhorar a legibilidade.</li>
+<li><strong>Validação de Dados:</strong> Considere adicionar rotinas de validação de dados para garantir a integridade dos dados administrativos, especialmente se eles estiverem sendo preenchidos a partir de fontes externas.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Controle de Acesso:</strong> Se os dados administrativos incluem informações confidenciais (por exemplo, IDs de usuário, nomes de programas), implemente mecanismos de controle de acesso para restringir a visualização ou modificação não autorizada.</li>
+<li><strong>Trilhas de Auditoria:</strong> Registre quaisquer alterações feitas nos dados administrativos para fins de auditoria e rastreamento.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00059-COADM01_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

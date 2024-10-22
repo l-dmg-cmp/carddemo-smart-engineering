@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00072-COUSR02_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Especificação da Estrutura de Dados da Conta de Usuário</p>
+<p><strong>Descrição Resumida:</strong> Este documento descreve a estrutura dos dados da conta de usuário em um sistema, com foco em como esses dados são organizados e armazenados. É essencialmente um modelo para gerenciar contas de usuário de forma segura e eficiente.</p>
+<p><strong>Histórias do Usuário:</strong> Como administrador do sistema, preciso de uma maneira padronizada de armazenar e gerenciar informações da conta de usuário, incluindo credenciais de login, detalhes pessoais e dados relacionados ao sistema, para garantir acesso seguro e administração eficiente do usuário.</p>
+<p><strong>Épico Relacionado:</strong> 6 - Gerenciamento de Usuários e Segurança</p>
+<p><strong>Requisitos Funcionais:</strong></p>
+<ul>
+<li>O sistema deve armazenar com segurança IDs de usuário e senhas para autenticação.</li>
+<li>O sistema deve armazenar informações básicas do usuário, incluindo nome, sobrenome e tipo de usuário.</li>
+<li>O sistema deve registrar e armazenar informações relacionadas ao sistema, incluindo nomes de transações, timestamps (data e hora), nomes de programas usados e mensagens de erro.</li>
+<li>O sistema deve suportar diferentes esquemas de codificação de caracteres (ASCII, EBCDIC) para garantir compatibilidade com vários sistemas.</li>
+</ul>
+<p><strong>Requisitos Não Funcionais:</strong></p>
+<ul>
+<li><strong>Segurança:</strong> O sistema deve priorizar o armazenamento seguro de dados confidenciais do usuário, particularmente senhas, usando métodos adequados de hashing e criptografia.</li>
+<li><strong>Desempenho:</strong> As operações de recuperação e armazenamento de dados relacionadas a contas de usuário devem ser eficientes para evitar lentidão do sistema.</li>
+<li><strong>Confiabilidade:</strong> O sistema deve garantir a precisão e consistência dos dados da conta do usuário ao longo do tempo.</li>
+<li><strong>Manutenibilidade:</strong> A estrutura de dados deve ser facilmente compreensível e modificável para futuros aprimoramentos do sistema.</li>
+</ul>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ul>
+<li>As contas de usuário podem ser criadas, modificadas e excluídas sem erros.</li>
+<li>O sistema autentica corretamente os usuários com base nas credenciais armazenadas.</li>
+<li>As informações relacionadas ao sistema são registradas com precisão e associadas às ações correspondentes do usuário.</li>
+<li>A estrutura de dados se integra perfeitamente a outros componentes do sistema, como mecanismos de autenticação e autorização.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Segurança de Senha:</strong> Implemente algoritmos robustos de hashing de senha (por exemplo, bcrypt, scrypt) para proteger as senhas contra acesso não autorizado. Evite armazenar senhas em texto simples.</li>
+<li><strong>Validação de Dados:</strong> Incorpore verificações de validação de dados para cada campo para garantir a integridade dos dados e evitar que dados inválidos sejam armazenados.</li>
+<li><strong>Tratamento de Erros:</strong> Implemente mecanismos abrangentes de tratamento de erros para gerenciar e registrar graciosamente quaisquer problemas encontrados durante as operações de dados.</li>
+<li><strong>Documentação de Código:</strong> Adicione comentários claros e concisos ao código para explicar o propósito e a funcionalidade de diferentes campos de dados e seções.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Criptografia de Dados:</strong> Criptografe dados confidenciais do usuário, em trânsito e em repouso, para adicionar uma camada extra de segurança.</li>
+<li><strong>Controle de Acesso:</strong> Implemente medidas rígidas de controle de acesso para restringir o acesso não autorizado às informações da conta do usuário. Somente pessoal autorizado deve ter permissão para visualizar, modificar ou excluir esses dados.</li>
+<li><strong>Auditoria:</strong> Implemente trilhas de auditoria para rastrear todas as ações relacionadas a contas de usuário, incluindo quem acessou os dados, quais alterações foram feitas e quando essas alterações ocorreram.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00072-COUSR02_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

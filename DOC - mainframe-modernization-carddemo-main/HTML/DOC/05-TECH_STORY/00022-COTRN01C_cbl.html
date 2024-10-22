@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00022-COTRN01C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Documento de Título:</strong> CardDemo Recuperação de Detalhes de Transação</h1>
+<p><strong>Descrição Resumida:</strong>
+Este programa, <code>COTRN01C</code>, permite que os usuários visualizem os detalhes de uma transação específica do arquivo <code>TRANSACT</code>. Ele recebe um ID de transação, recupera os dados de transação correspondentes e os exibe para o usuário.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como representante do call center, preciso visualizar os detalhes de uma transação específica para poder responder às perguntas dos clientes.</p>
+<p><strong>Épico Relacionado:</strong> 4 - Processamento de Transações</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Entrada de ID de Transação:</strong>
+<ul>
+<li>O programa recebe um ID de transação como entrada do usuário.</li>
+<li>Este ID é usado para identificar e recuperar a transação específica do arquivo <code>TRANSACT</code> usando <code>EXEC CICS READ</code>.</li>
+</ul>
+</li>
+<li><strong>Recuperação de Dados do Arquivo <code>TRANSACT</code>:</strong>
+<ul>
+<li>O programa lê o arquivo <code>TRANSACT</code> usando <code>EXEC CICS READ</code> com o ID de transação fornecido como chave.</li>
+<li>Se o ID da transação for encontrado, o registro de transação correspondente será recuperado na estrutura de dados <code>TRAN-RECORD</code>.</li>
+</ul>
+</li>
+<li><strong>Exibição de Detalhes da Transação:</strong>
+<ul>
+<li>O programa exibe os detalhes da transação recuperada na tela.</li>
+<li>Os detalhes exibidos incluem:
+<ul>
+<li>ID da Transação (<code>TRNIDI</code>)</li>
+<li>Número do Cartão (<code>CARDNUMI</code>)</li>
+<li>Tipo de Transação (<code>TTYPCDI</code>)</li>
+<li>Categoria da Transação (<code>TCATCDI</code>)</li>
+<li>Origem da Transação (<code>TRNSRCI</code>)</li>
+<li>Valor da Transação (<code>TRNAMTI</code>)</li>
+<li>Descrição da Transação (<code>TDESCI</code>)</li>
+<li>Timestamp de Origem da Transação (<code>TORIGDTI</code>)</li>
+<li>Timestamp de Processamento da Transação (<code>TPROCDTI</code>)</li>
+<li>ID do Comerciante (<code>MIDI</code>)</li>
+<li>Nome do Comerciante (<code>MNAMEI</code>)</li>
+<li>Cidade do Comerciante (<code>MCITYI</code>)</li>
+<li>CEP do Comerciante (<code>MZIPI</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Tratamento de Erros:</strong>
+<ul>
+<li>Se o ID da transação inserido estiver em branco, o programa exibirá uma mensagem de erro “Tran ID can NOT be empty…”</li>
+<li>Se o ID da transação não for encontrado no arquivo <code>TRANSACT</code>, o programa exibirá uma mensagem de erro “Transaction ID NOT found…”</li>
+<li>Se ocorrer qualquer outro erro durante o processo, o programa exibirá uma mensagem de erro “Unable to lookup Transaction…”</li>
+</ul>
+</li>
+<li><strong>Navegação:</strong>
+<ul>
+<li>O programa permite que o usuário navegue de volta para a tela anterior.</li>
+<li>O usuário também pode limpar a tela atual para inserir um novo ID de transação.</li>
+</ul>
+</li>
+<li><strong>Interação com a Tela:</strong>
+<ul>
+<li>O programa interage com o usuário por meio de uma tela, provavelmente usando mapas CICS BMS.</li>
+<li>A tela exibe os detalhes da transação e permite que o usuário insira um ID de transação.</li>
+<li>O programa usa <code>EXEC CICS SEND</code> para exibir a tela e <code>EXEC CICS RECEIVE</code> para receber a entrada do usuário.</li>
+</ul>
+</li>
+<li><strong>Estruturas de Dados:</strong>
+<ul>
+<li><code>TRAN-RECORD</code>: Esta estrutura de dados define o layout de um registro de transação no arquivo <code>TRANSACT</code>.</li>
+<li><code>COTRN1AO</code>: Esta estrutura de dados é usada para enviar dados para a tela, incluindo as informações do cabeçalho e quaisquer mensagens de erro.</li>
+<li><code>COTRN1AI</code>: Esta estrutura de dados é usada para receber dados da tela, incluindo o ID da transação inserido.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados</strong></p>
+<ul>
+<li><code>TRAN-RECORD</code>:
+<ul>
+<li><code>TRAN-ID</code>: <code>String</code> - Identificador exclusivo para cada transação.</li>
+<li><code>TRAN-CARD-NUM</code>: <code>Integer</code> - Número do cartão de crédito associado à transação.</li>
+<li><code>TRAN-TYPE-CD</code>: <code>String</code> - Tipo de transação (por exemplo, compra, reembolso).</li>
+<li><code>TRAN-CAT-CD</code>: <code>String</code> - Categoria da transação (por exemplo, mantimentos, combustível).</li>
+<li><code>TRAN-SOURCE</code>: <code>String</code> - Origem da transação (por exemplo, online, na loja).</li>
+<li><code>TRAN-AMT</code>: <code>Decimal</code> - Valor da transação.</li>
+<li><code>TRAN-DESC</code>: <code>String</code> - Descrição da transação.</li>
+<li><code>TRAN-ORIG-TS</code>: <code>DateTime</code> - Timestamp da origem da transação.</li>
+<li><code>TRAN-PROC-TS</code>: <code>DateTime</code> - Timestamp do processamento da transação.</li>
+<li><code>TRAN-MERCHANT-ID</code>: <code>String</code> - Identificador exclusivo para o comerciante.</li>
+<li><code>TRAN-MERCHANT-NAME</code>: <code>String</code> - Nome do comerciante.</li>
+<li><code>TRAN-MERCHANT-CITY</code>: <code>String</code> - Cidade do comerciante.</li>
+<li><code>TRAN-MERCHANT-ZIP</code>: <code>String</code> - CEP do comerciante.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><code>WS-TRANSACT-FILE</code>: <code>TRANSACT</code> - Nome do arquivo que armazena os dados da transação.</li>
+<li><code>WS-TRANID</code>: <code>CT01</code> - Código de transação para o programa.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implementar um mecanismo de tratamento de erros mais centralizado para evitar código redundante.</li>
+<li><strong>Log:</strong> Adicionar instruções de log para capturar eventos importantes e erros durante a execução do programa.</li>
+<li><strong>Desempenho:</strong> Otimizar a consulta ao banco de dados usando índices apropriados no campo <code>TRAN-ID</code> no arquivo <code>TRANSACT</code>.</li>
+<li><strong>Modularidade:</strong> Dividir o código em módulos menores e reutilizáveis para melhor manutenção.</li>
+<li><strong>Comentários:</strong> Adicionar mais comentários em linha para explicar a lógica e o propósito do código.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Validação de Entrada:</strong> Implementar validação de entrada rígida para evitar vulnerabilidades de injeção de SQL.</li>
+<li><strong>Autorização:</strong> Impor verificações de autorização adequadas para garantir que somente usuários autorizados possam acessar e visualizar os detalhes da transação.</li>
+<li><strong>Mascaramento de Dados:</strong> Mascarar dados confidenciais, como números de cartão de crédito, ao exibir detalhes da transação.</li>
+<li><strong>Log de Auditoria:</strong> Registrar todo acesso aos detalhes da transação para fins de auditoria e monitoramento de segurança.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00022-COTRN01C_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

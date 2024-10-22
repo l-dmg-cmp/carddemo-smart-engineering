@@ -1,0 +1,28 @@
+sequenceDiagram
+    participant CardDemo Program
+    participant carddata.txt
+    participant Report
+
+    activate CardDemo Program
+    CardDemo Program->>+carddata.txt: Open
+    carddata.txt->>CardDemo Program: Open Successful
+    
+    loop For Each Record in carddata.txt
+        CardDemo Program->>+carddata.txt: Read Record
+        carddata.txt->>CardDemo Program: Record Data
+        CardDemo Program->>CardDemo Program: Validate Card Number
+        CardDemo Program->>CardDemo Program: Validate Expiration Date
+        alt Record is Valid
+            CardDemo Program->>+Report: Write Valid Record
+            Report-->>-CardDemo Program: Write Successful
+        else Record is Invalid
+            CardDemo Program->>+Report: Write Invalid Record with Reason
+            Report-->>-CardDemo Program: Write Successful
+        end
+    end
+
+    CardDemo Program->>+carddata.txt: Close
+    carddata.txt->>-CardDemo Program: Close Successful
+    CardDemo Program->>+Report: Close
+    Report->>-CardDemo Program: Close Successful
+    deactivate CardDemo Program

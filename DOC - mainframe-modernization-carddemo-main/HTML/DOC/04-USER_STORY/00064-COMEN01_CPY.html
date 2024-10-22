@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00064-COMEN01_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Estrutura de Dados Comum para Aplicações Orientadas a Menus</h1>
+<h1><strong>Descrição Resumida:</strong></h1>
+<p>O arquivo <code>COMEN01.CPY</code> define uma estrutura de dados padronizada em COBOL para gerenciar informações exibidas em telas de menu dentro de uma aplicação. Ele armazena elementos como nomes de transações, títulos de tela, datas, horas, opções de menu, seleções do usuário e mensagens de erro, garantindo consistência e organização no tratamento das interações do usuário.</p>
+<h1><strong>Histórias do Usuário:</strong></h1>
+<p>Como desenvolvedor de aplicações, preciso de uma maneira estruturada de lidar com elementos de dados comuns exibidos em telas de menu, para que a apresentação e o comportamento dos menus sejam consistentes em toda a aplicação.</p>
+<h1><strong>Épico Relacionado:</strong></h1>
+<p>9 - Utilitários do Sistema: Fornecer um conjunto de funções utilitárias para dar suporte à manutenção do sistema, gerenciamento de dados e outras tarefas operacionais.</p>
+<h1><strong>Requisitos Funcionais:</strong></h1>
+<ol>
+<li><strong>Armazenar Nome da Transação:</strong>  A estrutura deve armazenar o nome da transação atual sendo executada (por exemplo, “ACTVW” para Visualização de Conta).</li>
+<li><strong>Exibir Títulos de Tela:</strong> A estrutura deve armazenar o título principal da tela (por exemplo, “Detalhes da Conta”) e um título secundário opcional.</li>
+<li><strong>Manipular Data e Hora:</strong> A estrutura precisa acomodar a data e hora atuais, provavelmente em formatos diferentes para exibição e processamento interno.</li>
+<li><strong>Gerenciar Opções de Menu:</strong> A estrutura deve armazenar o texto para cada opção de menu apresentada ao usuário (até doze opções).</li>
+<li><strong>Registrar Seleção do Usuário:</strong> Um campo é necessário para armazenar a opção selecionada pelo usuário.</li>
+<li><strong>Exibir Mensagens de Erro:</strong> A estrutura deve incluir um campo para armazenar e exibir mensagens de erro para o usuário.</li>
+<li><strong>Flexibilidade na Representação de Dados:</strong> O código usa REDEFINES para permitir que os mesmos dados sejam acessados e apresentados em formatos diferentes (por exemplo, exibidos na tela, usados em cálculos).</li>
+</ol>
+<h1><strong>Requisitos Não Funcionais:</strong></h1>
+<ol>
+<li><strong>Integridade de Dados:</strong> Os tipos de dados e comprimentos para cada campo devem ser rigorosamente aplicados para evitar corrupção de dados.</li>
+<li><strong>Reutilização:</strong> A estrutura deve ser projetada para ser reutilizável em diferentes programas e módulos dentro da aplicação.</li>
+<li><strong>Manutenibilidade:</strong> O código deve ser bem documentado e estruturado para facilitar a compreensão e modificação.</li>
+</ol>
+<h1><strong>Critérios de Aceite:</strong></h1>
+<ol>
+<li>A estrutura de dados deve ser compilada com sucesso, sem erros, em um ambiente COBOL.</li>
+<li>As aplicações que usam a estrutura devem ser capazes de armazenar e recuperar dados em todos os campos definidos.</li>
+<li>A implementação REDEFINES deve funcionar corretamente, permitindo diferentes representações dos mesmos dados.</li>
+</ol>
+<h1><strong>Melhorias de Código:</strong></h1>
+<ol>
+<li><strong>Adicionar Validação de Dados:</strong> Implementar verificações na lógica da aplicação para validar os dados que estão sendo populados na estrutura (por exemplo, garantir que os formatos de data estejam corretos).</li>
+<li><strong>Centralizar o Tratamento de Mensagens de Erro:</strong>  Considere criar um módulo separado para gerenciar mensagens de erro, permitindo localização e personalização mais fáceis.</li>
+</ol>
+<h1><strong>Melhorias de Segurança:</strong></h1>
+<ol>
+<li><strong>Controle de Acesso:</strong> Implementar mecanismos de controle de acesso apropriados dentro da aplicação para restringir a modificação não autorizada dos dados dentro da estrutura.</li>
+<li><strong>Mascaramento de Dados:</strong> Se informações confidenciais estiverem sendo armazenadas na estrutura (como IDs de usuário), considere mascarar ou criptografar esses dados.</li>
+</ol>
+<h1><strong>Diagrama Conceitual:</strong></h1>
+<img src="00064-COMEN01_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00007-CBSTM03B_CBL</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Sub-rotina de Processamento de Arquivo de Transação de Cartão - Especificação Técnica</p>
+<p><strong>Descrição Resumida:</strong>
+Esta sub-rotina atua como uma camada de acesso a dados centralizada dentro de um sistema de gerenciamento de cartão de crédito baseado em COBOL. Ela lida com interações com quatro arquivos de dados principais: <code>TRNX-FILE</code> (detalhes da transação), <code>XREF-FILE</code> (links de cartão para conta), <code>CUST-FILE</code> (informações do cliente) e <code>ACCT-FILE</code> (detalhes da conta).</p>
+<p>A sub-rotina recebe instruções do programa principal, especificando a ação desejada (abrir, ler, fechar), o arquivo de destino e quaisquer chaves necessárias para recuperação de dados. Em seguida, ela executa a operação solicitada, recupera ou manipula dados conforme necessário e relata quaisquer erros de volta ao programa principal.</p>
+<p><strong>Histórias de Usuário:</strong>
+Como um sistema de processamento em lote, esta sub-rotina não envolve interação direta com o usuário. No entanto, sua funcionalidade suporta processos de back-end cruciais para atividades como geração de extratos de clientes, processamento de transações e gerenciamento de contas. Esses processos são essenciais para fornecer informações precisas e oportunas aos usuários finais e representantes de atendimento ao cliente.</p>
+<p><strong>Épico Relacionado:</strong> 4 - Processamento de Transações</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Manipulação de Arquivos:</strong>
+<ul>
+<li><strong>Abrir Arquivos:</strong> A sub-rotina precisa abrir os arquivos especificados no modo apropriado (entrada ou E/S) com base na operação solicitada.
+<ul>
+<li>Entrada:  <code>LK-M03B-DD</code> (nome do arquivo), <code>LK-M03B-OPER</code> (operação)</li>
+<li>Saída:  Arquivo aberto com sucesso ou código de erro em <code>LK-M03B-RC</code></li>
+</ul>
+</li>
+<li><strong>Ler Registros:</strong> Leia um registro do arquivo especificado. Para <code>CUST-FILE</code> e <code>ACCT-FILE</code>, o registro é recuperado usando a chave fornecida. Para <code>TRNX-FILE</code> e <code>XREF-FILE</code>, os registros são lidos sequencialmente.
+<ul>
+<li>Entrada:  <code>LK-M03B-DD</code> (nome do arquivo), <code>LK-M03B-KEY</code> (chave, se aplicável)</li>
+<li>Saída:  Dados do registro em <code>LK-M03B-FLDT</code> ou código de erro em <code>LK-M03B-RC</code></li>
+</ul>
+</li>
+<li><strong>Fechar Arquivos:</strong> Feche o arquivo especificado.
+<ul>
+<li>Entrada: <code>LK-M03B-DD</code> (nome do arquivo)</li>
+<li>Saída: Arquivo fechado com sucesso ou código de erro em <code>LK-M03B-RC</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Tratamento de Erros:</strong>
+<ul>
+<li>Verifique o status do arquivo após cada operação de abrir, ler ou fechar.</li>
+<li>Se um erro for encontrado, mova o status do arquivo para <code>LK-M03B-RC</code> e retorne ao programa principal.</li>
+</ul>
+</li>
+<li><strong>Validação de Dados:</strong>
+<ul>
+<li>Embora a própria sub-rotina não execute validação detalhada de dados, ela deve garantir que as chaves fornecidas tenham o comprimento e formato corretos antes de tentar acessar os registros em <code>CUST-FILE</code> e <code>ACCT-FILE</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><strong>Transação (<code>FD-TRNXFILE-REC</code>):</strong>
+<ul>
+<li><code>FD-TRNXS-ID</code>: Identificador exclusivo da transação (composto pelo número do cartão e ID da transação)</li>
+<li><code>FD-TRNX-CARD</code>: Número do cartão de crédito</li>
+<li><code>FD-TRNX-ID</code>: ID da transação</li>
+<li><code>FD-ACCT-DATA</code>: Dados da conta relacionados à transação (detalhes não especificados no código fornecido)</li>
+</ul>
+</li>
+<li><strong>Referência Cruzada (<code>FD-XREFFILE-REC</code>):</strong>
+<ul>
+<li><code>FD-XREF-CARD-NUM</code>: Número do cartão de crédito</li>
+<li><code>FD-XREF-DATA</code>: Dados associados à referência cruzada (detalhes não especificados)</li>
+</ul>
+</li>
+<li><strong>Cliente (<code>FD-CUSTFILE-REC</code>):</strong>
+<ul>
+<li><code>FD-CUST-ID</code>: ID do cliente</li>
+<li><code>FD-CUST-DATA</code>: Dados do cliente (detalhes não especificados)</li>
+</ul>
+</li>
+<li><strong>Conta (<code>FD-ACCTFILE-REC</code>):</strong>
+<ul>
+<li><code>FD-ACCT-ID</code>: ID da conta</li>
+<li><code>FD-ACCT-DATA</code>: Dados da conta (detalhes não especificados)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><strong>Nomes de Arquivos:</strong>
+<ul>
+<li><code>TRNXFILE</code>:  Nome do arquivo de transação (definição externa)</li>
+<li><code>XREFFILE</code>:  Nome do arquivo de referência cruzada (definição externa)</li>
+<li><code>CUSTFILE</code>: Nome do arquivo do cliente (definição externa)</li>
+<li><code>ACCTFILE</code>: Nome do arquivo da conta (definição externa)</li>
+</ul>
+</li>
+<li><strong>Códigos de Status do Arquivo:</strong>
+<ul>
+<li>Consulte a documentação do sistema ou o ambiente COBOL para obter códigos de status de arquivo específicos e seus significados.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros Explícito:</strong> Em vez de apenas mover o status do arquivo para <code>LK-M03B-RC</code>, implemente um tratamento de erros mais informativo. Isso pode envolver:
+<ul>
+<li>Registrar mensagens de erro em um arquivo separado para depuração.</li>
+<li>Retornar códigos de erro específicos para o programa principal que indicam a natureza do erro (por exemplo, arquivo não encontrado, registro não encontrado, chave inválida).</li>
+</ul>
+</li>
+<li><strong>Documentação Aprimorada:</strong>
+<ul>
+<li>Adicione mais comentários para explicar o propósito de cada seção e a lógica por trás de blocos de código específicos.</li>
+<li>Documente a entrada e saída esperadas para cada função (<code>1000-TRNXFILE-PROC</code>, <code>2000-XREFFILE-PROC</code>, etc.).</li>
+</ul>
+</li>
+<li><strong>Abertura e Fechamento de Arquivo Centralizado:</strong>  Considere abrir todos os arquivos necessários no início da sub-rotina e fechá-los no final. Isso pode simplificar o código e potencialmente melhorar o desempenho se várias operações estiverem sendo executadas no mesmo arquivo.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Controle de Acesso a Arquivos:</strong> Implemente permissões de acesso a arquivos apropriadas para garantir que a sub-rotina possa executar apenas as operações necessárias (ler, gravar, etc.) nos arquivos de dados.</li>
+<li><strong>Criptografia de Dados:</strong> Se dados confidenciais estiverem sendo armazenados nos arquivos (por exemplo, informações do cliente, detalhes da conta), considere criptografar os dados em repouso e descriptografá-los apenas quando necessário na sub-rotina.</li>
+<li><strong>Auditoria:</strong> Implemente um trilha de auditoria para rastrear acessos a arquivos, modificações e quaisquer erros encontrados. Isso pode ser útil para monitoramento de segurança e solução de problemas.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00007-CBSTM03B_CBL_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00029-COADM02Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Aplicativo CardDemo - Especificação do Menu Administrativo de Gerenciamento de Usuários</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve as especificações para o menu administrativo “User Management” (Gerenciamento de Usuários) dentro do aplicativo CardDemo. Este menu é um componente crítico da estrutura de segurança do sistema, fornecendo ao pessoal autorizado ferramentas para gerenciar contas de usuário e suas permissões associadas.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como administrador do sistema, preciso gerenciar contas de usuário para controlar o acesso a dados confidenciais e funcionalidades dentro do aplicativo CardDemo.</p>
+<p><strong>Epic Relacionado:</strong> 6 - Gerenciamento de Usuários e Segurança</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Exibição do Menu:</strong>
+<ul>
+<li>O programa deve exibir um menu com quatro opções: User List (Lista de Usuários), User Add (Adicionar Usuário), User Update (Atualizar Usuário) e User Delete (Excluir Usuário).</li>
+<li>Cada opção de menu deve ter um identificador numérico correspondente (1-4).</li>
+</ul>
+</li>
+<li><strong>Entrada do Usuário:</strong>
+<ul>
+<li>O programa deve solicitar ao administrador que selecione uma opção de menu inserindo o número correspondente.</li>
+<li>O programa deve validar a entrada do usuário para garantir que uma opção de menu válida seja escolhida.</li>
+</ul>
+</li>
+<li><strong>Execução do Programa:</strong>
+<ul>
+<li>Com base na seleção do administrador, o programa deve executar o subprograma COBOL correspondente:
+<ul>
+<li><code>1</code> - <code>COUSR00C</code> (User List)</li>
+<li><code>2</code> - <code>COUSR01C</code> (User Add)</li>
+<li><code>3</code> - <code>COUSR02C</code> (User Update)</li>
+<li><code>4</code> - <code>COUSR03C</code> (User Delete)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Estruturas de Dados:</strong>
+<ul>
+<li><code>CDEMO-ADMIN-OPT-COUNT</code>: Uma variável numérica contendo o número total de opções de menu (4).</li>
+<li><code>CDEMO-ADMIN-OPTIONS-DATA</code>: Uma estrutura de dados contendo informações sobre cada opção de menu:
+<ul>
+<li><code>CDEMO-ADMIN-OPT-NUM</code>: Identificador numérico para a opção de menu (1-4).</li>
+<li><code>CDEMO-ADMIN-OPT-NAME</code>: Nome descritivo da opção de menu (por exemplo, ‘User List (Security)’).</li>
+<li><code>CDEMO-ADMIN-OPT-PGMNAME</code>: O nome do subprograma COBOL associado à opção de menu (por exemplo, ‘COUSR00C’).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><code>CDEMO-ADMIN-OPTIONS</code>:
+<ul>
+<li><code>CDEMO-ADMIN-OPT-NUM</code>: <code>Integer</code></li>
+<li><code>CDEMO-ADMIN-OPT-NAME</code>: <code>String</code></li>
+<li><code>CDEMO-ADMIN-OPT-PGMNAME</code>: <code>String</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li>Número de opções de menu: <code>4</code></li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li>Implementar validação de entrada para lidar com seleções de menu inválidas normalmente.</li>
+<li>Adicionar tratamento de erros para lidar normalmente com quaisquer problemas encontrados durante a execução do subprograma.</li>
+<li>Fornecer prompts e mensagens claras e concisas ao usuário.</li>
+<li>Documentar o código completamente para melhorar a manutenção.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li>Garantir que apenas pessoal autorizado tenha acesso ao menu administrativo.</li>
+<li>Implementar o registro para rastrear ações do usuário dentro do menu.</li>
+<li>Armazenar credenciais de usuário com segurança, usando algoritmos de criptografia ou hashing.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00029-COADM02Y_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

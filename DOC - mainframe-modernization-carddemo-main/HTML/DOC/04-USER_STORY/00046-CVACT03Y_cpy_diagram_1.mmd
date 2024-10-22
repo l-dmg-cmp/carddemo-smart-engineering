@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant Credit Card System
+    participant Customer Database
+    participant Account Database
+    participant Card Cross-Reference File
+
+    activate Credit Card System
+    Credit Card System->>+Customer Database: Validate Customer ID
+    Customer Database->>Credit Card System: Customer ID Valid
+
+    Credit Card System->>+Account Database: Validate Account ID
+    Account Database-->>-Credit Card System: Account ID Valid
+
+    Credit Card System->>+Card Cross-Reference File: Write Card Cross-Reference Record
+    Card Cross-Reference File-->>-Credit Card System: Write Successful
+    deactivate Credit Card System

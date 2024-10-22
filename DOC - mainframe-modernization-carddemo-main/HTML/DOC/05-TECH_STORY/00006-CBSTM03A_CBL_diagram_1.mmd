@@ -1,0 +1,43 @@
+sequenceDiagram
+    participant CBSTM03A
+    participant CBSTM03B
+    participant TRNXFILE
+    participant XREFFILE
+    participant CUSTFILE
+    participant ACCTFILE
+    participant STMTFILE
+    participant HTMLFILE
+
+    activate CBSTM03A
+    CBSTM03A->>+CBSTM03B: Open TRNXFILE
+    CBSTM03B-->>-CBSTM03A: TRNXFILE Opened
+    CBSTM03A->>+TRNXFILE: Read Record
+    TRNXFILE-->>-CBSTM03A: Transaction Record
+    CBSTM03A->>+CBSTM03B: Open XREFFILE
+    CBSTM03B-->>-CBSTM03A: XREFFILE Opened
+    loop For Each Transaction
+        CBSTM03A->>+XREFFILE: Read Record
+        XREFFILE-->>-CBSTM03A: Cross-Reference Record
+        CBSTM03A->>+CBSTM03B: Open CUSTFILE
+        CBSTM03B-->>-CBSTM03A: CUSTFILE Opened
+        CBSTM03A->>+CUSTFILE: Read Record
+        CUSTFILE-->>-CBSTM03A: Customer Record
+        CBSTM03A->>+CBSTM03B: Open ACCTFILE
+        CBSTM03B-->>-CBSTM03A: ACCTFILE Opened
+        CBSTM03A->>+ACCTFILE: Read Record
+        ACCTFILE-->>-CBSTM03A: Account Record
+        CBSTM03A->>CBSTM03A: Process Data and Generate Statement Lines
+        CBSTM03A->>+STMTFILE: Write Statement Line
+        STMTFILE-->>-CBSTM03A: Write Successful
+        CBSTM03A->>+HTMLFILE: Write Statement Line
+        HTMLFILE-->>-CBSTM03A: Write Successful
+    end
+    CBSTM03A->>+CBSTM03B: Close TRNXFILE
+    CBSTM03B-->>-CBSTM03A: TRNXFILE Closed
+    CBSTM03A->>+CBSTM03B: Close XREFFILE
+    CBSTM03B-->>-CBSTM03A: XREFFILE Closed
+    CBSTM03A->>+CBSTM03B: Close CUSTFILE
+    CBSTM03B-->>-CBSTM03A: CUSTFILE Closed
+    CBSTM03A->>+CBSTM03B: Close ACCTFILE
+    CBSTM03B-->>-CBSTM03A: ACCTFILE Closed
+    deactivate CBSTM03A

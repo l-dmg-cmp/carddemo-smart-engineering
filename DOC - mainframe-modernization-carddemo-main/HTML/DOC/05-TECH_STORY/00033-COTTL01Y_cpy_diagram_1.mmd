@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant User
+    participant CardDemo Application
+    participant Screen
+
+    activate CardDemo Application
+    CardDemo Application->>+Screen: Display Title (`AWS Mainframe Modernization`)
+    CardDemo Application->>Screen: Display Title (`CardDemo`)
+    
+    User->>+CardDemo Application: Use Application
+    CardDemo Application->>-User: Application Functionality
+    
+    User->>+CardDemo Application: Exit Application
+    CardDemo Application->>+Screen: Display Message (`Thank you for using CCDA application...`)
+    deactivate CardDemo Application

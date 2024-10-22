@@ -1,0 +1,36 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant User
+    participant CORPT00C Program
+    participant CSUTLDTC Program
+    participant TDQ JOBS
+    participant Batch System
+
+    activate User
+    User->>+CORPT00C Program: Request Transaction Report (Report Type, Dates)
+    activate CORPT00C Program
+    alt Monthly or Yearly Report
+        CORPT00C Program->>+CSUTLDTC Program: Validate Dates
+        CSUTLDTC Program->>CORPT00C Program: Dates Valid
+    else Custom Report
+        CORPT00C Program->>+CSUTLDTC Program: Validate Start Date
+        CSUTLDTC Program->>CORPT00C Program: Start Date Valid
+        CORPT00C Program->>+CSUTLDTC Program: Validate End Date
+        CSUTLDTC Program->>CORPT00C Program: End Date Valid
+    end
+    alt Dates Valid
+        CORPT00C Program->>+TDQ JOBS: Submit Job Request (Report Type, Dates)
+        TDQ JOBS-->>-CORPT00C Program: Job Request Submitted
+        CORPT00C Program->>User: Report Request Submitted
+                activate Batch System
+        Batch System->>+TDQ JOBS: Retrieve Job Request
+        TDQ JOBS->>Batch System: Job Request Data
+        deactivate TDQ JOBS
+        Batch System->>Batch System: Process Report
+        Batch System->>Batch System: Generate Report Output
+        deactivate Batch System
+    else Dates Invalid
+        CORPT00C Program->>User: Invalid Date Input
+        deactivate User
+    end
+    deactivate CORPT00C Program

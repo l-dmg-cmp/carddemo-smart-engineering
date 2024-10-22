@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant Application
+    participant Card Data File
+
+    activate Application
+    Application->>+Card Data File: Open
+    Card Data File->>Application: Open Successful
+
+    loop For Each Operation
+        Application->>+Card Data File: Read/Write Card Record
+        Card Data File->>Application: Card Record Data
+    end
+
+    Application->>+Card Data File: Close
+    Card Data File->>-Application: Close Successful
+    deactivate Application

@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00020-COSGN00C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h2>Decodificando o Processo de Login para a Aplicação CardDemo</h2>
+<p><strong>Arquivo:</strong>  \COSGN00C.cbl</p>
+<p>Este código lida com o processo de login para a aplicação CardDemo, um sistema utilizado para gerenciar cartões de crédito. Ele garante que apenas usuários autorizados possam acessar a aplicação e os direciona para a parte apropriada do sistema com base em seu tipo de usuário.</p>
+<p><strong>Contexto:</strong></p>
+<p>Imagine que você é um representante de atendimento ao cliente de uma empresa de cartão de crédito. Antes de poder acessar as informações do cliente ou realizar qualquer transação, você precisa fazer login na aplicação CardDemo. Este código lida com o processo de login, verificando suas credenciais e concedendo acesso aos recursos apropriados.</p>
+<p><strong>Ação:</strong></p>
+<ol>
+<li><strong>Exibir Tela de Login:</strong> O código começa exibindo uma tela de login para o usuário, onde ele precisa inserir seu ID de Usuário e Senha.</li>
+<li><strong>Capturar Entrada do Usuário:</strong> Quando o usuário pressiona Enter, o código coleta o ID de Usuário e a Senha inseridos.</li>
+<li><strong>Validar Credenciais do Usuário:</strong> Em seguida, ele verifica se o ID de Usuário inserido existe no sistema. Se existir, o código compara a Senha inserida com a armazenada no sistema para aquele ID de Usuário específico.</li>
+<li><strong>Determinar o Tipo de Usuário:</strong> Após a validação bem-sucedida, o código identifica a função do usuário (por exemplo, administrador ou usuário regular).</li>
+<li><strong>Direcionar o Usuário para o Menu Apropriado:</strong> Com base no tipo de usuário, o código redireciona o usuário para a parte relevante da aplicação. Os administradores podem ser direcionados para um menu de administração com funcionalidades específicas, enquanto os usuários regulares podem acessar o menu principal.</li>
+</ol>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Segurança:</strong> Somente usuários com credenciais válidas (combinação correta de ID de Usuário e Senha) têm acesso à aplicação. Isso garante que os dados confidenciais do cliente e financeiros sejam protegidos contra acesso não autorizado.</li>
+<li><strong>Controle de Acesso Baseado em Função:</strong> Diferentes tipos de usuários têm acesso a diferentes funcionalidades dentro da aplicação. Isso garante que os usuários vejam e interajam apenas com informações e recursos relevantes para sua função. Por exemplo, um usuário regular não teria acesso a funções administrativas, como adicionar novos usuários ou alterar as configurações do sistema.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

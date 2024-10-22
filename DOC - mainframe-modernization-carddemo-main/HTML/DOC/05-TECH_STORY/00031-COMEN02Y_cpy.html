@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00031-COMEN02Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> CardDemo Application - Especificação das Opções do Menu Administrativo</p>
+<p><strong>Descrição Resumida:</strong> Este documento descreve as opções de menu disponíveis para administradores no aplicativo CardDemo, um sistema baseado em COBOL para gerenciar operações de cartão de crédito. Ele define a estrutura e o conteúdo do menu administrativo, especificando as opções disponíveis e suas chamadas de programa correspondentes.</p>
+<p><strong>Histórias de Usuário:</strong>
+Como administrador, preciso de acesso a um menu dedicado com opções para gerenciar vários aspectos do sistema de cartão de crédito, incluindo contas, cartões, transações e relatórios, para que eu possa executar minhas tarefas administrativas com eficiência.</p>
+<p><strong>Épico Relacionado:</strong> 6 - Gerenciamento de Usuários e Segurança</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Exibição do Menu:</strong>
+<ul>
+<li>O menu administrativo é exibido após o login bem-sucedido de um usuário com privilégios administrativos.</li>
+<li>As opções do menu são apresentadas em um formato de lista numerada, permitindo que o administrador selecione uma opção digitando o número correspondente.</li>
+<li>Cada opção do menu exibe um nome descritivo para o usuário, indicando a funcionalidade que ela fornece.</li>
+</ul>
+</li>
+<li><strong>Execução da Opção:</strong>
+<ul>
+<li>Ao selecionar uma opção do menu, o sistema executa o programa COBOL associado a essa opção.</li>
+<li>O nome do programa associado a cada opção do menu é armazenado no campo <code>CDEMO-MENU-OPT-PGMNAME</code> da estrutura de dados <code>CARDDEMO-MAIN-MENU-OPTIONS</code>.</li>
+</ul>
+</li>
+<li><strong>Validação do Tipo de Usuário:</strong>
+<ul>
+<li>O sistema verifica o tipo de usuário para garantir que apenas administradores autorizados possam acessar e interagir com as opções do menu administrativo.</li>
+<li>O campo <code>CDEMO-MENU-OPT-USRTYPE</code>, definido como ‘U’ para ‘Usuário’, indica que a opção do menu está acessível a usuários administrativos, que são considerados um tipo de usuário dentro do sistema.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><code>CARDDEMO-MAIN-MENU-OPTIONS</code>:
+<ul>
+<li><code>CDEMO-MENU-OPT-NUM</code> (<code>Numeric(2)</code>): Número de sequência da opção do menu.</li>
+<li><code>CDEMO-MENU-OPT-NAME</code> (<code>Alphanumeric(35)</code>): Nome de exibição da opção do menu.</li>
+<li><code>CDEMO-MENU-OPT-PGMNAME</code> (<code>Alphanumeric(8)</code>): Nome do programa associado à opção do menu.</li>
+<li><code>CDEMO-MENU-OPT-USRTYPE</code> (<code>Alphanumeric(1)</code>): Tipo de usuário autorizado a acessar a opção.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li>O número de opções do menu é definido pela variável <code>CDEMO-MENU-OPT-COUNT</code>.</li>
+<li>O número de sequência, nome de exibição, nome do programa e tipo de usuário de cada opção do menu são codificados na estrutura <code>CDEMO-MENU-OPTIONS-DATA</code>.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Geração Dinâmica de Menu:</strong> Em vez de codificar as opções do menu, recupere-as de um banco de dados ou arquivo de configuração. Isso permite atualizações e personalizações mais fáceis do menu sem modificar o código do programa.</li>
+<li><strong>Controle de Acesso Baseado em Função (RBAC):</strong> Implemente o RBAC para controlar dinamicamente quais opções do menu são exibidas com base na função e permissões do administrador.</li>
+<li><strong>Navegação do Menu:</strong> Aprimore a experiência do usuário fornecendo instruções claras para navegação no menu, como voltar ao menu anterior ou sair do aplicativo.</li>
+<li><strong>Tratamento de Erros:</strong> Implemente o tratamento de erros para seleções de menu inválidas, exibindo mensagens apropriadas ao usuário e permitindo que ele insira sua escolha novamente.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Validação de Entrada:</strong> Valide todas as entradas do usuário para evitar ataques de injeção, como injeção de SQL ou cross-site scripting (XSS).</li>
+<li><strong>Gerenciamento de Sessão:</strong> Implemente práticas seguras de gerenciamento de sessão, como o uso de cookies seguros e mecanismos de tempo limite, para proteger contra acesso não autorizado.</li>
+<li><strong>Registro e Auditoria:</strong> Registre todas as ações administrativas, incluindo seleções de menu e execuções de programas, para fins de auditoria e monitoramento de segurança.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00031-COMEN02Y_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

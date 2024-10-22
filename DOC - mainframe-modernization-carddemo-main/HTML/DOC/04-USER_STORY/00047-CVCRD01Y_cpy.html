@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00047-CVCRD01Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Sistema de Cartão de Crédito - Estrutura de Dados para Operações de Cartão de Crédito</h1>
+<h1><strong>Descrição Resumida:</strong></h1>
+<p>Este documento detalha a estrutura de dados utilizada em um sistema de cartão de crédito, com foco em como as informações da conta do cartão de crédito, os detalhes do cliente e as interações do usuário são armazenadas e acessadas. Esta estrutura é definida no copybook CVCRD01Y, que atua como um modelo para organizar essas informações dentro do sistema.</p>
+<h1><strong>Histórias do Usuário:</strong></h1>
+<p>Como usuário do Sistema de Cartão de Crédito, preciso de uma maneira padronizada de armazenar e acessar as informações da conta do cartão de crédito, os detalhes do cliente e rastrear as interações do usuário para garantir o processamento eficiente e preciso das operações do cartão de crédito.</p>
+<h1><strong>Epic Relacionado:</strong></h1>
+<p>3 - Gestão de Cartão de Crédito</p>
+<h1><strong>Requisitos Funcionais:</strong></h1>
+<ul>
+<li><strong>Identificação da Conta:</strong> O sistema deve ser capaz de identificar exclusivamente cada conta de cartão de crédito. Isso é feito usando um identificador exclusivo armazenado no item de dados <code>CC-ACCT-ID</code>.</li>
+<li><strong>Gerenciamento do Número do Cartão:</strong> O sistema deve ser capaz de armazenar e processar números de cartão de crédito. O item de dados <code>CC-CARD-NUM</code> é usado para essa finalidade e pode ser tratado como dados de texto e numéricos.</li>
+<li><strong>Associação do Cliente:</strong> O sistema deve vincular as informações do cartão de crédito a um cliente específico. Isso é obtido armazenando um identificador de cliente exclusivo no item de dados <code>CC-CUST-ID</code>.</li>
+<li><strong>Interação da Interface do Usuário:</strong> O sistema precisa lidar com as interações do usuário, como teclas pressionadas. Itens de dados como <code>CCARD-AID-ENTER</code> e <code>CCARD-AID-CLEAR</code> provavelmente representam ações como pressionar as teclas “Enter” ou “Clear”.</li>
+<li><strong>Controle de Fluxo do Programa:</strong> O sistema deve gerenciar o fluxo de operações, como navegar entre diferentes programas ou telas. Itens de dados como <code>CCARD-LAST-PROG</code> e <code>CCARD-NEXT-PROG</code> provavelmente armazenam os nomes dos programas envolvidos neste fluxo.</li>
+</ul>
+<h1><strong>Requisitos Não Funcionais:</strong></h1>
+<ul>
+<li><strong>Desempenho:</strong> O acesso e a recuperação de dados da estrutura de dados devem ser rápidos e eficientes para evitar impactar o desempenho do sistema.</li>
+<li><strong>Manutenibilidade:</strong> A estrutura de dados deve ser bem organizada e documentada para facilitar a manutenção e as atualizações.</li>
+<li><strong>Escalabilidade:</strong> O design da estrutura de dados deve permitir a expansão futura e a adição de novos elementos de dados sem exigir alterações significativas no código.</li>
+</ul>
+<h1><strong>Critérios de Aceitação:</strong></h1>
+<ul>
+<li>A estrutura de dados representa com precisão as informações da conta do cartão de crédito, os detalhes do cliente e as interações do usuário, conforme definido nos requisitos.</li>
+<li>O sistema pode armazenar e recuperar dados com sucesso usando esta estrutura.</li>
+<li>A estrutura de dados se integra perfeitamente com outras partes do sistema de cartão de crédito.</li>
+</ul>
+<h1><strong>Melhorias de Código:</strong></h1>
+<ul>
+<li><strong>Validação de Dados:</strong> Implemente verificações para garantir a validade dos dados que estão sendo armazenados na estrutura. Por exemplo, os números de cartão de crédito devem ser validados usando um algoritmo de checksum.</li>
+<li><strong>Documentação:</strong> Adicione comentários claros para explicar a finalidade de cada item de dados e como ele é usado no sistema.</li>
+<li><strong>Padronização:</strong> Se possível, alinhe a estrutura de dados com quaisquer padrões do setor para troca ou armazenamento de dados para melhorar a interoperabilidade com outros sistemas.</li>
+</ul>
+<h1><strong>Melhorias de Segurança:</strong></h1>
+<ul>
+<li><strong>Criptografia de Dados:</strong> Criptografe dados confidenciais, como números de cartão de crédito, para protegê-los de acesso não autorizado.</li>
+<li><strong>Controle de Acesso:</strong> Implemente mecanismos para restringir o acesso à estrutura de dados e seus elementos com base nas funções e permissões do usuário.</li>
+<li><strong>Registro de Auditoria:</strong> Rastreie todos os acessos e modificações na estrutura de dados para fins de auditoria e segurança.</li>
+</ul>
+<h1><strong>Diagrama Conceitual:</strong></h1>
+<img src="00047-CVCRD01Y_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

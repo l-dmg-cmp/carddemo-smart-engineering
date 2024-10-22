@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00026-COUSR02C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Especificação do Programa de Atualização de Usuário CardDemo</p>
+<p><strong>Descrição Resumida:</strong>
+O programa de Atualização de Usuário CardDemo permite que administradores modifiquem informações de usuários existentes, incluindo nome, senha e tipo de usuário. Este programa garante a integridade dos dados por meio da validação de entrada e mantém a segurança do sistema controlando o acesso a dados confidenciais do usuário.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como administrador, preciso ser capaz de atualizar as informações do usuário para manter os dados do usuário do sistema atualizados e precisos.</p>
+<p><strong>Épico Relacionado:</strong> <code>6</code> - <strong>Gerenciamento de Usuários e Segurança</strong></p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li>
+<p><strong>Validação de Entrada do Usuário:</strong></p>
+<ul>
+<li>Validar se o campo <code>User ID</code> não está vazio.</li>
+<li>Validar se o campo <code>First Name</code> não está vazio.</li>
+<li>Validar se o campo <code>Last Name</code> não está vazio.</li>
+<li>Validar se o campo <code>Password</code> não está vazio.</li>
+<li>Validar se o campo <code>User Type</code> não está vazio.</li>
+</ul>
+</li>
+<li>
+<p><strong>Ler Dados do Usuário:</strong></p>
+<ul>
+<li>Entrada: Recebe o <code>User ID</code> da interface do usuário.</li>
+<li>Processo:
+<ol>
+<li>Lê o arquivo <code>USRSEC</code> usando o <code>User ID</code> como chave.</li>
+<li>Se o <code>User ID</code> for encontrado, recupera o registro do usuário.</li>
+<li>Se o <code>User ID</code> não for encontrado, exibe uma mensagem de erro: <code>User ID NOT found...</code>.</li>
+</ol>
+</li>
+<li>Saída: Retorna o registro do usuário.</li>
+</ul>
+</li>
+<li>
+<p><strong>Atualizar Dados do Usuário:</strong></p>
+<ul>
+<li>Entrada: Recebe os dados atualizados do usuário da interface do usuário.</li>
+<li>Processo:
+<ol>
+<li>Valida os dados de entrada.</li>
+<li>Se a validação for aprovada, atualiza o registro do usuário no arquivo <code>USRSEC</code>.</li>
+<li>Se a validação falhar, exibe uma mensagem de erro indicando o erro específico.</li>
+</ol>
+</li>
+<li>Saída: Exibe uma mensagem de sucesso: <code>User </code> <code>User ID</code> <code> has been updated ...</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><code>SEC-USER-DATA</code>: Representa um registro de usuário no arquivo <code>USRSEC</code>.
+<ul>
+<li><code>SEC-USR-ID</code>:  <code>String</code> - Identificador único para cada usuário.</li>
+<li><code>SEC-USR-FNAME</code>: <code>String</code> - Primeiro nome do usuário.</li>
+<li><code>SEC-USR-LNAME</code>: <code>String</code> - Sobrenome do usuário.</li>
+<li><code>SEC-USR-PWD</code>: <code>String</code> - Senha do usuário para acesso ao sistema.</li>
+<li><code>SEC-USR-TYPE</code>: <code>String</code> - Define a função e as permissões do usuário no aplicativo.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><code>WS-USRSEC-FILE</code>: Caminho do arquivo para o arquivo <code>USRSEC</code>. Valor: <code>USRSEC</code>.</li>
+<li><code>CCDA-MSG-INVALID-KEY</code>: Mensagem de erro para teclas inválidas pressionadas. Valor obtido do copybook <code>CSMSG01Y</code>.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Complexidade da Senha:</strong> Imponha regras de complexidade de senha mais fortes, exigindo uma combinação de letras maiúsculas e minúsculas, números e caracteres especiais.</li>
+<li><strong>Criptografia de Senha:</strong> Não armazene senhas em texto simples. Implemente um algoritmo de hash de senha seguro para proteger as senhas contra acesso não autorizado.</li>
+<li><strong>Limpeza de Entrada:</strong> Limpe todas as entradas do usuário para evitar vulnerabilidades como injeção de SQL ou cross-site scripting (XSS).</li>
+<li><strong>Registro de Auditoria:</strong> Registre todas as ações de atualização do usuário, incluindo o usuário que fez as alterações, a data e hora da atualização e os campos de dados específicos modificados.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Autorização:</strong> Implemente o controle de acesso baseado em funções (RBAC) para restringir a funcionalidade de atualização do usuário apenas ao pessoal autorizado.</li>
+<li><strong>Gerenciamento de Sessão:</strong> Imponha práticas seguras de gerenciamento de sessão. Invalide as sessões do usuário após um período de inatividade ou após o logout bem-sucedido para evitar o acesso não autorizado de terminais autônomos.</li>
+<li><strong>Segurança da Camada de Transporte (TLS):</strong>  Garanta que toda a comunicação entre o cliente e o servidor seja criptografada usando TLS para proteger dados confidenciais durante a transmissão.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00026-COUSR02C_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

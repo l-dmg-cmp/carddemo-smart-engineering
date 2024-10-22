@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00007-CBSTM03B_CBL</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h2>Sub-rotina de Processamento de Arquivo de Transação de Cartão</h2>
+<p><strong>Arquivo:</strong>  \src\CBSTM03B.CBL</p>
+<p><strong>Contexto:</strong></p>
+<p>Este código é uma sub-rotina, um pequeno programa dentro de um sistema maior, projetado para gerenciar transações com cartão de crédito. É como um bibliotecário que busca arquivos específicos (dados do cliente, detalhes da conta, registros de transações) mediante solicitação. Esta sub-rotina garante a operação suave de um sistema de processamento em lote, onde grandes volumes de transações são processados automaticamente.</p>
+<p><strong>Ação:</strong></p>
+<ol>
+<li><strong>Acesso a Arquivos:</strong> A sub-rotina é projetada para lidar com quatro arquivos principais:
+<ul>
+<li><strong>Arquivo de Transações (TRNX-FILE):</strong> Contém detalhes de cada transação de cartão de crédito.</li>
+<li><strong>Arquivo de Referência Cruzada (XREF-FILE):</strong> Vincula números de cartão de crédito a contas específicas.</li>
+<li><strong>Arquivo do Cliente (CUST-FILE):</strong> Contém informações pessoais sobre cada cliente.</li>
+<li><strong>Arquivo de Conta (ACCT-FILE):</strong> Armazena detalhes sobre cada conta de cartão de crédito (saldo, limite de crédito, etc.).</li>
+</ul>
+</li>
+<li><strong>Processamento de Solicitações:</strong> O programa principal sinaliza qual ação ele precisa (abrir, ler, fechar) em qual arquivo usando códigos específicos (‘TRNXFILE’, ‘XREFFILE’, etc.) e fornece as chaves necessárias (como número da conta) para localizar informações específicas.</li>
+<li><strong>Operações de Arquivo:</strong> Com base na solicitação, a sub-rotina abre o arquivo relevante, lê dados dele ou o fecha após a conclusão da operação.</li>
+<li><strong>Tratamento de Erros:</strong> A sub-rotina também verifica diligentemente se há problemas durante as operações do arquivo (por exemplo, arquivo não encontrado) e os relata ao programa principal.</li>
+</ol>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Organização de Dados:</strong> O uso de arquivos separados para transações, referências cruzadas, clientes e contas garante o gerenciamento organizado de dados dentro do sistema.</li>
+<li><strong>Processamento Sequencial:</strong> A sub-rotina é projetada para processamento em lote, lidando com transações uma após a outra do Arquivo de Transações.</li>
+<li><strong>Recuperação de Dados:</strong> Recupera dados específicos do cliente, da conta e da transação com base nas chaves fornecidas, garantindo um processamento preciso.</li>
+<li><strong>Segurança e Integridade:</strong> Ao lidar com operações de arquivo dentro de uma sub-rotina controlada, o sistema mantém a integridade e a segurança dos dados.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00060-COBIL00_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Especificação da Estrutura de Dados para Pagamento de Contas</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve a estrutura de dados para lidar com transações de pagamento de contas dentro de um programa COBOL. Ele define como o programa armazena e organiza informações relacionadas a cada pagamento, incluindo detalhes como ID da transação, informações da conta, valor do pagamento e status do processamento. A estrutura foi projetada para ser utilizada em diferentes cenários de saída, com layouts separados para exibições baseadas em caracteres e, potencialmente, outros formatos.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como analista de dados, preciso garantir que apenas registros válidos sejam usados para análise. Isso inclui verificar a integridade dos dados de transações de pagamento de contas, o que é crucial para relatórios financeiros e análises precisas.</p>
+<p><strong>Épico Relacionado:</strong> 4 - Processamento de Transações</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Definição da Estrutura de Dados:</strong>
+<ul>
+<li>O código define duas estruturas de dados: <code>COBIL0AI</code> e <code>COBIL0AO</code>.</li>
+<li><code>COBIL0AI</code> usa uma combinação de tipos de dados numéricos e alfanuméricos para processamento interno eficiente.</li>
+<li><code>COBIL0AO</code> redefine <code>COBIL0AI</code> para dividir os dados para exibições baseadas em caracteres, provavelmente para interfaces de usuário ou relatórios.</li>
+</ul>
+</li>
+<li><strong>Definições de Campo:</strong>
+<ul>
+<li>Ambas as estruturas contêm os mesmos campos, mas os representam de forma diferente.</li>
+<li><code>TRNNAMEL</code> (interno) e <code>TRNNAME[C,P,H,V,O]</code> (exibição) armazenam o nome ou identificador da transação.</li>
+<li><code>CURDATEL</code> (interno) e <code>CURDATE[C,P,H,V,O]</code> (exibição) armazenam a data da transação.</li>
+<li><code>CURTIMEL</code> (interno) e <code>CURTIME[C,P,H,V,O]</code> (exibição) armazenam a hora da transação.</li>
+<li><code>PGMNAMEL</code> (interno) e <code>PGMNAME[C,P,H,V,O]</code> (exibição) armazenam o nome do programa para rastreamento.</li>
+<li><code>ACTIDINL</code> (interno) e <code>ACTIDIN[C,P,H,V,O]</code> (exibição) armazenam o ID da conta envolvida.</li>
+<li><code>CURBALL</code> (interno) e <code>CURBAL[C,P,H,V,O]</code> (exibição) armazenam o saldo atual da conta.</li>
+<li><code>CONFIRML</code> (interno) e <code>CONFIRM[C,P,H,V,O]</code> (exibição) armazenam um sinalizador de confirmação (provavelmente para sucesso do pagamento).</li>
+<li><code>ERRMSGL</code> (interno) e <code>ERRMSG[C,P,H,V,O]</code> (exibição) armazenam mensagens de erro.</li>
+</ul>
+</li>
+<li><strong>Validação do Tipo de Dados:</strong>
+<ul>
+<li>O programa impõe a validação do tipo de dados com base na estrutura de dados definida. Por exemplo, campos numéricos rejeitariam caracteres alfabéticos.</li>
+</ul>
+</li>
+<li><strong>Validação da Regra de Negócio:</strong>
+<ul>
+<li>O programa pode implementar regras de negócio adicionais, como verificar se há saldo suficiente antes de processar um pagamento.</li>
+</ul>
+</li>
+<li><strong>Representação de Dados:</strong>
+<ul>
+<li>O código destaca a necessidade de lidar com dados de forma diferente para processamento interno e apresentação externa, garantindo que as informações sejam exibidas em um formato amigável.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados</strong></p>
+<ul>
+<li><strong>Transação de Pagamento de Conta:</strong> Representa uma única operação de pagamento de conta.
+<ul>
+<li><code>transactionName</code> (<code>String</code>): Nome ou identificador da transação.</li>
+<li><code>transactionDate</code> (<code>Date</code>): Data da transação.</li>
+<li><code>transactionTime</code> (<code>Time</code>): Hora da transação.</li>
+<li><code>programName</code> (<code>String</code>): Nome do programa que processa a transação.</li>
+<li><code>accountId</code> (<code>String</code>): ID da conta envolvida no pagamento da conta.</li>
+<li><code>currentBalance</code> (<code>Decimal</code>): Saldo atual da conta.</li>
+<li><code>confirmationFlag</code> (<code>Boolean</code>): Indica se o pagamento foi bem-sucedido.</li>
+<li><code>errorMessage</code> (<code>String</code>): Armazena quaisquer erros encontrados durante o processamento.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li>N/A</li>
+</ul>
+<p><strong>Melhorias no Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implemente um mecanismo de tratamento de erros mais robusto. Em vez de apenas armazenar uma mensagem de erro, considere usar uma abordagem estruturada com códigos de erro e descrições detalhadas. Isso tornaria mais fácil identificar e depurar problemas.</li>
+<li><strong>Documentação:</strong> Adicione comentários para explicar o propósito de cada campo e a estrutura geral. Isso melhoraria a legibilidade e a manutenção do código.</li>
+<li><strong>Validação de Dados:</strong> Implemente regras de validação de dados mais abrangentes além da verificação básica de tipo. Por exemplo, valide o formato de datas, horas e IDs de conta para garantir a integridade dos dados.</li>
+</ul>
+<p><strong>Melhorias na Segurança:</strong></p>
+<ul>
+<li><strong>Criptografia de Dados:</strong> Considere criptografar dados confidenciais dentro da estrutura, especialmente se eles estiverem sendo armazenados ou transmitidos por canais inseguros.</li>
+<li><strong>Controle de Acesso:</strong> Implemente mecanismos de controle de acesso para restringir o acesso não autorizado à estrutura de dados e seus campos.</li>
+<li><strong>Registro e Auditoria:</strong> Registre todas as transações e tentativas de acesso a dados para criar uma trilha de auditoria para fins de segurança e conformidade.</li>
+</ul>
+<p><em><strong>IMPORTANTE: Qualquer nome ou valor no resultado precisa ser encapsulado por crases como <code>exemplo</code>.</strong></em></p>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00060-COBIL00_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant COBOL Program
+    participant Transaction File
+
+    activate COBOL Program
+    COBOL Program->>+Transaction File: Open
+    Transaction File->>COBOL Program: Open Successful
+
+    loop For Each Transaction Record
+        COBOL Program->>+Transaction File: Read Record
+        Transaction File->>COBOL Program: Transaction Record Data
+        COBOL Program->>COBOL Program: Process Transaction Record
+    end
+
+    COBOL Program->>+Transaction File: Close
+    Transaction File->>-COBOL Program: Close Successful
+    deactivate COBOL Program

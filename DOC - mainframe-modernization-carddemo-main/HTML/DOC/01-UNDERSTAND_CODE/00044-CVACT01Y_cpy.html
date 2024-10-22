@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00044-CVACT01Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Compreendendo as Informações da Conta no CardDemo</h2>
+<p><strong>Arquivo:</strong>  \CVACT01Y.cpy</p>
+<p>Este código define a forma como as informações da conta são organizadas e armazenadas no sistema CardDemo. Pense nele como um modelo digital para um registro de conta.</p>
+<p><strong>Contexto:</strong></p>
+<p>Em qualquer sistema que gerencia contas financeiras, ter uma maneira estruturada de armazenar os detalhes da conta é crucial. Este trecho de código define o “Registro da Conta” – um modelo para armazenar todas as informações essenciais sobre a conta de cada cliente dentro do aplicativo CardDemo.</p>
+<p><strong>Ação:</strong></p>
+<p>Este código não “faz” nada ativamente em termos de cálculos ou ações. Em vez disso, ele atua como um modelo. Imagine uma tabela com colunas rotuladas:</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCT-ID</td>
+<td>Unique identifier for each account</td>
+<td>12345678901</td>
+</tr>
+<tr>
+<td>ACCT-ACTIVE-STATUS</td>
+<td>Indicates if the account is active (e.g., ‘Y’/‘N’)</td>
+<td>‘Y’</td>
+</tr>
+<tr>
+<td>ACCT-CURR-BAL</td>
+<td>Current account balance</td>
+<td>1500.50</td>
+</tr>
+<tr>
+<td>ACCT-CREDIT-LIMIT</td>
+<td>Maximum credit allowed on the account</td>
+<td>5000.00</td>
+</tr>
+<tr>
+<td>ACCT-CASH-CREDIT-LIMIT</td>
+<td>Maximum cash withdrawal limit</td>
+<td>1000.00</td>
+</tr>
+<tr>
+<td>ACCT-OPEN-DATE</td>
+<td>Date when the account was opened</td>
+<td>2023-01-15</td>
+</tr>
+<tr>
+<td>ACCT-EXPIRAION-DATE</td>
+<td>Account expiration date</td>
+<td>2026-01-15</td>
+</tr>
+<tr>
+<td>ACCT-REISSUE-DATE</td>
+<td>Date the account was last renewed</td>
+<td>2025-01-15</td>
+</tr>
+<tr>
+<td>ACCT-CURR-CYC-CREDIT</td>
+<td>Total credits in the current cycle</td>
+<td>2000.00</td>
+</tr>
+<tr>
+<td>ACCT-CURR-CYC-DEBIT</td>
+<td>Total debits in the current cycle</td>
+<td>500.50</td>
+</tr>
+<tr>
+<td>ACCT-ADDR-ZIP</td>
+<td>ZIP code associated with the account</td>
+<td>“90210”</td>
+</tr>
+<tr>
+<td>ACCT-GROUP-ID</td>
+<td>Group affiliation of the account (if any)</td>
+<td>“PREMIUM”</td>
+</tr>
+<tr>
+<td>FILLER</td>
+<td>Space reserved for future use</td>
+<td>(Empty)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Identificação Única:</strong> Cada conta é identificada por um ‘ACCT-ID’ exclusivo, garantindo que as transações sejam aplicadas à conta correta.</li>
+<li><strong>Status da Conta:</strong> O campo ‘ACCT-ACTIVE-STATUS’ é crucial para gerenciar o acesso e as operações da conta, garantindo que apenas contas ativas sejam usadas.</li>
+<li><strong>Gerenciamento de Crédito:</strong> Campos como ‘ACCT-CREDIT-LIMIT’ e ‘ACCT-CASH-CREDIT-LIMIT’ são essenciais para gerenciar o risco e controlar a utilização do crédito.</li>
+<li><strong>Histórico da Conta:</strong> Datas como ‘ACCT-OPEN-DATE’ e ‘ACCT-REISSUE-DATE’ ajudam a rastrear o ciclo de vida da conta e são essenciais para relatórios.</li>
+<li><strong>Rastreamento de Transações:</strong> ‘ACCT-CURR-CYC-CREDIT’ e ‘ACCT-CURR-CYC-DEBIT’ fornecem um instantâneo da atividade da conta em um ciclo específico.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

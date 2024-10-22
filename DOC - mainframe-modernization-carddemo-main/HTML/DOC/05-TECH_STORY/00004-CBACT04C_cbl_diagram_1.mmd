@@ -1,0 +1,46 @@
+sequenceDiagram
+    participant CBACT04C
+    participant TCATBALFILE
+    participant ACCOUNTFILE
+    participant DISCGRPFILE
+    participant TRANSACTFILE
+
+    activate CBACT04C
+    CBACT04C->>+TCATBALFILE: Open
+    TCATBALFILE-->>-CBACT04C: Open Successful
+    
+    loop For Each Transaction Category Balance Record
+    CBACT04C->>+TCATBALFILE: Read Record
+    TCATBALFILE-->>-CBACT04C: Transaction Category Balance Record Data
+    CBACT04C->>+ACCOUNTFILE: Open
+    ACCOUNTFILE-->>-CBACT04C: Open Successful
+    CBACT04C->>+ACCOUNTFILE: Read Account Record
+    ACCOUNTFILE-->>-CBACT04C: Account Record Data
+    CBACT04C->>+DISCGRPFILE: Open
+    DISCGRPFILE-->>-CBACT04C: Open Successful
+    CBACT04C->>+DISCGRPFILE: Read Interest Rate
+    alt Interest Rate Found
+        DISCGRPFILE->>CBACT04C: Interest Rate Data
+    else Interest Rate Not Found
+        DISCGRPFILE->>-CBACT04C: Interest Rate Not Found
+        CBACT04C->>+DISCGRPFILE: Read Default Interest Rate
+        DISCGRPFILE-->>-CBACT04C: Default Interest Rate Data
+    end
+    CBACT04C->>CBACT04C: Calculate Monthly Interest
+    CBACT04C->>+ACCOUNTFILE: Update Account Balance
+    ACCOUNTFILE-->>-CBACT04C: Update Successful
+    CBACT04C->>+TRANSACTFILE: Open
+    TRANSACTFILE-->>-CBACT04C: Open Successful
+    CBACT04C->>+TRANSACTFILE: Write Transaction Record
+    TRANSACTFILE-->>-CBACT04C: Write Successful    
+    end
+    
+    CBACT04C->>+TCATBALFILE: Close
+    TCATBALFILE->>-CBACT04C: Close Successful
+    CBACT04C->>+ACCOUNTFILE: Close
+    ACCOUNTFILE->>-CBACT04C: Close Successful
+    CBACT04C->>+DISCGRPFILE: Close
+    DISCGRPFILE->>-CBACT04C: Close Successful
+    CBACT04C->>+TRANSACTFILE: Close
+    TRANSACTFILE->>-CBACT04C: Close Successful
+    deactivate CBACT04C

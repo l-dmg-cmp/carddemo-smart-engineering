@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00076-carddata_txt</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Programa de Validação e Processamento de Dados de Cartão de Crédito</p>
+<p><strong>Descrição Resumida:</strong>
+Este programa valida informações de cartão de crédito de um arquivo chamado “carddata.txt”. Ele verifica se os números dos cartões são válidos (usando o Algoritmo de Luhn), se as datas de validade estão no futuro e garante que os dados sejam tratados com segurança. Um relatório de registros válidos e inválidos é gerado.</p>
+<p><strong>Histórias de Usuário:</strong>
+Como Analista de Dados, preciso ter certeza de que estou usando apenas registros de cartão de crédito válidos para que minha análise seja precisa e não contenha dados inválidos.</p>
+<p><strong>Épico Relacionado:</strong>
+3 - Gestão de Cartão de Crédito</p>
+<p><strong>Requisitos Funcionais:</strong></p>
+<ol>
+<li><strong>Ler dados do arquivo “carddata.txt”.</strong>
+<ul>
+<li>O arquivo contém o número do cartão de crédito, o nome do cliente e a data de validade de cada cliente.</li>
+</ul>
+</li>
+<li><strong>Validar cada registro:</strong>
+<ul>
+<li><strong>Número do Cartão:</strong>
+<ul>
+<li>Deve ter de 13 a 19 dígitos.</li>
+<li>Deve passar na verificação do Algoritmo de Luhn.</li>
+</ul>
+</li>
+<li><strong>Data de Validade:</strong>
+<ul>
+<li>O formato deve ser YYYY-MM-DD.</li>
+<li>A data deve ser no futuro.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Gerar um relatório de saída:</strong>
+<ul>
+<li>Listar todos os registros de cartão de crédito válidos.</li>
+<li>Listar todos os registros inválidos com o motivo da invalidade (por exemplo, “Número de Cartão Inválido”, “Expirado”).</li>
+</ul>
+</li>
+</ol>
+<p><strong>Requisitos Não Funcionais:</strong></p>
+<ol>
+<li><strong>Segurança:</strong>
+<ul>
+<li>O programa deve lidar com as informações do cartão de crédito com segurança, seguindo os padrões PCI DSS.</li>
+<li>Dados confidenciais não devem ser armazenados de forma insegura.</li>
+</ul>
+</li>
+<li><strong>Desempenho:</strong>
+<ul>
+<li>O programa deve processar os dados de forma eficiente.</li>
+<li>O tempo de processamento deve ser minimizado, especialmente para arquivos grandes.</li>
+</ul>
+</li>
+<li><strong>Manutenibilidade:</strong>
+<ul>
+<li>O código deve ser bem documentado e fácil de entender para futuras modificações.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>O programa lê com sucesso todos os registros do arquivo “carddata.txt”.</li>
+<li>Todos os números de cartão de crédito são validados de acordo com o Algoritmo de Luhn.</li>
+<li>Todas as datas de validade são validadas quanto ao formato correto e data futura.</li>
+<li>Um relatório de saída é gerado que:
+<ul>
+<li>Lista com precisão todos os registros de cartão de crédito válidos.</li>
+<li>Lista com precisão todos os registros inválidos com motivos específicos para invalidade.</li>
+</ul>
+</li>
+<li>O programa lida com erros graciosamente e fornece mensagens informativas.</li>
+</ol>
+<p><strong>Melhorias de Código:</strong></p>
+<ol>
+<li>Implementar o registro em log para registrar detalhes de execução do programa, erros e exceções.</li>
+<li>Usar um formato estruturado para o relatório de saída (por exemplo, CSV, JSON) para facilitar a análise de dados.</li>
+<li>Adicionar tratamento de erros para operações de arquivo (por exemplo, arquivo não encontrado, erros de leitura).</li>
+</ol>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ol>
+<li>Minimizar o armazenamento e exibição de informações confidenciais do cartão de crédito. Mascarar ou truncar números de cartão quando possível.</li>
+<li>Implementar criptografia para armazenar dados confidenciais se a persistência for necessária.</li>
+<li>Atualizar regularmente as regras de validação para alinhar com os padrões de segurança mais recentes.</li>
+</ol>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00076-carddata_txt_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

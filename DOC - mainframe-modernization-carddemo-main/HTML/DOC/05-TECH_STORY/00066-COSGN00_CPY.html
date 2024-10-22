@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00066-COSGN00_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<p><strong>Título do Documento: Estrutura de Informação de Login do Usuário</strong></p>
+<p><strong>Descrição Resumida:</strong>
+Esta documentação detalha o copybook COBOL <code>COSGN00.CPY</code>, definindo estruturas de dados para informações de login do usuário. Ele descreve a organização e os elementos dentro dessas estruturas, cruciais para autenticação do usuário e interação com o sistema. O copybook não contém nenhuma lógica ou código procedural; ele simplesmente define o layout dos dados.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como administrador do sistema, preciso de uma maneira padronizada de gerenciar as informações de login do usuário, garantindo armazenamento seguro e acesso para fins de autenticação e autorização.</p>
+<p><strong>Épico Relacionado:</strong> 6 - Gerenciamento de Usuários e Segurança</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li>
+<p><strong>Estruturas de Dados:</strong></p>
+<ul>
+<li><code>COSGN0AI</code>: Define o formato para receber informações de login do usuário.
+<ul>
+<li><code>TRNNAMEL</code>, <code>TRNNAMEA</code>, <code>TRNNAMEI</code>: Nome da transação em diferentes formatos (numérico, caractere único, 4 caracteres).</li>
+<li><code>TITLE01L</code>, <code>TITLE01A</code>, <code>TITLE01I</code>: Título da tela em diferentes formatos (numérico, caractere único, 40 caracteres).</li>
+<li><code>CURDATEL</code>, <code>CURDATEA</code>, <code>CURDATEI</code>: Data atual em diferentes formatos (numérico, caractere único, 8 caracteres).</li>
+<li><code>PGMNAMEL</code>, <code>PGMNAMEA</code>, <code>PGMNAMEI</code>: Nome do programa em diferentes formatos (numérico, caractere único, 8 caracteres).</li>
+<li><code>TITLE02L</code>, <code>TITLE02A</code>, <code>TITLE02I</code>: Campo de título adicional em diferentes formatos.</li>
+<li><code>CURTIMEL</code>, <code>CURTIMEA</code>, <code>CURTIMEI</code>: Hora atual em diferentes formatos.</li>
+<li><code>APPLIDL</code>, <code>APPLIDA</code>, <code>APPLIDI</code>: ID do aplicativo em diferentes formatos.</li>
+<li><code>SYSIDL</code>, <code>SYSIDA</code>, <code>SYSIDI</code>: ID do sistema em diferentes formatos.</li>
+<li><code>USERIDL</code>, <code>USERIDA</code>, <code>USERIDI</code>: ID do usuário em diferentes formatos.</li>
+<li><code>PASSWDL</code>, <code>PASSWDA</code>, <code>PASSWDI</code>: Senha em diferentes formatos.</li>
+<li><code>ERRMSGL</code>, <code>ERRMSGA</code>, <code>ERRMSGI</code>: Mensagem de erro em diferentes formatos.</li>
+</ul>
+</li>
+<li><code>COSGN0AO</code>: Usa <code>REDEFINES</code> em <code>COSGN0AI</code> para fornecer uma visão alternativa dos dados, potencialmente para diferentes cenários de processamento. Os campos nesta estrutura provavelmente correspondem a caracteres individuais ou grupos de caracteres dentro dos campos de <code>COSGN0AI</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Validação de Dados:</strong></p>
+<ul>
+<li><strong>Validação de ID do Usuário e Senha:</strong> Antes de conceder acesso, o sistema deve validar o <code>USERIDI</code> e <code>PASSWDI</code> fornecidos em relação às credenciais armazenadas. Este processo de validação não está definido no copybook, mas deve ser implementado na lógica do programa usando esta estrutura de dados.</li>
+<li><strong>Validação de Tipo de Dados:</strong> Garanta que os dados inseridos em cada campo estejam de acordo com o tipo de dados definido (por exemplo, campos numéricos devem conter apenas números).</li>
+</ul>
+</li>
+<li>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Manuseio Seguro de Senha:</strong> O campo <code>PASSWDI</code> sugere o armazenamento de senhas de usuário. É crucial manipular e armazenar senhas com segurança usando algoritmos de criptografia ou hashing para evitar acesso não autorizado. Este aspecto não está explicitamente definido no copybook, mas é essencial para a segurança do sistema.</li>
+<li><strong>Tratamento de Erros:</strong> A inclusão de <code>ERRMSGI</code> indica um mecanismo para comunicar erros durante o processo de login. O sistema deve fornecer mensagens de erro claras e informativas para orientar o usuário em caso de tentativas de login inválidas.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados</strong></p>
+<ul>
+<li>
+<p><code>COSGN0AI</code>: Esta estrutura representa informações de login do usuário, incluindo detalhes da transação, carimbos de data/hora, credenciais do usuário e possíveis mensagens de erro.</p>
+<ul>
+<li><code>TRNNAMEI</code> <code>String</code>: Indica o tipo de transação que está sendo realizada (por exemplo, “LOGON”, “LOGOFF”).</li>
+<li><code>TITLE01I</code> <code>String</code>: Contém um título descritivo, provavelmente relacionado à tela ou função específica que está sendo acessada.</li>
+<li><code>CURDATEI</code> <code>String</code>: Armazena a data atual quando a tentativa de login ocorreu.</li>
+<li><code>CURTIMEI</code> <code>String</code>: Registra a hora atual da tentativa de login.</li>
+<li><code>USERIDI</code> <code>String</code>: Contém o identificador exclusivo do usuário.</li>
+<li><code>PASSWDI</code> <code>String</code>: Armazena a senha do usuário associada ao <code>USERIDI</code> fornecido.</li>
+<li><code>ERRMSGI</code> <code>String</code>: Carrega uma mensagem de erro se a tentativa de login falhar na validação ou encontrar problemas.</li>
+</ul>
+</li>
+<li>
+<p><code>COSGN0AO</code>: Esta estrutura parece redefinir <code>COSGN0AI</code>, potencialmente oferecendo uma visão em nível de caractere dos dados. Seu propósito não é claro sem mais contexto ou como ele é utilizado no aplicativo.</p>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li>Nenhuma específica para este arquivo.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Segurança de Dados:</strong> Criptografe o campo <code>PASSWDI</code> para proteger as credenciais confidenciais do usuário. Não armazene senhas em texto não criptografado.</li>
+<li><strong>Códigos de Erro:</strong> Em vez de apenas <code>ERRMSGI</code>, considere usar um campo de código de erro numérico junto com a mensagem. Isso permite um tratamento programático mais fácil de diferentes cenários de erro.</li>
+<li><strong>Formato de Data e Hora:</strong> Especifique o formato exato para <code>CURDATEI</code> e <code>CURTIMEI</code> (por exemplo, YYYYMMDD, HHMMSS) para consistência e análise mais fácil.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Segurança de Senha:</strong> Implemente políticas robustas de senha que exigem complexidade e alterações regulares.</li>
+<li><strong>Criptografia:</strong> Criptografe dados confidenciais dentro da estrutura, particularmente o campo de senha (<code>PASSWDI</code>).</li>
+<li><strong>Validação de Entrada:</strong> Limpe todas as entradas do usuário para evitar vulnerabilidades como injeção de SQL ou cross-site scripting (XSS).</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00066-COSGN00_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

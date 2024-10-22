@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant User
+    participant COCRDUPC
+    participant CARDDAT
+
+    activate User
+    User->>+COCRDUPC: Request Update (Account No, Card No)
+    activate COCRDUPC
+    COCRDUPC->>+CARDDAT: Read Card Details
+    activate CARDDAT
+    alt Card Found
+        CARDDAT->>-COCRDUPC: Card Details
+        COCRDUPC->>+User: Display Card Details for Editing
+        User->>COCRDUPC: Submit Updated Details
+        COCRDUPC->>COCRDUPC: Validate Input Data
+        alt Valid Data
+            COCRDUPC->>+CARDDAT: Update Card Details
+            alt Update Successful
+                CARDDAT->>COCRDUPC: Success
+                COCRDUPC->>User: Update Successful
+            else Update Failed
+                CARDDAT->>COCRDUPC: Failure Reason
+                COCRDUPC->>User: Update Failed (Reason)
+            end
+        else Invalid Data
+            COCRDUPC->>User: Display Error Messages
+        end
+    else Card Not Found
+        deactivate CARDDAT
+        COCRDUPC->>User: Card Not Found
+    end
+    deactivate User
+    deactivate COCRDUPC

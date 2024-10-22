@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00052-CVTRA04Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Especificação da Estrutura de Dados da Categoria de Transação CardDemo</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve a estrutura de dados <code>TRAN-CAT-RECORD</code> usada no aplicativo CardDemo para armazenar informações sobre categorias de transações. Essa estrutura é crucial para classificar as transações com base em seu tipo e subcategoria, permitindo relatórios e análises precisas.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como analista de dados, preciso ser capaz de categorizar transações com precisão para que eu possa gerar relatórios significativos e analisar padrões de transações.</p>
+<p><strong>Épico Relacionado:</strong> 4 - Processamento de Transações</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Definição da Estrutura de Dados:</strong>
+<ul>
+<li>Uma estrutura de dados COBOL chamada <code>TRAN-CAT-RECORD</code> é definida para representar uma categoria de transação.</li>
+<li>A estrutura consiste nos seguintes campos:
+<ul>
+<li><code>TRAN-CAT-KEY</code>: Uma chave composta que identifica exclusivamente cada categoria de transação.
+<ul>
+<li><code>TRAN-TYPE-CD</code>: Um código de 2 caracteres representando o tipo geral de transação (por exemplo, ‘PR’ para Compra, ‘PA’ para Pagamento).</li>
+<li><code>TRAN-CAT-CD</code>: Um código de 4 dígitos que categoriza ainda mais a transação dentro de seu tipo (por exemplo, ‘0001’ para Compra Online, ‘0002’ para Compra em Loja no tipo ‘PR’).</li>
+</ul>
+</li>
+<li><code>TRAN-CAT-TYPE-DESC</code>: Uma descrição de 50 caracteres da categoria da transação.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Validação de Dados:</strong>
+<ul>
+<li>O sistema deve garantir que cada categoria de transação tenha uma <code>TRAN-CAT-KEY</code> exclusiva.</li>
+<li>O <code>TRAN-CAT-TYPE-DESC</code> deve ser uma descrição clara e concisa da categoria.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><code>TRAN-CAT-RECORD</code>:
+<ul>
+<li><code>TRAN-TYPE-CD</code> (<code>String</code>): O tipo geral de transação.</li>
+<li><code>TRAN-CAT-CD</code> (<code>String</code>): A subcategoria da transação.</li>
+<li><code>TRAN-CAT-TYPE-DESC</code> (<code>String</code>): Uma descrição da categoria da transação.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li>Nenhuma</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Adicione comentários ao código para explicar a finalidade de cada campo na estrutura de dados.</strong></li>
+<li><strong>Implemente regras de validação de dados para garantir a integridade dos dados da categoria de transação.</strong></li>
+<li><strong>Crie um módulo ou programa separado para gerenciar os dados da categoria de transação, incluindo adicionar, atualizar e excluir categorias.</strong></li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Implemente medidas de controle de acesso para restringir o acesso não autorizado aos dados da categoria de transação.</strong></li>
+<li><strong>Registre todas as alterações feitas nos dados da categoria de transação para fins de auditoria.</strong></li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00052-CVTRA04Y_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

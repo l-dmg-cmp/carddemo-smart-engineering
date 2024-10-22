@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00065-CORPT00_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Entrada de Parâmetro de Relatório Corporativo</h1>
+<p><strong>Descrição Resumida:</strong>
+Este programa define estruturas de dados usadas para passar parâmetros relacionados a relatórios corporativos. Esses parâmetros incluem nomes de relatórios, títulos, datas, hora e sinalizadores de confirmação do usuário. Ele garante uma maneira padronizada de lidar e processar solicitações de geração de relatórios dentro do sistema.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como administrador do sistema, preciso de uma maneira padronizada de inserir parâmetros para gerar relatórios corporativos, para que o processo de geração de relatórios possa ser iniciado de forma consistente e precisa.</p>
+<p><strong>Épico Relacionado:</strong>
+5 - Relatórios e Análise</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li>
+<p><strong>Estruturas de Dados:</strong></p>
+<ul>
+<li><code>CORPT0AI</code>: Esta estrutura define o layout para receber parâmetros de entrada em formato de caractere, provavelmente provenientes de entrada do usuário ou fonte semelhante.</li>
+<li><code>CORPT0AO</code>: Esta estrutura espelha <code>CORPT0AI</code>, mas redefine o layout para potencialmente se alinhar com os requisitos internos de processamento ou saída. Isso sugere uma potencial transformação de dados ou mapeamento acontecendo entre a entrada do usuário e o tratamento interno dos parâmetros.</li>
+</ul>
+</li>
+<li>
+<p><strong>Campos de Dados:</strong></p>
+<ul>
+<li><code>TRNNAMEx</code>: Este campo armazena o nome do relatório, indicando qual relatório precisa ser gerado. O <code>x</code> no final sugere que pode haver vários campos para acomodar diferentes partes do nome do relatório.</li>
+<li><code>TITLE01x</code>, <code>TITLE02x</code>: Esses campos provavelmente contêm títulos ou descrições definidos pelo usuário para o relatório, fornecendo contexto ou personalização para a saída gerada.</li>
+<li><code>CURDATEx</code>, <code>CURTIMEx</code>: Esses campos capturam a data e hora atuais, provavelmente usadas para registrar o relatório ou rastrear quando a geração do relatório foi solicitada.</li>
+<li><code>MONTHLYx</code>, <code>YEARLYx</code>, <code>CUSTOMx</code>: Esses são sinalizadores de caractere único indicando o período do relatório. <code>MONTHLYx</code> sugere um relatório mensal, <code>YEARLYx</code> um relatório anual e <code>CUSTOMx</code> provavelmente permite que os usuários especifiquem um intervalo de datas personalizado.</li>
+<li><code>SDTMMx</code>, <code>SDTDDx</code>, <code>SDTYYYx</code>: Esses campos provavelmente representam a data de início (mês, dia, ano) para os dados do relatório. Isso é relevante quando o sinalizador <code>CUSTOMx</code> é definido, permitindo que os usuários definam um intervalo de datas específico.</li>
+<li><code>EDTMMx</code>, <code>EDTDDx</code>, <code>EDTYYYx</code>: Semelhante aos campos de data de início, estes provavelmente capturam a data final (mês, dia, ano) para um período de relatório personalizado.</li>
+<li><code>CONFIRMx</code>: Este campo é provavelmente um sinalizador de confirmação do usuário. Um valor ‘Y’ pode significar que o usuário confirmou os parâmetros e deseja prosseguir com a geração do relatório.</li>
+<li><code>ERRMSGx</code>: Este campo foi projetado para conter mensagens de erro. Se alguma validação falhar durante o processamento do parâmetro, uma mensagem de erro poderá ser armazenada aqui e retransmitida ao usuário.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tipos e Formatos de Dados:</strong></p>
+<ul>
+<li>O código usa <code>PIC X</code> para definir campos alfanuméricos como <code>TRNNAMEx</code>, <code>TITLE01x</code>, etc. Isso indica que esses campos podem armazenar letras, números e caracteres especiais.</li>
+<li><code>PIC S9(4)</code> é usado para campos numéricos com sinal, como <code>TRNNAMEL</code>, <code>TITLE01L</code>, etc. O ‘S’ denota um campo com sinal e ‘9(4)’ permite até quatro dígitos.</li>
+<li>Os campos de data e hora provavelmente usam formatos específicos como <code>MMDDYYYY</code> para datas e <code>HHMMSS</code> para hora, embora o formato exato precise ser confirmado na documentação relacionada ou seções de código.</li>
+</ul>
+</li>
+<li>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Entrada Padronizada:</strong> O uso de estruturas de dados predefinidas impõe uma maneira consistente de fornecer parâmetros de entrada para geração de relatórios, reduzindo erros e inconsistências.</li>
+<li><strong>Flexibilidade na Seleção de Data:</strong> O sistema acomoda intervalos de datas mensais, anuais e personalizados para relatórios, atendendo a diferentes necessidades de relatórios.</li>
+<li><strong>Confirmação do Usuário:</strong> O sinalizador <code>CONFIRMx</code> sugere uma etapa em que os usuários confirmam seus parâmetros de relatório antes que o processo de geração real seja iniciado. Isso ajuda a evitar a geração não intencional de relatórios ou o uso de dados incorretos.</li>
+<li><strong>Tratamento de Erros:</strong> A presença de um campo <code>ERRMSGx</code> indica um mecanismo para capturar e comunicar erros encontrados durante o processamento de parâmetros. Isso é crucial para fornecer feedback aos usuários e facilitar a solução de problemas.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li>Relatório: Este modelo representaria um relatório corporativo e provavelmente teria atributos correspondentes aos parâmetros definidos nas estruturas <code>CORPT0AI</code> e <code>CORPT0AO</code>.
+<ul>
+<li><code>reportName</code> (<code>String</code>): O nome ou código do relatório.</li>
+<li><code>title1</code> (<code>String</code>): Um título ou descrição definido pelo usuário para o relatório.</li>
+<li><code>title2</code> (<code>String</code>): Um título ou descrição adicional definido pelo usuário.</li>
+<li><code>currentDate</code> (<code>Date</code>): A data em que o relatório foi gerado.</li>
+<li><code>currentTime</code> (<code>Time</code>): A hora em que o relatório foi gerado.</li>
+<li><code>period</code> (<code>String</code>): O período do relatório (por exemplo, “Mensal”, “Anual”, “Personalizado”).</li>
+<li><code>startDate</code> (<code>Date</code>): A data de início do período do relatório (se aplicável).</li>
+<li><code>endDate</code> (<code>Date</code>): A data final do período do relatório (se aplicável).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li>Nenhuma.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Comentários:</strong> Embora o código inclua um aviso de direitos autorais, adicionar mais comentários em linha para explicar a finalidade de cada campo e a funcionalidade geral das estruturas de dados melhoraria muito a legibilidade e a manutenção.</li>
+<li><strong>Validação de Dados:</strong> Implemente verificações para garantir a validade dos campos de data, especialmente quando um intervalo de datas personalizado é selecionado. Por exemplo, certifique-se de que a data de início não seja posterior à data final.</li>
+<li><strong>Tratamento de Erros:</strong> Forneça mensagens de erro mais específicas no campo <code>ERRMSGx</code> para ajudar os usuários a identificar e corrigir problemas com sua entrada rapidamente.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Limpeza de Dados:</strong> Implemente técnicas de validação e higienização de entrada para evitar vulnerabilidades como injeção de SQL, especialmente se esses parâmetros forem usados posteriormente em consultas de banco de dados.</li>
+<li><strong>Controle de Acesso:</strong> Considere adicionar verificações de autorização para garantir que apenas usuários autorizados possam iniciar o processo de geração de relatório com parâmetros específicos.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00065-CORPT00_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

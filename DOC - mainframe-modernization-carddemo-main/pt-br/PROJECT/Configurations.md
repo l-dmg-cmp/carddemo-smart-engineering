@@ -1,0 +1,549 @@
+Gerado em: 2 de outubro de 2024
+
+# CardDemo:
+Uma aplicação CICS COBOL para gerenciar cartões de crédito, contas de clientes e usuários.
+
+# Configurações
+
+- CBACT01C.cbl
+  - ACCTFILE-FNAME: `"ACCTDAT"`
+	- Descrição: Nome do arquivo para o arquivo de dados da conta.
+- CBACT02C.cbl
+  - CARDFILE-FNAME: `"CARDDAT"`
+	- Descrição: Nome do arquivo para o arquivo de dados do cartão.
+- CBACT03C.cbl
+  - XREFFILE-FNAME: `"CXREF"`
+	- Descrição: Nome do arquivo para o arquivo de referência cruzada.
+- CBACT04C.cbl
+  - TCATBAL-FNAME: `"TCATBAL"`
+	- Descrição: Nome do arquivo para o arquivo de saldo da categoria de transação.
+  - XREF-FNAME: `"CXREF"`
+	- Descrição: Nome do arquivo para o arquivo de referência cruzada.
+  - DISCGRP-FNAME: `"DISCGRP"`
+	- Descrição: Nome do arquivo para o arquivo do grupo de divulgação.
+  - ACCOUNT-FNAME: `"ACCTDAT"`
+	- Descrição: Nome do arquivo para o arquivo da conta.
+  - TRANSACT-FNAME: `"TRANSACT"`
+	- Descrição: Nome do arquivo para o arquivo de transações.
+- CBCUS01C.cbl
+  - CUSTFILE-FNAME: `"CUSTDAT"`
+	- Descrição: Nome do arquivo para o arquivo de dados do cliente.
+- CBSTM03A.CBL
+  - WS-REPORT-LINES-PER-PAGE: `55`
+	- Descrição: Número de linhas por página no relatório.
+- CBTRN01C.cbl
+  - DALYTRAN-FILE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de transações diárias.
+  - CUSTOMER-FILE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo do cliente.
+  - XREF-FILE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de referência cruzada.
+  - CARD-FILE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo do cartão.
+  - ACCOUNT-FILE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo da conta.
+  - TRANSACT-FILE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de transações.
+- CBTRN02C.cbl
+  - DALYTRAN-FILE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de transações diárias.
+  - TRANSACT-FILE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de transações.
+  - XREF-FILE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de referência cruzada.
+  - DALYREJS-FILE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de rejeições diárias.
+  - ACCOUNT-FILE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo da conta.
+  - TCATBAL-FILE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de saldo da categoria de transação.
+  - REJECT-REASON-XREF-NOT-FOUND: `"01"`
+	- Descrição: Código de motivo de rejeição para referência cruzada não encontrada.
+  - REJECT-REASON-ACCT-NOT-FOUND: `"02"`
+	- Descrição: Código de motivo de rejeição para conta não encontrada.
+  - REJECT-REASON-ACCT-EXPIRED: `"03"`
+	- Descrição: Código de motivo de rejeição para conta expirada.
+  - REJECT-REASON-ACCT-OVERLIMIT: `"04"`
+	- Descrição: Código de motivo de rejeição para conta acima do limite.
+- CBTRN03C.cbl
+  - TRANFILE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de transações.
+  - CARDXREF-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de referência cruzada do cartão.
+  - TRANTYPE-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de tipo de transação.
+  - TRANCATG-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de categoria de transação.
+  - TRANREPT-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de relatório de transações.
+  - DATEPARM-STATUS: `"00"`
+	- Descrição: Status do arquivo para o arquivo de parâmetro de data.
+  - WS-REPORT-LINES-PER-PAGE: `60`
+	- Descrição: Número de linhas por página no relatório.
+  - WS-LINES-USED: `0`
+	- Descrição: Número de linhas usadas na página atual.
+  - WS-PAGE-COUNT: `0`
+	- Descrição: Número da página atual.
+  - WS-GRAND-TOTAL: `0`
+	- Descrição: Total geral de todas as transações.
+  - WS-ACCT-TOTAL: `0`
+	- Descrição: Total da conta atual.
+  - WS-PAGE-TOTAL: `0`
+	- Descrição: Total da página atual.
+- COACTUPC.cbl
+  - MAX-ACCTS: `99999`
+	- Descrição: Número máximo de contas permitido.
+  - FICO-SCORE-LOW: `300`
+	- Descrição: Pontuação FICO mínima aceitável.
+  - FICO-SCORE-HIGH: `850`
+	- Descrição: Pontuação FICO máxima aceitável.
+- COADM01C.cbl
+  - CDEMO-ADMIN-MAX-OPTS: `5`
+	- Descrição: Número máximo de opções do menu de administração.
+- COBIL00C.cbl
+  - BILLPAY-ERRMSG-ACCT: `"CONTA INVÁLIDA - NENHUM PAGAMENTO PROCESSADO"`
+	- Descrição: Mensagem de erro exibida quando a conta é inválida e nenhum pagamento é processado.
+  - BILLPAY-CONF-MSG: `"PAGAMENTO DE CONTA PROCESSADO COM SUCESSO"`
+	- Descrição: Mensagem de confirmação exibida quando o pagamento da conta é processado com sucesso.
+  - BILLPAY-ERRMSG-ZERO: `"SALDO ZERO - NENHUM PAGAMENTO PROCESSADO"`
+	- Descrição: Mensagem de erro para uma conta com saldo zero durante o pagamento da conta.
+- COCRDLIC.cbl
+  - CARDS-PER-PAGE: `10`
+	- Descrição: Número de cartões exibidos por página.
+  - MAX-CARDS: `9999`
+	- Descrição: Número máximo de cartões de crédito.
+- COCRDSLC.cbl
+  - CARDS-PER-PAGE: `10`
+	- Descrição: Número de cartões a serem exibidos por página.
+- COMEN01C.cbl
+  - CDEMO-OPT-NUM: `3`
+	- Descrição: Número da opção atribuído ao item de menu "Pagamento de Conta".
+  - CDEMO-OPT-NUM: `4`
+	- Descrição: Número da opção atribuído ao item de menu "Lista de Transações".
+  - CDEMO-OPT-NUM: `5`
+	- Descrição: Número da opção atribuído ao item de menu "Relatório de Transações".
+- CORPT00C.cbl
+  - WS-MAX-RECS: `20`
+	- Descrição: Número máximo de registros permitidos no relatório.
+- COSGN00C.cbl
+  - SIGNON-ATTEMPTS: `3`
+	- Descrição: Número máximo de tentativas de login inválidas permitidas.
+- COTRN00C.cbl
+  - TRANS-PER-PAGE: `10`
+	- Descrição: Número de transações a serem exibidas por página.
+- COTRN00C.cbl
+  - PGMSIZE: `"512K"`
+	- Descrição: Configuração do tamanho do programa.
+- COTRN01C.cbl
+  - PGMSIZE: `"512K"`
+	- Descrição: Configuração do tamanho do programa.
+- COTRN02C.cbl
+  - PGMSIZE: `"512K"`
+	- Descrição: Configuração do tamanho do programa.
+- COUSR00C.cbl
+  - PGMSIZE: `"512K"`
+	- Descrição: Configuração do tamanho do programa.
+- COUSR01C.cbl
+  - PGMSIZE: `"512K"`
+	- Descrição: Configuração do tamanho do programa.
+  - USRTYPE: `"R"`
+	- Descrição: O tipo de usuário é definido como "R" (Regular) por padrão.
+  - USRTYPE: `"A"`
+	- Descrição: Opção para definir o tipo de usuário como "A" (Admin).
+- COUSR02C.cbl
+  - USRIDINI: `""`
+	- Descrição: Campo de entrada de ID do usuário.
+  - SEC-USR-ID: `""`
+	- Descrição: ID do usuário do arquivo de segurança.
+- COUSR03C.cbl
+  - USRIDINI: `""`
+	- Descrição: Campo de entrada de ID do usuário.
+  - SEC-USR-ID: `""`
+	- Descrição: ID do usuário do arquivo de segurança.
+- CSUTLDTC.cbl
+  - WS-DATE-RETURN-CODE: `"0"`
+	- Descrição: Código de retorno da conversão de data (CEEDAYS).
+  - WS-DATE-IN-FORMAT: `"YYYYMMDD"`
+	- Descrição: Formato de data de entrada.
+  - WS-DATE-OUT-CCYY: `"1900"`
+	- Descrição: Século padrão para data de saída.
+- COADM02Y.cpy
+  - CDEMO-ADMIN-OPT-NUM: `1`
+	- Descrição: Opção 1 do menu Admin.
+  - CDEMO-ADMIN-OPT-NAME: `"Listar Usuários"`
+	- Descrição: Nome da Opção 1 do menu Admin.
+  - CDEMO-ADMIN-OPT-PGM: `"COUSR00C"`
+	- Descrição: Programa a ser executado para a Opção 1 do menu Admin.
+  - CDEMO-ADMIN-OPT-NUM: `2`
+	- Descrição: Opção 2 do menu Admin.
+  - CDEMO-ADMIN-OPT-NAME: `"Adicionar Usuário"`
+	- Descrição: Nome da Opção 2 do menu Admin.
+  - CDEMO-ADMIN-OPT-PGM: `"COUSR01C"`
+	- Descrição: Programa a ser executado para a Opção 2 do menu Admin.
+  - CDEMO-ADMIN-OPT-NUM: `3`
+	- Descrição: Opção 3 do menu Admin.
+  - CDEMO-ADMIN-OPT-NAME: `"Atualizar Usuário"`
+	- Descrição: Nome da Opção 3 do menu Admin.
+  - CDEMO-ADMIN-OPT-PGM: `"COUSR02C"`
+	- Descrição: Programa a ser executado para a Opção 3 do menu Admin.
+  - CDEMO-ADMIN-OPT-NUM: `4`
+	- Descrição: Opção 4 do menu Admin.
+  - CDEMO-ADMIN-OPT-NAME: `"Excluir Usuário"`
+	- Descrição: Nome da Opção 4 do menu Admin.
+  - CDEMO-ADMIN-OPT-PGM: `"COUSR03C"`
+	- Descrição: Programa a ser executado para a Opção 4 do menu Admin.
+- COCOM01Y.cpy
+  - CDEMO-TO-PROGRAM: `""`
+	- Descrição: Programa para o qual transferir o controle.
+  - CDEMO-FROM-PROGRAM: `""`
+	- Descrição: Programa do qual o controle está sendo transferido.
+  - CDEMO-USER-ID: `""`
+	- Descrição: ID do usuário.
+  - CDEMO-USER-TYPE: `""`
+	- Descrição: Tipo de usuário.
+  - CDEMO-ACCT: `""`
+	- Descrição: Número da conta.
+  - CDEMO-CARD: `""`
+	- Descrição: Número do cartão.
+  - CDEMO-TRANID: `""`
+	- Descrição: ID da transação.
+  - CDEMO-ERROR-CODE: `""`
+	- Descrição: Código de erro.
+  - CDEMO-ERROR-MSG: `""`
+	- Descrição: Mensagem de erro.
+  - CDEMO-FORWARD-ENABLED: `""`
+	- Descrição: Sinalizador indicando se a navegação para frente está ativada.
+  - CDEMO-BACKWARD-ENABLED: `""`
+	- Descrição: Sinalizador indicando se a navegação para trás está ativada.
+  - CDEMO-RECORD-COUNT: `0`
+	- Descrição: Contagem de registros recuperados.
+  - CDEMO-RECORD-LIMIT: `10`
+	- Descrição: Número máximo de registros para recuperar.
+  - CDEMO-CU00-INFO: `""`
+	- Descrição: Informações específicas da transação CU00.
+  - CDEMO-CU01-INFO: `""`
+	- Descrição: Informações específicas da transação CU01.
+  - CDEMO-CU02-INFO: `""`
+	- Descrição: Informações específicas da transação CU02.
+  - CDEMO-CU03-INFO: `""`
+	- Descrição: Informações específicas da transação CU03.
+  - CDEMO-CA00-INFO: `""`
+	- Descrição: Informações específicas da transação CA00.
+  - CDEMO-CB00-INFO: `""`
+	- Descrição: Informações específicas da transação CB00.
+  - CDEMO-CT00-INFO: `""`
+	- Descrição: Informações específicas da transação CT00.
+  - CDEMO-CT01-INFO: `""`
+	- Descrição: Informações específicas da transação CT01.
+  - CDEMO-CT02-INFO: `""`
+	- Descrição: Informações específicas da transação CT02.
+  - CDEMO-CR00-INFO: `""`
+	- Descrição: Informações específicas da transação CR00.
+- CSLKPCDY.cpy
+  - MAX-AREA-CODES: `999`
+	- Descrição: Número máximo de códigos de área.
+  - MAX-STATE-CODES: `59`
+	- Descrição: Número máximo de códigos de estado.
+  - MAX-STATE-ZIP-CODES: `999`
+	- Descrição: Número máximo de códigos postais do estado.
+- COSTM01.CPY
+  - TRNX-RECORD-LENGTH: `162`
+	- Descrição: Tamanho do registro de transação.
+- COTTL01Y.cpy
+  - CCDA-TITLE01: `"APLICAÇÃO DE DEMONSTRAÇÃO DE CARTÃO DE CRÉDITO"`
+	- Descrição: Título da aplicação de demonstração de cartão de crédito.
+  - CCDA-TITLE02: `"MENU PRINCIPAL"`
+	- Descrição: Título do menu principal.
+  - CCDA-PGMNAME01: `"COMEN01C"`
+	- Descrição: Nome do programa.
+  - CCDA-TITLE03: `"PROCESSAMENTO DE CONTA"`
+	- Descrição: Título do processamento de conta.
+  - CCDA-PGMNAME02: `"COACT00C"`
+	- Descrição: Nome do programa.
+  - CCDA-TITLE04: `"PAGAMENTO DE CONTA"`
+	- Descrição: Título do pagamento de conta.
+  - CCDA-PGMNAME03: `"COBIL00C"`
+	- Descrição: Nome do programa.
+  - CCDA-TITLE05: `"PROCESSAMENTO DE TRANSAÇÕES"`
+	- Descrição: Título do processamento de transações.
+  - CCDA-PGMNAME04: `"COTRN00C"`
+	- Descrição: Nome do programa.
+  - CCDA-TITLE06: `"FUNÇÕES ADMINISTRATIVAS"`
+	- Descrição: Título das funções administrativas.
+  - CCDA-PGMNAME05: `"COADM01C"`
+	- Descrição: Nome do programa.
+  - CCDA-TITLE07: `"LISTA DE CARTÕES DE CRÉDITO"`
+	- Descrição: Título da lista de cartões de crédito.
+  - CCDA-PGMNAME06: `"COCRDLIC"`
+	- Descrição: Nome do programa.
+  - CCDA-TITLE08: `"PESQUISA DE CARTÃO DE CRÉDITO"`
+	- Descrição: Título da pesquisa de cartão de crédito.
+  - CCDA-PGMNAME07: `"COCRDSLC"`
+	- Descrição: Nome do programa.
+  - CCDA-TITLE09: `"ATUALIZAÇÃO DE CONTA"`
+	- Descrição: Título da atualização de conta.
+  - CCDA-PGMNAME08: `"COACTUPC"`
+	- Descrição: Nome do programa.
+  - CCDA-TITLE10: `"LISTA DE TRANSAÇÕES"`
+	- Descrição: Título da lista de transações.
+  - CCDA-TITLE11: `"VER TRANSAÇÃO"`
+	- Descrição: Título da visualização de transação.
+  - CCDA-TITLE12: `"ADICIONAR TRANSAÇÃO"`
+	- Descrição: Título da adição de transação.
+  - CCDA-TITLE13: `"LISTA DE USUÁRIOS"`
+	- Descrição: Título da lista de usuários.
+  - CCDA-TITLE14: `"ADICIONAR USUÁRIO"`
+	- Descrição: Título da adição de usuário.
+  - CCDA-TITLE15: `"ATUALIZAR USUÁRIO"`
+	- Descrição: Título da atualização de usuário.
+  - CCDA-TITLE16: `"EXCLUIR USUÁRIO"`
+	- Descrição: Título da exclusão de usuário.
+  - CCDA-TITLE17: `"RELATÓRIO DE TRANSAÇÕES"`
+	- Descrição: Título do relatório de transações.
+  - CCDA-PGMNAME09: `"CORPT00C"`
+	- Descrição: Nome do programa.
+  - CCDA-TITLE18: `"LOGIN"`
+	- Descrição: Título do login.
+  - CCDA-PGMNAME10: `"COSGN00C"`
+	- Descrição: Nome do programa.
+- COMEN02Y.cpy
+  - CDEMO-MENU-OPT: `6`
+	- Descrição: Número de opções do menu.
+- CSDAT01Y.cpy
+  - TIMESTAMP-LENGTH: `26`
+	- Descrição: Tamanho do registro de data e hora.
+- CSMSG01Y.cpy
+  - THANK-YOU-MSG: `"Obrigado por usar o Aplicativo de Demonstração de Cartão de Crédito"`
+	- Descrição: Mensagem de agradecimento a ser exibida ao usuário.
+  - INVALID-KEY-MSG: `"Tecla inválida pressionada"`
+	- Descrição: Mensagem a ser exibida quando uma tecla inválida for pressionada.
+- CSMSG02Y.cpy
+  - ABEND-CODE: `"999"`
+	- Descrição: Código Abend a ser usado quando o programa terminar anormalmente.
+- CSSETATY.cpy
+  - SCRNVAR2: `(MAPNAME3)`
+	- Descrição: Nome da variável de tela a ser definida.
+  - TESTVAR1: `DFHRED`
+	- Descrição: Variável ou sinalizador usado para determinar o atributo de cor.
+- CSSTRPFY.cpy
+  - PF1-KEY: `"DFHPF1"`
+	- Descrição: Valor que representa a tecla PF1.
+  - PF2-KEY: `"DFHPF2"`
+	- Descrição: Valor que representa a tecla PF2.
+  - PF3-KEY: `"DFHPF3"`
+	- Descrição: Valor que representa a tecla PF3.
+  - PF4-KEY: `"DFHPF4"`
+	- Descrição: Valor que representa a tecla PF4.
+  - PF5-KEY: `"DFHPF5"`
+	- Descrição: Valor que representa a tecla PF5.
+  - PF6-KEY: `"DFHPF6"`
+	- Descrição: Valor que representa a tecla PF6.
+  - PF7-KEY: `"DFHPF7"`
+	- Descrição: Valor que representa a tecla PF7.
+  - PF8-KEY: `"DFHPF8"`
+	- Descrição: Valor que representa a tecla PF8.
+  - PF9-KEY: `"DFHPF9"`
+	- Descrição: Valor que representa a tecla PF9.
+  - PF10-KEY: `"DFHPF10"`
+	- Descrição: Valor que representa a tecla PF10.
+  - PF11-KEY: `"DFHPF11"`
+	- Descrição: Valor que representa a tecla PF11.
+  - PF12-KEY: `"DFHPF12"`
+	- Descrição: Valor que representa a tecla PF12.
+  - ENTER-KEY: `"DFHENTER"`
+	- Descrição: Valor que representa a tecla Enter.
+  - CLEAR-KEY: `"DFHCLEAR"`
+	- Descrição: Valor que representa a tecla Clear.
+- CSUSR01Y.cpy
+  - USER-ID-MAX-LENGTH: `8`
+	- Descrição: Tamanho máximo do ID do usuário.
+  - USER-PASSWORD-MAX-LENGTH: `8`
+	- Descrição: Tamanho máximo da senha do usuário.
+  - USER-TYPE-MAX-LENGTH: `1`
+	- Descrição: Tamanho máximo do tipo de usuário.
+- CUSTREC.cpy
+  - CUST-RECORD-LENGTH: `500`
+	- Descrição: Tamanho do registro do cliente.
+- CVACT01Y.cpy
+  - ACCT-RECORD-LENGTH: `300`
+	- Descrição: Tamanho do registro da conta.
+- CVACT02Y.cpy
+  - CARD-RECORD-LENGTH: `100`
+	- Descrição: Tamanho do registro do cartão.
+- CSUTLDWY.cpy
+  - WS-EDIT-CCYY-CENTURY-START: `19`
+	- Descrição: Século inicial para validação do ano do cartão de crédito.
+  - WS-EDIT-CCYY-CENTURY-END: `20`
+	- Descrição: Século final para validação do ano do cartão de crédito.
+- CSUTLDPY.cpy
+  - WS-EDIT-LEAP-YEAR-DAYS: `29`
+	- Descrição: Número de dias em fevereiro para um ano bissexto.
+  - WS-EDIT-VALID-DOB-YEARS: `110`
+	- Descrição: Idade máxima permitida para validação da data de nascimento.
+- CVACT03Y.cpy
+  - XREF-CARD-NUM-L: `19`
+	- Descrição: Tamanho do número do cartão no registro de referência cruzada.
+  - XREF-CUST-ID-L: `9`
+	- Descrição: Tamanho do ID do cliente no registro de referência cruzada.
+  - XREF-ACCT-ID-L: `9`
+	- Descrição: Tamanho do ID da conta no registro de referência cruzada.
+  - XREF-RECORD-L: `37`
+	- Descrição: Tamanho total do registro de referência cruzada.
+- CVCRD01Y.cpy
+  - CARD-NUMBER-MAX-LENGTH: `19`
+	- Descrição: Tamanho máximo de um número de cartão de crédito.
+  - MINIMUM-PASSWORD-LENGTH: `8`
+	- Descrição: Tamanho mínimo necessário para uma senha.
+  - CARD-NUMBER-DISPLAY-LENGTH: `19`
+	- Descrição: Tamanho do campo do número do cartão na tela para exibição.
+  - CARD-CVV-DISPLAY-LENGTH: `3`
+	- Descrição: Tamanho do campo CVV na tela para exibição.
+  - CARD-EXPIRY-MM-DISPLAY-LENGTH: `2`
+	- Descrição: Tamanho do campo do mês de vencimento na tela para exibição.
+  - CARD-EXPIRY-YY-DISPLAY-LENGTH: `2`
+	- Descrição: Tamanho do campo do ano de vencimento na tela para exibição.
+  - CARD-NAME-DISPLAY-LENGTH: `26`
+	- Descrição: Tamanho do campo do nome do titular do cartão na tela para exibição.
+  - ACCOUNT-ID-DISPLAY-LENGTH: `9`
+	- Descrição: Tamanho do campo do ID da conta na tela para exibição.
+  - DEFAULT-PAGE-SIZE: `10`
+	- Descrição: Número padrão de registros para exibir por página.
+  - MAX-PAGES: `99`
+	- Descrição: Número máximo de páginas permitidas para navegação.
+  - FIRST-PAGE-NUM: `1`
+	- Descrição: Número da página para a primeira página.
+- CVCUS01Y.cpy
+  - CUSTOMER-RECORD-L: `500`
+	- Descrição: Tamanho total do registro do cliente.
+  - CUST-ID-L: `9`
+	- Descrição: Tamanho do campo do ID do cliente.
+  - CUST-FNAME-L: `15`
+	- Descrição: Tamanho do campo do primeiro nome do cliente.
+  - CUST-LNAME-L: `25`
+	- Descrição: Tamanho do campo do sobrenome do cliente.
+  - CUST-ADDR1-L: `50`
+	- Descrição: Tamanho do campo da linha de endereço 1 do cliente.
+  - CUST-ADDR2-L: `50`
+	- Descrição: Tamanho do campo da linha de endereço 2 do cliente.
+  - CUST-CITY-L: `25`
+	- Descrição: Tamanho do campo da cidade do cliente.
+  - CUST-STATE-L: `2`
+	- Descrição: Tamanho do campo do estado do cliente.
+  - CUST-ZIP-L: `9`
+	- Descrição: Tamanho do campo do CEP do cliente.
+  - CUST-PHONE-L: `10`
+	- Descrição: Tamanho do campo do número de telefone do cliente.
+  - CUST-SSN-L: `9`
+	- Descrição: Tamanho do campo do número do Seguro Social do cliente.
+  - CUST-DOB-L: `8`
+	- Descrição: Tamanho do campo da data de nascimento do cliente.
+  - CUST-STATUS-L: `1`
+	- Descrição: Tamanho do campo do status do cliente.
+- CVTRA01Y.cpy
+  - TCATBAL-RECORD-L: `50`
+	- Descrição: Tamanho total do registro de saldo da categoria de transação.
+  - TCATBAL-ACCT-ID-L: `9`
+	- Descrição: Tamanho do campo do ID da conta no registro de saldo da categoria de transação.
+  - TCATBAL-TRAN-CAT-L: `6`
+	- Descrição: Tamanho do campo da categoria de transação no registro de saldo da categoria de transação.
+  - TCATBAL-BALANCE-L: `9`
+	- Descrição: Tamanho do campo de saldo no registro de saldo da categoria de transação.
+- CVTRA02Y.cpy
+  - DISCGRP-RECORD-L: `50`
+	- Descrição: Tamanho total do registro do grupo de divulgação.
+  - DISCGRP-GROUP-CODE-L: `8`
+	- Descrição: Tamanho do campo do código do grupo no registro do grupo de divulgação.
+  - DISCGRP-INTEREST-RATE-L: `7`
+	- Descrição: Tamanho do campo da taxa de juros no registro do grupo de divulgação.
+- CVTRA03Y.cpy
+  - TRAN-TYPE-RECORD-LENGTH: `60`
+	- Descrição: Tamanho do registro do tipo de transação.
+- CVTRA04Y.cpy
+  - TRAN-CATEGORY-RECORD-LENGTH: `60`
+	- Descrição: Tamanho do registro da categoria de transação.
+- CVTRA05Y.cpy
+  - TRANSACT-RECORD-LENGTH: `200`
+	- Descrição: Tamanho do registro de transação.
+- CVTRA06Y.cpy
+  - DALYTRAN-RECORD-LENGTH: `100`
+	- Descrição: Tamanho do registro de transação diária.
+- CVTRA07Y.cpy
+  - TRAN-REPORT-RECORD-LENGTH: `132`
+	- Descrição: Tamanho do registro do relatório de transações.
+  - PAGE-MAX-LINES: `55`
+	- Descrição: Número máximo de linhas por página no relatório.
+- UNUSED1Y.cpy
+  - UNUSED-DATA-LEN: `100`
+	- Descrição: Tamanho da área de dados não utilizada.
+- COACTUP.CPY
+  - ACT-LIMIT-DISP-C: `4`
+	- Descrição: Atributo de cor para o campo de exibição do limite da conta.
+  - ACT-LIMIT-DISP-P: `1`
+	- Descrição: Atributo de proteção para o campo de exibição do limite da conta.
+  - ACT-LIMIT-DISP-O: `10`
+	- Descrição: Posição de saída para o campo de exibição do limite da conta.
+  - ACT-BAL-DISP-C: `4`
+	- Descrição: Atributo de cor para o campo de exibição do saldo da conta.
+  - ACT-BAL-DISP-P: `1`
+	- Descrição: Atributo de proteção para o campo de exibição do saldo da conta.
+  - ACT-BAL-DISP-O: `10`
+	- Descrição: Posição de saída para o campo de exibição do saldo da conta.
+  - ACT-AVAILABLE-CREDIT-DISP-C: `4`
+	- Descrição: Atributo de cor para o campo de exibição do crédito disponível.
+  - ACT-AVAILABLE-CREDIT-DISP-P: `1`
+	- Descrição: Atributo de proteção para o campo de exibição do crédito disponível.
+  - ACT-AVAILABLE-CREDIT-DISP-O: `10`
+	- Descrição: Posição de saída para o campo de exibição do crédito disponível.
+  - ACT-CASH-LIMIT-DISP-C: `4`
+	- Descrição: Atributo de cor para o campo de exibição do limite de dinheiro.
+  - ACT-CASH-LIMIT-DISP-P: `1`
+	- Descrição: Atributo de proteção para o campo de exibição do limite de dinheiro.
+  - ACT-CASH-LIMIT-DISP-O: `10`
+	- Descrição: Posição de saída para o campo de exibição do limite de dinheiro.
+  - ACT-CASH-BAL-DISP-C: `4`
+	- Descrição: Atributo de cor para o campo de exibição do saldo de dinheiro.
+  - ACT-CASH-BAL-DISP-P: `1`
+	- Descrição: Atributo de proteção para o campo de exibição do saldo de dinheiro.
+  - ACT-CASH-BAL-DISP-O: `10`
+	- Descrição: Posição de saída para o campo de exibição do saldo de dinheiro.
+  - ACT-CYCL-CRED-DISP-C: `4`
+	- Descrição: Atributo de cor para o campo de exibição do crédito cíclico.
+  - ACT-CYCL-CRED-DISP-P: `1`
+	- Descrição: Atributo de proteção para o campo de exibição do crédito cíclico.
+  - ACT-CYCL-CRED-DISP-O: `10`
+	- Descrição: Posição de saída para o campo de exibição do crédito cíclico.
+  - ACT-CYCL-DEB-DISP-C: `4`
+	- Descrição: Atributo de cor para o campo de exibição do débito cíclico.
+  - ACT-CYCL-DEB-DISP-P: `1`
+	- Descrição: Atributo de proteção para o campo de exibição do débito cíclico.
+  - ACT-CYCL-DEB-DISP-O: `10`
+	- Descrição: Posição de saída para o campo de exibição do débito cíclico.
+  - ACT-LAST-PMT-AMT-DISP-C: `4`
+	- Descrição: Atributo de cor para o campo de exibição do valor do último pagamento.
+  - ACT-LAST-PMT-AMT-DISP-P: `1`
+	- Descrição: Atributo de proteção para o campo de exibição do valor do último pagamento.
+  - ACT-LAST-PMT-AMT-DISP-O: `10`
+	- Descrição: Posição de saída para o campo de exibição do valor do último pagamento.
+  - ACT-LAST-PMT-DT-DISP-C: `4`
+	- Descrição: Atributo de cor para o campo de exibição da data do último pagamento.
+  - ACT-LAST-PMT-DT-DISP-P: `1`
+	- Descrição: Atributo de proteção para o campo de exibição da data do último pagamento.
+  - ACT-LAST-PMT-DT-DISP-O: `8`
+	- Descrição: Posição de saída para o campo de exibição da data do último pagamento.
+  - ACT-LAST-STMT-DT-DISP-C: `4`
+	- Descrição: Atributo de cor para o campo de exibição da data do último extrato.
+  - ACT-LAST-STMT-DT-DISP-P: `1`
+	- Descrição: Atributo de proteção para o campo de exibição da data do último extrato.
+  - ACT-LAST-STMT-DT-DISP-O: `8`
+	- Descrição: Posição de saída para o campo de exibição da data do último extrato.
+  - ACT-NEXT-STMT-DT-DISP-C: `4`
+	- Descrição: Atributo de cor para o campo de exibição da data do próximo extrato.
+  - ACT-NEXT-STMT-DT-DISP-P: `1`
+	- Descrição: Atributo de proteção para o campo de exibição da data do próximo extrato.
+  - ACT-NEXT-STMT-DT-DISP-O: `8`
+	- Descrição: Posição de saída para o campo de exibição da data do próximo extrato.
+  - ACT-OPEN-DT-DISP-C: `4`
+	- Descrição: Atributo de cor para o campo de exibição da data de abertura da conta.
+  - ACT-OPEN-DT-
+
+--Made by "Smart Engineering" (by Compass.UOL)--

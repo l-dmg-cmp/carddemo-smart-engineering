@@ -1,0 +1,26 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant Customer Service Representative
+    participant COACTUPC Program
+    participant Card XREF File
+    participant Account Master File
+    participant Customer Master File
+
+    activate Customer Service Representative
+    Customer Service Representative->>+COACTUPC Program:  Enter Account Number
+    activate COACTUPC Program
+    COACTUPC Program->>+Card XREF File: Read Account Record
+    Card XREF File->>COACTUPC Program: Account Record Data
+    COACTUPC Program->>+Account Master File: Read Account Details
+    Account Master File->>COACTUPC Program: Account Details Data
+    COACTUPC Program->>+Customer Master File: Read Customer Details
+    Customer Master File->>COACTUPC Program: Customer Details Data
+    COACTUPC Program->>-Customer Service Representative: Display Account and Customer Details
+    Customer Service Representative->>+COACTUPC Program:  Update Account and Customer Details
+    COACTUPC Program->>+Account Master File: Update Account Details
+    Account Master File->>COACTUPC Program: Update Successful
+    COACTUPC Program->>+Customer Master File: Update Customer Details
+    Customer Master File->>-COACTUPC Program: Update Successful
+    COACTUPC Program->>Customer Service Representative: Display Confirmation Message
+    deactivate Customer Service Representative
+    deactivate COACTUPC Program

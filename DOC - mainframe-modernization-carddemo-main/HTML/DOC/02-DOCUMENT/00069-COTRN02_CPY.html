@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00069-COTRN02_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Estrutura de Dados de Transações de Cartão</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Especificação da Estrutura de Dados de Transações de Cartão</li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve a estrutura de dados relacionada a transações com cartão de crédito dentro do aplicativo CardDemo. Ele define um formato padronizado para capturar e armazenar detalhes cruciais da transação, garantindo consistência e facilitando o processamento e a análise eficientes.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>Versão 1.0: Versão inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O copybook COTRN02.CPY define um modelo estruturado para registrar transações com cartão de crédito. Cada vez que uma transação ocorre, este modelo é preenchido com os detalhes específicos dessa transação. A estrutura de dados garante que todas as informações da transação sejam capturadas uniformemente, criando um registro abrangente e auditável.</p>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Dados da Transação:</strong> O sistema precisa receber dados sobre a transação do cartão de crédito, como o tipo de transação, data e hora, número do cartão, valor e detalhes do comerciante.</li>
+<li><strong>Programa COBOL:</strong> Um programa COBOL é necessário para processar e preencher a estrutura de dados da transação definida no copybook.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Validação de Tipo de Dados:</strong> Cada campo na estrutura de dados tem um tipo de dados definido (por exemplo, numérico, alfanumérico) para garantir a integridade dos dados.</li>
+<li><strong>Validação de Formato:</strong> Formatos específicos podem ser aplicados para determinados campos, como data e hora ou número do cartão, para manter a consistência.</li>
+<li><strong>Regras de Negócio:</strong> O sistema pode implementar regras de negócio adicionais para validação, como verificar se há tipos de transação ou números de cartão válidos.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Estrutura de Dados:</strong></p>
+<ul>
+<li><strong><code>COTRN2AI</code>:</strong> Define a estrutura de dados de entrada da transação.</li>
+<li><strong><code>COTRN2AO</code>:</strong> Define a estrutura de dados de saída da transação.</li>
+</ul>
+<p><strong>Campos de Dados:</strong></p>
+<ul>
+<li><strong><code>TRNNAMEx</code>:</strong> Nome da Transação (por exemplo, compra, reembolso)</li>
+<li><strong><code>CURDATEx</code>:</strong> Data da transação</li>
+<li><strong><code>CURTIMEx</code>:</strong> Hora da transação</li>
+<li><strong><code>ACTIDINx</code>:</strong> ID da Atividade (identificador exclusivo para a transação)</li>
+<li><strong><code>CARDNINx</code>:</strong> Número do Cartão de Crédito</li>
+<li><strong><code>TTYPCDx</code>:</strong> Código do Tipo de Transação</li>
+<li><strong><code>TCATCDx</code>:</strong> Código da Categoria da Transação</li>
+<li><strong><code>TRNSRCx</code>:</strong> Origem da Transação (por exemplo, online, POS)</li>
+<li><strong><code>TDESCx</code>:</strong> Descrição da Transação</li>
+<li><strong><code>TRNAMTx</code>:</strong> Valor da Transação</li>
+<li><strong><code>TORIGDTx</code>:</strong> Data de Origem da Transação</li>
+<li><strong><code>TPROCDT</code>:</strong> Data de Processamento da Transação</li>
+<li><strong><code>MIDx</code>:</strong> ID do Comerciante</li>
+<li><strong><code>MNAMEx</code>:</strong> Nome do Comerciante</li>
+<li><strong><code>MCITYx</code>:</strong> Cidade do Comerciante</li>
+<li><strong><code>MZIPx</code>:</strong> CEP do Comerciante</li>
+<li><strong><code>CONFIRMx</code>:</strong> Status de Confirmação (por exemplo, aprovado, recusado)</li>
+<li><strong><code>ERRMSGx</code>:</strong> Mensagem de Erro (se houver)</li>
+</ul>
+<p><strong>Observação:</strong> O ‘x’ nos nomes dos campos acima representa os diferentes formatos usados para operações de entrada (I) e saída (O).</p>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Sistema de Processamento de Transações:</strong> A estrutura de dados de transação padronizada garante uma integração perfeita com o sistema de processamento de transações.</li>
+<li><strong>Relatórios e Análise:</strong> Os dados estruturados facilitam relatórios eficientes e análise de tendências de transações.</li>
+<li><strong>Auditoria e Conformidade:</strong> A captura abrangente de dados suporta os requisitos de auditoria e conformidade regulatória.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Nome do Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRNNAMEx</td>
+<td>Alfanumérico</td>
+<td>Nome da Transação (por exemplo, compra, reembolso)</td>
+</tr>
+<tr>
+<td>CURDATEx</td>
+<td>Numérico</td>
+<td>Data da transação</td>
+</tr>
+<tr>
+<td>CURTIMEx</td>
+<td>Numérico</td>
+<td>Hora da transação</td>
+</tr>
+<tr>
+<td>ACTIDINx</td>
+<td>Alfanumérico</td>
+<td>ID da Atividade (identificador exclusivo para a transação)</td>
+</tr>
+<tr>
+<td>CARDNINx</td>
+<td>Alfanumérico</td>
+<td>Número do Cartão de Crédito</td>
+</tr>
+<tr>
+<td>TTYPCDx</td>
+<td>Alfanumérico</td>
+<td>Código do Tipo de Transação</td>
+</tr>
+<tr>
+<td>TCATCDx</td>
+<td>Alfanumérico</td>
+<td>Código da Categoria da Transação</td>
+</tr>
+<tr>
+<td>TRNSRCx</td>
+<td>Alfanumérico</td>
+<td>Origem da Transação (por exemplo, online, POS)</td>
+</tr>
+<tr>
+<td>TDESCx</td>
+<td>Alfanumérico</td>
+<td>Descrição da Transação</td>
+</tr>
+<tr>
+<td>TRNAMTx</td>
+<td>Numérico</td>
+<td>Valor da Transação</td>
+</tr>
+<tr>
+<td>TORIGDTx</td>
+<td>Numérico</td>
+<td>Data de Origem da Transação</td>
+</tr>
+<tr>
+<td>TPROCDT</td>
+<td>Numérico</td>
+<td>Data de Processamento da Transação</td>
+</tr>
+<tr>
+<td>MIDx</td>
+<td>Alfanumérico</td>
+<td>ID do Comerciante</td>
+</tr>
+<tr>
+<td>MNAMEx</td>
+<td>Alfanumérico</td>
+<td>Nome do Comerciante</td>
+</tr>
+<tr>
+<td>MCITYx</td>
+<td>Alfanumérico</td>
+<td>Cidade do Comerciante</td>
+</tr>
+<tr>
+<td>MZIPx</td>
+<td>Alfanumérico</td>
+<td>CEP do Comerciante</td>
+</tr>
+<tr>
+<td>CONFIRMx</td>
+<td>Alfanumérico</td>
+<td>Status de Confirmação (por exemplo, aprovado, recusado)</td>
+</tr>
+<tr>
+<td>ERRMSGx</td>
+<td>Alfanumérico</td>
+<td>Mensagem de Erro (se houver)</td>
+</tr>
+</tbody>
+</table>
+<h2>Referências Principais</h2>
+<ul>
+<li><strong>Padrões de Copybook COBOL:</strong> Adesão aos padrões de copybook COBOL para definição da estrutura de dados.</li>
+<li><strong>Documentação do Sistema de Processamento de Transações:</strong> Detalhes de integração com o sistema de processamento de transações.</li>
+</ul>
+<p><strong>Considerações Adicionais:</strong></p>
+<ul>
+<li><strong>Segurança de Dados:</strong> Implemente criptografia de dados apropriada e controles de acesso para proteger dados confidenciais de transações.</li>
+<li><strong>Políticas de Retenção de Dados:</strong> Defina políticas de retenção de dados de acordo com as necessidades de negócios e requisitos regulamentares.</li>
+<li><strong>Otimização de Desempenho:</strong> Otimize as estruturas de dados e a lógica de processamento para um tratamento eficiente das transações.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

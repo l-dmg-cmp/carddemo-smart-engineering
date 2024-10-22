@@ -1,0 +1,20 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant ReportGenerator
+    participant TransactionData
+
+    activate ReportGenerator
+    ReportGenerator->>+TransactionData: Open Transaction Data
+    TransactionData-->>-ReportGenerator: Data Opened Successfully
+
+    loop For Each Transaction
+        ReportGenerator->>+TransactionData: Read Transaction Record
+        TransactionData-->>-ReportGenerator: Transaction Data
+        ReportGenerator->>ReportGenerator: Format Transaction Details
+        ReportGenerator->>+ReportGenerator: Calculate Totals
+        ReportGenerator->>ReportGenerator: Write Transaction to Report
+    end
+
+    ReportGenerator->>+ReportGenerator: Format Report Footer
+    ReportGenerator->>+ReportGenerator: Close Report File
+    deactivate ReportGenerator

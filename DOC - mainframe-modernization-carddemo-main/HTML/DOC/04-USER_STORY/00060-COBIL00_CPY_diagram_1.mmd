@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant COBOL Program
+    participant Data Structure
+    participant Output Channel
+    
+    activate COBOL Program
+    COBOL Program->>+Data Structure: Access Data
+    Data Structure-->>-COBOL Program: Data Retrieved
+    COBOL Program->>+Output Channel: Display Data
+    Output Channel->>-COBOL Program: Data Displayed
+    deactivate COBOL Program

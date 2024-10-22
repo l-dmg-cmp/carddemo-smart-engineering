@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant Application
+    participant COCRDLI_CPY
+    participant External System
+
+    activate Application
+    Application->>+COCRDLI_CPY: Request Credit Card Data Layout
+    activate COCRDLI_CPY
+    COCRDLI_CPY->>Application: Provide CCRDLIAI (Internal Layout)
+    deactivate COCRDLI_CPY
+    Application->>Application: Process Credit Card Data (Internal)
+    Application->>+COCRDLI_CPY: Request External Data Layout
+    activate COCRDLI_CPY
+    COCRDLI_CPY->>Application: Provide CCRDLIAO (External Layout)
+    deactivate COCRDLI_CPY
+    Application->>Application: Transform Data (Internal to External)
+    Application->>+External System: Send Credit Card Data (External Layout)
+    deactivate Application

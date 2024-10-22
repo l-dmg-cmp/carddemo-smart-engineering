@@ -1,0 +1,13 @@
+sequenceDiagram
+  participant Calling System
+  participant Lookup Program
+  participant Transaction Type Table
+
+  activate Calling System
+  Calling System->>+Lookup Program: Translate Transaction Code (`01`)
+  activate Lookup Program
+  Lookup Program->>+Transaction Type Table: Find Description for Code (`01`)
+  Transaction Type Table-->>-Lookup Program: Description (`Purchase`) 
+  Lookup Program->>Calling System: Transaction Description: `Purchase`
+  deactivate Calling System
+  deactivate Lookup Program

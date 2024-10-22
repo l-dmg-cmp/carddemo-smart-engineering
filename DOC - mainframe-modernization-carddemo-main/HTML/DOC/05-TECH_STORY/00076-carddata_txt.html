@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00076-carddata_txt</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> <code>Validação e Processamento de Dados de Cartão</code></p>
+<p><strong>Descrição Resumida:</strong>
+Este programa valida dados de cartão de crédito de um arquivo chamado <code>carddata.txt</code>. Ele verifica o formato do número do cartão usando o Algoritmo de Luhn, o comprimento do número do cartão e a validade da data de expiração. Os registros válidos são gravados em um arquivo de saída e os registros inválidos são registrados.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como analista de dados, desejo garantir que apenas registros de cartão de crédito válidos sejam usados para análise, portanto, preciso de um programa para validar os dados e fornecer um arquivo de saída apenas com os registros válidos.</p>
+<p><strong>Épico Relacionado:</strong>
+<code>3 - Gestão de Cartão de Crédito</code></p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li>
+<p><strong>Extração de Dados:</strong></p>
+<ul>
+<li>Entrada: Arquivo <code>carddata.txt</code>.</li>
+<li>Processo: Leia o arquivo de entrada linha por linha. Para cada linha:
+<ul>
+<li>Divida a linha em campos com base em espaços.</li>
+<li>Extraia <code>card_number</code>, <code>customer_name</code> e <code>expiration_date</code> dos campos.</li>
+</ul>
+</li>
+<li>Saída: Uma lista de registros, cada um contendo <code>card_number</code>, <code>customer_name</code> e <code>expiration_date</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Validação do Número do Cartão:</strong></p>
+<ul>
+<li>Entrada: <code>card_number</code> (string).</li>
+<li>Processo: Implemente o Algoritmo de Luhn:
+<ol>
+<li>Começando do dígito mais à direita (excluindo o dígito de verificação, se houver), dobre cada segundo dígito. Se a duplicação resultar em um número de dois dígitos, subtraia 9 dele.</li>
+<li>Some todos os dígitos (incluindo os dígitos não modificados e os resultados da etapa 1).</li>
+<li>Se a soma for um múltiplo de 10, o número do cartão é válido.</li>
+</ol>
+</li>
+<li>Saída: <code>True</code> se válido, <code>False</code> caso contrário.</li>
+</ul>
+</li>
+<li>
+<p><strong>Validação do Comprimento do Número do Cartão:</strong></p>
+<ul>
+<li>Entrada: <code>card_number</code> (string).</li>
+<li>Processo: Verifique se o comprimento de <code>card_number</code> está dentro do intervalo aceitável (13-19 dígitos).</li>
+<li>Saída: <code>True</code> se válido, <code>False</code> caso contrário.</li>
+</ul>
+</li>
+<li>
+<p><strong>Validação da Data de Expiração:</strong></p>
+<ul>
+<li>Entrada: <code>expiration_date</code> (string).</li>
+<li>Processo:
+<ol>
+<li>Verifique se <code>expiration_date</code> corresponde ao formato <code>YYYY-MM-DD</code>.</li>
+<li>Converta <code>expiration_date</code> em um objeto de data.</li>
+<li>Compare a data analisada com a data atual.</li>
+</ol>
+</li>
+<li>Saída: <code>True</code> se válido, <code>False</code> caso contrário.</li>
+</ul>
+</li>
+<li>
+<p><strong>Geração de Saída:</strong></p>
+<ul>
+<li>Entrada: Lista de registros validados.</li>
+<li>Processo: Grave os registros validados em um arquivo de saída.</li>
+<li>Saída: Arquivo de saída contendo registros de cartão de crédito válidos.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><strong>CreditCard:</strong>
+<ul>
+<li><code>card_number</code>: String (13-19 dígitos).</li>
+<li><code>customer_name</code>: String.</li>
+<li><code>expiration_date</code>: Data (YYYY-MM-DD).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><code>input_file_path</code>: <code>carddata.txt</code></li>
+<li><code>output_file_path</code>: <code>validated_card_data.txt</code></li>
+<li><code>log_file_path</code>: <code>card_validation_errors.log</code></li>
+<li><code>date_format</code>: <code>YYYY-MM-DD</code></li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li>Implementar o registro em log para melhor rastreamento e depuração.</li>
+<li>Adicionar tratamento de erros para operações de arquivo (por exemplo, arquivo não encontrado, erros de leitura / gravação).</li>
+<li>Considere o uso de uma biblioteca de validação de dados para regras de validação mais robustas e relatório de erros.</li>
+<li>Otimizar o desempenho ao lidar com arquivos muito grandes (por exemplo, leitura e processamento em partes).</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li>Armazene dados confidenciais (números de cartão de crédito) com segurança, seguindo os padrões PCI DSS.</li>
+<li>Implementar controle de acesso para restringir o acesso não autorizado ao programa, arquivos de dados e logs.</li>
+<li>Usar criptografia para dados em repouso e em trânsito.</li>
+<li>Auditar regularmente o programa e os procedimentos de tratamento de dados para vulnerabilidades de segurança.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00076-carddata_txt_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

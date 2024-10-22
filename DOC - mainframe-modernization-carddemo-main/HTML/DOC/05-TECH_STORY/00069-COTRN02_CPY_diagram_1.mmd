@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant COBOL Program
+    participant COTRN02 Copybook
+    participant Transaction Data
+
+    activate COBOL Program
+    COBOL Program->>+COTRN02 Copybook: Include copybook
+    COTRN02 Copybook-->>-COBOL Program: Data structure definitions
+
+    COBOL Program->>+Transaction Data: Receive transaction details
+    Transaction Data-->>-COBOL Program: Transaction data
+
+    COBOL Program->>COBOL Program: Populate data structure (COTRN2AI)
+    COBOL Program->>COBOL Program: Process transaction
+    COBOL Program->>COBOL Program: Format output data (COTRN2AO)
+    deactivate COBOL Program

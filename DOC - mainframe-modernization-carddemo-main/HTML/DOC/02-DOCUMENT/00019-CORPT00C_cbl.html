@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00019-CORPT00C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>CardDemo Geração de Relatório de Transações</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: CardDemo Geração de Relatório de Transações - Especificação do Programa</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li><code>\src\CORPT00C.cbl</code></li>
+</ul>
+<h2>Descrição resumida</h2>
+<p>Este documento descreve as especificações para o módulo “Geração de Relatório de Transações” dentro da aplicação CardDemo. Este módulo permite que usuários comerciais gerem facilmente relatórios abrangentes que resumem as transações de cartão de crédito para períodos específicos, como mensal, anual ou intervalos de datas personalizados.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>CardDemo_v1.0-15-g27d6c6f-68: Versão inicial - 19 de julho de 2022</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O módulo “Geração de Relatório de Transações” simplifica o processo de obtenção de dados resumidos de transações. Aqui está uma análise de como funciona:</p>
+<ol>
+<li><strong>Entrada do Usuário:</strong> O usuário seleciona o tipo de relatório desejado (Mensal, Anual ou Personalizado). Para relatórios personalizados, ele insere uma data de início e término.</li>
+<li><strong>Validação de Dados:</strong> O sistema verifica rigorosamente a validade das datas inseridas pelo usuário, garantindo consistência lógica e aderência ao formato correto.</li>
+<li><strong>Preparação da Solicitação do Relatório:</strong> Com base nas seleções do usuário, o sistema formula um conjunto de instruções, semelhante a uma receita, adaptado para o processo de geração do relatório.</li>
+<li><strong>Envio da Solicitação:</strong> A solicitação, juntamente com as instruções, é enviada com segurança para uma fila dedicada a tarefas de geração de relatórios.</li>
+<li><strong>Confirmação:</strong> O usuário recebe uma mensagem de confirmação em sua tela, reconhecendo o envio bem-sucedido de sua solicitação de relatório.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Autenticação do Usuário:</strong> O usuário deve estar logado no sistema CardDemo.</li>
+<li><strong>Seleção do Tipo de Relatório:</strong> O usuário precisa escolher entre os tipos de relatório disponíveis: Mensal, Anual ou Personalizado.</li>
+<li><strong>Entrada de Data (Relatório Personalizado):</strong> Para relatórios personalizados, o usuário deve fornecer datas de início e término válidas.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Validação de Data:</strong> O sistema aplica regras rígidas de validação de data para garantir a integridade dos dados. Isso inclui verificações para:
+<ul>
+<li><strong>Formato:</strong> As datas devem seguir o formato especificado (AAAA-MM-DD).</li>
+<li><strong>Ordem Lógica:</strong> A data de início não pode ser posterior à data de término.</li>
+<li><strong>Datas Válidas:</strong> As datas devem representar datas de calendário válidas (por exemplo, não 30 de fevereiro).</li>
+</ul>
+</li>
+<li><strong>Confirmação:</strong> O usuário é solicitado a confirmar sua solicitação antes que ela seja enviada para processamento.</li>
+</ul>
+<h2>Detalhes técnicos</h2>
+<p><strong>Programa Principal:</strong></p>
+<ul>
+<li><code>CORPT00C.cbl</code>: O programa principal responsável por lidar com a entrada do usuário, validar dados e enviar a solicitação de geração do relatório.</li>
+</ul>
+<p><strong>Funções/Métodos Principais:</strong></p>
+<ul>
+<li><code>PROCESS-ENTER-KEY</code>: Gerencia a entrada do usuário e inicia as ações apropriadas com base no tipo de relatório selecionado.</li>
+<li><code>SUBMIT-JOB-TO-INTRDR</code>: Prepara e envia o trabalho de geração de relatório para a fila interna do leitor.</li>
+<li><code>WIRTE-JOBSUB-TDQ</code>: Grava os detalhes do trabalho na Fila de Dados Transientes (TDQ) para processamento.</li>
+</ul>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><code>WS-REPORT-NAME</code>: Armazena o nome do tipo de relatório selecionado (por exemplo, “Mensal”, “Anual”, “Personalizado”).</li>
+<li><code>WS-START-DATE</code>: Armazena a data de início do relatório.</li>
+<li><code>WS-END-DATE</code>: Armazena a data de término do relatório.</li>
+<li><code>JOB-DATA</code>: Contém as instruções JCL (Job Control Language) para o trabalho de geração de relatório.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Autorização:</strong> O acesso ao módulo “Geração de Relatório de Transações” é restrito a usuários autorizados com as permissões necessárias.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Sistema de Processamento em Lote:</strong> O módulo depende do sistema de processamento em lote para executar o trabalho de geração de relatório.</li>
+<li><strong>Banco de Dados de Relatórios:</strong> O processo de geração de relatório recupera dados do banco de dados de relatórios para compilar o relatório.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WS-REPORT-NAME</td>
+<td>String</td>
+<td>Nome do tipo de relatório selecionado</td>
+</tr>
+<tr>
+<td>WS-START-DATE</td>
+<td>Data</td>
+<td>Data de início do relatório</td>
+</tr>
+<tr>
+<td>WS-END-DATE</td>
+<td>Data</td>
+<td>Data de término do relatório</td>
+</tr>
+<tr>
+<td>JOB-DATA</td>
+<td>String</td>
+<td>Instruções JCL para o trabalho de geração de relatório</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><code>CSUTLDTC</code>: Programa ou utilitário externo usado para validação de data.</li>
+<li><code>TRANREPT</code>: Programa em lote responsável por gerar o relatório de transações.</li>
+<li><code>JOBS</code>: Fila de Dados Transientes (TDQ) usada para enviar trabalhos em lote.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

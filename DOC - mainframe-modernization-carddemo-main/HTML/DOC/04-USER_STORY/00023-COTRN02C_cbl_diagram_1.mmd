@@ -1,0 +1,27 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant User
+    participant COTRN02C
+    participant CXACAIX File
+    participant CCXREF File
+    participant TRANSACT File
+
+    activate User
+    User->>+COTRN02C: Input Transaction Details
+    activate COTRN02C
+    
+    COTRN02C->>+CXACAIX File: Read Account Data
+    CXACAIX File->>COTRN02C: Account Data
+    
+    COTRN02C->>+CCXREF File: Read Card Data
+    CCXREF File->>COTRN02C: Card Data
+
+    alt Validation Successful
+        COTRN02C->>+TRANSACT File: Write Transaction Record
+        TRANSACT File-->>-COTRN02C: Write Successful
+        COTRN02C->>User: Transaction Added Successfully
+    else Validation Failed
+        COTRN02C->>User: Display Error Message
+    end
+    deactivate User
+    deactivate COTRN02C

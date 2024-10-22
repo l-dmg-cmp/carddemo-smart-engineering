@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00011-COACTUPC_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Especificação do Programa de Atualização de Conta CardDemo</p>
+<p><strong>Descrição Resumida:</strong> O Programa de Atualização de Conta CardDemo é um programa COBOL projetado para permitir que usuários autorizados visualizem e atualizem informações de contas de clientes. O programa recupera dados do cliente de arquivos VSAM com base no número da conta fornecido, exibe as informações, permite modificações e, em seguida, atualiza os arquivos com os dados alterados. Ele inclui validação de dados para garantir a integridade dos dados e controle de simultaneidade para evitar a corrupção de dados de atualizações simultâneas.</p>
+<p><strong>Histórias do Usuário:</strong> Como representante de atendimento ao cliente, preciso visualizar e atualizar as informações da conta do cliente com precisão e eficiência para que eu possa fornecer suporte e atendimento ao cliente excelentes.</p>
+<p><strong>Epic Relacionado:</strong> 2 - Gestão de Contas</p>
+<p><strong>Requisitos Funcionais:</strong></p>
+<ul>
+<li>O programa deve permitir que usuários autorizados visualizem informações da conta do cliente, incluindo status da conta, limites de crédito, saldos, data de abertura, data de expiração, data de reemissão e ID do grupo da conta.</li>
+<li>O programa deve permitir que usuários autorizados atualizem as informações da conta do cliente.</li>
+<li>O programa deve recuperar informações do cliente de arquivos VSAM (ACCTDAT, CUSTDAT, CARDDAT, CARDAIX, CXACAIX) com base no número da conta fornecido.</li>
+<li>O programa deve validar a entrada do usuário para garantir a integridade dos dados.
+<ul>
+<li>Os números das contas devem ser numéricos, com 11 dígitos e diferentes de zero.</li>
+<li>O status da conta deve ser ‘Y’ ou ‘N’.</li>
+<li>Limite de crédito, limite de crédito em dinheiro, saldo atual, crédito do ciclo atual e débito do ciclo atual devem ser valores numéricos válidos e assinados.</li>
+<li>As datas (data de abertura, data de expiração, data de reemissão, data de nascimento) devem estar no formato AAAA-MM-DD e devem ser datas válidas.</li>
+<li>O SSN deve estar no formato XXX-XX-XXXX e deve ser um SSN válido.</li>
+<li>A pontuação FICO deve estar entre 300 e 850.</li>
+<li>Os nomes devem conter apenas caracteres alfabéticos e espaços.</li>
+<li>Os campos de endereço devem ser alfanuméricos.</li>
+<li>Os números de telefone devem estar no formato (XXX) XXX-XXXX e devem ser números de telefone dos EUA válidos.</li>
+<li>O código do estado deve ser um código de estado dos EUA válido.</li>
+<li>O código postal deve ser numérico e deve ser um código postal dos EUA válido.</li>
+<li>O programa deve realizar uma validação cruzada de campo para garantir que o código postal inserido seja válido para o estado selecionado.</li>
+</ul>
+</li>
+<li>O programa deve lidar com atualizações simultâneas para evitar inconsistências de dados. Antes de atualizar o registro, o programa verifica se o registro foi modificado por outro usuário desde a última leitura. Se forem detectadas alterações, a atualização será rejeitada e o usuário será informado.</li>
+<li>O programa deve fornecer mensagens informativas ao usuário, incluindo prompts para entrada, mensagens de confirmação, mensagens de erro e mensagens de sucesso.</li>
+<li>O programa deve ser capaz de navegar de volta ao menu principal ou ao programa de chamada.</li>
+</ul>
+<p><strong>Requisitos não funcionais:</strong></p>
+<ul>
+<li><strong>Desempenho:</strong> O programa deve recuperar e atualizar as informações do cliente rapidamente, mesmo para grandes conjuntos de dados. Os tempos de resposta devem ser mínimos para garantir a interação eficiente do usuário.</li>
+<li><strong>Confiabilidade:</strong> O programa deve ser confiável e lidar com erros inesperados normalmente. A integridade dos dados deve ser mantida em todos os momentos, e o programa não deve travar ou corromper dados.</li>
+<li><strong>Manutenibilidade:</strong> O programa deve ser bem estruturado e documentado para facilitar a manutenção e os aprimoramentos futuros. O código deve ser modular e fácil de entender.</li>
+<li><strong>Segurança:</strong> O programa deve ser acessível apenas a usuários autorizados com credenciais apropriadas. Dados confidenciais, como SSN do cliente e informações financeiras, devem ser tratados com segurança.</li>
+</ul>
+<p><strong>Critérios de aceitação:</strong></p>
+<ul>
+<li>O programa recupera e exibe corretamente as informações da conta do cliente com base no número da conta fornecido.</li>
+<li>O programa permite que usuários autorizados modifiquem as informações da conta do cliente e salva as alterações corretamente.</li>
+<li>O programa valida com sucesso a entrada do usuário de acordo com as regras definidas e exibe mensagens de erro apropriadas para entrada inválida.</li>
+<li>O programa lida com atualizações simultâneas de forma eficaz, evitando inconsistências de dados.</li>
+<li>O programa fornece mensagens claras e informativas ao usuário durante todo o processo.</li>
+<li>O programa se integra perfeitamente ao aplicativo CardDemo.</li>
+</ul>
+<p><strong>Configurações e Constantes:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Constante/Parâmetro</th>
+<th>Valor Padrão</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LIT-THISPGM</td>
+<td>‘COACTUPC’</td>
+<td>ID do Programa</td>
+</tr>
+<tr>
+<td>LIT-THISTRANID</td>
+<td>‘CAUP’</td>
+<td>ID da Transação</td>
+</tr>
+<tr>
+<td>LIT-THISMAPSET</td>
+<td>'COACTUP ’</td>
+<td>Nome do conjunto de mapas</td>
+</tr>
+<tr>
+<td>LIT-THISMAP</td>
+<td>‘CACTUPA’</td>
+<td>Nome do mapa</td>
+</tr>
+<tr>
+<td>LIT-ACCTFILENAME</td>
+<td>'ACCTDAT ’</td>
+<td>Nome do arquivo mestre da conta</td>
+</tr>
+<tr>
+<td>LIT-CUSTFILENAME</td>
+<td>'CUSTDAT ’</td>
+<td>Nome do arquivo mestre do cliente</td>
+</tr>
+<tr>
+<td>LIT-CARDFILENAME</td>
+<td>'CARDDAT ’</td>
+<td>Nome do arquivo de dados do cartão</td>
+</tr>
+<tr>
+<td>LIT-CARDFILENAME-ACCT-PATH</td>
+<td>'CARDAIX ’</td>
+<td>Índice alternativo para CARDDAT com base no ID da conta</td>
+</tr>
+<tr>
+<td>LIT-CARDXREFNAME-ACCT-PATH</td>
+<td>'CXACAIX ’</td>
+<td>Índice alternativo para um arquivo de referência cruzada de cartão com base no ID da conta</td>
+</tr>
+<tr>
+<td>FICO-RANGE-IS-VALID</td>
+<td>300 THROUGH 850</td>
+<td>Intervalo válido para pontuação FICO</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implemente um mecanismo de tratamento de erros mais abrangente. Em vez de simplesmente definir sinalizadores de erro, o programa deve registrar mensagens de erro detalhadas, incluindo a condição de erro específica e os valores de dados relevantes. Isso tornará a solução de problemas e a depuração mais fáceis.</li>
+<li><strong>Modularidade:</strong> Divida o programa em módulos ou sub-rotinas menores e mais gerenciáveis. Isso melhorará a legibilidade e a manutenção do código. Por exemplo, separe a lógica de validação de dados em uma sub-rotina dedicada.</li>
+<li><strong>Acesso a Dados:</strong> Otimize as operações de acesso a dados. Considere o uso de métodos de acesso indexado para recuperação mais rápida de registros.</li>
+<li><strong>Comentários:</strong> Adicione comentários mais detalhados ao código para explicar a lógica e o propósito de cada seção. Isso tornará o código mais fácil de entender para futuros desenvolvedores.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Autenticação e Autorização:</strong> Implemente mecanismos robustos de autenticação e autorização para garantir que apenas usuários autorizados possam acessar o programa e realizar atualizações. Considere o uso de controle de acesso baseado em função para restringir o acesso a funcionalidades específicas com base nas funções do usuário.</li>
+<li><strong>Criptografia de Dados:</strong> Criptografe dados confidenciais, como SSN do cliente e informações financeiras, tanto em armazenamento (arquivos VSAM) quanto durante a transmissão. Isso protegerá a privacidade do cliente e evitará o acesso não autorizado a dados confidenciais.</li>
+<li><strong>Trilha de Auditoria:</strong> Implemente uma trilha de auditoria para registrar todas as ações do usuário, incluindo visualização de dados, modificações e tentativas de acesso a dados restritos. Isso fornecerá responsabilidade e ajudará a rastrear atividades não autorizadas.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00011-COACTUPC_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

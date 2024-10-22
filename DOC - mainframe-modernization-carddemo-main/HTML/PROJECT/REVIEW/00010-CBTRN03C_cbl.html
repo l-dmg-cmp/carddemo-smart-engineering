@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00010-CBTRN03C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h2>Revisão de Análise Técnica</h2>
+<p><strong>Arquivo:</strong>  \src\CBTRN03C.cbl</p>
+<p><strong>Título:</strong>  Gerador de Relatório de Detalhes de Transações</p>
+<p><strong>Resumo:</strong></p>
+<p>Este programa COBOL gera um relatório detalhado de transações a partir de dados de transações. Ele lê registros de transações, recupera dados relacionados de arquivos indexados (referência cruzada de cartão, tipo de transação, categoria de transação) e formata as informações em um relatório. O relatório inclui totais de página, totais de conta e um total geral para o intervalo de datas especificado.</p>
+<p><strong>Tecnologia:</strong></p>
+<ul>
+<li><strong>Linguagem de Programação:</strong> COBOL</li>
+<li><strong>Framework/Biblioteca:</strong> <code>Not available</code></li>
+<li><strong>Banco de Dados:</strong>
+<ul>
+<li><strong>VSAM (Virtual Storage Access Method):</strong> O programa interage com conjuntos de dados VSAM para armazenar e recuperar dados. Isso é evidente pelos comentários e cláusulas de organização de arquivos.</li>
+</ul>
+</li>
+<li><strong>Outras Ferramentas:</strong> <code>Not available</code></li>
+</ul>
+<p><strong>Referência, Classe e Método:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CVTRA05Y</code></td>
+<td>Provavelmente um copybook contendo o layout para <code>TRANFILE-STATUS</code>.</td>
+</tr>
+<tr>
+<td><code>CVACT03Y</code></td>
+<td>Provavelmente um copybook contendo o layout para <code>CARDXREF-STATUS</code>.</td>
+</tr>
+<tr>
+<td><code>CVTRA03Y</code></td>
+<td>Provavelmente um copybook contendo o layout para <code>TRANTYPE-STATUS</code>.</td>
+</tr>
+<tr>
+<td><code>CVTRA04Y</code></td>
+<td>Provavelmente um copybook contendo o layout para <code>TRANCATG-STATUS</code>.</td>
+</tr>
+<tr>
+<td><code>CVTRA07Y</code></td>
+<td>Provavelmente um copybook contendo o layout para <code>TRANREPT-STATUS</code>.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método (Público)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método (Privado)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0000-TRANFILE-OPEN</code></td>
+<td>Abre o arquivo de transações.</td>
+</tr>
+<tr>
+<td><code>0100-REPTFILE-OPEN</code></td>
+<td>Abre o arquivo de relatório.</td>
+</tr>
+<tr>
+<td><code>0200-CARDXREF-OPEN</code></td>
+<td>Abre o arquivo de referência cruzada do cartão.</td>
+</tr>
+<tr>
+<td><code>0300-TRANTYPE-OPEN</code></td>
+<td>Abre o arquivo de tipo de transação.</td>
+</tr>
+<tr>
+<td><code>0400-TRANCATG-OPEN</code></td>
+<td>Abre o arquivo de categoria de transação.</td>
+</tr>
+<tr>
+<td><code>0500-DATEPARM-OPEN</code></td>
+<td>Abre o arquivo de parâmetro de data.</td>
+</tr>
+<tr>
+<td><code>0550-DATEPARM-READ</code></td>
+<td>Lê os parâmetros de data do arquivo de parâmetro de data.</td>
+</tr>
+<tr>
+<td><code>1000-TRANFILE-GET-NEXT</code></td>
+<td>Lê o próximo registro de transação do arquivo de transações.</td>
+</tr>
+<tr>
+<td><code>1100-WRITE-TRANSACTION-REPORT</code></td>
+<td>Grava uma transação no relatório.</td>
+</tr>
+<tr>
+<td><code>1110-WRITE-PAGE-TOTALS</code></td>
+<td>Grava totais de página no relatório.</td>
+</tr>
+<tr>
+<td><code>1120-WRITE-ACCOUNT-TOTALS</code></td>
+<td>Grava totais de conta no relatório.</td>
+</tr>
+<tr>
+<td><code>1110-WRITE-GRAND-TOTALS</code></td>
+<td>Grava totais gerais no relatório.</td>
+</tr>
+<tr>
+<td><code>1120-WRITE-HEADERS</code></td>
+<td>Grava cabeçalhos de relatório.</td>
+</tr>
+<tr>
+<td><code>1111-WRITE-REPORT-REC</code></td>
+<td>Grava um registro no arquivo de relatório.</td>
+</tr>
+<tr>
+<td><code>1120-WRITE-DETAIL</code></td>
+<td>Grava detalhes da transação no relatório.</td>
+</tr>
+<tr>
+<td><code>1500-A-LOOKUP-XREF</code></td>
+<td>Pesquisa informações do cartão no arquivo de referência cruzada.</td>
+</tr>
+<tr>
+<td><code>1500-B-LOOKUP-TRANTYPE</code></td>
+<td>Pesquisa informações do tipo de transação.</td>
+</tr>
+<tr>
+<td><code>1500-C-LOOKUP-TRANCATG</code></td>
+<td>Pesquisa informações da categoria de transação.</td>
+</tr>
+<tr>
+<td><code>9000-TRANFILE-CLOSE</code></td>
+<td>Fecha o arquivo de transações.</td>
+</tr>
+<tr>
+<td><code>9100-REPTFILE-CLOSE</code></td>
+<td>Fecha o arquivo de relatório.</td>
+</tr>
+<tr>
+<td><code>9200-CARDXREF-CLOSE</code></td>
+<td>Fecha o arquivo de referência cruzada do cartão.</td>
+</tr>
+<tr>
+<td><code>9300-TRANTYPE-CLOSE</code></td>
+<td>Fecha o arquivo de tipo de transação.</td>
+</tr>
+<tr>
+<td><code>9400-TRANCATG-CLOSE</code></td>
+<td>Fecha o arquivo de categoria de transação.</td>
+</tr>
+<tr>
+<td><code>9500-DATEPARM-CLOSE</code></td>
+<td>Fecha o arquivo de parâmetro de data.</td>
+</tr>
+<tr>
+<td><code>9999-ABEND-PROGRAM</code></td>
+<td>Finaliza o programa de forma anormal.</td>
+</tr>
+<tr>
+<td><code>9910-DISPLAY-IO-STATUS</code></td>
+<td>Exibe o status do arquivo.</td>
+</tr>
+</tbody>
+</table>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

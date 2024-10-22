@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant CardDemo Application
+    participant CSDAT01Y
+
+    activate CardDemo Application
+    CardDemo Application->>+CSDAT01Y: Get Current Date
+    CSDAT01Y->>-CardDemo Application: YYYYMMDD (e.g., 20241026)
+    CardDemo Application->>+CSDAT01Y: Get Current Time
+    CSDAT01Y->>-CardDemo Application: HHMMSS (e.g., 153045)
+    deactivate CardDemo Application

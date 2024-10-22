@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00052-CVTRA04Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>CardDemo Gerenciamento de Categoria de Transação</h1>
+<h2>Título do Documento: CardDemo Gerenciamento de Categoria de Transação - Especificação da Estrutura de Dados</h2>
+<h2>Arquivo</h2>
+<ul>
+<li><code>\CVTRA04Y.cpy</code></li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve a estrutura de dados usada no aplicativo CardDemo para categorizar transações de cartão de crédito. Ele garante que todas as transações sejam classificadas de forma consistente para relatórios e análises.</p>
+<h2>Histórico da Versão</h2>
+<ul>
+<li><code>CardDemo_v1.0-15-g27d6c6f-68</code>: Versão inicial - 19 de julho de 2022</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O aplicativo CardDemo usa uma estrutura padronizada para classificar e armazenar informações sobre diferentes categorias de transação. Esta estrutura garante que cada transação seja categorizada com base em seu tipo e em uma subcategoria mais específica, facilitando o rastreamento e a análise de diferentes tipos de transação.</p>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Dados da Transação:</strong> O sistema precisa receber informações sobre cada transação, incluindo seu tipo.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Códigos de Categoria Exclusivos:</strong> Cada categoria de transação deve ter uma combinação exclusiva de Código de Tipo e Código de Categoria para evitar classificações incorretas.</li>
+<li><strong>Descrições Claras e Concisas:</strong> A descrição da categoria deve ser fácil de entender para fins de relatórios e interface do usuário.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li>
+<p><strong><code>TRAN-CAT-RECORD</code>:</strong> Representa um único registro de categoria de transação.</p>
+<ul>
+<li>
+<p><strong><code>TRAN-CAT-KEY</code>:</strong> Identifica exclusivamente cada categoria de transação.</p>
+<ul>
+<li><strong><code>TRAN-TYPE-CD</code>:</strong> (2 caracteres) Um código de dois caracteres representando o tipo geral de transação (por exemplo, ‘PR’ para Compra, ‘PA’ para Pagamento).</li>
+<li><strong><code>TRAN-CAT-CD</code>:</strong> (4 dígitos) Um código de quatro dígitos que categoriza ainda mais a transação dentro de seu tipo (por exemplo, ‘0001’ para Compra Online, ‘0002’ para Compra na Loja no tipo ‘PR’).</li>
+</ul>
+</li>
+<li>
+<p><strong><code>TRAN-CAT-TYPE-DESC</code>:</strong> (50 caracteres) Uma breve descrição da categoria de transação.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Módulo de Relatórios:</strong> A categorização consistente das transações impacta diretamente na precisão e granularidade dos relatórios gerados pelo sistema.</li>
+<li><strong>Análise de Dados:</strong> Os dados estruturados permitem uma análise mais fácil das tendências e padrões de transações.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Nome do Campo</th>
+<th style="text-align:left">Tipo</th>
+<th style="text-align:left">Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>TRAN-TYPE-CD</code></td>
+<td style="text-align:left">String (2)</td>
+<td style="text-align:left">Código de dois caracteres representando o tipo geral de transação (por exemplo, ‘PR’ para Compra, ‘PA’ para Pagamento).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>TRAN-CAT-CD</code></td>
+<td style="text-align:left">String (4)</td>
+<td style="text-align:left">Código de quatro dígitos que fornece uma subcategoria específica dentro do tipo de transação (por exemplo, ‘0001’ para Compra Online, ‘0002’ para Compra na Loja no tipo ‘PR’).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>TRAN-CAT-TYPE-DESC</code></td>
+<td style="text-align:left">String (50)</td>
+<td style="text-align:left">Uma descrição curta e legível por humanos da categoria de transação.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>Módulo de Processamento de Transações:</strong> Este módulo usará as categorias de transação definidas para classificar cada transação.</li>
+<li><strong>Módulo de Relatórios e Análise:</strong> Esses módulos dependerão dos dados de transações categorizados para gerar relatórios e realizar análises de dados.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

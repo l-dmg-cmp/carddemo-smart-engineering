@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00011-COACTUPC_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Programa de Atualização de Conta para Aplicativo CardDemo</h2>
+<p><strong>Arquivo:</strong> COACTUPC.cbl</p>
+<p>Este programa COBOL permite que usuários autorizados visualizem e atualizem informações de contas de clientes dentro do aplicativo CardDemo.</p>
+<p><strong>Contexto:</strong></p>
+<p>Pense neste programa como o mecanismo de back-end que alimenta a funcionalidade de atualização de conta para um sistema de gerenciamento de cartão de crédito. Quando um representante de atendimento ao cliente precisa modificar os detalhes da conta de um cliente, este programa lida com todas as etapas necessárias.</p>
+<p><strong>Ação:</strong></p>
+<ol>
+<li><strong>Inicialização:</strong> O programa começa configurando as variáveis necessárias e preparando o sistema para interação com o usuário.</li>
+<li><strong>Processamento de Entrada:</strong> Ele recebe entrada do usuário por meio de uma interface de tela. Isso inclui detalhes da conta, como limite de crédito, limite de saque, saldo atual e informações do cliente, como nome, endereço e detalhes de contato.</li>
+<li><strong>Validação de Dados:</strong> O programa verifica rigorosamente as informações inseridas para garantir que atendam a critérios específicos. Por exemplo, ele valida se o número da conta é numérico, se o limite de crédito é um número positivo e se o número de telefone está no formato correto.</li>
+<li><strong>Recuperação de Dados:</strong> Ele busca dados existentes de contas e clientes em arquivos VSAM com base no número da conta fornecido.</li>
+<li><strong>Comparação de Dados:</strong> O programa compara os novos dados inseridos pelo usuário com os dados existentes recuperados do banco de dados. Isso ajuda a identificar quaisquer alterações feitas pelo usuário.</li>
+<li><strong>Confirmação de Atualização:</strong> Se alterações forem detectadas, o programa solicita que o usuário confirme a atualização. Esta etapa atua como uma rede de segurança, evitando modificações acidentais.</li>
+<li><strong>Atualização de Dados:</strong> Após a confirmação, o programa atualiza os registros da conta e do cliente nos arquivos VSAM com as novas informações.</li>
+<li><strong>Verificação de Concorrência:</strong> O programa incorpora um mecanismo para verificar se outro usuário modificou os mesmos dados enquanto a atualização atual estava em andamento. Isso evita inconsistências de dados que podem surgir de atualizações simultâneas.</li>
+</ol>
+<p><strong>Tecnologias:</strong></p>
+<ul>
+<li><strong>COBOL:</strong> Uma linguagem de programação robusta comumente usada para aplicativos de mainframe, escolhida por sua confiabilidade e capacidade de lidar com grandes volumes de dados.</li>
+<li><strong>CICS:</strong> Um sistema de processamento de transações que gerencia interações do usuário e comunicação com o mainframe, garantindo um processamento tranquilo e eficiente.</li>
+<li><strong>VSAM:</strong> Um sistema de gerenciamento de arquivos usado para armazenar e recuperar dados no mainframe, fornecendo acesso rápido a informações de contas e clientes.</li>
+</ul>
+<p><strong>Regras de Negócios:</strong></p>
+<ul>
+<li><strong>Integridade de Dados:</strong> O programa aplica regras rígidas de validação de dados para garantir a precisão e consistência das informações da conta.</li>
+<li><strong>Autorização:</strong> Somente usuários autorizados, como representantes de atendimento ao cliente, têm permissão para acessar e modificar dados da conta.</li>
+<li><strong>Trilha de Auditoria:</strong> Todas as atualizações são rastreadas para manter um histórico de alterações feitas em cada conta, garantindo responsabilidade e rastreabilidade.</li>
+<li><strong>Controle de Concorrência:</strong> O programa lida com atualizações simultâneas para evitar corrupção de dados e garantir que as alterações feitas por um usuário não substituam as feitas por outro.</li>
+<li><strong>Segurança de Dados:</strong> Dados confidenciais, como SSN do cliente e informações financeiras, são tratados com cuidado, seguindo as melhores práticas de segurança para proteger a privacidade do cliente.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

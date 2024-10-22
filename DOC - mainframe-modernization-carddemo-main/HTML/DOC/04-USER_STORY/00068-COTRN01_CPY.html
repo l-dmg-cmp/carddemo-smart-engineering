@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00068-COTRN01_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Especificação da Estrutura de Dados de Transações com Cartão de Crédito</h1>
+<h1><strong>Descrição Resumida:</strong></h1>
+<p>Este documento detalha a estrutura dos registros de transações com cartão de crédito em nosso sistema. Ele atua como um modelo para capturar, armazenar e processar cada transação com cartão de crédito, garantindo consistência e precisão.</p>
+<h1><strong>Histórias de Usuário:</strong></h1>
+<p>Como analista financeiro, preciso de uma maneira padronizada de acessar e analisar dados de transações com cartão de crédito para rastrear padrões de gastos, identificar possíveis fraudes e gerar relatórios para insights de negócios.</p>
+<h1><strong>Épico Relacionado:</strong></h1>
+<p>4 - Processamento de Transações</p>
+<h1><strong>Requisitos Funcionais:</strong></h1>
+<ul>
+<li>O sistema deve capturar todos os detalhes essenciais de uma transação com cartão de crédito, incluindo:
+<ul>
+<li>ID de Transação Único (TRNIDINI)</li>
+<li>Número do Cartão de Crédito (CARDNUMI)</li>
+<li>Código do Tipo de Transação (TTYPCDI): Compra, reembolso, adiantamento em dinheiro, etc.</li>
+<li>Origem da Transação (TRNSRCI): Online, terminal POS, ATM, etc.</li>
+<li>Descrição da Transação (TDESCI)</li>
+<li>Valor da Transação (TRNAMTI)</li>
+<li>ID do Comerciante (MIDI)</li>
+<li>Nome do Comerciante (MNAMEI)</li>
+<li>Timestamps: Origem (TORIGDTI), Processamento (TPROCDTI)</li>
+<li>Mensagem de Erro (ERRMSGI): Se ocorrer algum problema durante o processamento</li>
+</ul>
+</li>
+<li>O sistema deve validar os tipos de dados e os comprimentos dos campos para garantir a integridade dos dados.</li>
+<li>O sistema deve suportar dois layouts de dados:
+<ul>
+<li><code>COTRN1AI</code>: Layout primário usando formatos de caractere e decimal compactado.</li>
+<li><code>COTRN1AO</code>: Layout alternativo com formatação de caractere diferente para necessidades específicas de processamento.</li>
+</ul>
+</li>
+</ul>
+<h1><strong>Requisitos Não Funcionais:</strong></h1>
+<ul>
+<li><strong>Desempenho:</strong> O processamento de registros de transações deve ser rápido e eficiente para lidar com altos volumes de transações.</li>
+<li><strong>Confiabilidade:</strong> O sistema deve registrar e armazenar com precisão todos os dados de transações sem perda ou corrupção.</li>
+<li><strong>Manutenibilidade:</strong> A estrutura de dados deve ser facilmente compreensível e modificável para aprimoramentos futuros.</li>
+<li><strong>Segurança:</strong> Os dados confidenciais da transação devem ser protegidos contra acesso e modificação não autorizados.</li>
+</ul>
+<h1><strong>Critérios de Aceitação:</strong></h1>
+<ul>
+<li>Todos os campos de dados definidos são capturados com precisão e completamente para cada transação.</li>
+<li>As validações de tipo de dados e comprimento de campo são implementadas e funcionam corretamente.</li>
+<li>Os layouts <code>COTRN1AI</code> e <code>COTRN1AO</code> são suportados e podem ser processados ​​pelo sistema.</li>
+<li>O sistema lida com altos volumes de transações sem degradação de desempenho.</li>
+<li>As medidas de segurança estão em vigor para proteger dados confidenciais de transações.</li>
+</ul>
+<h1><strong>Melhorias de Código:</strong></h1>
+<ul>
+<li>Implementar criptografia de dados para campos confidenciais, como números de cartão de crédito, para aumentar a segurança.</li>
+<li>Adicionar técnicas de mascaramento de dados para proteger dados confidenciais durante a exibição ou registro.</li>
+<li>Implementar mecanismos de registro para rastrear a criação, acesso e modificações de registros de transações para fins de auditoria.</li>
+<li>Considere o uso de um dicionário de dados para centralizar as definições dos elementos de dados e garantir a consistência em todo o aplicativo.</li>
+</ul>
+<h1><strong>Melhorias de Segurança:</strong></h1>
+<ul>
+<li>Implementar mecanismos de controle de acesso para restringir o acesso aos dados da transação com base nas funções e permissões do usuário.</li>
+<li>Auditar o sistema regularmente para garantir a conformidade com as políticas de segurança e identificar possíveis vulnerabilidades.</li>
+<li>Implementar políticas de retenção de dados para arquivar ou excluir com segurança os dados da transação de acordo com os requisitos regulamentares.</li>
+</ul>
+<h1><strong>Diagrama Conceitual:</strong></h1>
+<img src="00068-COTRN01_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00005-CBCUS01C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h2>Revisão de Análise Técnica</h2>
+<p><strong>Arquivo:</strong>  \src\CBCUS01C.cbl</p>
+<p><strong>Título:</strong>  Processador de Arquivo de Dados do Cliente (CBCUS01C)</p>
+<p><strong>Resumo:</strong></p>
+<p>Este programa COBOL lê sequencialmente e exibe registros de clientes de um arquivo VSAM KSDS (Key-Sequenced Data Set) chamado <code>CUSTFILE</code>. Ele inclui tratamento de erros para operações de arquivo (abrir, ler, fechar) e utiliza um copybook (<code>CVCUS01Y</code>) para estruturas de dados compartilhadas.</p>
+<p><strong>Tecnologia:</strong></p>
+<ul>
+<li><strong>Linguagem de Programação:</strong> COBOL</li>
+<li><strong>Framework/Biblioteca:</strong> <code>Not available</code></li>
+<li><strong>Banco de dados:</strong>
+<ul>
+<li><strong>VSAM (Virtual Storage Access Method):</strong> O código interage com um arquivo VSAM KSDS (<code>CUSTFILE</code>) para armazenamento persistente de dados do cliente.</li>
+</ul>
+</li>
+<li><strong>Outras Ferramentas:</strong> <code>Not available</code></li>
+</ul>
+<p><strong>Referência, Classe e Método:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Referência</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CVCUS01Y</code></td>
+<td>Um copybook COBOL provavelmente contendo a definição da estrutura de dados <code>CUSTOMER-RECORD</code>. Esta estrutura contém detalhes sobre um cliente, mas seus campos específicos não são definidos no trecho de código fornecido.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método(Público)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1000-CUSTFILE-GET-NEXT</code></td>
+<td>Lê o próximo registro de cliente de <code>CUSTFILE</code> e executa o tratamento de erros com base nos códigos de status do arquivo. Se um registro for lido com sucesso, ele preenche a variável <code>CUSTOMER-RECORD</code> e define os sinalizadores de status do aplicativo apropriados.</td>
+</tr>
+<tr>
+<td><code>0000-CUSTFILE-OPEN</code></td>
+<td>Abre o <code>CUSTFILE</code> para entrada e verifica se a abertura do arquivo foi bem-sucedida. Em caso de erros, ele exibe uma mensagem de erro, define sinalizadores de status e potencialmente encerra o programa.</td>
+</tr>
+<tr>
+<td><code>9000-CUSTFILE-CLOSE</code></td>
+<td>Fecha o <code>CUSTFILE</code> e verifica se o fechamento foi bem-sucedido. Semelhante à rotina de abertura, ele lida com erros potenciais exibindo mensagens, definindo sinalizadores de status e possivelmente encerrando o programa.</td>
+</tr>
+<tr>
+<td><code>Z-ABEND-PROGRAM</code></td>
+<td>Um procedimento projetado para terminar o programa de forma anormal. Ele exibe uma mensagem “ABENDING PROGRAM”, define códigos específicos para tempo e motivo do abend (<code>ABCODE</code>) e, em seguida, chama a função abend do IBM Language Environment (<code>CEE3ABD</code>) para acionar o abend.</td>
+</tr>
+<tr>
+<td><code>Z-DISPLAY-IO-STATUS</code></td>
+<td>Formata e exibe o código de status do arquivo (<code>IO-STATUS</code>) de forma amigável. Ele lida com códigos de status numéricos e não numéricos, convertendo-os para um formato de quatro dígitos para exibição.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método(Privado)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="hljs"><code>--Made by &quot;Smart Engineering&quot; (by Compass.UOL)--</code></pre>
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

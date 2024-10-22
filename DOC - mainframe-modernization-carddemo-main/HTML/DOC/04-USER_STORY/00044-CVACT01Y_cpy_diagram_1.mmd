@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant CardDemo Application
+    participant Account Data File
+
+    activate CardDemo Application
+    CardDemo Application->>+Account Data File: Open Account File
+    Account Data File->>CardDemo Application: Account File Opened
+
+    CardDemo Application->>+Account Data File: Read Account Record
+    Account Data File-->>-CardDemo Application: Account Record Data
+
+    deactivate CardDemo Application

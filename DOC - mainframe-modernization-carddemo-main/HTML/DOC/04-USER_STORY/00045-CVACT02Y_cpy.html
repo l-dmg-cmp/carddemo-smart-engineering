@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00045-CVACT02Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Programa de Validação e Processamento de Dados de Cartão</h1>
+<h2><strong>Descrição Resumida:</strong></h2>
+<p>Este programa valida dados de cartão de crédito de um arquivo de entrada e grava registros válidos em um arquivo de saída. Ele desempenha um papel crucial na garantia da integridade dos dados para processos downstream, como processamento de transações, geração de relatórios e gerenciamento de contas.</p>
+<h2><strong>Histórias do Usuário:</strong></h2>
+<p>Como analista de dados, preciso garantir que apenas registros válidos de cartão de crédito sejam usados para análise e geração de relatórios, a fim de manter a precisão e a confiabilidade dos dados.</p>
+<h2><strong>Épico Relacionado:</strong></h2>
+<p>3 - Gerenciamento de Cartão de Crédito</p>
+<h2><strong>Requisitos Funcionais:</strong></h2>
+<ol>
+<li><strong>Ler Dados do Cartão:</strong> O programa deve ler os registros do cartão de crédito de um arquivo de entrada.</li>
+<li><strong>Validar Número do Cartão:</strong> Validar o número do cartão com base em regras predefinidas (por exemplo, comprimento, algoritmo de Luhn).</li>
+<li><strong>Validar Data de Validade:</strong> Verificar se o cartão não está expirado com base na data atual.</li>
+<li><strong>Validar Status Ativo:</strong> Verificar se o cartão está marcado como ativo.</li>
+<li><strong>Lidar com Registros Inválidos:</strong> Se um registro falhar na validação, registrar os detalhes do erro (por exemplo, motivo da falha, detalhes do registro) em um log de erros.</li>
+<li><strong>Gravar Registros Válidos:</strong> Gravar registros de cartão validados em um arquivo de saída para processamento posterior.</li>
+</ol>
+<h2><strong>Requisitos Não Funcionais:</strong></h2>
+<ol>
+<li><strong>Desempenho:</strong> O programa deve processar um grande volume de registros de cartão de forma eficiente dentro de um prazo aceitável.</li>
+<li><strong>Confiabilidade:</strong> O programa deve operar de forma confiável, sem erros ou corrupção de dados.</li>
+<li><strong>Manutenibilidade:</strong> O código do programa deve ser bem estruturado, documentado e fácil de entender para futuras modificações ou aprimoramentos.</li>
+<li><strong>Segurança:</strong> O programa deve lidar com dados confidenciais do cartão de forma segura e cumprir as regulamentações relevantes de proteção de dados (por exemplo, PCI DSS).</li>
+</ol>
+<h2><strong>Critérios de Aceitação:</strong></h2>
+<ol>
+<li>O programa lê e valida com sucesso os dados do cartão de crédito do arquivo de entrada.</li>
+<li>Os registros inválidos são identificados, registrados com detalhes específicos do erro e excluídos do arquivo de saída.</li>
+<li>Os registros de cartão válidos são gravados corretamente no arquivo de saída no formato esperado.</li>
+<li>O programa lida com erros normalmente, registra informações relevantes para solução de problemas e fornece mensagens de erro claras ao usuário.</li>
+<li>O programa atende aos requisitos de desempenho definidos, processando registros dentro do prazo aceitável.</li>
+</ol>
+<h2><strong>Melhorias de Código:</strong></h2>
+<ol>
+<li>Implementar um mecanismo de tratamento de erros mais robusto para capturar e lidar com várias exceções (por exemplo, arquivo não encontrado, formato de dados inválido).</li>
+<li>Adicionar registro para operações bem-sucedidas e marcos importantes no fluxo de processamento para facilitar o monitoramento e a solução de problemas.</li>
+<li>Otimizar a lógica de validação para melhorar o desempenho, especialmente ao lidar com um grande volume de registros.</li>
+<li>Considerar o uso de uma biblioteca ou estrutura de validação de dados para simplificar e padronizar as regras de validação.</li>
+</ol>
+<h2><strong>Melhorias de Segurança:</strong></h2>
+<ol>
+<li>Implementar controles de acesso apropriados para restringir o acesso não autorizado ao programa, arquivo de entrada, arquivo de saída e logs de erros.</li>
+<li>Criptografar dados confidenciais do cartão durante o processamento e armazenamento para protegê-los contra acesso não autorizado.</li>
+<li>Registrar todas as tentativas de acesso a dados, incluindo IDs de usuário e carimbos de data/hora, para fins de auditoria e monitoramento de segurança.</li>
+<li>Revisar e atualizar regularmente as medidas de segurança para lidar com novas vulnerabilidades e ameaças.</li>
+</ol>
+<h2><strong>Diagrama Conceitual:</strong></h2>
+<img src="00045-CVACT02Y_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

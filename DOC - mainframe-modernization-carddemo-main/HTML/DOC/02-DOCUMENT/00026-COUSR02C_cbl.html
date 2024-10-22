@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00026-COUSR02C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h1>Especificação do Programa de Atualização de Usuário CardDemo</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Especificação do Programa de Atualização de Usuário CardDemo</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li>Arquivo:  \src\COUSR02C.cbl</li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve as especificações para o programa COUSR02C dentro da aplicação CardDemo. Este programa é responsável por gerenciar as atualizações das informações do usuário, garantindo a integridade dos dados e a segurança do sistema durante todo o processo.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>CardDemo_v1.0-15-g27d6c6f-68: Versão inicial - 19 de julho de 2022</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O programa COUSR02C facilita a atualização das informações do usuário dentro da aplicação CardDemo. O processo envolve as seguintes etapas:</p>
+<ol>
+<li><strong>Seleção do Usuário:</strong> Um administrador seleciona um usuário para atualização, normalmente a partir de uma lista de usuários existentes.</li>
+<li><strong>Recuperação de Dados:</strong> O programa recupera as informações do usuário selecionado do arquivo USRSEC (banco de dados de usuários).</li>
+<li><strong>Exibição de Informações:</strong>  As informações recuperadas, incluindo ID do usuário, nome, sobrenome, senha e tipo de usuário, são exibidas na tela do administrador para revisão e possível modificação.</li>
+<li><strong>Modificação de Dados:</strong> O administrador pode modificar qualquer um dos campos exibidos, exceto o ID do usuário.</li>
+<li><strong>Validação de Dados:</strong> Antes de atualizar o banco de dados, o programa valida os dados modificados para garantir que todos os campos obrigatórios estejam preenchidos e que os formatos de dados estejam corretos.</li>
+<li><strong>Atualização do Banco de Dados:</strong> Se os dados inseridos passarem na validação, o programa atualiza o registro do usuário no arquivo USRSEC.</li>
+<li><strong>Mensagem de Confirmação:</strong>  Uma mensagem de confirmação é exibida ao administrador após a atualização bem-sucedida. Se ocorrerem erros durante a validação ou atualização, as mensagens de erro apropriadas serão exibidas.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Privilégios de Administrador:</strong> Somente administradores autorizados têm acesso à funcionalidade de atualização do usuário.</li>
+<li><strong>Sessão de Usuário Ativa:</strong> Uma sessão de usuário ativa é necessária para interagir com a aplicação CardDemo.</li>
+<li><strong>ID de Usuário Válido:</strong>  Um ID de usuário válido deve ser fornecido para identificar o registro do usuário a ser atualizado.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Campos Obrigatórios:</strong>  ID do Usuário, Nome, Sobrenome, Senha e Tipo de Usuário são campos obrigatórios e não podem ser deixados em branco.</li>
+<li><strong>Validação de Formato de Dados:</strong> O programa verifica o formato dos dados de campos específicos, como ID do Usuário e Senha, para garantir que eles estejam em conformidade com as regras predefinidas do sistema.</li>
+<li><strong>Confirmação de Senha:</strong>  Embora não seja mencionado explicitamente, o programa deve idealmente solicitar que o administrador insira a nova senha novamente para evitar erros de digitação acidentais.</li>
+<li><strong>Integridade de Dados:</strong> O programa prioriza a precisão e a completude das informações do usuário para manter a integridade dos dados do sistema.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Programa Principal:</strong></p>
+<ul>
+<li><strong>COUSR02C:</strong> O principal programa COBOL responsável por orquestrar o processo de atualização do usuário.</li>
+</ul>
+<p><strong>Telas Principais:</strong></p>
+<ul>
+<li><strong>COUSR2A:</strong> A tela principal usada para exibir e modificar as informações do usuário.</li>
+</ul>
+<p><strong>Arquivos Principais:</strong></p>
+<ul>
+<li><strong>USRSEC:</strong> O arquivo VSAM que contém as informações do usuário, incluindo ID do usuário, senha, tipo de usuário e outros detalhes relevantes.</li>
+</ul>
+<p><strong>Variáveis Principais:</strong></p>
+<ul>
+<li><strong>USRIDINI:</strong>  ID do usuário inserido pelo administrador.</li>
+<li><strong>FNAMEI:</strong> Nome do usuário.</li>
+<li><strong>LNAMEI:</strong> Sobrenome do usuário.</li>
+<li><strong>PASSWDI:</strong> Senha inserida pelo administrador.</li>
+<li><strong>USRTYPEI:</strong> Tipo de Usuário (por exemplo, Administrador, Usuário Padrão).</li>
+<li><strong>WS-MESSAGE:</strong>  Uma variável usada para exibir mensagens ao administrador.</li>
+<li><strong>ERRMSGO:</strong> Uma variável usada para exibir mensagens de erro ao administrador.</li>
+</ul>
+<p><strong>Métodos Principais:</strong></p>
+<ul>
+<li><strong>PROCESS-ENTER-KEY:</strong> Lida com a entrada do administrador após pressionar a tecla Enter.</li>
+<li><strong>UPDATE-USER-INFO:</strong> Valida a entrada do usuário e atualiza as informações do usuário no arquivo USRSEC.</li>
+<li><strong>RETURN-TO-PREV-SCREEN:</strong> Retorna o administrador para a tela anterior.</li>
+<li><strong>SEND-USRUPD-SCREEN:</strong>  Envia a tela de atualização do usuário (COUSR2A) para o terminal do administrador.</li>
+<li><strong>RECEIVE-USRUPD-SCREEN:</strong>  Recebe dados da tela de atualização do usuário.</li>
+<li><strong>POPULATE-HEADER-INFO:</strong> Preenche as informações do cabeçalho da tela.</li>
+<li><strong>READ-USER-SEC-FILE:</strong> Lê as informações do usuário no arquivo USRSEC.</li>
+<li><strong>UPDATE-USER-SEC-FILE:</strong> Atualiza as informações do usuário no arquivo USRSEC.</li>
+<li><strong>CLEAR-CURRENT-SCREEN:</strong> Limpa a tela atual.</li>
+<li><strong>INITIALIZE-ALL-FIELDS:</strong> Inicializa todos os campos de entrada na tela.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Controle de Acesso:</strong> Somente administradores autorizados com privilégios de acesso apropriados podem acessar e modificar as informações do usuário.</li>
+<li><strong>Validação de Dados:</strong> A validação de dados de entrada ajuda a evitar que dados ou comandos maliciosos sejam inseridos no sistema.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Autenticação do Usuário:</strong> Mudanças nas informações do usuário, especialmente senhas, podem afetar outras partes da aplicação CardDemo que dependem da autenticação do usuário.</li>
+<li><strong>Registro de Auditoria:</strong> Embora não seja mencionado explicitamente, quaisquer alterações feitas nas informações do usuário devem ser registradas para fins de auditoria e segurança.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SEC-USR-ID</td>
+<td>String</td>
+<td>Identificador único para cada usuário.</td>
+</tr>
+<tr>
+<td>SEC-USR-FNAME</td>
+<td>String</td>
+<td>Nome do usuário.</td>
+</tr>
+<tr>
+<td>SEC-USR-LNAME</td>
+<td>String</td>
+<td>Sobrenome do usuário.</td>
+</tr>
+<tr>
+<td>SEC-USR-PWD</td>
+<td>String</td>
+<td>Senha do usuário para acesso ao sistema.</td>
+</tr>
+<tr>
+<td>SEC-USR-TYPE</td>
+<td>String</td>
+<td>Define a função e as permissões do usuário dentro da aplicação.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>COUSR02A:</strong>  O mapset BMS usado para a tela de atualização do usuário.</li>
+<li><strong>COUSR2AI:</strong>  A estrutura de dados associada à tela de atualização do usuário.</li>
+<li><strong>COUSR2AO:</strong> A estrutura de dados usada para enviar dados para a tela de atualização do usuário.</li>
+<li><strong>COCOM01Y:</strong> Copybook contendo variáveis e estruturas de dados comuns.</li>
+<li><strong>COUSR02:</strong> Copybook contendo estruturas de dados específicas para o programa COUSR02C.</li>
+<li><strong>COTTL01Y:</strong> Copybook contendo informações de título e cabeçalho.</li>
+<li><strong>CSDAT01Y:</strong> Copybook contendo variáveis e rotinas relacionadas à data.</li>
+<li><strong>CSMSG01Y:</strong> Copybook contendo variáveis e rotinas relacionadas a mensagens.</li>
+<li><strong>CSUSR01Y:</strong> Copybook contendo variáveis e estruturas de dados relacionadas ao usuário.</li>
+<li><strong>DFHAID:</strong>  Área de dados relacionada ao sistema CICS.</li>
+<li><strong>DFHBMSCA:</strong> Área de comunicação CICS para mapas BMS.</li>
+</ul>
+<h2>Considerações Adicionais</h2>
+<ul>
+<li><strong>Regras de Complexidade de Senha:</strong> Implemente regras de complexidade de senha para aumentar a segurança do sistema.</li>
+<li><strong>Criptografia de Senha:</strong> Armazene as senhas com segurança usando criptografia para proteger os dados confidenciais do usuário.</li>
+<li><strong>Trilha de Auditoria:</strong> Mantenha uma trilha de auditoria de todas as atualizações de usuário, incluindo quem fez as alterações, o que foi alterado e quando as alterações foram feitas.</li>
+<li><strong>Tratamento de Erros:</strong> Implemente um tratamento de erros abrangente para gerenciar situações inesperadas com elegância e fornecer mensagens informativas ao administrador.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

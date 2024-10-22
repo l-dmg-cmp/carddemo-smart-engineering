@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant Terminal
+    participant CSSTRPFY
+    participant Common Area
+
+    activate Terminal
+    Terminal->>+CSSTRPFY: User Action (AID)
+    deactivate Terminal
+
+    activate CSSTRPFY
+    CSSTRPFY->>CSSTRPFY: Map AID to Program Function
+    CSSTRPFY->>+Common Area: Set Corresponding Flag
+    deactivate CSSTRPFY

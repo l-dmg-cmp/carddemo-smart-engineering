@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00048-CVCUS01Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Programa de Validação e Processamento de Dados do Cliente</h1>
+<h2><strong>Descrição Resumida:</strong></h2>
+<p>Este programa valida os dados do cliente a partir de um arquivo de entrada. Ele verifica o formato e o conteúdo de cada campo no registro do cliente, garantindo a integridade dos dados. Somente os registros válidos são gravados em um arquivo de saída, enquanto os registros inválidos são registrados para revisão e correção.</p>
+<h2><strong>Histórias do Usuário:</strong></h2>
+<p>Como analista de dados, preciso garantir que apenas dados de clientes válidos e consistentes sejam usados para análise e relatórios. Este programa me ajuda a conseguir isso validando automaticamente os dados e isolando quaisquer registros incorretos.</p>
+<h2><strong>Épico Relacionado:</strong></h2>
+<p>8 - Gestão de Dados do Cliente</p>
+<h2><strong>Requisitos Funcionais:</strong></h2>
+<ol>
+<li>
+<p><strong>Ler Registros do Cliente:</strong> O programa lê os registros do cliente de um arquivo de entrada. O formato do arquivo e o layout do registro são definidos no copybook CVCUS01Y.</p>
+</li>
+<li>
+<p><strong>Validar Campos de Dados:</strong> O programa valida cada campo no registro do cliente de acordo com as seguintes regras:</p>
+<ul>
+<li><strong>CUST-ID:</strong>
+<ul>
+<li>Deve ser um valor numérico.</li>
+<li>Deve ser exclusivo (IDs de cliente duplicados não são permitidos).</li>
+</ul>
+</li>
+<li><strong>CUST-FIRST-NAME, CUST-MIDDLE-NAME, CUST-LAST-NAME:</strong>
+<ul>
+<li>Deve conter apenas caracteres alfabéticos (A-Z, a-z) e espaços.</li>
+<li>Não deve exceder o comprimento máximo do campo.</li>
+</ul>
+</li>
+<li><strong>CUST-ADDR-LINE-1, CUST-ADDR-LINE-2, CUST-ADDR-LINE-3:</strong>
+<ul>
+<li>Não deve exceder o comprimento máximo do campo.</li>
+</ul>
+</li>
+<li><strong>CUST-ADDR-STATE-CD:</strong>
+<ul>
+<li>Deve ser um código de estado válido dos EUA com duas letras (por exemplo, CA, NY).</li>
+</ul>
+</li>
+<li><strong>CUST-ADDR-COUNTRY-CD:</strong>
+<ul>
+<li>Deve ser um código de país válido com três letras (por exemplo, USA, CAN).</li>
+</ul>
+</li>
+<li><strong>CUST-ADDR-ZIP:</strong>
+<ul>
+<li>Deve ser um código postal válido de cinco ou nove dígitos.</li>
+</ul>
+</li>
+<li><strong>CUST-PHONE-NUM-1, CUST-PHONE-NUM-2:</strong>
+<ul>
+<li>Deve ser um formato de número de telefone válido (por exemplo, (XXX) XXX-XXXX).</li>
+</ul>
+</li>
+<li><strong>CUST-SSN:</strong>
+<ul>
+<li>Deve ser um valor numérico de nove dígitos.</li>
+<li>Deve ser exclusivo (números de SSN duplicados não são permitidos).</li>
+</ul>
+</li>
+<li><strong>CUST-GOVT-ISSUED-ID:</strong>
+<ul>
+<li>Não deve exceder o comprimento máximo do campo.</li>
+</ul>
+</li>
+<li><strong>CUST-DOB-YYYY-MM-DD:</strong>
+<ul>
+<li>Deve ser uma data válida no formato AAAA-MM-DD.</li>
+<li>Deve representar uma data no passado.</li>
+</ul>
+</li>
+<li><strong>CUST-EFT-ACCOUNT-ID:</strong>
+<ul>
+<li>Não deve exceder o comprimento máximo do campo.</li>
+</ul>
+</li>
+<li><strong>CUST-PRI-CARD-HOLDER-IND:</strong>
+<ul>
+<li>Deve ser um único caractere, ‘Y’ (Sim) ou ‘N’ (Não).</li>
+</ul>
+</li>
+<li><strong>CUST-FICO-CREDIT-SCORE:</strong>
+<ul>
+<li>Deve ser um valor numérico entre 300 e 850.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Gerenciar Registros Inválidos:</strong> Se alguma regra de validação falhar para um registro:</p>
+<ul>
+<li>O registro inteiro é sinalizado como inválido.</li>
+<li>Uma mensagem de erro é registrada, especificando os detalhes do registro e a regra de validação que falhou.</li>
+<li>O registro inválido não é gravado no arquivo de saída.</li>
+</ul>
+</li>
+<li>
+<p><strong>Gravar Registros Válidos:</strong> Se todas as regras de validação forem aprovadas para um registro:</p>
+<ul>
+<li>O registro é gravado no arquivo de saída.</li>
+<li>O arquivo de saída usa o mesmo formato e layout de registro do arquivo de entrada, garantindo consistência.</li>
+</ul>
+</li>
+<li>
+<p><strong>Registro em Log:</strong> O programa mantém um arquivo de log que registra:</p>
+<ul>
+<li>A hora de início e término do processo de validação.</li>
+<li>O número de registros processados.</li>
+<li>O número de registros válidos gravados no arquivo de saída.</li>
+<li>O número de registros inválidos encontrados.</li>
+<li>Mensagens de erro detalhadas para cada registro inválido, incluindo a regra de validação específica que falhou.</li>
+</ul>
+</li>
+</ol>
+<h2><strong>Requisitos Não Funcionais:</strong></h2>
+<ul>
+<li><strong>Desempenho:</strong> O programa deve processar arquivos de entrada grandes (por exemplo, milhões de registros) com eficiência em um prazo razoável.</li>
+<li><strong>Confiabilidade:</strong> O programa deve ser robusto e lidar com erros inesperados normalmente sem travar ou corromper dados.</li>
+<li><strong>Manutenibilidade:</strong> O código deve ser bem estruturado, documentado e fácil de entender e modificar para aprimoramentos futuros.</li>
+<li><strong>Segurança:</strong>
+<ul>
+<li>O programa deve ter controles de acesso apropriados para evitar acesso não autorizado a dados confidenciais do cliente (por exemplo, SSN).</li>
+<li>Considere implementar criptografia de dados para campos confidenciais em repouso e em trânsito.</li>
+<li>Registre todas as tentativas de acesso a dados para fins de auditoria.</li>
+</ul>
+</li>
+</ul>
+<h2><strong>Critérios de Aceitação:</strong></h2>
+<ul>
+<li>O programa lê e processa com sucesso todos os registros de clientes do arquivo de entrada.</li>
+<li>Todas as regras de validação de dados são implementadas corretamente e o programa identifica com precisão os registros inválidos.</li>
+<li>Somente os registros válidos são gravados no arquivo de saída, mantendo a integridade dos dados.</li>
+<li>Os registros inválidos são registrados com mensagens de erro detalhadas, facilitando a correção de dados.</li>
+<li>O programa lida com arquivos de entrada grandes com eficiência e conclui o processamento em um prazo aceitável.</li>
+<li>O programa é robusto e lida com erros inesperados normalmente, registrando-os para solução de problemas.</li>
+</ul>
+<h2><strong>Melhorias de Código:</strong></h2>
+<ul>
+<li>Implemente um design modular com funções separadas ou sub-rotinas para cada regra de validação. Isso melhora a legibilidade do código, a capacidade de manutenção e a capacidade de teste.</li>
+<li>Use nomes de variáveis descritivos e adicione comentários para explicar a lógica por trás das regras de validação.</li>
+<li>Implemente o tratamento de erros para operações de arquivo (por exemplo, abrir, ler, gravar, fechar) para evitar perda de dados e melhorar a confiabilidade do programa.</li>
+</ul>
+<h2><strong>Melhorias de Segurança:</strong></h2>
+<ul>
+<li>Implemente controles de acesso para restringir a execução do programa e o acesso a dados apenas ao pessoal autorizado.</li>
+<li>Considere criptografar campos de dados confidenciais (por exemplo, SSN, ID de conta EFT) em repouso e em trânsito para proteger a privacidade do cliente.</li>
+<li>Implemente o registro em log para todas as tentativas de acesso a dados, incluindo ID do usuário, carimbo de data/hora e ações executadas. Isso ajuda a rastrear possíveis violações de dados e garante a responsabilidade.</li>
+</ul>
+<h2><strong>Diagrama Conceitual:</strong></h2>
+<img src="00048-CVCUS01Y_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

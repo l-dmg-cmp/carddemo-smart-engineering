@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant Administrator
+    participant COUSR01C
+    participant USRSEC File
+
+    activate Administrator
+    Administrator->>+COUSR01C: Submit New User Data
+    activate COUSR01C
+    COUSR01C->>+USRSEC File: Check for Duplicate User ID
+    USRSEC File->>COUSR01C: User ID Availability
+    alt User ID Exists
+        COUSR01C->>Administrator: Display "User ID already exists" error
+    else User ID is Unique
+        COUSR01C->>+USRSEC File: Write New User Record
+        USRSEC File-->>-COUSR01C: Write Confirmation
+        COUSR01C->>Administrator: Display "User added successfully" message
+    end
+    deactivate Administrator
+    deactivate COUSR01C

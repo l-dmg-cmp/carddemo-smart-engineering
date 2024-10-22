@@ -1,0 +1,17 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant User
+    participant Terminal
+    participant CSSTRPFY
+    participant Common Area
+
+    activate User
+    User->>+Terminal: Press Key (e.g., F1)
+    Terminal->>-User: Display Response (Optional)
+    Terminal->>+CSSTRPFY: Send AID (e.g., DFHPF1)
+    activate CSSTRPFY
+    CSSTRPFY->>CSSTRPFY: Translate AID to Function Flag (e.g., CCARD-AID-PFK01)
+    CSSTRPFY->>+Common Area: Set Flag (CCARD-AID-PFK01 = TRUE)
+    Common Area->>-CSSTRPFY: Flag Set Successfully
+    deactivate CSSTRPFY
+    deactivate User

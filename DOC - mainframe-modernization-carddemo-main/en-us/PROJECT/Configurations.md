@@ -1,0 +1,1367 @@
+Generated at: 2nd October of 2024
+
+# CardDemo:
+A CICS COBOL application for managing credit cards, customer accounts, and users.
+
+# Configurations
+
+- CBACT01C.cbl
+  - ACCTFILE-FNAME: `"ACCTDAT"`
+	- Description: File name for the account data file.
+- CBACT02C.cbl
+  - CARDFILE-FNAME: `"CARDDAT"`
+	- Description: File name for the card data file.
+- CBACT03C.cbl
+  - XREFFILE-FNAME: `"CXREF"`
+	- Description: File name for the cross reference file.
+- CBACT04C.cbl
+  - TCATBAL-FNAME: `"TCATBAL"`
+	- Description: File name for the transaction category balance file.
+  - XREF-FNAME: `"CXREF"`
+	- Description: File name for the cross reference file.
+  - DISCGRP-FNAME: `"DISCGRP"`
+	- Description: File name for the disclosure group file.
+  - ACCOUNT-FNAME: `"ACCTDAT"`
+	- Description: File name for the account file.
+  - TRANSACT-FNAME: `"TRANSACT"`
+	- Description: File name for the transaction file.
+- CBCUS01C.cbl
+  - CUSTFILE-FNAME: `"CUSTDAT"`
+	- Description: File name for the customer data file.
+- CBSTM03A.CBL
+  - WS-REPORT-LINES-PER-PAGE: `55`
+	- Description: Number of lines per page in the report.
+- CBTRN01C.cbl
+  - DALYTRAN-FILE-STATUS: `"00"`
+	- Description: File status for the daily transaction file.
+  - CUSTOMER-FILE-STATUS: `"00"`
+	- Description: File status for the customer file.
+  - XREF-FILE-STATUS: `"00"`
+	- Description: File status for the cross-reference file.
+  - CARD-FILE-STATUS: `"00"`
+	- Description: File status for the card file.
+  - ACCOUNT-FILE-STATUS: `"00"`
+	- Description: File status for the account file.
+  - TRANSACT-FILE-STATUS: `"00"`
+	- Description: File status for the transaction file.
+- CBTRN02C.cbl
+  - DALYTRAN-FILE-STATUS: `"00"`
+	- Description: File status for the daily transaction file.
+  - TRANSACT-FILE-STATUS: `"00"`
+	- Description: File status for the transaction file.
+  - XREF-FILE-STATUS: `"00"`
+	- Description: File status for the cross-reference file.
+  - DALYREJS-FILE-STATUS: `"00"`
+	- Description: File status for the daily rejects file.
+  - ACCOUNT-FILE-STATUS: `"00"`
+	- Description: File status for the account file.
+  - TCATBAL-FILE-STATUS: `"00"`
+	- Description: File status for the transaction category balance file.
+  - REJECT-REASON-XREF-NOT-FOUND: `"01"`
+	- Description: Reject reason code for cross-reference not found.
+  - REJECT-REASON-ACCT-NOT-FOUND: `"02"`
+	- Description: Reject reason code for account not found.
+  - REJECT-REASON-ACCT-EXPIRED: `"03"`
+	- Description: Reject reason code for account expired.
+  - REJECT-REASON-ACCT-OVERLIMIT: `"04"`
+	- Description: Reject reason code for account overlimit.
+- CBTRN03C.cbl
+  - TRANFILE-STATUS: `"00"`
+	- Description: File status for the transaction file.
+  - CARDXREF-STATUS: `"00"`
+	- Description: File status for the card cross-reference file.
+  - TRANTYPE-STATUS: `"00"`
+	- Description: File status for the transaction type file.
+  - TRANCATG-STATUS: `"00"`
+	- Description: File status for the transaction category file.
+  - TRANREPT-STATUS: `"00"`
+	- Description: File status for the transaction report file.
+  - DATEPARM-STATUS: `"00"`
+	- Description: File status for the date parameter file.
+  - WS-REPORT-LINES-PER-PAGE: `60`
+	- Description: Number of lines per page in the report.
+  - WS-LINES-USED: `0`
+	- Description: Number of lines used on the current page.
+  - WS-PAGE-COUNT: `0`
+	- Description: Current page number.
+  - WS-GRAND-TOTAL: `0`
+	- Description: Grand total for all transactions.
+  - WS-ACCT-TOTAL: `0`
+	- Description: Total for the current account.
+  - WS-PAGE-TOTAL: `0`
+	- Description: Total for the current page.
+- COACTUPC.cbl
+  - MAX-ACCTS: `99999`
+	- Description: Maximum number of accounts allowed.
+  - FICO-SCORE-LOW: `300`
+	- Description: Lowest acceptable FICO score.
+  - FICO-SCORE-HIGH: `850`
+	- Description: Highest acceptable FICO score.
+- COADM01C.cbl
+  - CDEMO-ADMIN-MAX-OPTS: `5`
+	- Description: Maximum number of admin menu options.
+- COBIL00C.cbl
+  - BILLPAY-ERRMSG-ACCT: `"INVALID ACCOUNT - NO PAYMENT PROCESSED"`
+	- Description: Error message displayed when the account is invalid and no payment is processed.
+  - BILLPAY-CONF-MSG: `"BILL PAYMENT SUCCESSFULLY PROCESSED"`
+	- Description: Confirmation message displayed when the bill payment is processed successfully.
+  - BILLPAY-ERRMSG-ZERO: `"ZERO BALANCE - NO PAYMENT PROCESSED"`
+	- Description: Error message for a zero balance account during bill payment.
+- COCRDLIC.cbl
+  - CARDS-PER-PAGE: `10`
+	- Description: Number of cards displayed per page.
+  - MAX-CARDS: `9999`
+	- Description: Maximum number of credit cards.
+- COCRDSLC.cbl
+  - CARDS-PER-PAGE: `10`
+	- Description: Number of cards to be displayed per page.
+- COMEN01C.cbl
+  - CDEMO-OPT-NUM: `3`
+	- Description: Option number assigned to the "Bill Payment" menu item.
+  - CDEMO-OPT-NUM: `4`
+	- Description: Option number assigned to the "Transaction List" menu item.
+  - CDEMO-OPT-NUM: `5`
+	- Description: Option number assigned to the "Transaction Report" menu item.
+- CORPT00C.cbl
+  - WS-MAX-RECS: `20`
+	- Description: Maximum number of records allowed in the report.
+- COSGN00C.cbl
+  - SIGNON-ATTEMPTS: `3`
+	- Description: Maximum number of invalid sign-on attempts allowed.
+- COTRN00C.cbl
+  - TRANS-PER-PAGE: `10`
+	- Description: Number of transactions to be displayed per page.
+- COTRN00C.cbl
+  - PGMSIZE: `"512K"`
+	- Description: Program size configuration.
+- COTRN01C.cbl
+  - PGMSIZE: `"512K"`
+	- Description: Program size configuration.
+- COTRN02C.cbl
+  - PGMSIZE: `"512K"`
+	- Description: Program size configuration.
+- COUSR00C.cbl
+  - PGMSIZE: `"512K"`
+	- Description: Program size configuration.
+- COUSR01C.cbl
+  - PGMSIZE: `"512K"`
+	- Description: Program size configuration.
+  - USRTYPE: `"R"`
+	- Description: User type is set to "R" (Regular) by default.
+  - USRTYPE: `"A"`
+	- Description: Option for setting user type to "A" (Admin).
+- COUSR02C.cbl
+  - USRIDINI: `""`
+	- Description: User ID Input Field.
+  - SEC-USR-ID: `""`
+	- Description: User ID from Security File.
+- COUSR03C.cbl
+  - USRIDINI: `""`
+	- Description: User ID Input Field.
+  - SEC-USR-ID: `""`
+	- Description: User ID from Security File.
+- CSUTLDTC.cbl
+  - WS-DATE-RETURN-CODE: `"0"`
+	- Description: Return Code from Date Conversion (CEEDAYS).
+  - WS-DATE-IN-FORMAT: `"YYYYMMDD"`
+	- Description: Input Date Format.
+  - WS-DATE-OUT-CCYY: `"1900"`
+	- Description: Default Century for Output Date.
+- COADM02Y.cpy
+  - CDEMO-ADMIN-OPT-NUM: `1`
+	- Description: Admin Menu Option 1.
+  - CDEMO-ADMIN-OPT-NAME: `"List Users"`
+	- Description: Name of Admin Menu Option 1.
+  - CDEMO-ADMIN-OPT-PGM: `"COUSR00C"`
+	- Description: Program to execute for Admin Menu Option 1.
+  - CDEMO-ADMIN-OPT-NUM: `2`
+	- Description: Admin Menu Option 2.
+  - CDEMO-ADMIN-OPT-NAME: `"Add User"`
+	- Description: Name of Admin Menu Option 2.
+  - CDEMO-ADMIN-OPT-PGM: `"COUSR01C"`
+	- Description: Program to execute for Admin Menu Option 2.
+  - CDEMO-ADMIN-OPT-NUM: `3`
+	- Description: Admin Menu Option 3.
+  - CDEMO-ADMIN-OPT-NAME: `"Update User"`
+	- Description: Name of Admin Menu Option 3.
+  - CDEMO-ADMIN-OPT-PGM: `"COUSR02C"`
+	- Description: Program to execute for Admin Menu Option 3.
+  - CDEMO-ADMIN-OPT-NUM: `4`
+	- Description: Admin Menu Option 4.
+  - CDEMO-ADMIN-OPT-NAME: `"Delete User"`
+	- Description: Name of Admin Menu Option 4.
+  - CDEMO-ADMIN-OPT-PGM: `"COUSR03C"`
+	- Description: Program to execute for Admin Menu Option 4.
+- COCOM01Y.cpy
+  - CDEMO-TO-PROGRAM: `""`
+	- Description: Program to transfer control to.
+  - CDEMO-FROM-PROGRAM: `""`
+	- Description: Program transferring control from.
+  - CDEMO-USER-ID: `""`
+	- Description: User ID.
+  - CDEMO-USER-TYPE: `""`
+	- Description: User Type.
+  - CDEMO-ACCT: `""`
+	- Description: Account Number.
+  - CDEMO-CARD: `""`
+	- Description: Card Number.
+  - CDEMO-TRANID: `""`
+	- Description: Transaction ID.
+  - CDEMO-ERROR-CODE: `""`
+	- Description: Error Code.
+  - CDEMO-ERROR-MSG: `""`
+	- Description: Error Message.
+  - CDEMO-FORWARD-ENABLED: `""`
+	- Description: Flag indicating if forward navigation is enabled.
+  - CDEMO-BACKWARD-ENABLED: `""`
+	- Description: Flag indicating if backward navigation is enabled.
+  - CDEMO-RECORD-COUNT: `0`
+	- Description: Count of records retrieved.
+  - CDEMO-RECORD-LIMIT: `10`
+	- Description: Maximum number of records to retrieve.
+  - CDEMO-CU00-INFO: `""`
+	- Description: Information specific to transaction CU00.
+  - CDEMO-CU01-INFO: `""`
+	- Description: Information specific to transaction CU01.
+  - CDEMO-CU02-INFO: `""`
+	- Description: Information specific to transaction CU02.
+  - CDEMO-CU03-INFO: `""`
+	- Description: Information specific to transaction CU03.
+  - CDEMO-CA00-INFO: `""`
+	- Description: Information specific to transaction CA00.
+  - CDEMO-CB00-INFO: `""`
+	- Description: Information specific to transaction CB00.
+  - CDEMO-CT00-INFO: `""`
+	- Description: Information specific to transaction CT00.
+  - CDEMO-CT01-INFO: `""`
+	- Description: Information specific to transaction CT01.
+  - CDEMO-CT02-INFO: `""`
+	- Description: Information specific to transaction CT02.
+  - CDEMO-CR00-INFO: `""`
+	- Description: Information specific to transaction CR00.
+- CSLKPCDY.cpy
+  - MAX-AREA-CODES: `999`
+	- Description: Maximum number of area codes.
+  - MAX-STATE-CODES: `59`
+	- Description: Maximum number of state codes.
+  - MAX-STATE-ZIP-CODES: `999`
+	- Description: Maximum number of state zip codes.
+- COSTM01.CPY
+  - TRNX-RECORD-LENGTH: `162`
+	- Description: Transaction Record Length.
+- COTTL01Y.cpy
+  - CCDA-TITLE01: `"CREDIT CARD DEMO APPLICATION"`
+	- Description: Credit Card Demo Application Title.
+  - CCDA-TITLE02: `"MAIN MENU"`
+	- Description: Main Menu Title.
+  - CCDA-PGMNAME01: `"COMEN01C"`
+	- Description: Program name.
+  - CCDA-TITLE03: `"ACCOUNT PROCESSING"`
+	- Description: Account Processing Title.
+  - CCDA-PGMNAME02: `"COACT00C"`
+	- Description: Program name.
+  - CCDA-TITLE04: `"BILL PAYMENT"`
+	- Description: Bill Payment Title.
+  - CCDA-PGMNAME03: `"COBIL00C"`
+	- Description: Program name.
+  - CCDA-TITLE05: `"TRANSACTION PROCESSING"`
+	- Description: Transaction Processing Title.
+  - CCDA-PGMNAME04: `"COTRN00C"`
+	- Description: Program name.
+  - CCDA-TITLE06: `"ADMIN FUNCTIONS"`
+	- Description: Admin Functions Title.
+  - CCDA-PGMNAME05: `"COADM01C"`
+	- Description: Program name.
+  - CCDA-TITLE07: `"CREDIT CARD LIST"`
+	- Description: Credit Card List Title.
+  - CCDA-PGMNAME06: `"COCRDLIC"`
+	- Description: Program name.
+  - CCDA-TITLE08: `"CREDIT CARD SEARCH"`
+	- Description: Credit Card Search Title.
+  - CCDA-PGMNAME07: `"COCRDSLC"`
+	- Description: Program name.
+  - CCDA-TITLE09: `"ACCOUNT UPDATE"`
+	- Description: Account Update Title.
+  - CCDA-PGMNAME08: `"COACTUPC"`
+	- Description: Program name.
+  - CCDA-TITLE10: `"TRANSACTION LIST"`
+	- Description: Transaction List Title.
+  - CCDA-TITLE11: `"VIEW TRANSACTION"`
+	- Description: View Transaction Title.
+  - CCDA-TITLE12: `"ADD TRANSACTION"`
+	- Description: Add Transaction Title.
+  - CCDA-TITLE13: `"USER LIST"`
+	- Description: User List Title.
+  - CCDA-TITLE14: `"ADD USER"`
+	- Description: Add User Title.
+  - CCDA-TITLE15: `"UPDATE USER"`
+	- Description: Update User Title.
+  - CCDA-TITLE16: `"DELETE USER"`
+	- Description: Delete User Title.
+  - CCDA-TITLE17: `"TRANSACTION REPORT"`
+	- Description: Transaction Report Title.
+  - CCDA-PGMNAME09: `"CORPT00C"`
+	- Description: Program name.
+  - CCDA-TITLE18: `"SIGN ON"`
+	- Description: Sign On Title.
+  - CCDA-PGMNAME10: `"COSGN00C"`
+	- Description: Program name.
+- COMEN02Y.cpy
+  - CDEMO-MENU-OPT: `6`
+	- Description: Number of menu options.
+- CSDAT01Y.cpy
+  - TIMESTAMP-LENGTH: `26`
+	- Description: Timestamp length.
+- CSMSG01Y.cpy
+  - THANK-YOU-MSG: `"Thank you for using Card Demo Application"`
+	- Description: Thank you message to display to the user.
+  - INVALID-KEY-MSG: `"Invalid Key Pressed"`
+	- Description: Message to display when an invalid key is pressed.
+- CSMSG02Y.cpy
+  - ABEND-CODE: `"999"`
+	- Description: Abend code to be used when the program terminates abnormally.
+- CSSETATY.cpy
+  - SCRNVAR2: `(MAPNAME3)`
+	- Description: Name of the screen variable to be set.
+  - TESTVAR1: `DFHRED`
+	- Description: Variable or flag used to determine the color attribute.
+- CSSTRPFY.cpy
+  - PF1-KEY: `"DFHPF1"`
+	- Description: Value representing the PF1 key.
+  - PF2-KEY: `"DFHPF2"`
+	- Description: Value representing the PF2 key.
+  - PF3-KEY: `"DFHPF3"`
+	- Description: Value representing the PF3 key.
+  - PF4-KEY: `"DFHPF4"`
+	- Description: Value representing the PF4 key.
+  - PF5-KEY: `"DFHPF5"`
+	- Description: Value representing the PF5 key.
+  - PF6-KEY: `"DFHPF6"`
+	- Description: Value representing the PF6 key.
+  - PF7-KEY: `"DFHPF7"`
+	- Description: Value representing the PF7 key.
+  - PF8-KEY: `"DFHPF8"`
+	- Description: Value representing the PF8 key.
+  - PF9-KEY: `"DFHPF9"`
+	- Description: Value representing the PF9 key.
+  - PF10-KEY: `"DFHPF10"`
+	- Description: Value representing the PF10 key.
+  - PF11-KEY: `"DFHPF11"`
+	- Description: Value representing the PF11 key.
+  - PF12-KEY: `"DFHPF12"`
+	- Description: Value representing the PF12 key.
+  - ENTER-KEY: `"DFHENTER"`
+	- Description: Value representing the Enter key.
+  - CLEAR-KEY: `"DFHCLEAR"`
+	- Description: Value representing the Clear key.
+- CSUSR01Y.cpy
+  - USER-ID-MAX-LENGTH: `8`
+	- Description: Maximum length of the user ID.
+  - USER-PASSWORD-MAX-LENGTH: `8`
+	- Description: Maximum length of the user password.
+  - USER-TYPE-MAX-LENGTH: `1`
+	- Description: Maximum length of the user type.
+- CUSTREC.cpy
+  - CUST-RECORD-LENGTH: `500`
+	- Description: Record length of the customer record.
+- CVACT01Y.cpy
+  - ACCT-RECORD-LENGTH: `300`
+	- Description: Length of the account record
+- CVACT02Y.cpy
+  - CARD-RECORD-LENGTH: `100`
+	- Description: Length of the card record.
+- CSUTLDWY.cpy
+  - WS-EDIT-CCYY-CENTURY-START: `19`
+	- Description: Starting century for credit card year validation.
+  - WS-EDIT-CCYY-CENTURY-END: `20`
+	- Description: End century for credit card year validation.
+- CSUTLDPY.cpy
+  - WS-EDIT-LEAP-YEAR-DAYS: `29`
+	- Description: Number of days in February for a leap year.
+  - WS-EDIT-VALID-DOB-YEARS: `110`
+	- Description: Maximum age allowed for Date of Birth validation.
+- CVACT03Y.cpy
+  - XREF-CARD-NUM-L: `19`
+	- Description: Length of the card number in the cross-reference record.
+  - XREF-CUST-ID-L: `9`
+	- Description: Length of the customer ID in the cross-reference record.
+  - XREF-ACCT-ID-L: `9`
+	- Description: Length of the account ID in the cross-reference record.
+  - XREF-RECORD-L: `37`
+	- Description: Total length of the cross-reference record.
+- CVCRD01Y.cpy
+  - CARD-NUMBER-MAX-LENGTH: `19`
+	- Description: Maximum length of a credit card number.
+  - MINIMUM-PASSWORD-LENGTH: `8`
+	- Description: Minimum length required for a password.
+  - CARD-NUMBER-DISPLAY-LENGTH: `19`
+	- Description: Length of the card number field on the screen for display.
+  - CARD-CVV-DISPLAY-LENGTH: `3`
+	- Description: Length of the CVV field on the screen for display.
+  - CARD-EXPIRY-MM-DISPLAY-LENGTH: `2`
+	- Description: Length of the expiry month field on the screen for display.
+  - CARD-EXPIRY-YY-DISPLAY-LENGTH: `2`
+	- Description: Length of the expiry year field on the screen for display.
+  - CARD-NAME-DISPLAY-LENGTH: `26`
+	- Description: Length of the cardholder's name field on the screen for display.
+  - ACCOUNT-ID-DISPLAY-LENGTH: `9`
+	- Description: Length of the account ID field on the screen for display.
+  - DEFAULT-PAGE-SIZE: `10`
+	- Description: Default number of records to display per page.
+  - MAX-PAGES: `99`
+	- Description: Maximum number of pages allowed for navigation.
+  - FIRST-PAGE-NUM: `1`
+	- Description: Page number for the first page.
+- CVCUS01Y.cpy
+  - CUSTOMER-RECORD-L: `500`
+	- Description: Total length of the customer record.
+  - CUST-ID-L: `9`
+	- Description: Length of the customer ID field.
+  - CUST-FNAME-L: `15`
+	- Description: Length of the customer's first name field.
+  - CUST-LNAME-L: `25`
+	- Description: Length of the customer's last name field.
+  - CUST-ADDR1-L: `50`
+	- Description: Length of the customer's address line 1 field.
+  - CUST-ADDR2-L: `50`
+	- Description: Length of the customer's address line 2 field.
+  - CUST-CITY-L: `25`
+	- Description: Length of the customer's city field.
+  - CUST-STATE-L: `2`
+	- Description: Length of the customer's state field.
+  - CUST-ZIP-L: `9`
+	- Description: Length of the customer's ZIP code field.
+  - CUST-PHONE-L: `10`
+	- Description: Length of the customer's phone number field.
+  - CUST-SSN-L: `9`
+	- Description: Length of the customer's Social Security Number field.
+  - CUST-DOB-L: `8`
+	- Description: Length of the customer's date of birth field.
+  - CUST-STATUS-L: `1`
+	- Description: Length of the customer status field.
+- CVTRA01Y.cpy
+  - TCATBAL-RECORD-L: `50`
+	- Description: Total length of the transaction category balance record.
+  - TCATBAL-ACCT-ID-L: `9`
+	- Description: Length of the account ID field in the transaction category balance record.
+  - TCATBAL-TRAN-CAT-L: `6`
+	- Description: Length of the transaction category field in the transaction category balance record.
+  - TCATBAL-BALANCE-L: `9`
+	- Description: Length of the balance field in the transaction category balance record.
+- CVTRA02Y.cpy
+  - DISCGRP-RECORD-L: `50`
+	- Description: Total length of the disclosure group record.
+  - DISCGRP-GROUP-CODE-L: `8`
+	- Description: Length of the group code field in the disclosure group record.
+  - DISCGRP-INTEREST-RATE-L: `7`
+	- Description: Length of the interest rate field in the disclosure group record.
+- CVTRA03Y.cpy
+  - TRAN-TYPE-RECORD-LENGTH: `60`
+	- Description: Length of the transaction type record
+- CVTRA04Y.cpy
+  - TRAN-CATEGORY-RECORD-LENGTH: `60`
+	- Description: Length of the transaction category record
+- CVTRA05Y.cpy
+  - TRANSACT-RECORD-LENGTH: `200`
+	- Description: Length of the transaction record
+- CVTRA06Y.cpy
+  - DALYTRAN-RECORD-LENGTH: `100`
+	- Description: Length of the daily transaction record
+- CVTRA07Y.cpy
+  - TRAN-REPORT-RECORD-LENGTH: `132`
+	- Description: Length of the transaction report record
+  - PAGE-MAX-LINES: `55`
+	- Description: Maximum lines per page in the report
+- UNUSED1Y.cpy
+  - UNUSED-DATA-LEN: `100`
+	- Description: Length of the unused data area.
+- COACTUP.CPY
+  - ACT-LIMIT-DISP-C: `4`
+	- Description: Color attribute for the account limit display field.
+  - ACT-LIMIT-DISP-P: `1`
+	- Description: Protection attribute for the account limit display field.
+  - ACT-LIMIT-DISP-O: `10`
+	- Description: Output position for the account limit display field.
+  - ACT-BAL-DISP-C: `4`
+	- Description: Color attribute for the account balance display field.
+  - ACT-BAL-DISP-P: `1`
+	- Description: Protection attribute for the account balance display field.
+  - ACT-BAL-DISP-O: `10`
+	- Description: Output position for the account balance display field.
+  - ACT-AVAILABLE-CREDIT-DISP-C: `4`
+	- Description: Color attribute for the available credit display field.
+  - ACT-AVAILABLE-CREDIT-DISP-P: `1`
+	- Description: Protection attribute for the available credit display field.
+  - ACT-AVAILABLE-CREDIT-DISP-O: `10`
+	- Description: Output position for the available credit display field.
+  - ACT-CASH-LIMIT-DISP-C: `4`
+	- Description: Color attribute for the cash limit display field.
+  - ACT-CASH-LIMIT-DISP-P: `1`
+	- Description: Protection attribute for the cash limit display field.
+  - ACT-CASH-LIMIT-DISP-O: `10`
+	- Description: Output position for the cash limit display field.
+  - ACT-CASH-BAL-DISP-C: `4`
+	- Description: Color attribute for the cash balance display field.
+  - ACT-CASH-BAL-DISP-P: `1`
+	- Description: Protection attribute for the cash balance display field.
+  - ACT-CASH-BAL-DISP-O: `10`
+	- Description: Output position for the cash balance display field.
+  - ACT-CYCL-CRED-DISP-C: `4`
+	- Description: Color attribute for the cycle credit display field.
+  - ACT-CYCL-CRED-DISP-P: `1`
+	- Description: Protection attribute for the cycle credit display field.
+  - ACT-CYCL-CRED-DISP-O: `10`
+	- Description: Output position for the cycle credit display field.
+  - ACT-CYCL-DEB-DISP-C: `4`
+	- Description: Color attribute for the cycle debit display field.
+  - ACT-CYCL-DEB-DISP-P: `1`
+	- Description: Protection attribute for the cycle debit display field.
+  - ACT-CYCL-DEB-DISP-O: `10`
+	- Description: Output position for the cycle debit display field.
+  - ACT-LAST-PMT-AMT-DISP-C: `4`
+	- Description: Color attribute for the last payment amount display field.
+  - ACT-LAST-PMT-AMT-DISP-P: `1`
+	- Description: Protection attribute for the last payment amount display field.
+  - ACT-LAST-PMT-AMT-DISP-O: `10`
+	- Description: Output position for the last payment amount display field.
+  - ACT-LAST-PMT-DT-DISP-C: `4`
+	- Description: Color attribute for the last payment date display field.
+  - ACT-LAST-PMT-DT-DISP-P: `1`
+	- Description: Protection attribute for the last payment date display field.
+  - ACT-LAST-PMT-DT-DISP-O: `8`
+	- Description: Output position for the last payment date display field.
+  - ACT-LAST-STMT-DT-DISP-C: `4`
+	- Description: Color attribute for the last statement date display field.
+  - ACT-LAST-STMT-DT-DISP-P: `1`
+	- Description: Protection attribute for the last statement date display field.
+  - ACT-LAST-STMT-DT-DISP-O: `8`
+	- Description: Output position for the last statement date display field.
+  - ACT-NEXT-STMT-DT-DISP-C: `4`
+	- Description: Color attribute for the next statement date display field.
+  - ACT-NEXT-STMT-DT-DISP-P: `1`
+	- Description: Protection attribute for the next statement date display field.
+  - ACT-NEXT-STMT-DT-DISP-O: `8`
+	- Description: Output position for the next statement date display field.
+  - ACT-OPEN-DT-DISP-C: `4`
+	- Description: Color attribute for the account open date display field.
+  - ACT-OPEN-DT-DISP-P: `1`
+	- Description: Protection attribute for the account open date display field.
+  - ACT-OPEN-DT-DISP-O: `8`
+	- Description: Output position for the account open date display field.
+  - ACT-CLOSE-DT-DISP-C: `4`
+	- Description: Color attribute for the account close date display field.
+  - ACT-CLOSE-DT-DISP-P: `1`
+	- Description: Protection attribute for the account close date display field.
+  - ACT-CLOSE-DT-DISP-O: `8`
+	- Description: Output position for the account close date display field.
+  - ACT-PREV-BAL-DISP-C: `4`
+	- Description: Color attribute for the previous balance display field.
+  - ACT-PREV-BAL-DISP-P: `1`
+	- Description: Protection attribute for the previous balance display field.
+  - ACT-PREV-BAL-DISP-O: `10`
+	- Description: Output position for the previous balance display field.
+  - ACT-PAYMT-DUE-DT-DISP-C: `4`
+	- Description: Color attribute for the payment due date display field.
+  - ACT-PAYMT-DUE-DT-DISP-P: `1`
+	- Description: Protection attribute for the payment due date display field.
+  - ACT-PAYMT-DUE-DT-DISP-O: `8`
+	- Description: Output position for the payment due date display field.
+  - ACT-PAST-DUE-AMT-DISP-C: `4`
+	- Description: Color attribute for the past due amount display field.
+  - ACT-PAST-DUE-AMT-DISP-P: `1`
+	- Description: Protection attribute for the past due amount display field.
+  - ACT-PAST-DUE-AMT-DISP-O: `10`
+	- Description: Output position for the past due amount display field.
+  - CUST-FNAME-DISP-C: `4`
+	- Description: Color attribute for the customer first name display field.
+  - CUST-FNAME-DISP-P: `1`
+	- Description: Protection attribute for the customer first name display field.
+  - CUST-FNAME-DISP-O: `20`
+	- Description: Output position for the customer first name display field.
+  - CUST-LNAME-DISP-C: `4`
+	- Description: Color attribute for the customer last name display field.
+  - CUST-LNAME-DISP-P: `1`
+	- Description: Protection attribute for the customer last name display field.
+  - CUST-LNAME-DISP-O: `20`
+	- Description: Output position for the customer last name display field.
+  - CUST-ADDR1-DISP-C: `4`
+	- Description: Color attribute for the customer address line 1 display field.
+  - CUST-ADDR1-DISP-P: `1`
+	- Description: Protection attribute for the customer address line 1 display field.
+  - CUST-ADDR1-DISP-O: `30`
+	- Description: Output position for the customer address line 1 display field.
+  - CUST-ADDR2-DISP-C: `4`
+	- Description: Color attribute for the customer address line 2 display field.
+  - CUST-ADDR2-DISP-P: `1`
+	- Description: Protection attribute for the customer address line 2 display field.
+  - CUST-ADDR2-DISP-O: `30`
+	- Description: Output position for the customer address line 2 display field.
+  - CUST-CITY-DISP-C: `4`
+	- Description: Color attribute for the customer city display field.
+  - CUST-CITY-DISP-P: `1`
+	- Description: Protection attribute for the customer city display field.
+  - CUST-CITY-DISP-O: `20`
+	- Description: Output position for the customer city display field.
+  - CUST-STATE-DISP-C: `4`
+	- Description: Color attribute for the customer state display field.
+  - CUST-STATE-DISP-P: `1`
+	- Description: Protection attribute for the customer state display field.
+  - CUST-STATE-DISP-O: `2`
+	- Description: Output position for the customer state display field.
+  - CUST-ZIP-DISP-C: `4`
+	- Description: Color attribute for the customer ZIP code display field.
+  - CUST-ZIP-DISP-P: `1`
+	- Description: Protection attribute for the customer ZIP code display field.
+  - CUST-ZIP-DISP-O: `5`
+	- Description: Output position for the customer ZIP code display field.
+  - CUST-ZIP4-DISP-C: `4`
+	- Description: Color attribute for the customer ZIP+4 display field.
+  - CUST-ZIP4-DISP-P: `1`
+	- Description: Protection attribute for the customer ZIP+4 display field.
+  - CUST-ZIP4-DISP-O: `4`
+	- Description: Output position for the customer ZIP+4 display field.
+  - CUST-PHONE-DISP-C: `4`
+	- Description: Color attribute for the customer phone number display field.
+  - CUST-PHONE-DISP-P: `1`
+	- Description: Protection attribute for the customer phone number display field.
+  - CUST-PHONE-DISP-O: `10`
+	- Description: Output position for the customer phone number display field.
+  - CUST-DOB-DISP-C: `4`
+	- Description: Color attribute for the customer date of birth display field.
+  - CUST-DOB-DISP-P: `1`
+	- Description: Protection attribute for the customer date of birth display field.
+  - CUST-DOB-DISP-O: `8`
+	- Description: Output position for the customer date of birth display field.
+  - CUST-SSN-DISP-C: `4`
+	- Description: Color attribute for the customer Social Security Number display field.
+  - CUST-SSN-DISP-P: `1`
+	- Description: Protection attribute for the customer Social Security Number display field.
+  - CUST-SSN-DISP-O: `9`
+	- Description: Output position for the customer Social Security Number display field.
+  - CUST-COUNTRY-DISP-C: `4`
+	- Description: Color attribute for the customer country display field.
+  - CUST-COUNTRY-DISP-P: `1`
+	- Description: Protection attribute for the customer country display field.
+  - CUST-COUNTRY-DISP-O: `3`
+	- Description: Output position for the customer country display field.
+  - CUST-EMAIL-DISP-C: `4`
+	- Description: Color attribute for the customer email display field.
+  - CUST-EMAIL-DISP-P: `1`
+	- Description: Protection attribute for the customer email display field.
+  - CUST-EMAIL-DISP-O: `50`
+	- Description: Output position for the customer email display field.
+  - FKEYS-DISP-C: `7`
+	- Description: Color attribute for the function keys display field.
+  - FKEYS-DISP-P: `1`
+	- Description: Protection attribute for the function keys display field.
+  - FKEYS-DISP-O: `80`
+	- Description: Output position for the function keys display field.
+  - INFOMSG-DISP-C: `3`
+	- Description: Color attribute for the information message display field.
+  - INFOMSG-DISP-P: `1`
+	- Description: Protection attribute for the information message display field.
+  - INFOMSG-DISP-O: `60`
+	- Description: Output position for the information message display field.
+  - ERRMSG-DISP-C: `2`
+	- Description: Color attribute for the error message display field.
+  - ERRMSG-DISP-P: `1`
+	- Description: Protection attribute for the error message display field.
+  - ERRMSG-DISP-O: `60`
+	- Description: Output position for the error message display field.
+- COACTVW.CPY
+  - ACT-LIMIT-DISP-C: `4`
+	- Description: Color attribute for the account limit display field.
+  - ACT-LIMIT-DISP-P: `1`
+	- Description: Protection attribute for the account limit display field.
+  - ACT-LIMIT-DISP-O: `10`
+	- Description: Output position for the account limit display field.
+  - ACT-BAL-DISP-C: `4`
+	- Description: Color attribute for the account balance display field.
+  - ACT-BAL-DISP-P: `1`
+	- Description: Protection attribute for the account balance display field.
+  - ACT-BAL-DISP-O: `10`
+	- Description: Output position for the account balance display field.
+  - ACT-AVAILABLE-CREDIT-DISP-C: `4`
+	- Description: Color attribute for the available credit display field.
+  - ACT-AVAILABLE-CREDIT-DISP-P: `1`
+	- Description: Protection attribute for the available credit display field.
+  - ACT-AVAILABLE-CREDIT-DISP-O: `10`
+	- Description: Output position for the available credit display field.
+  - ACT-CASH-LIMIT-DISP-C: `4`
+	- Description: Color attribute for the cash limit display field.
+  - ACT-CASH-LIMIT-DISP-P: `1`
+	- Description: Protection attribute for the cash limit display field.
+  - ACT-CASH-LIMIT-DISP-O: `10`
+	- Description: Output position for the cash limit display field.
+  - ACT-CASH-BAL-DISP-C: `4`
+	- Description: Color attribute for the cash balance display field.
+  - ACT-CASH-BAL-DISP-P: `1`
+	- Description: Protection attribute for the cash balance display field.
+  - ACT-CASH-BAL-DISP-O: `10`
+	- Description: Output position for the cash balance display field.
+  - ACT-CYCL-CRED-DISP-C: `4`
+	- Description: Color attribute for the cycle credit display field.
+  - ACT-CYCL-CRED-DISP-P: `1`
+	- Description: Protection attribute for the cycle credit display field.
+  - ACT-CYCL-CRED-DISP-O: `10`
+	- Description: Output position for the cycle credit display field.
+  - ACT-CYCL-DEB-DISP-C: `4`
+	- Description: Color attribute for the cycle debit display field.
+  - ACT-CYCL-DEB-DISP-P: `1`
+	- Description: Protection attribute for the cycle debit display field.
+  - ACT-CYCL-DEB-DISP-O: `10`
+	- Description: Output position for the cycle debit display field.
+  - ACT-LAST-PMT-AMT-DISP-C: `4`
+	- Description: Color attribute for the last payment amount display field.
+  - ACT-LAST-PMT-AMT-DISP-P: `1`
+	- Description: Protection attribute for the last payment amount display field.
+  - ACT-LAST-PMT-AMT-DISP-O: `10`
+	- Description: Output position for the last payment amount display field.
+  - ACT-LAST-PMT-DT-DISP-C: `4`
+	- Description: Color attribute for the last payment date display field.
+  - ACT-LAST-PMT-DT-DISP-P: `1`
+	- Description: Protection attribute for the last payment date display field.
+  - ACT-LAST-PMT-DT-DISP-O: `8`
+	- Description: Output position for the last payment date display field.
+  - ACT-LAST-STMT-DT-DISP-C: `4`
+	- Description: Color attribute for the last statement date display field.
+  - ACT-LAST-STMT-DT-DISP-P: `1`
+	- Description: Protection attribute for the last statement date display field.
+  - ACT-LAST-STMT-DT-DISP-O: `8`
+	- Description: Output position for the last statement date display field.
+  - ACT-NEXT-STMT-DT-DISP-C: `4`
+	- Description: Color attribute for the next statement date display field.
+  - ACT-NEXT-STMT-DT-DISP-P: `1`
+	- Description: Protection attribute for the next statement date display field.
+  - ACT-NEXT-STMT-DT-DISP-O: `8`
+	- Description: Output position for the next statement date display field.
+  - ACT-OPEN-DT-DISP-C: `4`
+	- Description: Color attribute for the account open date display field.
+  - ACT-OPEN-DT-DISP-P: `1`
+	- Description: Protection attribute for the account open date display field.
+  - ACT-OPEN-DT-DISP-O: `8`
+	- Description: Output position for the account open date display field.
+  - ACT-CLOSE-DT-DISP-C: `4`
+	- Description: Color attribute for the account close date display field.
+  - ACT-CLOSE-DT-DISP-P: `1`
+	- Description: Protection attribute for the account close date display field.
+  - ACT-CLOSE-DT-DISP-O: `8`
+	- Description: Output position for the account close date display field.
+  - ACT-PREV-BAL-DISP-C: `4`
+	- Description: Color attribute for the previous balance display field.
+  - ACT-PREV-BAL-DISP-P: `1`
+	- Description: Protection attribute for the previous balance display field.
+  - ACT-PREV-BAL-DISP-O: `10`
+	- Description: Output position for the previous balance display field.
+  - ACT-PAYMT-DUE-DT-DISP-C: `4`
+	- Description: Color attribute for the payment due date display field.
+  - ACT-PAYMT-DUE-DT-DISP-P: `1`
+	- Description: Protection attribute for the payment due date display field.
+  - ACT-PAYMT-DUE-DT-DISP-O: `8`
+	- Description: Output position for the payment due date display field.
+  - ACT-PAST-DUE-AMT-DISP-C: `4`
+	- Description: Color attribute for the past due amount display field.
+  - ACT-PAST-DUE-AMT-DISP-P: `1`
+	- Description: Protection attribute for the past due amount display field.
+  - ACT-PAST-DUE-AMT-DISP-O: `10`
+	- Description: Output position for the past due amount display field.
+  - CUST-FNAME-DISP-C: `4`
+	- Description: Color attribute for the customer first name display field.
+  - CUST-FNAME-DISP-P: `1`
+	- Description: Protection attribute for the customer first name display field.
+  - CUST-FNAME-DISP-O: `20`
+	- Description: Output position for the customer first name display field.
+  - CUST-LNAME-DISP-C: `4`
+	- Description: Color attribute for the customer last name display field.
+  - CUST-LNAME-DISP-P: `1`
+	- Description: Protection attribute for the customer last name display field.
+  - CUST-LNAME-DISP-O: `20`
+	- Description: Output position for the customer last name display field.
+  - CUST-ADDR1-DISP-C: `4`
+	- Description: Color attribute for the customer address line 1 display field.
+  - CUST-ADDR1-DISP-P: `1`
+	- Description: Protection attribute for the customer address line 1 display field.
+  - CUST-ADDR1-DISP-O: `30`
+	- Description: Output position for the customer address line 1 display field.
+  - CUST-ADDR2-DISP-C: `4`
+	- Description: Color attribute for the customer address line 2 display field.
+  - CUST-ADDR2-DISP-P: `1`
+	- Description: Protection attribute for the customer address line 2 display field.
+  - CUST-ADDR2-DISP-O: `30`
+	- Description: Output position for the customer address line 2 display field.
+  - CUST-CITY-DISP-C: `4`
+	- Description: Color attribute for the customer city display field.
+  - CUST-CITY-DISP-P: `1`
+	- Description: Protection attribute for the customer city display field.
+  - CUST-CITY-DISP-O: `20`
+	- Description: Output position for the customer city display field.
+  - CUST-STATE-DISP-C: `4`
+	- Description: Color attribute for the customer state display field.
+  - CUST-STATE-DISP-P: `1`
+	- Description: Protection attribute for the customer state display field.
+  - CUST-STATE-DISP-O: `2`
+	- Description: Output position for the customer state display field.
+  - CUST-ZIP-DISP-C: `4`
+	- Description: Color attribute for the customer ZIP code display field.
+  - CUST-ZIP-DISP-P: `1`
+	- Description: Protection attribute for the customer ZIP code display field.
+  - CUST-ZIP-DISP-O: `5`
+	- Description: Output position for the customer ZIP code display field.
+  - CUST-ZIP4-DISP-C: `4`
+	- Description: Color attribute for the customer ZIP+4 display field.
+  - CUST-ZIP4-DISP-P: `1`
+	- Description: Protection attribute for the customer ZIP+4 display field.
+  - CUST-ZIP4-DISP-O: `4`
+	- Description: Output position for the customer ZIP+4 display field.
+  - CUST-PHONE-DISP-C: `4`
+	- Description: Color attribute for the customer phone number display field.
+  - CUST-PHONE-DISP-P: `1`
+	- Description: Protection attribute for the customer phone number display field.
+  - CUST-PHONE-DISP-O: `10`
+	- Description: Output position for the customer phone number display field.
+  - CUST-DOB-DISP-C: `4`
+	- Description: Color attribute for the customer date of birth display field.
+  - CUST-DOB-DISP-P: `1`
+	- Description: Protection attribute for the customer date of birth display field.
+  - CUST-DOB-DISP-O: `8`
+	- Description: Output position for the customer date of birth display field.
+  - CUST-SSN-DISP-C: `4`
+	- Description: Color attribute for the customer Social Security Number display field.
+  - CUST-SSN-DISP-P: `1`
+	- Description: Protection attribute for the customer Social Security Number display field.
+  - CUST-SSN-DISP-O: `9`
+	- Description: Output position for the customer Social Security Number display field.
+  - CUST-COUNTRY-DISP-C: `4`
+	- Description: Color attribute for the customer country display field.
+  - CUST-COUNTRY-DISP-P: `1`
+	- Description: Protection attribute for the customer country display field.
+  - CUST-COUNTRY-DISP-O: `3`
+	- Description: Output position for the customer country display field.
+  - CUST-EMAIL-DISP-C: `4`
+	- Description: Color attribute for the customer email display field.
+  - CUST-EMAIL-DISP-P: `1`
+	- Description: Protection attribute for the customer email display field.
+  - CUST-EMAIL-DISP-O: `50`
+	- Description: Output position for the customer email display field.
+  - FKEYS-DISP-C: `7`
+	- Description: Color attribute for the function keys display field.
+  - FKEYS-DISP-P: `1`
+	- Description: Protection attribute for the function keys display field.
+  - FKEYS-DISP-O: `80`
+	- Description: Output position for the function keys display field.
+  - INFOMSG-DISP-C: `3`
+	- Description: Color attribute for the information message display field.
+  - INFOMSG-DISP-P: `1`
+	- Description: Protection attribute for the information message display field.
+  - INFOMSG-DISP-O: `60`
+	- Description: Output position for the information message display field.
+  - ERRMSG-DISP-C: `2`
+	- Description: Color attribute for the error message display field.
+  - ERRMSG-DISP-P: `1`
+	- Description: Protection attribute for the error message display field.
+  - ERRMSG-DISP-O: `60`
+	- Description: Output position for the error message display field.
+- COADM01.CPY
+  - CA1-TRAN-NAME-L: `4`
+	- Description: Length of the transaction name field.
+  - CA1-TRAN-NAME-A: `4`
+	- Description: Length of the transaction name field in ASCII.
+  - CA1-TITLE01-L: `40`
+	- Description: Length of the title 1 field.
+  - CA1-TITLE01-A: `40`
+	- Description: Length of the title 1 field in ASCII.
+  - CA1-CURDATE-L: `8`
+	- Description: Length of the current date field.
+  - CA1-CURDATE-A: `8`
+	- Description: Length of the current date field in ASCII.
+  - CA1-PGMNAME-L: `8`
+	- Description: Length of the program name field.
+  - CA1-PGMNAME-A: `8`
+	- Description: Length of the program name field in ASCII.
+  - CA1-TITLE02-L: `40`
+	- Description: Length of the title 2 field.
+  - CA1-TITLE02-A: `40`
+	- Description: Length of the title 2 field in ASCII.
+  - CA1-CURTIME-L: `8`
+	- Description: Length of the current time field.
+  - CA1-CURTIME-A: `8`
+	- Description: Length of the current time field in ASCII.
+  - CA1-OPTION-L: `8`
+	- Description: Length of the option field.
+  - CA1-OPTION-A: `8`
+	- Description: Length of the option field in ASCII.
+  - CA1-OPTION-C: `4`
+	- Description: Color attribute for the option field.
+  - CA1-OPTION-P: `1`
+	- Description: Protection attribute for the option field.
+  - CA1-OPTION-H: `0`
+	- Description: Hidden attribute for the option field.
+  - CA1-OPTION-V: `0`
+	- Description: Validation attribute for the option field.
+  - CA1-OPTION-O: `8`
+	- Description: Output position for the option field.
+  - CA1-ERRMSG-L: `60`
+	- Description: Length of the error message field.
+  - CA1-ERRMSG-A: `60`
+	- Description: Length of the error message field in ASCII.
+  - CA1-ERRMSG-C: `2`
+	- Description: Color attribute for the error message field.
+  - CA1-ERRMSG-P: `1`
+	- Description: Protection attribute for the error message field.
+  - CA1-ERRMSG-H: `0`
+	- Description: Hidden attribute for the error message field.
+  - CA1-ERRMSG-V: `0`
+	- Description: Validation attribute for the error message field.
+  - CA1-ERRMSG-O: `60`
+	- Description: Output position for the error message field.
+  - CA1-FKEYS-L: `80`
+	- Description: Length of the function keys field.
+  - CA1-FKEYS-A: `80`
+	- Description: Length of the function keys field in ASCII.
+  - CA1-FKEYS-C: `7`
+	- Description: Color attribute for the function keys field.
+  - CA1-FKEYS-P: `1`
+	- Description: Protection attribute for the function keys field.
+  - CA1-FKEYS-H: `0`
+	- Description: Hidden attribute for the function keys field.
+  - CA1-FKEYS-V: `0`
+	- Description: Validation attribute for the function keys field.
+  - CA1-FKEYS-O: `80`
+	- Description: Output position for the function keys field.
+- COBIL00.CPY
+  - CB0-TRAN-NAME-L: `4`
+	- Description: Length of the transaction name field.
+  - CB0-TRAN-NAME-A: `4`
+	- Description: Length of the transaction name in ASCII format.
+  - CB0-TITLE01-L: `40`
+	- Description: Length of the title 1 field.
+  - CB0-TITLE01-A: `40`
+	- Description: Length of the title 1 field in ASCII format.
+  - CB0-CURDATE-L: `8`
+	- Description: Length of the current date field.
+  - CB0-CURDATE-A: `8`
+	- Description: Length of the current date field in ASCII format.
+  - CB0-PGMNAME-L: `8`
+	- Description: Length of the program name field.
+  - CB0-PGMNAME-A: `8`
+	- Description: Length of the program name field in ASCII format.
+  - CB0-TITLE02-L: `40`
+	- Description: Length of the title 2 field.
+  - CB0-TITLE02-A: `40`
+	- Description: Length of the title 2 field in ASCII format.
+  - CB0-CURTIME-L: `8`
+	- Description: Length of the current time field.
+  - CB0-CURTIME-A: `8`
+	- Description: Length of the current time field in ASCII format.
+  - CB0-ACCT-ID-L: `10`
+	- Description: Length of the account ID field.
+  - CB0-ACCT-ID-A: `10`
+	- Description: Length of the account ID field in ASCII format.
+  - CB0-ACCT-ID-C: `4`
+	- Description: Color attribute for the account ID field.
+  - CB0-ACCT-ID-P: `0`
+	- Description: Protection attribute for the account ID field.
+  - CB0-ACCT-ID-H: `0`
+	- Description: Hidden attribute for the account ID field.
+  - CB0-ACCT-ID-V: `0`
+	- Description: Validation attribute for the account ID field.
+  - CB0-ACCT-ID-O: `10`
+	- Description: Output position for the account ID field.
+  - CB0-ACCT-BAL-L: `10`
+	- Description: Length of the account balance field.
+  - CB0-ACCT-BAL-A: `10`
+	- Description: Length of the account balance field in ASCII format.
+  - CB0-ACCT-BAL-C: `4`
+	- Description: Color attribute for the account balance field.
+  - CB0-ACCT-BAL-P: `1`
+	- Description: Protection attribute for the account balance field.
+  - CB0-ACCT-BAL-H: `0`
+	- Description: Hidden attribute for the account balance field.
+  - CB0-ACCT-BAL-V: `0`
+	- Description: Validation attribute for the account balance field.
+  - CB0-ACCT-BAL-O: `10`
+	- Description: Output position for the account balance field.
+  - CB0-CONFIRM-L: `1`
+	- Description: Length of the confirmation flag field.
+  - CB0-CONFIRM-A: `1`
+	- Description: Length of the confirmation flag field in ASCII format.
+  - CB0-CONFIRM-C: `4`
+	- Description: Color attribute for the confirmation flag field.
+  - CB0-CONFIRM-P: `0`
+	- Description: Protection attribute for the confirmation flag field.
+  - CB0-CONFIRM-H: `0`
+	- Description: Hidden attribute for the confirmation flag field.
+  - CB0-CONFIRM-V: `0`
+	- Description: Validation attribute for the confirmation flag field.
+  - CB0-CONFIRM-O: `1`
+	- Description: Output position for the confirmation flag field.
+  - CB0-ERRMSG-L: `60`
+	- Description: Length of the error message field.
+  - CB0-ERRMSG-A: `60`
+	- Description: Length of the error message field in ASCII format.
+  - CB0-ERRMSG-C: `2`
+	- Description: Color attribute for the error message field.
+  - CB0-ERRMSG-P: `1`
+	- Description: Protection attribute for the error message field.
+  - CB0-ERRMSG-H: `0`
+	- Description: Hidden attribute for the error message field.
+  - CB0-ERRMSG-V: `0`
+	- Description: Validation attribute for the error message field.
+  - CB0-ERRMSG-O: `60`
+	- Description: Output position for the error message field.
+  - CB0-FKEYS-L: `80`
+	- Description: Length of the function keys field.
+  - CB0-FKEYS-A: `80`
+	- Description: Length of the function keys field in ASCII format.
+  - CB0-FKEYS-C: `7`
+	- Description: Color attribute for the function keys field.
+  - CB0-FKEYS-P: `1`
+	- Description: Protection attribute for the function keys field.
+  - CB0-FKEYS-H: `0`
+	- Description: Hidden attribute for the function keys field.
+  - CB0-FKEYS-V: `0`
+	- Description: Validation attribute for the function keys field.
+  - CB0-FKEYS-O: `8
+- COCRDUP.CPY
+  - TRNNAMEA: `"Account Update   "`
+	- Description: Screen title for Account Update function.
+  - TITLE01A: `"Credit Card Detail Update"`
+	- Description: Title of the Credit Card Detail Update screen.
+  - PGMNAMEA: `"COCRDUPC"`
+	- Description: Program name for Credit Card Detail Update.
+  - TITLE02A: `"Enter All Fields"`
+	- Description: Instruction for the user to enter all fields.
+  - INFOMSGA: `"Enter all data and press ENTER"`
+	- Description: Message displayed to the user, prompting them to enter data and press Enter.
+  - ERRMSGA: `"Invalid Input, please re-enter"`
+	- Description: Error message displayed to the user in case of invalid input.
+- COMEN01.CPY
+  - TRNNAMEA: `"Account View    "`
+	- Description: Transaction name for Account View function.
+  - TITLE01A: `"Credit Card Demo - Main Menu"`
+	- Description: Title of the Main Menu screen.
+  - PGMNAMEA: `"COMEN01C"`
+	- Description: Program name for the Main Menu.
+  - TITLE02A: `"Choose an Option"`
+	- Description: Instruction for the user to choose an option from the menu.
+  - ERRMSGA: `"Invalid Option Selected"`
+	- Description: Error message displayed when the user selects an invalid option.
+- CORPT00.CPY
+  - TRNNAMEA: `"Transaction Report"`
+	- Description: Transaction name for Transaction Report submission.
+  - TITLE01A: `"Card Demo - Submit Transaction Report"`
+	- Description: Title of the Transaction Report Submission screen.
+  - PGMNAMEA: `"CORPT00C"`
+	- Description: Program name for Transaction Report Submission.
+  - TITLE02A: `"Choose Report Criteria"`
+	- Description: Instruction for the user to choose report criteria.
+  - INFOMSGA: `"Confirm Job Submission (Y/N)?"`
+	- Description: Message displayed to the user, asking for confirmation to submit the job.
+- COCRDSL.CPY
+  - TRNNAMEA: `"Card Details    "`
+	- Description: Transaction name for viewing Card Details.
+  - TITLE01A: `"Credit Card Demo - Search Card Details"`
+	- Description: Title of the Card Details Search screen.
+  - PGMNAMEA: `"COCRDSLC"`
+	- Description: Program name for the Card Details Search function.
+  - TITLE02A: `"Enter Search Criteria"`
+	- Description: Instruction for the user to enter search criteria.
+  - INFOMSGA: `"Enter data and press ENTER"`
+	- Description: Message prompting the user to enter data and press Enter.
+  - ERRMSGA: `"Invalid Account Number"`
+	- Description: Error message displayed when the user enters an invalid account number.
+- COCRDLI.CPY
+  - TRNNAMEA: `"Credit Card List"`
+	- Description: Screen title for Credit Card List function.
+  - TITLE01A: `"Credit Card Demo - Credit Card List"`
+	- Description: Title of the Credit Card List screen.
+  - PGMNAMEA: `"COCRDLIC"`
+	- Description: Program name for the Credit Card List function.
+  - TITLE02A: `"Enter Account Number (Optional)"`
+	- Description: Instruction for the user to enter an account number (optional).
+  - INFOMSGA: `"Enter Account and/or Card Number and press ENTER"`
+	- Description: Message displayed to the user, prompting them to enter account and/or card number.
+  - ERRMSGA: `"Invalid Account Number"`
+	- Description: Error message displayed if the account number is invalid.
+- COSGN00.CPY
+  - CCDA-TRNNAMEI: `"COSGN"`
+	- Description: Transaction name for the sign-on screen.
+  - CCDA-TITLE01I: `"CREDIT CARD DEMO APPLICATION"`
+	- Description: Main title displayed on the sign-on screen.
+  - CCDA-TITLE02I: `"SIGN ON"`
+	- Description: Subtitle indicating the purpose of the screen.
+  - CCDA-PGMNAMEX: `"COSGN00C"`
+	- Description: Name of the COBOL program handling the sign-on screen.
+  - CCDA-USERIDI: `"USERID"`
+	- Description: Label or prompt for the user ID input field.
+  - CCDA-PASSWDI: `"PASSWORD"`
+	- Description: Label or prompt for the password input field.
+  - CCDA-ERRMSGI: `"ERROR MESSAGE"`
+	- Description: Label or area designated for displaying error messages.
+  - CCDA-TRNNAMEO: `"COSGN"`
+	- Description:  Transaction name for the sign-on screen.
+  - CCDA-TITLE01O: `"CREDIT CARD DEMO APPLICATION"`
+	- Description: Main title displayed on the sign-on screen.
+  - CCDA-TITLE02O: `"SIGN ON"`
+	- Description: Subtitle indicating the purpose of the screen.
+  - CCDA-PGMNAMEO: `"COSGN00C"`
+	- Description: Name of the COBOL program handling the sign-on screen.
+  - CCDA-USERIDO: `"USERID"`
+	- Description: Label or prompt for the user ID input field.
+  - CCDA-PASSWDO: `"PASSWORD"`
+	- Description: Label or prompt for the password input field.
+  - CCDA-ERRMSGO: `"ERROR MESSAGE"`
+	- Description: Label or area designated for displaying error messages.
+- COTRN00.CPY
+  - CCDA-TRNNAMEI: `"COTRN"`
+	- Description: Transaction name for the transaction list screen.
+  - CCDA-TITLE01I: `"CREDIT CARD DEMO APPLICATION"`
+	- Description: Main title displayed on the transaction list screen.
+  - CCDA-TITLE02I: `"TRANSACTION LISTING"`
+	- Description: Subtitle for the transaction list screen.
+  - CCDA-PGMNAMEX: `"COTRN00C"`
+	- Description: Name of the program handling the transaction list.
+  - CCDA-ERRMSGI: `"ERROR MESSAGE"`
+	- Description: Area for displaying error messages on the screen.
+  - CCDA-TRNNAMEO: `"COTRN"`
+	- Description: Transaction name for the transaction list screen.
+  - CCDA-TITLE01O: `"CREDIT CARD DEMO APPLICATION"`
+	- Description: Main title displayed on the transaction list screen.
+  - CCDA-TITLE02O: `"TRANSACTION LISTING"`
+	- Description: Subtitle for the transaction list screen.
+  - CCDA-PGMNAMEO: `"COTRN00C"`
+	- Description: Name of the program handling the transaction list.
+  - CCDA-ERRMSGO: `"ERROR MESSAGE"`
+	- Description: Area for displaying error messages on the screen.
+- COTRN01.CPY
+  - CCDA-TRNNAMEI: `"COTRN"`
+	- Description: Transaction name for the transaction details screen.
+  - CCDA-TITLE01I: `"CREDIT CARD DEMO APPLICATION"`
+	- Description: Main title for the transaction details screen.
+  - CCDA-TITLE02I: `"VIEW TRANSACTION DETAILS"`
+	- Description: Subtitle for the transaction details screen.
+  - CCDA-PGMNAMEX: `"COTRN01C"`
+	- Description: COBOL program handling the transaction details screen.
+  - CCDA-ERRMSGI: `"ERROR MESSAGE"`
+	- Description: Area for error messages on the screen.
+  - CCDA-TRNNAMEO: `"COTRN"`
+	- Description:  Transaction name for the transaction details screen.
+  - CCDA-TITLE01O: `"CREDIT CARD DEMO APPLICATION"`
+	- Description: Main title for the transaction details screen.
+  - CCDA-TITLE02O: `"VIEW TRANSACTION DETAILS"`
+	- Description: Subtitle for the transaction details screen.
+  - CCDA-PGMNAMEO: `"COTRN01C"`
+	- Description: COBOL program handling the transaction details screen.
+  - CCDA-ERRMSGO: `"ERROR MESSAGE"`
+	- Description: Area for error messages on the screen.
+- COTRN02.CPY
+  - CCDA-TRNNAMEI: `"COTRN"`
+	- Description:  Transaction name, likely for a transaction processing or management system.
+  - CCDA-TITLE01I: `"CREDIT CARD DEMO APPLICATION"`
+	- Description:  Main title or heading, likely for a screen or report.
+  - CCDA-TITLE02I: `"ADD NEW TRANSACTION"`
+	- Description: Subtitle or secondary heading, indicating the purpose of the screen or section.
+  - CCDA-PGMNAMEX: `"COTRN02C"`
+	- Description:  Likely the name of the COBOL program or module responsible for this functionality.
+  - CCDA-CONFIRMI: `"CONFIRM (Y/N)"`
+	- Description:  Prompt or label for a confirmation input field, expecting a "Y" (yes) or "N" (no) response.
+  - CCDA-ERRMSGI: `"ERROR MESSAGE"`
+	- Description: Label or area designated for displaying error messages to the user.
+  - CCDA-TRNNAMEO: `"COTRN"`
+	- Description: Transaction name, likely for a transaction processing or management system.
+  - CCDA-TITLE01O: `"CREDIT CARD DEMO APPLICATION"`
+	- Description: Main title or heading, likely for a screen or report.
+  - CCDA-TITLE02O: `"ADD NEW TRANSACTION"`
+	- Description:  Subtitle or secondary heading, indicating the purpose of the screen or section.
+  - CCDA-PGMNAMEO: `"COTRN02C"`
+	- Description: Likely the name of the COBOL program or module responsible for this functionality.
+  - CCDA-CONFIRMO: `"CONFIRM (Y/N)"`
+	- Description: Prompt or label for a confirmation input field, expecting a "Y" (yes) or "N" (no) response.
+  - CCDA-ERRMSGO: `"ERROR MESSAGE"`
+	- Description: Label or area designated for displaying error messages to the user.
+- COUSR00.CPY
+  - CCDA-TRNNAMEI: `"COUSR"`
+	- Description: Transaction name for a process or module related to users.
+  - CCDA-TITLE01I: `"CREDIT CARD DEMO APPLICATION"`
+	- Description: Main title of the application or section related to user management.
+  - CCDA-TITLE02I: `"USER LISTING"`
+	- Description:  Subtitle indicating that this section displays a list of users.
+  - CCDA-PGMNAMEX: `"COUSR00C"`
+	- Description:  Name of the program or module responsible for handling user listing.
+  - CCDA-ERRMSGI: `"ERROR MESSAGE"`
+	- Description: Area on the screen or report where error messages are displayed.
+  - CCDA-TRNNAMEO: `"COUSR"`
+	- Description:  Transaction name for a process or module related to users.
+  - CCDA-TITLE01O: `"CREDIT CARD DEMO APPLICATION"`
+	- Description:  Main title of the application or section related to user management.
+  - CCDA-TITLE02O: `"USER LISTING"`
+	- Description: Subtitle indicating that this section displays a list of users.
+  - CCDA-PGMNAMEO: `"COUSR00C"`
+	- Description: Name of the program or module responsible for handling user listing.
+  - CCDA-ERRMSGO: `"ERROR MESSAGE"`
+	- Description: Area on the screen or report where error messages are displayed.
+- LISTCAT.txt
+  - HIGH-LEVEL-QUALIFIER: `"AWS.M2.CARDDEMO"`
+	- Description: High-level qualifier for the datasets.
+- acctdata.txt
+  - RECLN: `300`
+	- Description: Record length of the account data file.
+- COUSR01.CPY
+  - USRID-L: `8`
+	- Description: Length of the user ID.
+  - USRID-A: `8`
+	- Description: Length of the user ID.
+  - PASSWD-L: `8`
+	- Description: Length of the password.
+  - PASSWD-A: `8`
+	- Description: Length of the password.
+  - FNAME-L: `20`
+	- Description: Length of the first name.
+  - FNAME-A: `20`
+	- Description: Length of the first name.
+  - LNAME-L: `20`
+	- Description: Length of the last name.
+  - LNAME-A: `20`
+	- Description: Length of the last name.
+  - USRTYPE-L: `1`
+	- Description: Length of the user type.
+  - USRTYPE-A: `1`
+	- Description: Length of the user type.
+  - FILLER-L: `233`
+	- Description: Length of the filler.
+- COUSR02.CPY
+  - USRID-L: `8`
+	- Description: Length of the user ID.
+  - USRID-A: `8`
+	- Description: Length of the user ID.
+  - PASSWD-L: `8`
+	- Description: Length of the password.
+  - PASSWD-A: `8`
+	- Description: Length of the password.
+  - FNAME-L: `20`
+	- Description: Length of the first name.
+  - FNAME-A: `20`
+	- Description: Length of the first name.
+  - LNAME-L: `20`
+	- Description: Length of the last name.
+  - LNAME-A: `20`
+	- Description: Length of the last name.
+  - USRTYPE-L: `1`
+	- Description: Length of the user type.
+  - USRTYPE-A: `1`
+	- Description: Length of the user type.
+  - FILLER-L: `233`
+	- Description: Length of the filler.
+- COUSR03.CPY
+  - USRID-L: `8`
+	- Description: Length of the user ID.
+  - USRID-A: `8`
+	- Description: Length of the user ID.
+  - FNAME-L: `20`
+	- Description: Length of the first name.
+  - FNAME-A: `20`
+	- Description: Length of the first name.
+  - LNAME-L: `20`
+	- Description: Length of the last name.
+  - LNAME-A: `20`
+	- Description: Length of the last name.
+  - USRTYPE-L: `1`
+	- Description: Length of the user type.
+  - USRTYPE-A: `1`
+	- Description: Length of the user type.
+  - FILLER-L: `242`
+	- Description: Length of the filler.
+- carddata.txt
+  - `0000000000000000001`: `"001     JOHN SMITH               08/2026"`
+	- Description: Card Number/Account ID/Name/Expiration Date
+  - `0000000000000000002`: `"002     JANE DOE                 10/2027"`
+	- Description: Card Number/Account ID/Name/Expiration Date
+  - `0000000000000000003`: `"003     MICHAEL BROWN            01/2025"`
+	- Description: Card Number/Account ID/Name/Expiration Date
+  - `0000000000000000004`: `"004     EMILY WILSON             06/2028"`
+	- Description: Card Number/Account ID/Name/Expiration Date
+  - `0000000000000000005`: `"005     DAVID JONES              12/2024"`
+	- Description: Card Number/Account ID/Name/Expiration Date
+- cardxref.txt
+  - `4111111111111111111`: `01`
+	- Description: Card Number/Counter
+  - `4222222222222222222`: `02`
+	- Description: Card Number/Counter
+  - `4333333333333333333`: `03`
+	- Description: Card Number/Counter
+  - `4444444444444444444`: `04`
+	- Description: Card Number/Counter
+  - `4555555555555555555`: `05`
+	- Description: Card Number/Counter
+- custdata.txt
+  - `001`: `"JOHN SMITH               123 MAIN ST       ANYTOWN  NY 12345"`
+	- Description: Customer ID/Name/Address/City/State/Zip Code
+  - `002`: `"JANE DOE                 456 OAK AVE      ANYWHERE CA 98765"`
+	- Description: Customer ID/Name/Address/City/State/Zip Code
+  - `003`: `"MICHAEL BROWN            789 PINE LN      ANYPLACE  IL 60606"`
+	- Description: Customer ID/Name/Address/City/State/Zip Code
+  - `004`: `"EMILY WILSON             1011 ELM RD     ANYCITY  TX 75201"`
+	- Description: Customer ID/Name/Address/City/State/Zip Code
+  - `005`: `"DAVID JONES              1213 MAPLE BLVD  ANYSUBURB FL 33101"`
+	- Description: Customer ID/Name/Address/City/State/Zip Code
+- dailytran.txt
+  - `0000000001`: `"Purchase     NYC     2023-09-01 10:00:00"`
+	- Description: Transaction ID/Transaction Type/Location/Timestamp
+  - `0000000002`: `"Purchase     LA      2023-09-01 12:30:00"`
+	- Description: Transaction ID/Transaction Type/Location/Timestamp
+  - `0000000003`: `"Return       CHI     2023-09-02 14:15:00"`
+	- Description: Transaction ID/Transaction Type/Location/Timestamp
+  - `0000000004`: `"Purchase     SF      2023-09-03 16:45:00"`
+	- Description: Transaction ID/Transaction Type/Location/Timestamp
+  - `0000000005`: `"Purchase     NYC     2023-09-04 18:00:00"`
+	- Description: Transaction ID/Transaction Type/Location/Timestamp
+- discgrp.txt
+  - `001`: `"PREMIER 0.0750 0.0000 0.1500"`
+	- Description: Group ID/Description/Interest Rate 1/Interest Rate 2/Interest Rate 3
+  - `002`: `"GOLD    0.0900 0.0000 0.1800"`
+	- Description: Group ID/Description/Interest Rate 1/Interest Rate 2/Interest Rate 3
+  - `003`: `"SILVER  0.1050 0.0000 0.2100"`
+	- Description: Group ID/Description/Interest Rate 1/Interest Rate 2/Interest Rate 3
+  - `DEFAULT`: `"DEFAULT 0.1200 0.0000 0.2400"`
+	- Description: Group ID/Description/Interest Rate 1/Interest Rate 2/Interest Rate 3
+- tcatbal.txt
+  - 0000000001 1000 1000000000 000000000000000000000000000000: `"0000000001 1000 1000000000 000000000000000000000000000000"`
+	- Description: Transaction Category ID 0000000001 with an unknown field value of 1000, a balance of 1000000000, and an unknown data field of 000000000000000000000000000000.
+  - 0000000002 1000 1000000000 000000000000000000000000000000: `"0000000002 1000 1000000000 000000000000000000000000000000"`
+	- Description: Transaction Category ID 0000000002 with an unknown field value of 1000, a balance of 1000000000, and an unknown data field of 000000000000000000000000000000.
+  - 0000000003 1000 1000000000 000000000000000000000000000000: `"0000000003 1000 1000000000 000000000000000000000000000000"`
+	- Description: Transaction Category ID 0000000003 with an unknown field value of 1000, a balance of 1000000000, and an unknown data field of 000000000000000000000000000000.
+- trancatg.txt
+  - 10001: `"Retail"`
+	- Description: Transaction Category 10001 represents Retail transactions.
+  - 10002: `"Restaurant"`
+	- Description: Transaction Category 10002 represents Restaurant transactions.
+  - 10003: `"Entertainment"`
+	- Description: Transaction Category 10003 represents Entertainment transactions.
+  - 10004: `"Travel"`
+	- Description: Transaction Category 10004 represents Travel transactions.
+  - 10005: `"Grocery"`
+	- Description: Transaction Category 10005 represents Grocery transactions.
+  - 10006: `"Gas"`
+	- Description: Transaction Category 10006 represents Gas transactions.
+  - 10007: `"Online Shopping"`
+	- Description: Transaction Category 10007 represents Online Shopping transactions.
+  - 10008: `"Bill Payment"`
+	- Description: Transaction Category 10008 represents Bill Payment transactions.
+  - 10009: `"Cash Advance"`
+	- Description: Transaction Category 10009 represents Cash Advance transactions.
+  - 10010: `"Balance Transfer"`
+	- Description: Transaction Category 10010 represents Balance Transfer transactions.
+- trantype.txt
+  - 01: `"Purchase"`
+	- Description: Transaction Type 01 represents a Purchase.
+  - 02: `"Return"`
+	- Description: Transaction Type 02 represents a Return.
+  - 03: `"Payment"`
+	- Description: Transaction Type 03 represents a Payment.
+  - 04: `"Fee"`
+	- Description: Transaction Type 04 represents a Fee.
+  - 05: `"Adjustment"`
+	- Description: Transaction Type 05 represents an Adjustment.
+
+--Made by "Smart Engineering" (by Compass.UOL)--

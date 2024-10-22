@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Overview</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p>Com base nas informações fornecidas, analisarei o projeto e apresentarei os resultados no formato solicitado.</p>
+<h1>Aplicativo CardDemo:</h1>
+<p>Um sistema abrangente de gerenciamento de cartão de crédito implementado em COBOL para ambientes de mainframe.</p>
+<h1>Resumo:</h1>
+<p>O aplicativo CardDemo é um sistema mainframe baseado em COBOL projetado para gerenciar operações de cartão de crédito. Ele fornece funcionalidades para gerenciamento de contas, processamento de transações, autenticação de usuário e relatórios. O sistema utiliza CICS para processamento de transações e VSAM para armazenamento de dados. Ele apresenta um design modular com componentes separados para diferentes aspectos do gerenciamento de cartão de crédito, incluindo visualização e atualização de contas, listagem e processamento de transações, gerenciamento de usuários e geração de relatórios.</p>
+<h1>Funcionalidades Principais</h1>
+<ol>
+<li>Autenticação e Autorização de Usuário</li>
+<li>Gerenciamento de Conta (Visualizar, Atualizar)</li>
+<li>Operações de Cartão de Crédito (Listar, Adicionar, Atualizar)</li>
+<li>Processamento e Visualização de Transações</li>
+<li>Geração de Relatórios</li>
+<li>Funções Administrativas (Gerenciamento de Usuários)</li>
+</ol>
+<h1>Tecnologia utilizada:</h1>
+<ul>
+<li>Linguagem de Programação: COBOL</li>
+<li>Processamento de Transações: CICS (Customer Information Control System)</li>
+<li>Banco de Dados: VSAM (Virtual Storage Access Method)</li>
+<li>Manipulação de Tela: BMS (Basic Mapping Support)</li>
+<li>Submissão de Trabalho: CICS Transient Data Queue (TDQ)</li>
+<li>Utilitários de Data: Serviços de Ambiente de Linguagem (LE)</li>
+</ul>
+<h1>Dependências/Referências:</h1>
+<pre class="hljs"><code>└── CardDemo Application
+    ├── CICS (Customer Information Control System)
+    ├── VSAM (Virtual Storage Access Method)
+    ├── BMS (Basic Mapping Support)
+    ├── Language Environment (LE)
+    ├── COBOL Standard Libraries
+    ├── IDCAMS Utility
+    ├── JCL (Job Control Language)
+    ├── Main Programs
+    │   ├── COACTVWC (Account View)
+    │   ├── COACTUPC (Account Update)
+    │   ├── COADM01C (Admin Menu)
+    │   ├── COBIL00C (Bill Payment)
+    │   ├── COCRDLIC (Credit Card List)
+    │   ├── COCRDSLC (Credit Card Detail)
+    │   ├── COCRDUPC (Credit Card Update)
+    │   ├── COMEN01C (Main Menu)
+    │   ├── CORPT00C (Report Generation)
+    │   ├── COSGN00C (Sign-on)
+    │   ├── COTRN00C (Transaction List)
+    │   ├── COTRN01C (View Transaction)
+    │   ├── COTRN02C (Add Transaction)
+    │   ├── COUSR00C (User List)
+    │   ├── COUSR01C (Add User)
+    │   ├── COUSR02C (Update User)
+    │   └── COUSR03C (Delete User)
+    ├── Batch Programs
+    │   ├── CBACT01C (Account Data Reader)
+    │   ├── CBACT02C (Card Data Reader)
+    │   ├── CBACT03C (Account Cross-Reference Reader)
+    │   ├── CBACT04C (Interest Calculator)
+    │   ├── CBCUS01C (Customer Data Reader)
+    │   ├── CBSTM03A (Account Statement Generator)
+    │   ├── CBSTM03B (File Processing Subroutine)
+    │   ├── CBTRN01C (Daily Transaction Processor)
+    │   └── CBTRN02C (Daily Transaction Processor)
+    ├── Utility Programs
+    │   └── CSUTLDTC (Date Validation Utility)
+    └── Copybooks
+        ├── COADM02Y
+        ├── COCOM01Y
+        ├── COMEN02Y
+        ├── COSTM01
+        ├── COTTL01Y
+        ├── CSDAT01Y
+        ├── CSLKPCDY
+        ├── CSMSG01Y
+        ├── CSMSG02Y
+        ├── CSSETATY
+        ├── CSSTRPFY
+        ├── CSUSR01Y
+        ├── CSUTLDPY
+        ├── CSUTLDWY
+        ├── CUSTREC
+        ├── CVACT01Y
+        ├── CVACT02Y
+        ├── CVACT03Y
+        ├── CVCRD01Y
+        ├── CVCUS01Y
+        ├── CVTRA01Y
+        ├── CVTRA02Y
+        ├── CVTRA03Y
+        ├── CVTRA04Y
+        ├── CVTRA05Y
+        ├── CVTRA06Y
+        ├── CVTRA07Y
+        ├── UNUSED1Y
+        ├── COACTUP
+        ├── COACTVW
+        ├── COADM01
+        ├── COBIL00
+        ├── COCRDLI
+        ├── COCRDSL
+        ├── COCRDUP
+        ├── COMEN01
+        ├── CORPT00
+        ├── COSGN00
+        ├── COTRN00
+        ├── COTRN01
+        ├── COTRN02
+        ├── COUSR00
+        ├── COUSR01
+        ├── COUSR02
+        └── COUSR03</code></pre><h1>Objetos Ausentes:</h1>
+<pre class="hljs"><code>└── CardDemo Application
+    ├── CICS (Customer Information Control System)
+    ├── VSAM (Virtual Storage Access Method)
+    ├── BMS (Basic Mapping Support)
+    ├── Language Environment (LE)
+    ├── COBOL Standard Libraries
+    ├── IDCAMS Utility
+    ├── JCL (Job Control Language)</code></pre><h1>Fluxo de trabalho:</h1>
+<ol>
+<li>O usuário faz login através do COSGN00C</li>
+<li>O menu principal (COMEN01C) ou o menu Admin (COADM01C) é exibido com base no tipo de usuário</li>
+<li>O usuário seleciona a operação desejada (por exemplo, visualização de conta, lista de transações, gerenciamento de usuários)</li>
+<li>O programa correspondente é chamado para lidar com a operação selecionada</li>
+<li>Os dados são recuperados ou gravados em arquivos VSAM conforme necessário</li>
+<li>Os resultados são exibidos ao usuário usando telas BMS</li>
+<li>Os processos em lote (programas CBxxxxx) são executados separadamente para processamento de dados em massa e relatórios</li>
+</ol>
+<h1>Pontos de Comunicação:</h1>
+<ol>
+<li>Arquivos VSAM:
+<ul>
+<li>ACCTDAT: Dados da conta</li>
+<li>CARDDAT: Dados do cartão</li>
+<li>CUSTDAT: Dados do cliente</li>
+<li>TRANSACT: Dados de transação</li>
+<li>USRSEC: Dados de segurança do usuário</li>
+</ul>
+</li>
+<li>CICS:
+<ul>
+<li>Gerencia a comunicação entre programas e E/S do terminal</li>
+</ul>
+</li>
+<li>BMS:
+<ul>
+<li>Gerencia layouts de tela e interações do usuário</li>
+</ul>
+</li>
+<li>TDQ:
+<ul>
+<li>Usado para enviar trabalhos em lote (por exemplo, em CORPT00C)</li>
+</ul>
+</li>
+</ol>
+<h1>Recomendações:</h1>
+<ol>
+<li>Modernizar a interface do usuário: Considere migrar do BMS para uma interface baseada na web para melhor usabilidade e acessibilidade.</li>
+<li>Implementar um banco de dados relacional: Substitua o VSAM por um RDBMS moderno para melhorar o gerenciamento de dados e os recursos de consulta.</li>
+<li>Aprimorar a segurança: Implemente mecanismos de autenticação mais fortes e criptografia para dados confidenciais.</li>
+<li>Otimizar processos em lote: Revise e otimize os programas em lote para obter melhor desempenho, especialmente para conjuntos de dados grandes.</li>
+<li>Implementar registro e monitoramento: Adicione registros abrangentes para melhor solução de problemas e monitoramento do sistema.</li>
+<li>Refatoração de código: Identifique funcionalidades comuns em todos os programas e crie sub-rotinas compartilhadas para reduzir a duplicação de código.</li>
+<li>Tratamento de erros: Implemente um mecanismo de tratamento de erros mais robusto e padronizado em todos os programas.</li>
+<li>Documentação: Crie documentação detalhada do sistema e da API para facilitar a manutenção e aprimoramentos futuros.</li>
+<li>Estrutura de teste: Desenvolva um conjunto de testes abrangente, incluindo testes de unidade e testes de integração, para garantir a confiabilidade do sistema.</li>
+<li>Considere a arquitetura de microsserviços: Avalie a possibilidade de dividir o aplicativo monolítico em microsserviços para melhor escalabilidade e manutenção.</li>
+</ol>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

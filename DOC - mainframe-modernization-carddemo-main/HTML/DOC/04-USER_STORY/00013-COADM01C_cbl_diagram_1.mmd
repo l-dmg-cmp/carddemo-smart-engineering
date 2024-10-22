@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant Administrator
+    participant COADM01C
+
+    activate Administrator
+    Administrator->>+COADM01C: Request Access
+    activate COADM01C
+    COADM01C->>+USRSEC: Validate Credentials
+    USRSEC->>-COADM01C:  Credentials Valid/Invalid
+    alt Credentials Valid
+        COADM01C->>Administrator: Display Admin Menu
+        Administrator->>+COADM01C: Select Option
+        COADM01C->>COADM01C: Process Option
+        COADM01C->>Administrator: Display Result/Submenu
+    else Credentials Invalid
+        COADM01C->>Administrator: Display Error Message
+        deactivate COADM01C
+    end
+    deactivate Administrator

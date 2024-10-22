@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant Administrator
+    participant CardDemo Application
+    participant Admin Menu Program
+    participant Account Management Program
+    participant Credit Card Management Program
+    participant Transaction Management Program
+    participant Bill Payment Program
+    participant Reporting Program
+
+    activate Administrator
+    Administrator->>+CardDemo Application: Request Access (Admin)
+    CardDemo Application->>+Admin Menu Program: Display Admin Menu
+    deactivate Admin Menu Program
+    Administrator->>+CardDemo Application: Select Option (e.g., Account View)
+    
+    alt Account Management Option Selected
+        CardDemo Application->>+Account Management Program: Execute
+        deactivate Account Management Program
+    else Credit Card Management Option Selected
+        CardDemo Application->>+Credit Card Management Program: Execute
+        deactivate Credit Card Management Program
+    else Transaction Management Option Selected
+        CardDemo Application->>+Transaction Management Program: Execute
+        deactivate Transaction Management Program
+    else Bill Payment Option Selected
+        CardDemo Application->>+Bill Payment Program: Execute
+        deactivate Bill Payment Program
+    else Reporting Option Selected
+        CardDemo Application->>+Reporting Program: Execute
+        deactivate Reporting Program
+    end
+    deactivate Administrator

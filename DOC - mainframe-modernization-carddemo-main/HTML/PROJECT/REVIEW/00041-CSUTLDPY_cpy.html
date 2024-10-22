@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00041-CSUTLDPY_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h2>Revisão de Análise Técnica</h2>
+<p><strong>Arquivo:</strong>  \src\CSUTLDPY.cpy</p>
+<p><strong>Título:</strong>  Procedimentos de Validação de Data</p>
+<p><strong>Resumo:</strong></p>
+<p>Este copybook COBOL (CSUTLDPY.cpy) fornece um conjunto de procedimentos reutilizáveis projetados para validar datas no formato CCYYMMDD.  Ele inclui verificações de combinações válidas de século, ano, mês e dia, garantindo que as datas sejam lógicas e razoáveis (por exemplo, não no futuro para datas de nascimento). O código se baseia fortemente em princípios de programação estruturada com pontos de entrada e saída bem definidos para cada rotina de validação.</p>
+<p><strong>Tecnologia:</strong></p>
+<ul>
+<li><strong>Linguagem de Programação:</strong> COBOL</li>
+<li><strong>Framework/Biblioteca:</strong>  <code>Not available</code></li>
+<li><strong>Banco de Dados:</strong>  Embora o código em si não interaja diretamente com um banco de dados, ele menciona o uso de “Oracle 9” em um comentário, sugerindo que o sistema maior do qual este copybook faz parte provavelmente usa um banco de dados Oracle 9.</li>
+<li><strong>Outras Ferramentas:</strong> <code>Not available</code></li>
+</ul>
+<p><strong>Referência, Classe e Método:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Method(Public)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EDIT-DATE-CCYYMMDD</code></td>
+<td>Procedimento principal para validar uma data no formato CCYYMMDD. Chama subprocedimentos para validação de ano, mês e dia e realiza uma verificação final de ano bissexto. Define vários indicadores na área de trabalho <code>WS-</code> com base no resultado da validação.</td>
+</tr>
+<tr>
+<td><code>EDIT-YEAR-CCYY</code></td>
+<td>Valida a parte do ano (CCYY) da data. Verifica se o ano foi fornecido, se é numérico e se está dentro de um século razoável (19xx ou 20xx).</td>
+</tr>
+<tr>
+<td><code>EDIT-MONTH</code></td>
+<td>Valida a parte do mês (MM) da data. Garante que o mês seja fornecido, numérico e esteja dentro do intervalo de 1 a 12.</td>
+</tr>
+<tr>
+<td><code>EDIT-DAY</code></td>
+<td>Valida a parte do dia (DD) da data. Verifica se o dia foi fornecido, se é numérico e se está dentro de um intervalo válido para o mês fornecido.</td>
+</tr>
+<tr>
+<td><code>EDIT-DAY-MONTH-YEAR</code></td>
+<td>Este procedimento realiza verificações adicionais na combinação de dia, mês e ano para garantir consistência, com foco particular no número de dias em um mês e validação de ano bissexto.</td>
+</tr>
+<tr>
+<td><code>EDIT-DATE-LE</code></td>
+<td>Parece usar um serviço ou função externa (<code>CSUTLDTC</code>) para realizar validação adicional de data. A natureza exata deste serviço não está clara no código fornecido.</td>
+</tr>
+<tr>
+<td><code>EDIT-DATE-OF-BIRTH</code></td>
+<td>Valida se uma data é uma data de nascimento razoável verificando se ela não está no futuro.  Usa a função <code>CURRENT-DATE</code> para obter a data atual do sistema.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Method(Private)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="hljs"><code>--Made by &quot;Smart Engineering&quot; (by Compass.UOL)--</code></pre>
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

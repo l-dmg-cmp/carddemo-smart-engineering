@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00028-CSUTLDTC_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Aplicativo CardDemo: Utilitário de Conversão de Data (CSUTLDTC)</h1>
+<h2>Descrição Resumida:</h2>
+<p>Este programa utilitário, CSUTLDTC, é um componente crítico do aplicativo CardDemo. Sua função principal é converter datas de vários formatos legíveis por humanos, como “MM-DD-YYYY”, para o formato Lilian. Este formato, uma representação numérica da data, é essencial para que os computadores realizem cálculos e comparações com eficiência.</p>
+<h2>Histórias de Usuário:</h2>
+<p>Como administrador do sistema, preciso de uma maneira confiável de converter datas de diferentes formatos em um formato padrão para processamento de dados e geração de relatórios eficientes.</p>
+<h2>Épico Relacionado:</h2>
+<p>9 - Utilitários do Sistema</p>
+<h2>Requisitos Funcionais:</h2>
+<ol>
+<li><strong>Receber Data e Formato:</strong> O programa deve aceitar duas entradas: a string de data a ser convertida e o formato correspondente da data de entrada (por exemplo, “MM-DD-YYYY”, “DD-MM-YYYY”).</li>
+<li><strong>Validar Formato de Data:</strong> Deve verificar se o formato da data de entrada é reconhecido e suportado pelo sistema. Se o formato for inválido, o programa deve gerar uma mensagem de erro &quot;Bad Pic String &quot; e sair.</li>
+<li><strong>Validar Data:</strong> O programa deve verificar a validade da própria data de entrada. Por exemplo, 30 de fevereiro é uma data inválida e deve ser sinalizada como &quot;Invalid month  &quot;.</li>
+<li><strong>Converter para o Formato Lilian:</strong> Se a data e o formato forem válidos, o programa deverá converter a data de entrada para o formato Lilian, uma representação numérica da data.</li>
+<li><strong>Retornar Data Lilian ou Erro:</strong> Após a conversão bem-sucedida, retorne a data Lilian. Se alguma validação falhar, o programa deve retornar uma mensagem de erro descritiva indicando o problema.</li>
+</ol>
+<h2>Requisitos Não Funcionais:</h2>
+<ol>
+<li><strong>Precisão:</strong> O processo de conversão deve ser preciso para evitar discrepâncias em cálculos relacionados à data ou inconsistências de dados.</li>
+<li><strong>Desempenho:</strong> O processo de conversão deve ser eficiente para evitar impactar o desempenho de outros processos do sistema, especialmente ao lidar com grandes volumes de dados.</li>
+<li><strong>Manutenibilidade:</strong> O código deve ser bem estruturado e documentado para facilitar a manutenção e as atualizações.</li>
+</ol>
+<h2>Critérios de Aceitação:</h2>
+<ol>
+<li><strong>Conversão Bem-Sucedida:</strong> Dada uma data e formato válidos, o programa deve converter a data para o formato Lilian com precisão.</li>
+<li><strong>Tratamento de Formato de Data Inválido:</strong> Dado um formato de data inválido, o programa deve gerar uma mensagem de erro &quot;Bad Pic String &quot;.</li>
+<li><strong>Tratamento de Data Inválida:</strong> Dada uma data inválida, o programa deve gerar uma mensagem de erro indicando o problema específico (por exemplo, &quot;Invalid month  &quot;).</li>
+<li><strong>Relato de Erros:</strong> Todas as mensagens de erro devem ser claras, concisas e úteis para solução de problemas.</li>
+</ol>
+<h2>Melhorias de Código:</h2>
+<ol>
+<li><strong>Tratamento de Erros Centralizado:</strong> Implemente uma rotina de tratamento de erros centralizada para gerenciar todas as condições de erro de forma consistente e sustentável.</li>
+<li><strong>Mensagens de Erro Aprimoradas:</strong> Forneça mensagens de erro mais informativas, incluindo a data ou formato inválido, para ajudar na depuração mais rápida.</li>
+<li><strong>Log:</strong> Incorpore recursos de log para registrar conversões bem-sucedidas, erros e outras informações relevantes para auditoria e solução de problemas.</li>
+</ol>
+<h2>Melhorias de Segurança:</h2>
+<p>Embora este utilitário não lide diretamente com dados confidenciais, considere o seguinte:</p>
+<ol>
+<li><strong>Validação de Entrada:</strong> Implemente validação de entrada rigorosa para evitar qualquer dado inesperado ou tentativas de injeção de código malicioso.</li>
+<li><strong>Log Seguro:</strong> Se os logs forem implementados, certifique-se de que sejam armazenados com segurança e que o acesso seja restrito apenas ao pessoal autorizado.</li>
+</ol>
+<h2>Diagrama Conceitual:</h2>
+<img src="00028-CSUTLDTC_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

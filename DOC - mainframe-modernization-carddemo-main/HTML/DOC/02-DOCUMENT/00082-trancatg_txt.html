@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00082-trancatg_txt</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sistema de Processamento de Transações com Cartão de Crédito</h2>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Sistema de Processamento de Transações com Cartão de Crédito - Especificação do Código de Categoria de Transação</li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve a estrutura e a função do arquivo “trancatg.txt” dentro do Sistema de Processamento de Transações com Cartão de Crédito. Este arquivo atua como um repositório central para definir e gerenciar vários códigos de categoria de transação. Esses códigos categorizam cada transação com cartão de crédito, como compras, adiantamentos em dinheiro, pagamentos e reembolsos.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>Versão 1.0: Versão inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O arquivo “trancatg.txt” opera como uma tabela de referência estática. Cada linha no arquivo representa um código de categoria de transação exclusivo e sua descrição correspondente.</p>
+<ol>
+<li><strong>Identificação do Código da Transação:</strong> Quando uma transação ocorre, o sistema identifica seu tipo usando o código designado.</li>
+<li><strong>Pesquisa de Código:</strong> O sistema então consulta “trancatg.txt” para recuperar a descrição correspondente ao código da transação.</li>
+<li><strong>Categorização da Transação:</strong> Este processo garante a categorização precisa de todas as transações com cartão de crédito dentro do sistema.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Arquivo “trancatg.txt”:</strong> Este arquivo deve estar presente e formatado corretamente para que o sistema funcione corretamente.</li>
+<li><strong>Dados da Transação:</strong> O sistema requer dados de entrada para cada transação, incluindo o código de categoria apropriado.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Códigos Exclusivos:</strong> Cada código de categoria de transação dentro de “trancatg.txt” deve ser exclusivo para evitar erros de processamento.</li>
+<li><strong>Formato do Código:</strong> Os códigos devem seguir um formato consistente (por exemplo, seis dígitos) para manter a integridade dos dados.</li>
+<li><strong>Clareza da Descrição:</strong> As descrições devem ser concisas e explicar claramente a categoria da transação.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Estrutura do Arquivo:</strong></p>
+<ul>
+<li><strong>Transaction Code:</strong> Um código alfanumérico exclusivo que identifica a categoria da transação (por exemplo, “010001”).</li>
+<li><strong>Transaction Description:</strong> Uma breve explicação da categoria da transação (por exemplo, “Regular Sales Draft”).</li>
+<li><strong>Padding:</strong> Espaços adicionais para fins de formatação, sem impacto na funcionalidade.</li>
+</ul>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong>TransactionCode:</strong> Armazena o código de seis dígitos lido dos dados da transação.</li>
+</ul>
+<p><strong>Métodos:</strong></p>
+<ul>
+<li><strong>LookupTransactionDescription(TransactionCode):</strong> Pesquisa “trancatg.txt” usando o TransactionCode fornecido e retorna a descrição correspondente.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Controle de Acesso:</strong> Implemente controles de acesso para restringir a modificação não autorizada do arquivo “trancatg.txt”.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Sistemas de Relatórios:</strong> Os códigos de categoria de transação são cruciais para gerar relatórios precisos sobre a atividade do cartão de crédito.</li>
+<li><strong>Sistemas de Contabilidade:</strong> Esses códigos podem ser usados para reconciliação financeira e fins contábeis.</li>
+<li><strong>Detecção de Fraude:</strong> A categorização ajuda a identificar padrões de transações incomuns e potenciais fraudes.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Nome do Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TransactionCode</td>
+<td>String</td>
+<td>Código exclusivo de seis dígitos que representa uma categoria de transação.</td>
+</tr>
+<tr>
+<td>TransactionDescription</td>
+<td>String</td>
+<td>Texto descritivo explicando a categoria da transação.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>Arquivo “trancatg.txt”:</strong> A fonte de dados primária para códigos e descrições de categorias de transações.</li>
+</ul>
+<p><strong>Considerações Adicionais:</strong></p>
+<ul>
+<li><strong>Gerenciamento de Código:</strong> Estabeleça um processo para adicionar, modificar ou retirar códigos de categoria de transação.</li>
+<li><strong>Integridade de Dados:</strong> Implemente verificações para garantir a precisão e consistência dos dados em “trancatg.txt”.</li>
+<li><strong>Controle de Versão:</strong> Mantenha o histórico de versão para “trancatg.txt” para rastrear alterações ao longo do tempo.</li>
+</ul>
+<p><strong>Observação:</strong> Esta especificação fornece uma compreensão de alto nível da função do arquivo “trancatg.txt”. Mais especificações técnicas podem ser necessárias para a implementação do sistema.</p>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

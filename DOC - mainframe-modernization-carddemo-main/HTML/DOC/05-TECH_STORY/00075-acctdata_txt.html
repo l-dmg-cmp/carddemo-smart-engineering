@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00075-acctdata_txt</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Validador de Arquivo de Dados de Conta</p>
+<p><strong>Descrição Resumida:</strong>
+Este programa valida registros de clientes de um arquivo de entrada (<code>acctdata.txt</code>) com base em critérios predefinidos. Cada registro é processado individualmente e, se passar em todas as validações, ele é gravado em um arquivo de saída (<code>output.txt</code>) em um formato especificado. Os registros que falham na validação são registrados e o processo continua até que todos os registros no arquivo de entrada sejam processados.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como um analista de dados, quero garantir que apenas registros de contas válidos sejam usados para análise. O programa deve validar automaticamente os registros com base em regras predefinidas e gerar um novo arquivo contendo apenas os registros válidos.</p>
+<p><strong>Épico Relacionado:</strong>
+10 - Gerenciamento de Arquivos de Dados</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Leitura de Arquivo de Entrada:</strong> O programa lê os dados da conta do cliente em <code>acctdata.txt</code>. Cada linha no arquivo representa um único registro de cliente.</li>
+<li><strong>Validação de Registro:</strong>
+<ul>
+<li><strong>Validação de Número de Conta:</strong> Verifica se o número da conta é numérico e segue um formato específico (por exemplo, 10 dígitos).</li>
+<li><strong>Validação de Data:</strong> Verifica se as datas (data de abertura da conta, data da última declaração, data de vencimento do pagamento) estão no formato correto e são logicamente válidas.</li>
+<li><strong>Validação de Saldo:</strong> Garante que o saldo atual seja numérico e esteja dentro de um intervalo aceitável.</li>
+<li><strong>Validação de Status da Conta:</strong> Verifica se o código de status da conta é válido (por exemplo, ‘A’ para Ativo, ‘C’ para Fechado).</li>
+</ul>
+</li>
+<li><strong>Gravação de Arquivo de Saída:</strong> Os registros válidos, após validação bem-sucedida, são gravados em <code>output.txt</code> em um formato definido.</li>
+<li><strong>Tratamento de Erros:</strong> Se um registro falhar na validação, o programa registra os detalhes do erro (por exemplo, número de conta inválido, formato de data inválido) em um arquivo de log de erros ou os exibe no console.</li>
+<li><strong>Registro:</strong> O programa registra as principais ações, como o início e o fim do processamento, o número de registros processados, o número de registros válidos e quaisquer erros encontrados. Este log ajuda a monitorar o processo e solucionar problemas.</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><strong>Conta:</strong>
+<ul>
+<li><code>AccountNumber</code>: <code>String</code> - Identificador exclusivo da conta.</li>
+<li><code>CustomerName</code>: <code>String</code> - Nome do titular da conta.</li>
+<li><code>CreditLimit</code>: <code>Decimal</code> - Crédito máximo disponível na conta.</li>
+<li><code>CurrentBalance</code>: <code>Decimal</code> - Saldo pendente atual na conta.</li>
+<li><code>AccountStatus</code>: <code>Char</code> - Indica se a conta está ativa, fechada, suspensa, etc.</li>
+<li><code>LastStatementDate</code>: <code>Date</code> - Data da última declaração gerada.</li>
+<li><code>PaymentDueDate</code>: <code>Date</code> - Data de vencimento do próximo pagamento.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><code>Input File Path</code>: <code>String</code> - Caminho para o arquivo de entrada (<code>acctdata.txt</code>).</li>
+<li><code>Output File Path</code>: <code>String</code> - Caminho para o arquivo de saída (<code>output.txt</code>).</li>
+<li><code>Log File Path</code>: <code>String</code> - Caminho para o arquivo de log de erros.</li>
+<li><code>Account Number Format</code>: <code>String</code> - Expressão regular ou padrão para validar o formato do número da conta.</li>
+<li><code>Date Format</code>: <code>String</code> - Formato das datas no arquivo de entrada (por exemplo, ‘AAAA-MM-DD’).</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Processamento Paralelo:</strong> Implementar processamento paralelo para validar vários registros simultaneamente, melhorando o desempenho, especialmente para arquivos grandes.</li>
+<li><strong>Arquivo de Configuração:</strong> Usar um arquivo de configuração para gerenciar parâmetros configuráveis em vez de codificá-los permanentemente.</li>
+<li><strong>Regras de Validação Personalizáveis:</strong> Permitir que os usuários definam e configurem regras de validação por meio de um arquivo de configuração ou interface, tornando o programa mais flexível.</li>
+<li><strong>Testes de Unidade:</strong> Implementar testes de unidade para cobrir diferentes cenários de validação, garantindo a qualidade e confiabilidade do código.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Limpeza de Entrada:</strong> Limpe todos os dados de entrada para evitar ataques de injeção.</li>
+<li><strong>Manipulação Segura de Arquivos:</strong> Garanta práticas seguras de manipulação de arquivos, incluindo permissões de arquivo adequadas e exclusão segura de dados confidenciais.</li>
+<li><strong>Controle de Acesso:</strong> Se o programa fizer parte de um sistema maior, implemente mecanismos de controle de acesso para restringir o acesso a usuários autorizados.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00075-acctdata_txt_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

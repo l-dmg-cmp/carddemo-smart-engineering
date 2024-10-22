@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00024-COUSR00C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Gestão de Usuários do CardDemo: Listar Usuários</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: CardDemo Application - User List Functionality Specification</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li>Arquivo: \src\COUSR00C.cbl</li>
+</ul>
+<h2>Descrição resumida</h2>
+<p>Este documento descreve a funcionalidade do programa COUSR00C dentro da aplicação CardDemo. Este programa é responsável por exibir uma lista de usuários para o pessoal autorizado (administradores). Ele permite a navegação por registros de usuários paginados e a seleção de usuários específicos para atualização ou exclusão.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>CardDemo_v1.0-15-g27d6c6f-68: Implementação inicial da funcionalidade de Lista de Usuários</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>A funcionalidade Lista de Usuários fornece uma maneira de os administradores visualizarem e gerenciarem contas de usuário no sistema CardDemo. O processo envolve as seguintes etapas:</p>
+<ol>
+<li><strong>Acessar Lista de Usuários:</strong> Um administrador acessa a funcionalidade de lista de usuários, provavelmente por meio de uma opção de menu.</li>
+<li><strong>Exibição Inicial:</strong> O sistema recupera e exibe uma página inicial de registros de usuário do arquivo seguro USRSEC. Cada registro provavelmente inclui ID do Usuário, Nome e Tipo de Usuário.</li>
+<li><strong>Paginação:</strong> O administrador pode navegar por várias páginas de registros de usuário usando as teclas de função (PF7 para a página anterior, PF8 para a próxima página).</li>
+<li><strong>Seleção do Usuário:</strong> O administrador pode selecionar um registro de usuário para ações de atualização (U) ou exclusão (D).</li>
+<li><strong>Transferência de Ação:</strong> Com base na ação selecionada (U/D), o programa redireciona o administrador para o programa apropriado (COUSR02C para atualização, COUSR03C para exclusão) junto com o ID do usuário selecionado.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Função do Usuário:</strong> Somente pessoal autorizado com privilégios administrativos pode acessar e usar esta funcionalidade.</li>
+<li><strong>Sessão Ativa:</strong> O administrador deve ter uma sessão ativa no aplicativo CardDemo.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Segurança:</strong> O acesso à lista de usuários, detalhes do usuário e ações são restritos a administradores autenticados.</li>
+<li><strong>Validação de Entrada:</strong> O programa valida as seleções do usuário para garantir que apenas opções válidas (U/D) sejam processadas.</li>
+<li><strong>Integridade de Dados:</strong> O programa interage com o arquivo seguro USRSEC, garantindo a integridade e confidencialidade dos dados do usuário.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Programa Principal:</strong></p>
+<ul>
+<li><strong><code>COUSR00C</code>:</strong> Este programa lida com a exibição e gerenciamento da lista de usuários.</li>
+</ul>
+<p><strong>Funções Principais:</strong></p>
+<ul>
+<li><strong><code>PROCESS-ENTER-KEY</code>:</strong> Processa a entrada do usuário, particularmente a seleção de um usuário para atualização ou exclusão.</li>
+<li><strong><code>PROCESS-PF7-KEY</code>:</strong> Lida com a navegação para a página anterior de registros de usuários.</li>
+<li><strong><code>PROCESS-PF8-KEY</code>:</strong> Lida com a navegação para a próxima página de registros de usuários.</li>
+<li><strong><code>PROCESS-PAGE-FORWARD</code>:</strong> Busca e preenche a próxima página de registros de usuários.</li>
+<li><strong><code>PROCESS-PAGE-BACKWARD</code>:</strong> Busca e preenche a página anterior de registros de usuários.</li>
+<li><strong><code>POPULATE-USER-DATA</code>:</strong> Preenche os campos de exibição com dados dos registros de usuário buscados.</li>
+<li><strong><code>INITIALIZE-USER-DATA</code>:</strong> Limpa os campos de exibição para se preparar para exibir um novo conjunto de registros.</li>
+<li><strong><code>RETURN-TO-PREV-SCREEN</code>:</strong> Retorna o usuário para a tela anterior.</li>
+<li><strong><code>SEND-USRLST-SCREEN</code>:</strong> Envia a tela de lista de usuários para o terminal do administrador.</li>
+<li><strong><code>RECEIVE-USRLST-SCREEN</code>:</strong> Recebe a entrada do usuário da tela de lista de usuários.</li>
+<li><strong><code>POPULATE-HEADER-INFO</code>:</strong> Preenche as informações de cabeçalho da tela.</li>
+<li><strong><code>STARTBR-USER-SEC-FILE</code>:</strong> Inicia uma sessão de navegação com o arquivo USRSEC.</li>
+<li><strong><code>READNEXT-USER-SEC-FILE</code>:</strong> Lê o próximo registro do arquivo USRSEC.</li>
+<li><strong><code>READPREV-USER-SEC-FILE</code>:</strong> Lê o registro anterior do arquivo USRSEC.</li>
+<li><strong><code>ENDBR-USER-SEC-FILE</code>:</strong> Encerra a sessão de navegação com o arquivo USRSEC.</li>
+</ul>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>WS-USRSEC-FILE</code>:</strong> Armazena o nome do arquivo de usuário seguro (USRSEC).</li>
+<li><strong><code>CDEMO-CU00-USR-SELECTED</code>:</strong> Armazena o ID do usuário selecionado para uma ação.</li>
+<li><strong><code>CDEMO-CU00-USR-SEL-FLG</code>:</strong> Armazena a ação selecionada (U/D) para o usuário escolhido.</li>
+<li><strong><code>CDEMO-CU00-PAGE-NUM</code>:</strong> Rastreia o número da página atual sendo exibida.</li>
+<li><strong><code>CDEMO-CU00-USRID-FIRST</code>:</strong> Armazena o ID do Usuário do primeiro registro na página atual.</li>
+<li><strong><code>CDEMO-CU00-USRID-LAST</code>:</strong> Armazena o ID do Usuário do último registro na página atual.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Autorização:</strong> O acesso a esta funcionalidade é restrito a pessoal autorizado com privilégios administrativos, garantindo que dados confidenciais do usuário sejam protegidos contra acesso e modificação não autorizados.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Programas de Gerenciamento de Usuários (COUSR02C, COUSR03C):</strong> Este programa interage diretamente com os programas de atualização (COUSR02C) e exclusão (COUSR03C) do usuário, passando as informações do usuário selecionado para processamento posterior.</li>
+<li><strong>Arquivo USRSEC:</strong> Este programa lê dados diretamente do arquivo USRSEC, o que provavelmente afeta o desempenho com base no tamanho do arquivo e na carga do sistema.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SEC-USR-ID</td>
+<td>String</td>
+<td>ID do Usuário</td>
+</tr>
+<tr>
+<td>SEC-USR-FNAME</td>
+<td>String</td>
+<td>Nome do Usuário</td>
+</tr>
+<tr>
+<td>SEC-USR-LNAME</td>
+<td>String</td>
+<td>Sobrenome do Usuário</td>
+</tr>
+<tr>
+<td>SEC-USR-TYPE</td>
+<td>String</td>
+<td>Tipo de Usuário (por exemplo, Administrador, Usuário)</td>
+</tr>
+<tr>
+<td>USRID01I - USRID10I</td>
+<td>String</td>
+<td>Campos de exibição para IDs de Usuário na página atual</td>
+</tr>
+<tr>
+<td>FNAME01I - FNAME10I</td>
+<td>String</td>
+<td>Campos de exibição para Nomes de Usuário na página atual</td>
+</tr>
+<tr>
+<td>LNAME01I - LNAME10I</td>
+<td>String</td>
+<td>Campos de exibição para Sobrenomes de Usuário na página atual</td>
+</tr>
+<tr>
+<td>UTYPE01I - UTYPE10I</td>
+<td>String</td>
+<td>Campos de exibição para Tipos de Usuário na página atual</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>Arquivo USRSEC:</strong> O arquivo seguro contendo dados do usuário.</li>
+<li><strong>Programa COUSR02C:</strong> O programa responsável por atualizar as informações do usuário.</li>
+<li><strong>Programa COUSR03C:</strong> O programa responsável por excluir as informações do usuário.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

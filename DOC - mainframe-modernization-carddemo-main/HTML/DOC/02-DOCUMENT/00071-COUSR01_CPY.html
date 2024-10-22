@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00071-COUSR01_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Gerenciamento de Informações do Usuário</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Gerenciamento de Informações do Usuário - Especificação Copybook COBOL</li>
+</ul>
+<h2>Descrição resumida</h2>
+<p>Este documento descreve a estrutura e função do copybook <code>COUSR01</code> dentro de um sistema baseado em COBOL. Este copybook serve como um modelo para armazenar e gerenciar informações do usuário, essencial para tarefas como autenticação de usuário, exibição de perfil e atualizações de conta.</p>
+<h2>Histórico da versão</h2>
+<ul>
+<li>Versão 1.0: Versão inicial</li>
+</ul>
+<h2>Descrição do processo</h2>
+<p>O copybook <code>COUSR01</code> define o layout para lidar com dados do usuário. Ele fornece duas visualizações das mesmas informações:</p>
+<ol>
+<li>
+<p><strong>Lista de Atributos Detalhada (<code>COUSR1AI</code>):</strong> Esta visualização apresenta atributos individuais do usuário, cada um com um rótulo designado e espaço de armazenamento. Isso é semelhante a um formulário estruturado com campos para detalhes como “Nome”, “Sobrenome”, “ID do Usuário”, “Senha” e assim por diante.</p>
+</li>
+<li>
+<p><strong>Visualização de Acesso Alternativo (<code>COUSR1AO</code>):</strong> Esta visualização oferece uma maneira diferente de acessar as mesmas informações do usuário, potencialmente agrupando campos relacionados ou apresentando-os em um formato específico. Por exemplo, ele pode combinar o nome e o sobrenome no campo “Nome Completo”.</p>
+</li>
+</ol>
+<h2>Requisitos para iniciar o processo</h2>
+<ol>
+<li><strong>Programa COBOL:</strong> Este copybook foi projetado para ser incluído em programas COBOL, fornecendo a estrutura de dados para informações do usuário.</li>
+<li><strong>Mecanismo de armazenamento de dados:</strong> O sistema precisa de um mecanismo para armazenar e recuperar dados do usuário, que pode ser um banco de dados ou um sistema de arquivos.</li>
+</ol>
+<h2>Validações e regras</h2>
+<ul>
+<li><strong>Tipos de dados e tamanhos:</strong> O copybook especifica o tipo de dados e o tamanho para cada informação para garantir a alocação adequada de armazenamento e interpretação de dados.</li>
+<li><strong>Identificação do usuário:</strong> O copybook inclui campos para armazenar identificadores exclusivos como “ID do usuário” e “Senha”, que são cruciais para autenticação do usuário e controle de acesso.</li>
+<li><strong>Informação pessoal:</strong> Campos como “Nome” e “Sobrenome” capturam detalhes básicos do usuário para personalização e manutenção de registros.</li>
+<li><strong>Tipo de usuário:</strong> Um campo “Tipo de usuário” provavelmente diferencia as funções do usuário e suas permissões de sistema correspondentes (por exemplo, administrador, usuário padrão).</li>
+<li><strong>Tratamento de erros:</strong> A inclusão de um campo “Mensagem de erro” sugere que o sistema possui mecanismos para lidar e comunicar erros relacionados aos dados do usuário, como tentativas inválidas de login ou falhas de validação de dados.</li>
+</ul>
+<h2>Detalhes técnicos</h2>
+<p><strong>Copybooks:</strong></p>
+<ul>
+<li><strong><code>COUSR01</code>:</strong> O copybook principal que define a estrutura de informações do usuário. Ele contém dois layouts de registro: <code>COUSR1AI</code> e <code>COUSR1AO</code>.</li>
+</ul>
+<p><strong>Estruturas de dados:</strong></p>
+<ul>
+<li><strong><code>COUSR1AI</code>:</strong> Uma lista detalhada de atributos do usuário.</li>
+<li><strong><code>COUSR1AO</code>:</strong> Uma visão alternativa dos mesmos dados do usuário, potencialmente com agrupamento ou diferenças de formatação.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Armazenamento de senha:</strong> Embora não seja explicitamente detalhado, o sistema deve empregar algoritmos seguros de hash de senha para proteger as senhas do usuário contra acesso não autorizado.</li>
+</ul>
+<h2>Impacto em outros sistemas</h2>
+<ul>
+<li><strong>Sistema de autenticação:</strong> Este copybook impacta diretamente os processos de autenticação do usuário, pois define a estrutura para armazenar e verificar as credenciais do usuário.</li>
+<li><strong>Interface do usuário:</strong> A estrutura definida neste copybook influencia como as informações do usuário são exibidas e atualizadas na interface do usuário do sistema.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRNNAMEL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Tamanho do nome da transação.</td>
+</tr>
+<tr>
+<td>TRNNAMEF</td>
+<td>PICTURE X</td>
+<td>Sinalizador de nome da transação.</td>
+</tr>
+<tr>
+<td>TRNNAMEA</td>
+<td>PICTURE X</td>
+<td>Atributo de nome da transação.</td>
+</tr>
+<tr>
+<td>TRNNAMEI</td>
+<td>PIC X(4)</td>
+<td>Nome da transação.</td>
+</tr>
+<tr>
+<td>TITLE01L</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Tamanho do primeiro título.</td>
+</tr>
+<tr>
+<td>TITLE01F</td>
+<td>PICTURE X</td>
+<td>Sinalizador do primeiro título.</td>
+</tr>
+<tr>
+<td>TITLE01A</td>
+<td>PICTURE X</td>
+<td>Atributo do primeiro título.</td>
+</tr>
+<tr>
+<td>TITLE01I</td>
+<td>PIC X(40)</td>
+<td>Primeiro título.</td>
+</tr>
+<tr>
+<td>CURDATEL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Tamanho da data atual.</td>
+</tr>
+<tr>
+<td>CURDATEF</td>
+<td>PICTURE X</td>
+<td>Sinalizador de data atual.</td>
+</tr>
+<tr>
+<td>CURDATEA</td>
+<td>PICTURE X</td>
+<td>Atributo de data atual.</td>
+</tr>
+<tr>
+<td>CURDATEI</td>
+<td>PIC X(8)</td>
+<td>Data atual.</td>
+</tr>
+<tr>
+<td>PGMNAMEL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Tamanho do nome do programa.</td>
+</tr>
+<tr>
+<td>PGMNAMEF</td>
+<td>PICTURE X</td>
+<td>Sinalizador de nome do programa.</td>
+</tr>
+<tr>
+<td>PGMNAMEA</td>
+<td>PICTURE X</td>
+<td>Atributo de nome do programa.</td>
+</tr>
+<tr>
+<td>PGMNAMEI</td>
+<td>PIC X(8)</td>
+<td>Nome do programa.</td>
+</tr>
+<tr>
+<td>TITLE02L</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Tamanho do segundo título.</td>
+</tr>
+<tr>
+<td>TITLE02F</td>
+<td>PICTURE X</td>
+<td>Sinalizador do segundo título.</td>
+</tr>
+<tr>
+<td>TITLE02A</td>
+<td>PICTURE X</td>
+<td>Atributo do segundo título.</td>
+</tr>
+<tr>
+<td>TITLE02I</td>
+<td>PIC X(40)</td>
+<td>Segundo título.</td>
+</tr>
+<tr>
+<td>CURTIMEL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Tamanho da hora atual.</td>
+</tr>
+<tr>
+<td>CURTIMEF</td>
+<td>PICTURE X</td>
+<td>Sinalizador de hora atual.</td>
+</tr>
+<tr>
+<td>CURTIMEA</td>
+<td>PICTURE X</td>
+<td>Atributo de hora atual.</td>
+</tr>
+<tr>
+<td>CURTIMEI</td>
+<td>PIC X(8)</td>
+<td>Hora atual.</td>
+</tr>
+<tr>
+<td>FNAMEL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Tamanho do primeiro nome.</td>
+</tr>
+<tr>
+<td>FNAMEF</td>
+<td>PICTURE X</td>
+<td>Sinalizador do primeiro nome.</td>
+</tr>
+<tr>
+<td>FNAMEA</td>
+<td>PICTURE X</td>
+<td>Atributo do primeiro nome.</td>
+</tr>
+<tr>
+<td>FNAMEI</td>
+<td>PIC X(20)</td>
+<td>Primeiro nome.</td>
+</tr>
+<tr>
+<td>LNAMEL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Tamanho do sobrenome.</td>
+</tr>
+<tr>
+<td>LNAMEF</td>
+<td>PICTURE X</td>
+<td>Sinalizador do sobrenome.</td>
+</tr>
+<tr>
+<td>LNAMEA</td>
+<td>PICTURE X</td>
+<td>Atributo do sobrenome.</td>
+</tr>
+<tr>
+<td>LNAMEI</td>
+<td>PIC X(20)</td>
+<td>Sobrenome.</td>
+</tr>
+<tr>
+<td>USERIDL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Tamanho do ID do usuário.</td>
+</tr>
+<tr>
+<td>USERIDF</td>
+<td>PICTURE X</td>
+<td>Sinalizador do ID do usuário.</td>
+</tr>
+<tr>
+<td>USERIDA</td>
+<td>PICTURE X</td>
+<td>Atributo do ID do usuário.</td>
+</tr>
+<tr>
+<td>USERIDI</td>
+<td>PIC X(8)</td>
+<td>ID do usuário.</td>
+</tr>
+<tr>
+<td>PASSWDL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Tamanho da senha.</td>
+</tr>
+<tr>
+<td>PASSWDF</td>
+<td>PICTURE X</td>
+<td>Sinalizador de senha.</td>
+</tr>
+<tr>
+<td>PASSWDA</td>
+<td>PICTURE X</td>
+<td>Atributo de senha.</td>
+</tr>
+<tr>
+<td>PASSWDI</td>
+<td>PIC X(8)</td>
+<td>Senha.</td>
+</tr>
+<tr>
+<td>USRTYPEL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Tamanho do tipo de usuário.</td>
+</tr>
+<tr>
+<td>USRTYPEF</td>
+<td>PICTURE X</td>
+<td>Sinalizador do tipo de usuário.</td>
+</tr>
+<tr>
+<td>USRTYPEA</td>
+<td>PICTURE X</td>
+<td>Atributo do tipo de usuário.</td>
+</tr>
+<tr>
+<td>USRTYPEI</td>
+<td>PIC X(1)</td>
+<td>Tipo de usuário.</td>
+</tr>
+<tr>
+<td>ERRMSGL</td>
+<td>COMP  PIC  S9(4)</td>
+<td>Tamanho da mensagem de erro.</td>
+</tr>
+<tr>
+<td>ERRMSGF</td>
+<td>PICTURE X</td>
+<td>Sinalizador de mensagem de erro.</td>
+</tr>
+<tr>
+<td>ERRMSGA</td>
+<td>PICTURE X</td>
+<td>Atributo de mensagem de erro.</td>
+</tr>
+<tr>
+<td>ERRMSGI</td>
+<td>PIC X(78)</td>
+<td>Mensagem de erro.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais referências</h2>
+<ul>
+<li>Padrões de linguagem de programação COBOL</li>
+</ul>
+<p><strong>Considerações adicionais:</strong></p>
+<ul>
+<li><strong>Validação de dados:</strong> Embora o copybook defina a estrutura, rotinas adicionais de validação de dados devem ser implementadas em programas COBOL para garantir a precisão e integridade das informações do usuário.</li>
+<li><strong>Tratamento de erros:</strong> Implemente mecanismos robustos de tratamento de erros em programas que utilizam este copybook para lidar normalmente com problemas potenciais como formatos de dados inválidos ou tentativas de acesso não autorizado.</li>
+<li><strong>Log:</strong> Considere incorporar mecanismos de log para rastrear eventos relacionados ao usuário, como tentativas de login, atualizações de perfil e ocorrências de erro.</li>
+</ul>
+<p><strong>Observação:</strong> Esta especificação é baseada no trecho de código fornecido e no contexto limitado. Para uma especificação de programa completa e abrangente, detalhes adicionais sobre os requisitos de negócios específicos, arquitetura do sistema e considerações de segurança são necessários.</p>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

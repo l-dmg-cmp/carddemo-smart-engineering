@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00007-CBSTM03B_CBL</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Sub-rotina de Processamento de Arquivo de Transação de Cartão - Especificação Técnica</h1>
+<h1><strong>Descrição Resumida:</strong></h1>
+<p>Esta sub-rotina é uma parte crítica de um programa COBOL maior que gerencia transações de cartão de crédito. Ela age como um bibliotecário de dados, buscando informações de diferentes arquivos mediante solicitação.</p>
+<p>Imagine que você tenha arquivos separados para:</p>
+<ol>
+<li><strong>Transações:</strong> Detalhes de cada compra com cartão de crédito.</li>
+<li><strong>Referências Cruzadas:</strong> Vinculando cartões de crédito às suas respectivas contas.</li>
+<li><strong>Clientes:</strong> Informações pessoais sobre cada titular do cartão.</li>
+<li><strong>Contas:</strong> Especificidades como limite de crédito e saldo para cada conta.</li>
+</ol>
+<p>Esta sub-rotina abre o arquivo correto, recupera as informações necessárias com base nos identificadores fornecidos (como número da conta) e as entrega de volta ao programa principal. Ela garante um processamento de dados preciso e eficiente para operações de cartão de crédito.</p>
+<h1><strong>Histórias do Usuário:</strong></h1>
+<p>Como um sistema de processamento em lote, preciso acessar e processar dados de clientes, contas e transações de arquivos separados para garantir a operação suave e precisa das tarefas de gerenciamento de cartão de crédito.</p>
+<h1><strong>Epic Relacionado:</strong></h1>
+<p>4 - Processamento de Transações</p>
+<h1><strong>Requisitos Funcionais:</strong></h1>
+<ul>
+<li><strong>Acesso a Arquivos:</strong> Abrir, ler e fechar conexões com os arquivos de Transação, Referência Cruzada, Cliente e Conta.</li>
+<li><strong>Tratamento de Solicitações:</strong>  Receber e interpretar solicitações do programa principal, incluindo:
+<ul>
+<li><strong>Arquivo de Destino:</strong> Com qual arquivo interagir.</li>
+<li><strong>Ação:</strong>  Abrir, ler, fechar ou ler com uma chave específica (por exemplo, encontrar cliente por ID).</li>
+<li><strong>Chave:</strong> Quando aplicável, o identificador para localizar registros específicos dentro de um arquivo.</li>
+</ul>
+</li>
+<li><strong>Recuperação de Dados:</strong>  Recuperar dados do arquivo e registro especificado, com base na chave fornecida.</li>
+<li><strong>Tratamento de Erros:</strong>  Detectar e relatar quaisquer erros encontrados durante as operações do arquivo, como arquivo não encontrado, chave inválida ou problemas de permissão.</li>
+</ul>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Processamento Sequencial (Arquivo de Transação):</strong> As transações são processadas uma a uma na ordem em que aparecem no arquivo.</li>
+<li><strong>Acesso Baseado em Chave (Arquivos de Cliente e Conta):</strong>  Os registros são recuperados usando identificadores exclusivos (ID do cliente, ID da conta).</li>
+<li><strong>Relato de Erros:</strong>  Códigos de erro padronizados são usados para comunicar problemas de volta ao programa principal.</li>
+</ul>
+<h1><strong>Requisitos Não Funcionais:</strong></h1>
+<ul>
+<li><strong>Desempenho:</strong> A sub-rotina deve concluir as operações de arquivo de forma rápida e eficiente, minimizando o impacto no tempo geral de processamento em lote.</li>
+<li><strong>Confiabilidade:</strong>  Garantir a recuperação e o tratamento precisos dos dados, evitando a corrupção ou perda de dados.</li>
+<li><strong>Manutenibilidade:</strong>  O código deve ser bem estruturado, documentado e fácil de entender para futuras modificações.</li>
+</ul>
+<h1><strong>Critérios de Aceite:</strong></h1>
+<ul>
+<li>A sub-rotina abre, lê e fecha com sucesso todos os arquivos de dados especificados.</li>
+<li>A recuperação de dados usando as chaves fornecidas é precisa e consistente.</li>
+<li>Os erros durante as operações do arquivo são capturados e relatados com os códigos de erro apropriados.</li>
+<li>O desempenho da sub-rotina não afeta significativamente o tempo geral de processamento em lote.</li>
+</ul>
+<h1><strong>Melhorias no Código:</strong></h1>
+<ul>
+<li><strong>Tratamento de Erros Centralizado:</strong>  Crie uma rotina comum de tratamento de erros para evitar código redundante e garantir o relato de erros consistente.</li>
+<li><strong>Registro Detalhado:</strong>  Implemente o registro para todas as operações e erros do arquivo para ajudar na depuração e no monitoramento do sistema.</li>
+<li><strong>Validação de Parâmetro:</strong> Adicione verificações para garantir que os parâmetros de entrada (arquivo de destino, ação, chave) sejam válidos antes de prosseguir com as operações do arquivo.</li>
+</ul>
+<h1><strong>Melhorias na Segurança:</strong></h1>
+<ul>
+<li><strong>Controle de Acesso a Arquivos:</strong> Implemente permissões de arquivo apropriadas para restringir o acesso não autorizado a dados confidenciais.</li>
+<li><strong>Criptografia de Dados:</strong>  Considere criptografar dados confidenciais dentro dos arquivos para proteção contra divulgação não autorizada.</li>
+<li><strong>Trilha de Auditoria:</strong> Registre todas as tentativas de acesso a arquivos, incluindo ID do usuário e carimbos de hora, para fins de auditoria de segurança.</li>
+</ul>
+<h1><strong>Diagrama Conceitual:</strong></h1>
+<img src="00007-CBSTM03B_CBL_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

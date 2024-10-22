@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant User
+    participant COTRN00C
+    participant TRANSACT File
+    
+    activate User
+    User->>+COTRN00C: Request to view transaction history
+    activate COTRN00C
+    COTRN00C->>+TRANSACT File: Open
+    TRANSACT File->>COTRN00C: Open Successful
+    COTRN00C->>+TRANSACT File: Read Transactions
+    TRANSACT File->>COTRN00C: Transaction Data
+    COTRN00C->>-User: Display Transaction List (Page 1) 
+    User->>+COTRN00C:  Request Next Page
+    COTRN00C->>+TRANSACT File: Read Transactions
+    TRANSACT File->>COTRN00C: Transaction Data
+    COTRN00C->>-User: Display Transaction List (Page 2)
+    User->>+COTRN00C:  Exit
+    COTRN00C->>+TRANSACT File: Close
+    TRANSACT File->>-COTRN00C: Close Successful
+    deactivate COTRN00C
+    deactivate User

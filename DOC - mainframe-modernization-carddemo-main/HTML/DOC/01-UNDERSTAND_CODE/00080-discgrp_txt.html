@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00080-discgrp_txt</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h2>Mapeamento de Configuração de Grupo de Discos</h2>
+<p><strong>Arquivo:</strong>  \discgrp.txt</p>
+<p><strong>Contexto:</strong></p>
+<p>Este arquivo atua como um projeto para organizar o espaço de armazenamento, semelhante à forma como as pastas no seu computador agrupam arquivos relacionados. Cada linha no arquivo determina como grupos de dados específicos, identificados por códigos exclusivos, devem ter recursos de armazenamento alocados.</p>
+<p><strong>Ação:</strong></p>
+<ol>
+<li>
+<p><strong>Estrutura de Mapeamento:</strong> O arquivo segue um padrão simples:</p>
+<ul>
+<li><strong>Identificador de Grupo:</strong> Um código (por exemplo, <code>A000000000010001</code>, <code>ZEROAPR</code>) representando um grupo de dados específico.</li>
+<li><strong>Valores de Configuração:</strong> Um conjunto de números e caracteres (por exemplo, <code>01000100150{0000000000000000000000000000</code>) provavelmente definindo parâmetros de armazenamento para esse grupo.</li>
+</ul>
+</li>
+<li>
+<p><strong>Funcionalidade:</strong> Embora o significado exato dos valores de configuração não seja fornecido, eles provavelmente controlam aspectos como:</p>
+<ul>
+<li><strong>Alocação de Disco:</strong> Em quais discos físicos ou pools de armazenamento os dados do grupo devem residir.</li>
+<li><strong>Configurações de Desempenho:</strong> Opções para potencialmente priorizar velocidade ou redundância para o grupo de dados.</li>
+<li><strong>Limites de Capacidade:</strong> Espaço máximo de armazenamento que pode ser usado pelo grupo.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Segregação de Dados:</strong> O arquivo sugere um sistema projetado para gerenciar várias categorias de dados separadamente. Isso permite estratégias de armazenamento personalizadas com base na importância, frequência de acesso ou sensibilidade de diferentes tipos de dados.</li>
+<li><strong>Alocação Predefinida:</strong> O uso de identificadores específicos implica que a alocação de armazenamento é determinada com antecedência. Isso pode ser baseado em fatores como o volume de dados esperado para cada grupo, requisitos de desempenho ou restrições regulatórias.</li>
+<li><strong>Potencial de Personalização:</strong> A presença de um identificador “DEFAULT” sugere uma configuração básica que pode ser substituída para grupos específicos (por exemplo, <code>ZEROAPR</code>) que exigem configurações de armazenamento exclusivas.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

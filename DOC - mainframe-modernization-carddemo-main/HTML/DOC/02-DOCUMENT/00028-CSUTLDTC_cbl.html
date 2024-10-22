@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00028-CSUTLDTC_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Aplicação CardDemo: Utilitário de Conversão de Data</h1>
+<h2>Documento de Título: Aplicação CardDemo - Especificação do Utilitário de Conversão de Data (CSUTLDTC)</h2>
+<h2>Arquivo:</h2>
+<ul>
+<li><code>\CSUTLDTC.cbl</code></li>
+</ul>
+<h2>Descrição resumida</h2>
+<p>Este documento descreve as especificações para o Utilitário de Conversão de Data (CSUTLDTC), um programa COBOL dentro da aplicação CardDemo. Este utilitário fornece uma função crítica para o sistema, convertendo datas de formatos legíveis por humanos, como “MM-DD-YYYY”, para o formato Lilian, uma representação numérica facilmente processada por computadores. Essa conversão é essencial para várias operações relacionadas a datas, incluindo cálculo de juros, geração de relatórios e gerenciamento de atividades de contas.</p>
+<h2>Histórico da Versão</h2>
+<ul>
+<li>Versão 1.0: Versão Inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O Utilitário de Conversão de Data simplifica o tratamento de datas dentro da aplicação CardDemo. O processo envolve:</p>
+<ol>
+<li><strong>Recebimento de Informação de Data:</strong> O utilitário recebe uma string de data e seu formato correspondente (por exemplo, “10-01-2024” e “MM-DD-YYYY”).</li>
+<li><strong>Utilização da Função do Sistema (CEEDAYS):</strong> O utilitário aproveita uma função integrada do sistema chamada “CEEDAYS” projetada especificamente para conversões de data. Esta função compreende vários formatos de data.</li>
+<li><strong>Validação e Conversão de Data:</strong> A função “CEEDAYS” verifica a validade da data fornecida com base no formato fornecido. Se válida, ela converte a data para o formato Lilian.</li>
+<li><strong>Tratamento de Erros:</strong> Se uma data ou formato inválido for fornecido, “CEEDAYS” sinaliza um erro. O utilitário então gera uma mensagem de erro amigável detalhando o problema (por exemplo, “Mês Inválido”, “String Pic Inválida”).</li>
+<li><strong>Retornando Resultados:</strong> O utilitário envia de volta a data Lilian convertida se a conversão for bem-sucedida. Em caso de erro, ele fornece uma mensagem de erro descritiva para identificar o problema.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Data de Entrada:</strong> Uma string de caracteres representando a data a ser convertida.</li>
+<li><strong>Formato de Data:</strong> Uma string de caracteres especificando o formato da data de entrada (por exemplo, “MM-DD-YYYY”, “DD-MM-YYYY”).</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Formato de Data:</strong> O formato da data de entrada deve ser suportado pela função “CEEDAYS”.</li>
+<li><strong>Validade da Data:</strong> A própria data de entrada deve ser uma data válida (por exemplo, não 30 de fevereiro).</li>
+</ul>
+<h2>Detalhes técnicos</h2>
+<p><strong>Programa Principal:</strong></p>
+<ul>
+<li><strong>CSUTLDTC:</strong> Este programa lida com todo o processo de conversão de data.</li>
+</ul>
+<p><strong>Principais Funções/Métodos:</strong></p>
+<ul>
+<li><strong>CEEDAYS:</strong> Uma função de nível de sistema usada para converter datas para o formato Lilian.</li>
+</ul>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong>WS-DATE-TO-TEST:</strong> Armazena a string da data de entrada.</li>
+<li><strong>WS-DATE-FORMAT:</strong> Armazena a string do formato da data de entrada.</li>
+<li><strong>OUTPUT-LILLIAN:</strong> Armazena a data Lilian convertida.</li>
+<li><strong>FEEDBACK-CODE:</strong> Contém o código de retorno da função “CEEDAYS”, indicando sucesso ou erros específicos.</li>
+<li><strong>LS-DATE:</strong> Recebe a string da data de entrada do programa de chamada.</li>
+<li><strong>LS-DATE-FORMAT:</strong> Recebe o formato da data de entrada do programa de chamada.</li>
+<li><strong>LS-RESULT:</strong> Retorna o resultado da conversão (a data Lilian ou uma mensagem de erro).</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li>Este utilitário não lida diretamente com dados confidenciais. No entanto, garantir a precisão das conversões de data é crucial para manter a integridade dos dados dentro da aplicação CardDemo.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li>O Utilitário de Conversão de Data é fundamental para outros programas dentro da aplicação CardDemo que dependem de cálculos precisos de data (por exemplo, módulos de cálculo de juros, geradores de relatórios).</li>
+</ul>
+<h2>Modelos</h2>
+<p>Não aplicável para este utilitário, pois ele se concentra principalmente na manipulação de dados.</p>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>Documentação da Função do Sistema CEEDAYS:</strong> Esta documentação fornece informações abrangentes sobre a função “CEEDAYS”, seus formatos de data suportados e códigos de retorno.</li>
+</ul>
+<p><strong>Considerações Adicionais:</strong></p>
+<ul>
+<li><strong>Registro de Erros:</strong> Considere implementar o registro detalhado de erros para registrar quaisquer problemas encontrados durante o processo de conversão. Isso pode ser útil para depuração e monitoramento do sistema.</li>
+<li><strong>Desempenho:</strong> Como este utilitário pode ser chamado com frequência, certifique-se de que a função “CEEDAYS” e a lógica geral do programa sejam otimizadas para desempenho.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

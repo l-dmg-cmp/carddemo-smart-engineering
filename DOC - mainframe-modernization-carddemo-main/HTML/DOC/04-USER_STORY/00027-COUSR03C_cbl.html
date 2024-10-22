@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00027-COUSR03C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h1>CardDemo Gerenciamento de Usuários - Exclusão de Usuário</h1>
+<h2>Descrição Resumida</h2>
+<p>Esta especificação detalha a função “Exclusão de Usuário” dentro da aplicação CardDemo. Esta função permite que usuários autorizados (administradores) removam contas de usuário com segurança.</p>
+<h2>Histórias de Usuário</h2>
+<p>Como administrador do sistema, preciso ser capaz de excluir contas de usuário para poder gerenciar o acesso do usuário e garantir a segurança do sistema.</p>
+<h2>Épico Relacionado:</h2>
+<p>6 - Gerenciamento de Usuários e Segurança</p>
+<h2>Requisitos Funcionais</h2>
+<ul>
+<li><strong>Identificação do Usuário:</strong> O sistema deve permitir que um administrador insira um ID de usuário para identificar a conta a ser excluída.</li>
+<li><strong>Verificação do Usuário:</strong> O sistema deve recuperar e exibir os detalhes do usuário para confirmação antes da exclusão.</li>
+<li><strong>Confirmação de Exclusão:</strong> O sistema deve exigir confirmação explícita do administrador antes de excluir a conta do usuário.</li>
+<li><strong>Execução da Exclusão:</strong> Após a confirmação, o sistema deve remover o registro do usuário do arquivo USRSEC.</li>
+<li><strong>Comunicação de Resultados:</strong> O sistema deve exibir uma mensagem de sucesso após a exclusão bem-sucedida ou uma mensagem de erro se a exclusão falhar.</li>
+</ul>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li>Somente administradores autenticados com permissões apropriadas podem excluir contas de usuário.</li>
+<li>O sistema deve verificar o ID do usuário antes da exclusão para evitar a exclusão acidental da conta errada.</li>
+<li>Todas as ações de exclusão de usuário devem ser registradas para fins de auditoria.</li>
+</ul>
+<h2>Requisitos Não Funcionais</h2>
+<ul>
+<li><strong>Segurança:</strong> Somente pessoal autorizado deve poder excluir contas de usuário. O sistema deve empregar mecanismos robustos de autenticação e autorização para garantir que somente usuários autorizados possam acessar e executar esta função.</li>
+<li><strong>Integridade de Dados:</strong> O sistema deve garantir que a conta de usuário correta seja excluída. Ele deve fornecer etapas de confirmação claras ao administrador antes de remover permanentemente quaisquer dados.</li>
+<li><strong>Auditabilidade:</strong> Todas as ações de exclusão de usuário, incluindo o usuário que iniciou a exclusão, a data e hora da ação e o ID de usuário da conta excluída, devem ser registradas para fins de auditoria e rastreamento.</li>
+</ul>
+<h2>Critérios de Aceite</h2>
+<ul>
+<li>Um administrador autenticado deve ser capaz de excluir uma conta de usuário existente com sucesso.</li>
+<li>O sistema deve exibir uma mensagem de confirmação após a exclusão bem-sucedida do usuário.</li>
+<li>O sistema deve lidar com IDs de usuário inválidos normalmente e exibir uma mensagem de erro apropriada.</li>
+<li>O sistema deve registrar todas as ações de exclusão de usuário para fins de auditoria.</li>
+</ul>
+<h2>Melhorias de Código</h2>
+<ul>
+<li>Implementar consultas parametrizadas para evitar vulnerabilidades de injeção de SQL ao acessar o arquivo USRSEC.</li>
+<li>Adicionar tratamento de erros para operações de arquivo para lidar normalmente com erros potenciais durante o acesso ao arquivo.</li>
+<li>Usar uma estrutura de registro para fornecer registros detalhados para facilitar a solução de problemas e o monitoramento.</li>
+</ul>
+<h2>Melhorias de Segurança</h2>
+<ul>
+<li>Implementar políticas de senha forte para contas de administrador.</li>
+<li>Habilitar a autenticação de dois fatores para contas de administrador para evitar acesso não autorizado.</li>
+<li>Revisar e atualizar regularmente as listas de controle de acesso para funções de gerenciamento de usuários.</li>
+</ul>
+<h2>Diagrama Conceitual</h2>
+<img src="00027-COUSR03C_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+sequenceDiagram
+  %% Indicates the Participants involved in the process
+  participant DailyTransactionProcessor
+  participant DailyTransactionFile
+  participant Database
+  participant SalesAnalyzer
+  participant InventoryManager
+  participant CustomerBehaviorAnalyzer
+  participant OperationalEfficiencyAnalyzer
+
+  activate DailyTransactionProcessor
+  DailyTransactionProcessor->>+DailyTransactionFile: Open
+  DailyTransactionFile-->>-DailyTransactionProcessor: Open Successful
+
+  loop For Each Transaction Record
+    DailyTransactionProcessor->>+DailyTransactionFile: Read Record
+    DailyTransactionFile-->>-DailyTransactionProcessor: Transaction Record Data
+    DailyTransactionProcessor->>DailyTransactionProcessor: ParseTransactionLine
+    DailyTransactionProcessor->>DailyTransactionProcessor: ValidateTransactionData
+    alt Transaction Data is Valid
+      DailyTransactionProcessor->>+Database: StoreTransactionData
+      Database-->>-DailyTransactionProcessor: Store Successful
+      DailyTransactionProcessor->>SalesAnalyzer: Analyze Sales Data
+      DailyTransactionProcessor->>InventoryManager: Update Inventory
+      DailyTransactionProcessor->>CustomerBehaviorAnalyzer: Analyze Customer Behavior
+      DailyTransactionProcessor->>OperationalEfficiencyAnalyzer: Analyze Operational Efficiency
+    else Transaction Data is Invalid
+      DailyTransactionProcessor->>DailyTransactionProcessor: Log Error (Invalid Data)
+    end
+  end
+
+  DailyTransactionProcessor->>+DailyTransactionFile: Close
+  DailyTransactionFile->>-DailyTransactionProcessor: Close Successful
+  deactivate DailyTransactionProcessor

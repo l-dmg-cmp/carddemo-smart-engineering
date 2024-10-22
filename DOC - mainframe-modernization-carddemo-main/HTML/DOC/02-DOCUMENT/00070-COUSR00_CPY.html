@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00070-COUSR00_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Tela de Gerenciamento de Usuários</strong></h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Especificação da Tela de Gerenciamento de Usuários</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li><code>\COUSR00.CPY</code></li>
+</ul>
+<h2>Descrição resumida</h2>
+<p>Este documento descreve as especificações para uma tela de gerenciamento de usuários dentro de um aplicativo maior. Esta tela será a interface principal para os administradores visualizarem, selecionarem e potencialmente gerenciarem as informações do usuário. Esta especificação se concentra em como os dados do usuário são organizados e apresentados na tela, em vez das ações específicas que um administrador pode realizar (por exemplo, adicionar, atualizar, excluir).</p>
+<h2>Histórico da Versão</h2>
+<ul>
+<li>Versão 1.0: Versão inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>A Tela de Gerenciamento de Usuários fornece uma visualização tabular das informações do usuário. Os administradores podem usar esta tela para:</p>
+<ol>
+<li><strong>Visualizar Detalhes do Usuário:</strong> A tela exibe uma lista de usuários com sua ID de Usuário, Nome, Sobrenome e Tipo de Usuário.</li>
+<li><strong>Selecionar Usuários:</strong> Cada linha de usuário inclui um sinalizador de seleção (provavelmente uma caixa de seleção) permitindo que os administradores selecionem um ou vários usuários para ações futuras.</li>
+<li><strong>Informações do Sistema:</strong> A tela também exibe informações do nível do sistema, incluindo o nome da transação, nome do programa, data atual, hora atual e número da página. Essas informações contextuais ajudam no rastreamento e auditoria das atividades de gerenciamento de usuários.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Dados do Usuário:</strong> A tela requer acesso aos dados do usuário, provavelmente armazenados em um arquivo ou banco de dados.</li>
+<li><strong>Privilégios de Administrador:</strong> Somente administradores autorizados devem ter acesso a esta tela.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Preenchimento de Dados:</strong> A tela deve recuperar e exibir com precisão os dados do usuário do mecanismo de armazenamento subjacente.</li>
+<li><strong>Formatação de Dados:</strong> Datas e horas devem ser apresentadas em um formato amigável.</li>
+<li><strong>Integridade de Dados:</strong> As IDs de usuário devem ser exclusivas, evitando entradas duplicadas.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Estrutura de Dados Principal:</strong></p>
+<ul>
+<li><strong><code>COUSR00</code>:</strong> Esta estrutura define o layout para dados de entrada (<code>COUSR0AI</code>) e saída (<code>COUSR0AO</code>) relacionados à tela.</li>
+</ul>
+<p><strong>Campos:</strong></p>
+<ul>
+<li><strong><code>USRID</code>:</strong> Identificador exclusivo para cada usuário.</li>
+<li><strong><code>FNAME</code>:</strong> Primeiro nome do usuário.</li>
+<li><strong><code>LNAME</code>:</strong> Sobrenome do usuário.</li>
+<li><strong><code>UTYPE</code>:</strong> Código que indica a função do usuário (por exemplo, administrador, usuário padrão).</li>
+<li><strong><code>SEL####</code>:</strong> Sinalizadores de seleção (caixas de seleção) para cada linha de usuário.</li>
+<li><strong><code>TRNNAM</code>:</strong> Nome da transação.</li>
+<li><strong><code>PGMNAM</code>:</strong> Nome do programa.</li>
+<li><strong><code>CURDAT</code>:</strong> Data atual.</li>
+<li><strong><code>CURTIM</code>:</strong> Hora atual.</li>
+<li><strong><code>PAGENU</code>:</strong> Número da página.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Controle de Acesso:</strong> O acesso a esta tela deve ser restrito a administradores autorizados.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Processos de Gerenciamento de Usuários:</strong> Esta tela é um componente central para as funcionalidades de gerenciamento de usuários, fornecendo a interface para os administradores interagirem com os dados do usuário.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRNNAM</td>
+<td>String</td>
+<td>Nome da transação</td>
+</tr>
+<tr>
+<td>PGMNAM</td>
+<td>String</td>
+<td>Nome do programa</td>
+</tr>
+<tr>
+<td>CURDAT</td>
+<td>Data</td>
+<td>Data atual</td>
+</tr>
+<tr>
+<td>CURTIM</td>
+<td>Hora</td>
+<td>Hora atual</td>
+</tr>
+<tr>
+<td>PAGENU</td>
+<td>Inteiro</td>
+<td>Número da página</td>
+</tr>
+<tr>
+<td>USRID</td>
+<td>String</td>
+<td>ID de usuário exclusivo</td>
+</tr>
+<tr>
+<td>FNAME</td>
+<td>String</td>
+<td>Primeiro nome do usuário</td>
+</tr>
+<tr>
+<td>LNAME</td>
+<td>String</td>
+<td>Sobrenome do usuário</td>
+</tr>
+<tr>
+<td>UTYPE</td>
+<td>String</td>
+<td>Código do tipo de usuário</td>
+</tr>
+<tr>
+<td>SEL####</td>
+<td>Booleano</td>
+<td>Sinalizador de seleção para cada linha de usuário</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li>N/A - Esta tela parece ser independente e não faz referência direta a outros componentes ou sistemas.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

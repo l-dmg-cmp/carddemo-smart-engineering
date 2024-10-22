@@ -1,0 +1,28 @@
+sequenceDiagram
+    participant User
+    participant `CORPT00C`
+    participant `CSUTLDTC`
+    participant `CICS`
+    participant `TDQ (JOBS)`
+    participant `TRANREPT` (Batch)
+
+    activate `CORPT00C`
+    User->>+`CORPT00C`: Selecionar Tipo de Relatório (Mensal, Anual, Personalizado)
+    `CORPT00C`->>+User: Exibir Entrada de Data (se Personalizado)
+    User->>-`CORPT00C`: Inserir Data de Início e Data de Término (se Personalizado)
+    `CORPT00C`->>+`CSUTLDTC`: Validar Data de Início (se Personalizado)
+    `CSUTLDTC`->>`CORPT00C`: Resultado da Validação (Data de Início)
+    `CORPT00C`->>+`CSUTLDTC`: Validar Data de Término (se Personalizado)
+    `CSUTLDTC`->>-`CORPT00C`: Resultado da Validação (Data de Término)
+    `CORPT00C`->>+User: Confirmar Geração do Relatório
+    User->>-`CORPT00C`: Confirmação (Sim/Não)
+    alt Confirmação for Sim
+        `CORPT00C`->>`CORPT00C`: Gerar JCL
+        `CORPT00C`->>+`CICS`: Enviar JCL para `TDQ (JOBS)`
+        `CICS`->>`CORPT00C`: Resultado do Envio do Trabalho
+        `CORPT00C`->>User: Solicitação de Relatório Enviada
+        `TDQ (JOBS)`->>+`TRANREPT` (Batch): Disparar Trabalho em Lote
+    else Confirmação for Não
+        `CORPT00C`->>-User: Solicitação de Relatório Cancelada
+    end
+    deactivate `CORPT00C`

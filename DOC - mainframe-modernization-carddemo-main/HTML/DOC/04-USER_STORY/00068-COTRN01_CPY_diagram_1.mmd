@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant Transaction Source
+    participant COTRN01 Program
+    participant COTRN1AI Data Structure
+    participant COTRN1AO Data Structure
+
+    activate Transaction Source
+    Transaction Source->>+COTRN01 Program: Send Transaction Data
+    activate COTRN01 Program
+    COTRN01 Program->>+COTRN1AI Data Structure: Populate Data Fields (Primary Layout)
+    activate COTRN1AI Data Structure
+    COTRN1AI Data Structure->>COTRN01 Program: Data Populated
+    COTRN01 Program->>+COTRN1AO Data Structure: Populate Data Fields (Alternative Layout)
+    activate COTRN1AO Data Structure
+    COTRN1AO Data Structure-->>-COTRN01 Program: Data Populated
+    COTRN01 Program->>Transaction Source: Send Confirmation
+    deactivate Transaction Source
+    deactivate COTRN01 Program

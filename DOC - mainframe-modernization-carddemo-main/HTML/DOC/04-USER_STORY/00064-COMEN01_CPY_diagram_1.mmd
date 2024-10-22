@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant Application
+    participant COMEN01 Data Structure
+
+    activate Application
+    Application->>+COMEN01 Data Structure: Initialize Structure (Transaction Name, Titles, Date, Time)
+    COMEN01 Data Structure->>Application: Structure Initialized
+
+    Application->>+COMEN01 Data Structure: Populate Menu Options
+    COMEN01 Data Structure->>Application: Options Populated
+
+    Application->>+COMEN01 Data Structure: Display Menu
+    COMEN01 Data Structure->>Application: Menu Displayed
+    
+    Application->>+COMEN01 Data Structure: Get User Selection
+    COMEN01 Data Structure->>Application: Selected Option
+
+    alt Valid Option
+        Application->>Application: Process Option
+    else Invalid Option
+        Application->>+COMEN01 Data Structure: Set Error Message
+        COMEN01 Data Structure->>Application: Error Message Set
+        Application->>+COMEN01 Data Structure: Display Error Message
+        COMEN01 Data Structure-->>-Application: Error Message Displayed
+    end
+    deactivate Application

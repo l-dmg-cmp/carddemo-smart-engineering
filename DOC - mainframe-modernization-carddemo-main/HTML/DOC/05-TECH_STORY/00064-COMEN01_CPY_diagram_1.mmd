@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant ApplicationModule1
+    participant ApplicationModule2
+    participant COMEN01DataStructure
+
+    activate ApplicationModule1
+    ApplicationModule1->>+COMEN01DataStructure: Set TRNNAME (Transaction Name)
+    COMEN01DataStructure-->>-ApplicationModule1: TRNNAME Set
+
+    ApplicationModule1->>+COMEN01DataStructure: Set CURDATE (Current Date)
+    COMEN01DataStructure-->>-ApplicationModule1: CURDATE Set
+
+    ApplicationModule1->>+ApplicationModule2: Pass COMEN01 Data
+    activate ApplicationModule2
+    ApplicationModule2->>ApplicationModule1: COMEN01 Data Received
+
+    ApplicationModule2->>+COMEN01DataStructure: Get TRNNAME
+    COMEN01DataStructure-->>-ApplicationModule2: TRNNAME Value
+
+    ApplicationModule2->>+COMEN01DataStructure: Get CURDATE
+    COMEN01DataStructure-->>-ApplicationModule2: CURDATE Value
+    deactivate ApplicationModule2
+    deactivate ApplicationModule1

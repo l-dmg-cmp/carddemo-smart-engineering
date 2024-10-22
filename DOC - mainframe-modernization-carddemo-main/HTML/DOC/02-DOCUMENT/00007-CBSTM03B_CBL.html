@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00007-CBSTM03B_CBL</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Sub-rotina do Processador de Arquivo de Transação de Cartão</strong></h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Sub-rotina do Processador de Arquivo de Transação de Cartão - Especificação Técnica</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li>Rota do Arquivo: \src\CBSTM03B.CBL</li>
+</ul>
+<h2>Descrição resumida</h2>
+<p>Este documento descreve as especificações técnicas para a Sub-rotina do Processador de Arquivo de Transação de Cartão, um componente crítico dentro de um sistema de gerenciamento de cartão de crédito baseado em COBOL. Esta sub-rotina serve como uma camada de acesso a dados especializada, responsável por lidar com todas as interações com os arquivos de dados principais do sistema. Sua função principal é recuperar, processar e atualizar informações relacionadas a contas de clientes, transações com cartão de crédito e referências cruzadas associadas.</p>
+<h2>Histórico da Versão</h2>
+<ul>
+<li>Versão 1.0: Versão inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>A Sub-rotina do Processador de Arquivo de Transação de Cartão simplifica o gerenciamento de transações com cartão de crédito, fornecendo um ponto centralizado para interações com arquivos. Esta sub-rotina executa as seguintes funções principais:</p>
+<ol>
+<li><strong>Acesso e Gerenciamento de Arquivos:</strong> A sub-rotina abre, lê e fecha quatro arquivos de dados principais:
+<ul>
+<li><strong>Arquivo de Transações (TRNX-FILE):</strong> Contém detalhes de cada transação de cartão de crédito.</li>
+<li><strong>Arquivo de Referência Cruzada (XREF-FILE):</strong> Vincula números de cartão de crédito a contas específicas.</li>
+<li><strong>Arquivo do Cliente (CUST-FILE):</strong> Armazena informações pessoais sobre cada cliente.</li>
+<li><strong>Arquivo de Conta (ACCT-FILE):</strong> Armazena detalhes sobre cada conta de cartão de crédito (saldo, limite de crédito, etc.).</li>
+</ul>
+</li>
+<li><strong>Processamento e Execução de Solicitações:</strong> A sub-rotina recebe instruções do programa principal indicando a ação desejada (abrir, ler, fechar) e o arquivo de destino. Ela também recebe chaves específicas, como números de conta, para localizar as informações necessárias nos arquivos.</li>
+<li><strong>Recuperação e Manipulação de Dados:</strong> Com base nas instruções recebidas, a sub-rotina localiza e recupera os dados necessários dos arquivos relevantes. Esses dados são então retornados ao programa principal para processamento adicional.</li>
+<li><strong>Tratamento e Relato de Erros:</strong> A sub-rotina inclui mecanismos para detectar e lidar com erros potenciais durante as operações do arquivo, como um arquivo não encontrado. Ela relata quaisquer erros encontrados ao programa principal para ação apropriada.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Solicitação do Programa Principal:</strong> O processo é iniciado quando o programa principal envia uma solicitação à sub-rotina, especificando a ação desejada, o arquivo de destino e quaisquer chaves necessárias.</li>
+<li><strong>Disponibilidade do Arquivo:</strong> Os arquivos de dados especificados (TRNX-FILE, XREF-FILE, CUST-FILE, ACCT-FILE) devem estar acessíveis à sub-rotina.</li>
+<li><strong>Chaves Válidas:</strong> As chaves fornecidas, se necessárias para recuperação de dados, devem ser válidas e corresponder aos registros existentes nos arquivos.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Processamento Sequencial (TRNX-FILE):</strong> As transações no Arquivo de Transações são processadas sequencialmente, garantindo que cada transação seja tratada na ordem em que foi recebida.</li>
+<li><strong>Recuperação Baseada em Chave (CUST-FILE, ACCT-FILE):</strong> Os arquivos do Cliente e da Conta são acessados ​​usando chaves exclusivas (ID do cliente e ID da conta) para recuperar registros específicos.</li>
+<li><strong>Relato de Erros:</strong> Quaisquer erros durante as operações do arquivo são relatados ao programa principal usando um sistema de código de erro padronizado.</li>
+</ul>
+<h2>Detalhes técnicos</h2>
+<p><strong>Principais Funções/Métodos:</strong></p>
+<ul>
+<li><strong><code>1000-TRNXFILE-PROC</code>:</strong> Lida com todas as operações relacionadas ao Arquivo de Transações (TRNX-FILE).</li>
+<li><strong><code>2000-XREFFILE-PROC</code>:</strong> Gerencia interações com o Arquivo de Referência Cruzada (XREF-FILE).</li>
+<li><strong><code>3000-CUSTFILE-PROC</code>:</strong> Processa solicitações para o Arquivo do Cliente (CUST-FILE).</li>
+<li><strong><code>4000-ACCTFILE-PROC</code>:</strong> Lida com operações relacionadas ao Arquivo de Conta (ACCT-FILE).</li>
+</ul>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>LK-M03B-DD</code>:</strong> Indica o arquivo de destino para a operação.</li>
+<li><strong><code>LK-M03B-OPER</code>:</strong> Especifica a ação a ser executada (abrir, ler, fechar).</li>
+<li><strong><code>LK-M03B-KEY</code>:</strong>  Mantém a chave usada para localizar registros específicos (por exemplo, número da conta).</li>
+<li><strong><code>LK-M03B-FLDT</code>:</strong> Armazena os dados recuperados de ou a serem gravados em um arquivo.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Acesso Controlado ao Arquivo:</strong> A sub-rotina atua como um guardião para dados confidenciais, garantindo que as operações do arquivo sejam executadas de forma controlada e segura.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Programa Principal:</strong> A sub-rotina oferece suporte direto às funcionalidades do programa principal, fornecendo acesso e gerenciando os arquivos de dados principais do sistema.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FD-TRNXS-ID</td>
+<td>Alfanumérico</td>
+<td>ID da transação exclusivo</td>
+</tr>
+<tr>
+<td>FD-TRNX-CARD</td>
+<td>Alfanumérico</td>
+<td>Número do Cartão de Crédito</td>
+</tr>
+<tr>
+<td>FD-ACCT-DATA</td>
+<td>Alfanumérico</td>
+<td>Dados da conta para transação</td>
+</tr>
+<tr>
+<td>FD-XREF-CARD-NUM</td>
+<td>Alfanumérico</td>
+<td>Número do Cartão de Crédito</td>
+</tr>
+<tr>
+<td>FD-XREF-DATA</td>
+<td>Alfanumérico</td>
+<td>Dados de Referência Cruzada</td>
+</tr>
+<tr>
+<td>FD-CUST-ID</td>
+<td>Alfanumérico</td>
+<td>ID do Cliente</td>
+</tr>
+<tr>
+<td>FD-CUST-DATA</td>
+<td>Alfanumérico</td>
+<td>Dados do cliente</td>
+</tr>
+<tr>
+<td>FD-ACCT-ID</td>
+<td>Numérico</td>
+<td>ID da conta</td>
+</tr>
+<tr>
+<td>FD-ACCT-DATA</td>
+<td>Alfanumérico</td>
+<td>Dados da Conta</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>Programa Principal:</strong> O programa principal que utiliza esta sub-rotina para acesso a dados.</li>
+<li><strong>Dicionário de Dados:</strong> Contém informações detalhadas sobre a estrutura e o conteúdo dos arquivos de dados (TRNX-FILE, XREF-FILE, CUST-FILE, ACCT-FILE).</li>
+</ul>
+<p><strong>Considerações Adicionais:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Os mecanismos de tratamento de erros da sub-rotina são cruciais para garantir a integridade dos dados e a estabilidade do sistema.</li>
+<li><strong>Desempenho:</strong> O desempenho da sub-rotina impacta diretamente na eficiência geral do sistema de gerenciamento de cartão de crédito.</li>
+<li><strong>Manutenibilidade:</strong> O código é estruturado para ser modular e bem documentado, facilitando a manutenção e os aprimoramentos futuros.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

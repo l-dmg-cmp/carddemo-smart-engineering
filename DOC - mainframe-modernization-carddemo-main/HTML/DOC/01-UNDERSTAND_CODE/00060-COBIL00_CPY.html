@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00060-COBIL00_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>–CONTEÚDO TRADUZIDO–
+Gerado em: 1º de outubro de 2024</p>
+<h2>Estrutura de Dados COBOL para Operações de Pagamento de Contas</h2>
+<p><strong>Arquivo:</strong> \COBIL00.CPY</p>
+<p><strong>Contexto:</strong></p>
+<p>Este código define como as informações relacionadas a pagamentos de contas são organizadas e armazenadas dentro de um programa COBOL maior. Pense nisso como um modelo ou esquema para um contêiner que armazena todos os detalhes essenciais de uma transação de pagamento de conta.</p>
+<p><strong>Ação:</strong></p>
+<ol>
+<li>
+<p><strong>Estrutura:</strong> O código estabelece duas visualizações diferentes dos mesmos dados:</p>
+<ul>
+<li><strong>COBIL0AI:</strong> Esta visualização usa uma combinação de tipos de dados numéricos e alfanuméricos para representar valores como quantias de transações, datas e IDs de conta de uma forma eficiente para o programa COBOL processar.</li>
+<li><strong>COBIL0AO:</strong> Esta visualização reinterpreta os dados para exibições baseadas em caracteres, provavelmente para interfaces de usuário ou relatórios. Ele divide os campos em caracteres individuais, permitindo formatação e apresentação personalizadas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Funcionalidade:</strong> Embora este trecho de código não execute ações como calcular saldos ou processar pagamentos, ele define a <em>estrutura</em> que outras partes do programa usarão para acessar e manipular essas informações.</p>
+</li>
+</ol>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Detalhes da Transação:</strong> O código inclui campos para armazenar o nome ou identificador da transação (<code>TRNNAMEL</code>), a data e hora da operação (<code>CURDATEL</code>, <code>CURTIMEL</code>) e potencialmente um nome de programa (<code>PGMNAMEL</code>) para fins de rastreamento.</li>
+<li><strong>Informação da Conta:</strong> Define campos para a conta envolvida no pagamento da conta (<code>ACTIDINL</code>) e o saldo atual (<code>CURBALL</code>).</li>
+<li><strong>Confirmação e Erros:</strong> Existem provisões para um sinalizador de confirmação (<code>CONFIRML</code>) para indicar se o pagamento foi bem-sucedido e uma área de mensagem de erro (<code>ERRMSGL</code>) para armazenar quaisquer problemas encontrados durante o processamento.</li>
+<li><strong>Flexibilidade de Saída:</strong> A estrutura de dados dupla (<code>COBIL0AI</code> e <code>COBIL0AO</code>) destaca a necessidade de lidar com os dados de forma diferente para processamento interno e apresentação externa, garantindo que as informações sejam exibidas em um formato amigável.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

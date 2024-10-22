@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00016-COCRDSLC_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Especificação do Programa de Recuperação de Detalhes de Cartão de Crédito</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento detalha as especificações funcionais para um programa COBOL projetado para recuperar e exibir detalhes do cartão de crédito com base nos números de conta ou cartão fornecidos pelo usuário. Ele utiliza o CICS para processamento de transações e interage com um banco de dados VSAM chamado ‘CARDDAT’.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como representante de atendimento ao cliente, preciso acessar rapidamente os detalhes do cartão de crédito de um cliente usando sua conta ou número do cartão para que eu possa auxiliá-lo com eficiência.</p>
+<p><strong>Epic Relacionado:</strong> 3 - Gestão de Cartão de Crédito</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Validação de Entrada:</strong>
+<ul>
+<li>Validar se a entrada <code>CC-ACCT-ID</code> é numérica e tem 11 dígitos.</li>
+<li>Validar se a entrada <code>CC-CARD-NUM</code> é numérica e tem 16 dígitos.</li>
+</ul>
+</li>
+<li><strong>Interação com o Banco de Dados:</strong>
+<ul>
+<li>O programa lê dados de um arquivo VSAM chamado <code>CARDDAT</code>.</li>
+<li>O programa usa o comando <code>READ</code> com a opção <code>RIDFLD</code> para pesquisar registros específicos com base em <code>WS-CARD-RID-CARDNUM</code> (número do cartão).</li>
+</ul>
+</li>
+<li><strong>Recuperação de Dados:</strong>
+<ul>
+<li>Se um registro de cartão correspondente for encontrado, o programa recupera os detalhes do cartão para a estrutura de dados <code>CARD-RECORD</code>.</li>
+</ul>
+</li>
+<li><strong>Tratamento de Erros:</strong>
+<ul>
+<li>Se ocorrer um erro durante o processamento do arquivo, o programa preenche o <code>WS-FILE-ERROR-MESSAGE</code> com detalhes como a operação (<code>ERROR-OPNAME</code>), nome do arquivo (<code>ERROR-FILE</code>) e códigos de resposta CICS (<code>ERROR-RESP</code> e <code>ERROR-RESP2</code>).</li>
+</ul>
+</li>
+<li><strong>Interação com a Tela:</strong>
+<ul>
+<li>O programa interage com uma interface de usuário (provavelmente um terminal 3270) para receber entrada e exibir os detalhes do cartão recuperado.</li>
+<li>O layout da tela e o mapeamento de dados são definidos nos copybooks <code>COCRDSL</code> e <code>CCRDSLA</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados</strong></p>
+<ul>
+<li><strong><code>CARD-RECORD</code></strong>: Representa um registro de cartão de crédito.
+<ul>
+<li><code>CARD-EMBOSSED-NAME</code>: <code>String</code> - O nome em relevo no cartão de crédito.</li>
+<li><code>CARD-EXPIRAION-DATE</code>: <code>String</code> - A data de validade do cartão de crédito.</li>
+<li><code>CARD-ACTIVE-STATUS</code>: <code>String</code> - O status do cartão de crédito (por exemplo, ativo, inativo).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><code>LIT-CARDFILENAME</code>: <code>CARDDAT</code> - O nome do arquivo de banco de dados do cartão de crédito.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li>Implementar um mecanismo de tratamento de erros mais robusto:
+<ul>
+<li>Em vez de apenas mover mensagens de erro para <code>WS-RETURN-MSG</code>, considere usar uma abordagem estruturada de tratamento de erros.</li>
+<li>Registrar erros em um arquivo ou banco de dados para auditoria e solução de problemas.</li>
+</ul>
+</li>
+<li>Melhorar a documentação do código:
+<ul>
+<li>Adicionar mais comentários para explicar a lógica e o propósito de diferentes seções de código.</li>
+<li>Criar um documento separado com uma visão geral de alto nível da funcionalidade e arquitetura do programa.</li>
+</ul>
+</li>
+<li>Otimizar para desempenho:
+<ul>
+<li>Se o arquivo <code>CARDDAT</code> for grande, considere implementar indexação ou outras técnicas de aprimoramento de desempenho para recuperação de dados mais rápida.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li>Mascarar ou criptografar dados confidenciais do cartão:
+<ul>
+<li>Não armazenar ou exibir o número completo do cartão de crédito, código CVV ou outras informações confidenciais em texto não criptografado.</li>
+<li>Implementar criptografia ou tokenização para dados confidenciais em repouso e em trânsito.</li>
+</ul>
+</li>
+<li>Implementar controle de acesso:
+<ul>
+<li>Restringir o acesso ao programa e ao arquivo <code>CARDDAT</code> apenas ao pessoal autorizado.</li>
+</ul>
+</li>
+<li>Registrar todas as tentativas de acesso a dados:
+<ul>
+<li>Registrar IDs de usuário, timestamps e ações executadas para fins de auditoria.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00016-COCRDSLC_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

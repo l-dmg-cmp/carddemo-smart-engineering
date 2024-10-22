@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant Transaction Processing System
+    participant Disclosure Group Data
+
+    activate Transaction Processing System
+    Transaction Processing System->>+Disclosure Group Data: Get Interest Rate (Account Group ID, Transaction Type Code, Transaction Category Code)
+    alt Valid Group Found
+        Disclosure Group Data->>Transaction Processing System: Interest Rate
+        Transaction Processing System->>Transaction Processing System: Apply Interest to Transaction
+    else Valid Group Not Found
+        Disclosure Group Data-->>-Transaction Processing System: Error: Group Not Found
+        Transaction Processing System->>Transaction Processing System: Log Error
+    end
+    deactivate Transaction Processing System

@@ -1,0 +1,17 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant System Module
+    participant COTRN00 Data Structure
+    participant Report Generation Module
+    participant Database
+
+    activate System Module
+    System Module->>+COTRN00 Data Structure: Populate Transaction Data
+    COTRN00 Data Structure->>System Module: Data Populated
+
+    activate Report Generation Module
+    Report Generation Module->>+COTRN00 Data Structure: Retrieve Transaction Data (Output Format)
+    COTRN00 Data Structure-->>-Report Generation Module: Formatted Transaction Data
+
+    Report Generation Module->>+Database: Store Transaction Data
+    Database->>-Report Generation Module: Data Stored

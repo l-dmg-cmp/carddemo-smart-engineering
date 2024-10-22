@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00048-CVCUS01Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h2>Desvendando Dados do Cliente: Uma Visão Geral do Copybook CVCUS01Y</h2>
+<p><strong>Arquivo:</strong>  \CVCUS01Y.cpy</p>
+<p><strong>Contexto:</strong></p>
+<p>Este trecho de código, estruturado como um copybook COBOL chamado CVCUS01Y, serve como um modelo para armazenar informações do cliente. Pense nele como um modelo digital que define o layout e o tipo de campos de dados usados para representar um cliente dentro de um sistema maior, provavelmente uma parte central de um aplicativo de gerenciamento de relacionamento com o cliente (CRM).</p>
+<p><strong>Ação:</strong></p>
+<p><strong>Estrutura:</strong> O código define uma única estrutura chamada <code>CUSTOMER-RECORD</code>. Essa estrutura é dividida em campos individuais, cada um contendo uma informação específica do cliente.</p>
+<p><strong>Funcionalidade:</strong> Cada campo dentro do <code>CUSTOMER-RECORD</code> recebe um tipo de dado e um tamanho. Aqui está uma análise:</p>
+<ul>
+<li><strong>Identificação:</strong> <code>CUST-ID</code>, <code>CUST-SSN</code>, <code>CUST-GOVT-ISSUED-ID</code> são usados para identificar exclusivamente cada cliente, armazenando seu ID interno, Número de Seguro Social (se aplicável) e qualquer identificação emitida pelo governo.</li>
+<li><strong>Detalhes Pessoais:</strong> Campos como <code>CUST-FIRST-NAME</code>, <code>CUST-LAST-NAME</code>, <code>CUST-DOB-YYYY-MM-DD</code> capturam informações pessoais básicas.</li>
+<li><strong>Informação de Contato:</strong> <code>CUST-ADDR-LINE-1</code> a <code>CUST-ADDR-ZIP</code>, junto com <code>CUST-PHONE-NUM-1</code> e <code>CUST-PHONE-NUM-2</code>, armazenam o endereço e os números de telefone do cliente.</li>
+<li><strong>Atributos Financeiros:</strong> <code>CUST-EFT-ACCOUNT-ID</code> provavelmente contém informações relacionadas a transferências eletrônicas de fundos, enquanto <code>CUST-FICO-CREDIT-SCORE</code> armazena a pontuação de crédito do cliente.</li>
+<li><strong>Outros Indicadores:</strong> <code>CUST-PRI-CARD-HOLDER-IND</code> pode indicar se o cliente é o titular principal de um cartão, sugerindo uma conexão com um sistema de cartão de crédito.</li>
+</ul>
+<p><strong>Tecnologias:</strong></p>
+<ul>
+<li><strong>COBOL:</strong> O uso de COBOL indica um sistema legado, frequentemente encontrado em instituições financeiras ou organizações com histórico de aplicações baseadas em mainframe.</li>
+<li><strong>Copybooks:</strong> A estrutura do copybook (<code>COPY</code>) é um recurso COBOL que promove a reutilização de código. Essa definição pode ser incluída em vários programas que lidam com dados de clientes.</li>
+</ul>
+<p><strong>Melhores Práticas:</strong></p>
+<ul>
+<li><strong>Dados Estruturados:</strong> Definir uma estrutura clara para os dados do cliente é essencial para consistência e processamento eficiente de dados.</li>
+</ul>
+<p><strong>Melhorias:</strong></p>
+<ul>
+<li><strong>Especificidade do Tipo de Dado:</strong> Usar <code>X</code> para vários campos pode ser muito genérico. Tipos de dados mais específicos como alfanumérico (<code>PIC A</code>) ou numérico com pontos decimais (<code>PIC 9(09)V99</code>) podem melhorar a validação de dados.</li>
+<li><strong>Formato de Data:</strong> Armazenar a data de nascimento como <code>YYYY-MM-DD</code> diretamente como texto pode apresentar desafios para cálculos ou comparações de datas. Usar um formato de data numérico pode ser mais eficiente.</li>
+<li><strong>Considerações sobre o Tamanho do Campo:</strong> Alguns campos como endereços ou IDs governamentais podem se beneficiar de tamanhos maiores para acomodar variações em dados do mundo real.</li>
+</ul>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Identificação do Cliente:</strong> O sistema provavelmente depende de um <code>CUST-ID</code> exclusivo para identificar os clientes. Outros identificadores como SSN ou IDs governamentais podem ser opcionais ou sujeitos a regulamentações regionais.</li>
+<li><strong>Integridade de Dados:</strong> A presença de campos como <code>CUST-FICO-CREDIT-SCORE</code> sugere que o sistema pode estar envolvido na avaliação de crédito, destacando a importância da precisão dos dados.</li>
+<li><strong>Gerenciamento de Endereço:</strong> O sistema suporta várias linhas de endereço, atendendo a variações nos formatos de endereço.</li>
+<li><strong>Relacionamento com o Cartão:</strong> O campo <code>CUST-PRI-CARD-HOLDER-IND</code> implica um relacionamento entre dados do cliente e contas de cartão de crédito, indicando que essa estrutura é provavelmente parte de um sistema mais amplo de gerenciamento de cartão de crédito.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

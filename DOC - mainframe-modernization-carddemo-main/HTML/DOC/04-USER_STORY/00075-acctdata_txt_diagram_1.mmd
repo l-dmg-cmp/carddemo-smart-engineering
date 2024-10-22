@@ -1,0 +1,35 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant AccountDataValidator
+    participant InputFile
+    participant ValidatedData
+    participant ErrorLog
+
+    activate AccountDataValidator
+    AccountDataValidator->>+InputFile: Open (acctdata.txt)
+    InputFile-->>-AccountDataValidator: Open Successful
+
+    loop For Each Record in InputFile
+        AccountDataValidator->>+InputFile: Read Record
+        InputFile-->>-AccountDataValidator: Account Data
+        AccountDataValidator->>AccountDataValidator: Validate Record Format
+        alt Record Format Valid
+            AccountDataValidator->>AccountDataValidator: Validate Data Content
+            alt Data Content Valid
+                AccountDataValidator->>+ValidatedData: Write Record
+                ValidatedData-->>-AccountDataValidator: Write Successful
+            else Data Content Invalid
+                AccountDataValidator->>+ErrorLog: Log Error (Invalid Data)
+                ErrorLog-->>-AccountDataValidator: Error Logged
+            end
+        else Record Format Invalid
+            AccountDataValidator->>+ErrorLog: Log Error (Invalid Format)
+            ErrorLog-->>-AccountDataValidator: Error Logged
+        end
+    end
+    
+    AccountDataValidator->>+InputFile: Close
+    InputFile->>-AccountDataValidator: Closed Successful
+    AccountDataValidator->>+ValidatedData: Close
+    ValidatedData->>-AccountDataValidator: Closed Successful
+    deactivate AccountDataValidator

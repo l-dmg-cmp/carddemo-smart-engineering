@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant ApplicationModule
+    participant CSDAT01YCopybook
+
+    activate ApplicationModule
+    ApplicationModule->>+CSDAT01YCopybook: Get Date Format
+    CSDAT01YCopybook-->>-ApplicationModule: YYYY-MM-DD
+    ApplicationModule->>+CSDAT01YCopybook: Get Time Format
+    CSDAT01YCopybook-->>-ApplicationModule: HH:MM:SS
+    deactivate ApplicationModule

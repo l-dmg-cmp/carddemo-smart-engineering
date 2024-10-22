@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00013-COADM01C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Revisão de Análise Técnica</h2>
+<p><strong>Arquivo:</strong>  \src\COADM01C.cbl</p>
+<p><strong>Título:</strong>  Menu Administrativo para Usuários Administradores</p>
+<p><strong>Resumo:</strong></p>
+<p>Este programa COBOL, <code>COADM01C.CBL</code>, apresenta um menu administrativo dentro da aplicação ‘CardDemo’. Ele lida com a interação do usuário, exibindo opções de menu e processando as seleções do usuário para transição para outros programas dentro do ambiente CICS. O programa foi projetado para interagir com um usuário por meio de uma tela de terminal 3270, enviando e recebendo dados por meio de mapas.</p>
+<p><strong>Tecnologia:</strong></p>
+<ul>
+<li><strong>Linguagem de Programação:</strong> COBOL</li>
+<li><strong>Framework/Biblioteca:</strong> CICS (Customer Information Control System)</li>
+<li><strong>Banco de Dados:</strong> Embora o código não interaja diretamente com um banco de dados neste arquivo, ele referencia um arquivo chamado 'USRSEC  ’ (WS-USRSEC-FILE), sugerindo um possível tratamento de dados de segurança do usuário.</li>
+<li><strong>Outras Ferramentas:</strong>  <code>Não disponível</code></li>
+</ul>
+<p><strong>Referência, Classe e Método:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Referência</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>COCOM01Y</code></td>
+<td>Provavelmente contém variáveis ​​e estruturas de dados comuns compartilhadas pela aplicação CardDemo.</td>
+</tr>
+<tr>
+<td><code>COADM02Y</code></td>
+<td>Possivelmente contém estruturas de dados ou variáveis ​​específicas para funções administrativas na aplicação CardDemo.</td>
+</tr>
+<tr>
+<td><code>COADM01</code></td>
+<td>Parece definir a estrutura do mapa de tela (COADM1A) usado para o menu administrativo.</td>
+</tr>
+<tr>
+<td><code>COTTL01Y</code></td>
+<td>Pode conter definições para títulos e cabeçalhos usados ​​consistentemente em toda a aplicação, incluindo aqueles exibidos na tela do menu de administração.</td>
+</tr>
+<tr>
+<td><code>CSDAT01Y</code></td>
+<td>Provavelmente fornece funções ou estruturas de dados relacionadas à data, já que o programa utiliza funções de data.</td>
+</tr>
+<tr>
+<td><code>CSMSG01Y</code></td>
+<td>Provavelmente contém definições de mensagens usadas para exibir mensagens e erros ao usuário.</td>
+</tr>
+<tr>
+<td><code>CSUSR01Y</code></td>
+<td>Pode conter estruturas de dados relacionadas às informações do usuário, que podem ser usadas para validar as permissões do usuário no menu de administração.</td>
+</tr>
+<tr>
+<td><code>DFHAID</code></td>
+<td>Um copybook CICS padrão que fornece definições para campos relacionados ao sistema, como identificadores de transação e IDs de usuário.</td>
+</tr>
+<tr>
+<td><code>DFHBMSCA</code></td>
+<td>Um copybook CICS padrão que define a área de comunicação (COMMAREA) usada para troca de dados entre programas.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Não disponível</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método (Público)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Não disponível</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método (Privado)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MAIN-PARA</code></td>
+<td>Este parece ser o procedimento principal do programa. Ele lida com a configuração inicial, verifica se o programa está sendo inserido novamente e então exibe o menu ou processa a entrada do usuário.</td>
+</tr>
+<tr>
+<td><code>PROCESS-ENTER-KEY</code></td>
+<td>Esta seção processa a entrada do usuário quando a tecla Enter é pressionada. Ele valida a entrada e então exibe uma mensagem de erro ou transfere o controle para o programa selecionado.</td>
+</tr>
+<tr>
+<td><code>RETURN-TO-SIGNON-SCREEN</code></td>
+<td>Este procedimento lida com a lógica para retornar o usuário à tela de login, provavelmente ‘COSGN00C’.</td>
+</tr>
+<tr>
+<td><code>SEND-MENU-SCREEN</code></td>
+<td>Este procedimento preenche os dados necessários para a tela do menu administrativo e os envia ao terminal do usuário.</td>
+</tr>
+<tr>
+<td><code>RECEIVE-MENU-SCREEN</code></td>
+<td>Este procedimento recebe a entrada do usuário da tela do menu administrativo.</td>
+</tr>
+<tr>
+<td><code>POPULATE-HEADER-INFO</code></td>
+<td>Este procedimento preenche as informações de cabeçalho da tela, como data atual, hora, ID da transação e nome do programa.</td>
+</tr>
+<tr>
+<td><code>BUILD-MENU-OPTIONS</code></td>
+<td>Este procedimento cria dinamicamente as opções do menu com base no conteúdo das matrizes <code>CDEMO-ADMIN-OPT-NUM</code> e <code>CDEMO-ADMIN-OPT-NAME</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

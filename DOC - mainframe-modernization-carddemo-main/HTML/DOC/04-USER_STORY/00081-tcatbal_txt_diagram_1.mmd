@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant Program
+    participant tcatbaltxt
+
+    activate Program
+    Program->>+tcatbaltxt: Open
+    tcatbaltxt-->>-Program: Open Successful
+
+    loop For Each Line in File
+        Program->>+tcatbaltxt: Read Line
+        tcatbaltxt-->>-Program: Line Data
+        Program->>Program: Parse and Validate Data
+        alt Data is Valid
+            Program->>Program: Update Category Balance
+        else Data is Invalid
+            Program->>Program: Log Error
+        end
+    end
+
+    Program->>+tcatbaltxt: Close
+    tcatbaltxt->>-Program: Close Successful
+    Program->>Program: Generate Report
+    deactivate Program

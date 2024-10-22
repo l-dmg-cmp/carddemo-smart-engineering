@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00005-CBCUS01C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> CardDemo Customer Data Extract - Especificação do Programa</p>
+<p><strong>Descrição Resumida:</strong>
+Este programa lê dados de clientes de um arquivo VSAM KSDS chamado <code>CUSTFILE</code> e os exibe na tela. É um processo em lote que processa sequencialmente cada registro de cliente no arquivo. O programa inclui tratamento de erros para operações de arquivo e exibe mensagens apropriadas em caso de erros.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como um analista de dados, preciso ser capaz de extrair e visualizar dados do cliente do <code>CUSTFILE</code> para que eu possa realizar análises e gerar relatórios.</p>
+<p><strong>Epic Relacionado:</strong> 8 - Gestão de Dados do Cliente</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Operações de Arquivo:</strong> O programa precisa realizar as seguintes operações de arquivo no <code>CUSTFILE</code>:
+<ul>
+<li><strong>Abrir:</strong> Abra o arquivo no modo de entrada para acesso sequencial.</li>
+<li><strong>Ler:</strong> Leia cada registro de cliente sequencialmente do arquivo.</li>
+<li><strong>Fechar:</strong> Feche o arquivo após processar todos os registros.</li>
+</ul>
+</li>
+<li><strong>Validação de Dados:</strong>
+<ul>
+<li>Nenhuma regra específica de validação de dados é implementada no código fornecido. No entanto, é crucial adicionar verificações de validação para integridade de dados, como:
+<ul>
+<li><strong>ID do Cliente:</strong> Verifique se o <code>FD-CUST-ID</code> é numérico e está dentro de um intervalo válido.</li>
+<li><strong>Dados do Cliente:</strong> Valide o conteúdo de <code>FD-CUST-DATA</code> com base em regras de negócios e tipos de dados.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Tratamento de Erros:</strong>
+<ul>
+<li>O programa deve lidar com erros potenciais durante as operações de arquivo de forma adequada.</li>
+<li>Deve exibir mensagens de erro amigáveis ​​indicando o problema encontrado.</li>
+<li>Para erros críticos, o programa deve terminar anormalmente e registrar os detalhes do erro.</li>
+</ul>
+</li>
+<li><strong>Exibição de Dados:</strong>
+<ul>
+<li>O programa deve exibir o conteúdo de cada registro de cliente recuperado do <code>CUSTFILE</code>.</li>
+<li>O formato de exibição deve ser claro e legível.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><strong>Cliente:</strong> Representa um registro de cliente no <code>CUSTFILE</code>
+<ul>
+<li><code>FD-CUST-ID</code> (String): Identificador único para cada cliente.</li>
+<li><code>FD-CUST-DATA</code> (String): Contém todas as outras informações relacionadas ao cliente.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><code>CUSTFILE</code>:  Caminho para o arquivo VSAM KSDS contendo os dados do cliente.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Validação de Dados:</strong> Implemente regras robustas de validação de dados para os campos <code>CUSTOMER-RECORD</code> para garantir a integridade dos dados.</li>
+<li><strong>Registro de Erros:</strong> Aprimore o tratamento de erros gravando mensagens de erro detalhadas, incluindo timestamps, em um arquivo de log para facilitar a depuração e o monitoramento.</li>
+<li><strong>Modularização:</strong> Divida o programa em módulos ou sub-rotinas menores e reutilizáveis ​​para melhorar a organização e a manutenção do código.</li>
+<li><strong>Interface do Usuário:</strong> Considere aprimorar a interface do usuário, permitindo que os usuários especifiquem critérios de pesquisa ou filtros para a extração de dados do cliente.</li>
+<li><strong>Opções de Saída:</strong> Forneça opções para gerar os dados extraídos em diferentes formatos, como um arquivo de texto ou uma tabela de banco de dados.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Controle de Acesso:</strong> Implemente mecanismos de controle de acesso para restringir o acesso não autorizado ao <code>CUSTFILE</code> e ao próprio programa.</li>
+<li><strong>Mascaramento de Dados:</strong> Se o <code>CUSTFILE</code> contiver informações confidenciais do cliente, considere mascarar ou criptografar os dados antes de exibi-los.</li>
+<li><strong>Trilha de Auditoria:</strong> Registre todas as tentativas de acesso a arquivos, incluindo timestamps e IDs de usuário, para fins de auditoria e segurança.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00005-CBCUS01C_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

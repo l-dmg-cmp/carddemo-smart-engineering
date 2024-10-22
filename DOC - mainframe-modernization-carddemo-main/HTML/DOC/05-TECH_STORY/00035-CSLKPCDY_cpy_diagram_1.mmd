@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant User
+    participant Application
+    participant CSLKPCDY
+
+    activate User
+    User->>+Application: Submit Data (Phone, State, ZIP)
+    activate Application
+    Application->>+CSLKPCDY: Validate Phone Area Code
+    CSLKPCDY-->>-Application: Validation Result (True/False)
+    Application->>+CSLKPCDY: Validate State Code
+    CSLKPCDY-->>-Application: Validation Result (True/False)
+    Application->>+CSLKPCDY: Validate State + ZIP Code
+    CSLKPCDY-->>-Application: Validation Result (True/False)
+    Application->>User: Data Accepted/Rejected
+    deactivate User
+    deactivate Application

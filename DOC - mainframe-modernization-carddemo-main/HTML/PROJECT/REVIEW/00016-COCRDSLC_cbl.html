@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00016-COCRDSLC_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>–CONTENT TO TRANSLATE–
+Gerado em: 1º de outubro de 2024</p>
+<h2>Revisão de Análise Técnica</h2>
+<p><strong>Arquivo:</strong>  \src\COCRDSLC.cbl</p>
+<p><strong>Título:</strong>  Seleção de Detalhes do Cartão de Crédito</p>
+<p><strong>Resumo:</strong></p>
+<p>Este programa COBOL serve como a camada de lógica de negócios para processar solicitações de detalhes de cartão de crédito dentro do que parece ser um sistema maior de processamento de transações online (OLTP) CICS. O programa interage com uma interface de usuário (provavelmente uma tela de terminal 3270) para coletar informações de conta e cartão, valida a entrada, recupera detalhes do cartão de um arquivo VSAM (CARDDAT) potencialmente indexado por conta (CARDAIX) e exibe os resultados.</p>
+<p><strong>Tecnologia:</strong></p>
+<ul>
+<li><strong>Linguagem de Programação:</strong> COBOL</li>
+<li><strong>Framework/Biblioteca:</strong> CICS (Customer Information Control System)</li>
+<li><strong>Banco de Dados:</strong>
+<ul>
+<li><strong>VSAM (Virtual Storage Access Method):</strong> Inferido pelo uso de verbos de manipulação de arquivos como <code>READ</code> e nomes de arquivos como “CARDDAT.”</li>
+</ul>
+</li>
+<li><strong>Outras Ferramentas:</strong> <code>Not available</code></li>
+</ul>
+<p><strong>Referência, Classe e Método:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Referência</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CVCRD01Y</code></td>
+<td>Provavelmente contém definições de variáveis ​​de armazenamento de trabalho relacionadas ao processamento de cartão de crédito (inferido pelo prefixo “CVCRD”).</td>
+</tr>
+<tr>
+<td><code>COCOM01Y</code></td>
+<td>Provavelmente define variáveis ​​de nível de aplicativo comuns ou áreas de comunicação (inferido de “COCOM”).</td>
+</tr>
+<tr>
+<td><code>DFHBMSCA</code></td>
+<td>Copybook fornecido pela IBM que fornece definições para áreas de comunicação CICS.</td>
+</tr>
+<tr>
+<td><code>DFHAID</code></td>
+<td>Copybook fornecido pela IBM com definições para lidar com dados de interação do usuário (por exemplo, identificadores de atenção para teclas pressionadas).</td>
+</tr>
+<tr>
+<td><code>COTTLY01Y</code></td>
+<td>Presume-se que contenha definições de título de tela (inferido de “COTTLY”).</td>
+</tr>
+<tr>
+<td><code>COCRDSL</code></td>
+<td>Define o layout da tela de pesquisa de cartão de crédito (inferido de “COCRDSL”).</td>
+</tr>
+<tr>
+<td><code>CSDAT01Y</code></td>
+<td>Provavelmente fornece variáveis ​​e funções relacionadas a data e hora (inferido de “CSDAT”).</td>
+</tr>
+<tr>
+<td><code>CSMSG01Y</code></td>
+<td>Presume-se que contenha definições de mensagens comuns (inferido de “CSMSG”).</td>
+</tr>
+<tr>
+<td><code>CSMSG02Y</code></td>
+<td>Provavelmente contém variáveis ​​relacionadas ao tratamento de abend (término anormal) (inferido de “CSMSG02”).</td>
+</tr>
+<tr>
+<td><code>CSUSR01Y</code></td>
+<td>Provavelmente define variáveis ​​para armazenar informações sobre o usuário conectado (inferido de “CSUSR”).</td>
+</tr>
+<tr>
+<td><code>CVACT01Y</code></td>
+<td>Potencialmente contém o layout para um registro de conta (inferido de “CVACT01”).</td>
+</tr>
+<tr>
+<td><code>CVACT02Y</code></td>
+<td>Provavelmente define o layout de um registro de cartão (inferido de “CVACT02”).</td>
+</tr>
+<tr>
+<td><code>CVACT03Y</code></td>
+<td>Possivelmente define o layout para um registro de referência cruzada de cartão (inferido de “CVACT03”).</td>
+</tr>
+<tr>
+<td><code>CVCUS01Y</code></td>
+<td>Presume-se que contenha o layout para um registro de cliente (inferido de “CVCUS”).</td>
+</tr>
+<tr>
+<td><code>CSSTRPFY</code></td>
+<td>Código comum para lidar com teclas PF (teclas de função do programa).</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método(Público)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0000-MAIN</code></td>
+<td>Lógica principal do programa. Lida com inicialização, processamento de entrada, recuperação de dados e interações de tela.</td>
+</tr>
+<tr>
+<td><code>COMMON-RETURN</code></td>
+<td>Ponto de retorno comum para sair do programa. Configura a área de comunicação e emite um comando CICS RETURN.</td>
+</tr>
+<tr>
+<td><code>1000-SEND-MAP</code></td>
+<td>Orquestra o processo de envio da tela de pesquisa de cartão de crédito para o usuário.</td>
+</tr>
+<tr>
+<td><code>1100-SCREEN-INIT</code></td>
+<td>Inicializa os campos da tela com valores padrão e recupera a data e hora atuais.</td>
+</tr>
+<tr>
+<td><code>1200-SETUP-SCREEN-VARS</code></td>
+<td>Configura variáveis ​​de tela com base no contexto do programa e nos dados de entrada.</td>
+</tr>
+<tr>
+<td><code>1300-SETUP-SCREEN-ATTRS</code></td>
+<td>Configura atributos de tela, incluindo proteção de campo, posição do cursor e cor com base nos resultados da validação.</td>
+</tr>
+<tr>
+<td><code>1400-SEND-SCREEN</code></td>
+<td>Emite o comando CICS SEND MAP para exibir a tela para o usuário.</td>
+</tr>
+<tr>
+<td><code>2000-PROCESS-INPUTS</code></td>
+<td>Gerencia o processamento da entrada do usuário na tela.</td>
+</tr>
+<tr>
+<td><code>2100-RECEIVE-MAP</code></td>
+<td>Emite o comando CICS RECEIVE MAP para recuperar a entrada do usuário na tela.</td>
+</tr>
+<tr>
+<td><code>2200-EDIT-MAP-INPUTS</code></td>
+<td>Realiza a validação nos números de conta e cartão inseridos pelo usuário.</td>
+</tr>
+<tr>
+<td><code>2210-EDIT-ACCOUNT</code></td>
+<td>Valida o número da conta inserido pelo usuário.</td>
+</tr>
+<tr>
+<td><code>2220-EDIT-CARD</code></td>
+<td>Valida o número do cartão inserido pelo usuário.</td>
+</tr>
+<tr>
+<td><code>9000-READ-DATA</code></td>
+<td>Controla a lógica de recuperação de dados com base na conta e número do cartão fornecidos.</td>
+</tr>
+<tr>
+<td><code>9100-GETCARD-BYACCTCARD</code></td>
+<td>Lê dados do cartão do arquivo CARDDAT usando o número do cartão como chave.</td>
+</tr>
+<tr>
+<td><code>9150-GETCARD-BYACCT</code></td>
+<td>Lê dados do cartão do arquivo CARDDAT usando o número da conta como chave (provavelmente por meio de um índice alternativo).</td>
+</tr>
+<tr>
+<td><code>SEND-LONG-TEXT</code></td>
+<td>Envia uma mensagem de texto longa para o usuário (provavelmente para depuração).</td>
+</tr>
+<tr>
+<td><code>SEND-PLAIN-TEXT</code></td>
+<td>Envia uma mensagem de texto simples para o usuário (provavelmente para depuração).</td>
+</tr>
+<tr>
+<td><code>ABEND-ROUTINE</code></td>
+<td>Lida com términos anormais do programa (abends). Registra informações de erro e encerra o programa.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método(Privado)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

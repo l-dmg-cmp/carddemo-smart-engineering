@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00081-tcatbal_txt</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Processador de Arquivo de Saldo de Categoria de Transação</p>
+<p><strong>Descrição Resumida:</strong> Este programa processa um arquivo contendo saldos de categoria de transação, valida os dados e gera um relatório resumindo os saldos para cada categoria.</p>
+<p><strong>Histórias de Usuário:</strong> Como um analista de dados, preciso garantir que apenas registros válidos de saldo de categoria de transação sejam usados para fins de análise e relatório.</p>
+<p><strong>Épico Relacionado:</strong> 10 - Gerenciamento de Arquivos de Dados</p>
+<p><strong>Requisitos Funcionais:</strong></p>
+<ul>
+<li>O programa deve ler dados de um arquivo chamado “tcatbal.txt.”</li>
+<li>Cada linha no arquivo representa um registro de saldo de categoria de transação.</li>
+<li>O programa deve analisar cada registro e extrair os seguintes campos:
+<ul>
+<li><strong>ID da Categoria:</strong> Um identificador numérico de 10 dígitos para a categoria de transação.</li>
+<li><strong>Campo Desconhecido:</strong> Um campo de 4 dígitos (sempre “1000”).</li>
+<li><strong>Saldo:</strong> Um valor numérico de 10 dígitos representando o saldo da categoria (sempre “1000000000”).</li>
+<li><strong>Dados Desconhecidos:</strong> Um campo de 30 dígitos (sempre uma sequência de &quot;0&quot;s).</li>
+</ul>
+</li>
+<li>O programa deve validar o seguinte:
+<ul>
+<li><strong>Estrutura do Arquivo:</strong> O arquivo deve estar em conformidade com o formato de largura fixa esperado.</li>
+<li><strong>Tipos de Dados:</strong> ID da Categoria e Saldo devem ser numéricos.</li>
+<li><strong>Regra de Negócio:</strong> Se o ID da Categoria for maior que 100, ele deverá ser considerado inválido.</li>
+</ul>
+</li>
+<li>O programa deve gerar um relatório resumindo os saldos para cada categoria de transação válida.</li>
+</ul>
+<p><strong>Requisitos Não Funcionais:</strong></p>
+<ul>
+<li><strong>Desempenho:</strong> O programa deve processar o arquivo e gerar o relatório em tempo hábil, mesmo para arquivos grandes.</li>
+<li><strong>Confiabilidade:</strong> O programa deve ser confiável e lidar com erros graciosamente sem travar.</li>
+<li><strong>Manutenibilidade:</strong> O programa deve ser bem estruturado, documentado e fácil de manter e modificar.</li>
+</ul>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ul>
+<li>O programa lê e analisa com sucesso o arquivo de saldo de categoria de transação.</li>
+<li>O programa valida corretamente a estrutura do arquivo, os tipos de dados e as regras de negócios.</li>
+<li>O programa gera um relatório preciso resumindo os saldos para cada categoria de transação válida.</li>
+<li>O programa lida com erros graciosamente e fornece mensagens de erro informativas.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li>Implementar um mecanismo de registro para registrar erros, avisos e outras informações relevantes durante a execução do programa.</li>
+<li>Adicionar tratamento de erros para lidar graciosamente com dados inválidos ou erros de formato de arquivo.</li>
+<li>Criar funções reutilizáveis para tarefas comuns, como ler o arquivo, analisar registros e validar dados.</li>
+<li>Usar um formato de dados estruturado como JSON ou XML para o relatório de saída para melhorar a legibilidade e compatibilidade com outros sistemas.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li>Implementar mecanismos de controle de acesso para restringir o acesso ao arquivo de saldo de categoria de transação e ao relatório gerado.</li>
+<li>Se os dados forem confidenciais, considere criptografar o arquivo ou usar uma solução de armazenamento segura.</li>
+<li>Auditar regularmente os logs de acesso do programa para detectar quaisquer tentativas de acesso não autorizado.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00081-tcatbal_txt_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+sequenceDiagram
+    participant CardDemo Application
+    participant CSUTLDPY (Date Validation Module)
+    participant EDIT-DATE-CCYYMMDD
+    participant EDIT-YEAR-CCYY
+    participant EDIT-MONTH
+    participant EDIT-DAY
+    participant EDIT-DAY-MONTH-YEAR
+    participant EDIT-DATE-LE (Optional)
+    participant EDIT-DATE-OF-BIRTH
+    participant CSUTLDTC (External Service)
+
+    activate CardDemo Application
+    CardDemo Application->>+CSUTLDPY: Validate Date
+    activate CSUTLDPY (Date Validation Module)
+    CSUTLDPY (Date Validation Module)->>+EDIT-DATE-CCYYMMDD: Validate Date Components
+    activate EDIT-DATE-CCYYMMDD
+    EDIT-DATE-CCYYMMDD->>+EDIT-YEAR-CCYY: Validate Year
+    activate EDIT-YEAR-CCYY
+    EDIT-YEAR-CCYY->>-EDIT-DATE-CCYYMMDD: Year Validation Result
+    deactivate EDIT-YEAR-CCYY
+    EDIT-DATE-CCYYMMDD->>+EDIT-MONTH: Validate Month
+    activate EDIT-MONTH
+    EDIT-MONTH->>-EDIT-DATE-CCYYMMDD: Month Validation Result
+    deactivate EDIT-MONTH
+    EDIT-DATE-CCYYMMDD->>+EDIT-DAY: Validate Day
+    activate EDIT-DAY
+    EDIT-DAY->>-EDIT-DATE-CCYYMMDD: Day Validation Result
+    deactivate EDIT-DAY
+    EDIT-DATE-CCYYMMDD->>+EDIT-DAY-MONTH-YEAR: Validate Day, Month, Year Combination
+    activate EDIT-DAY-MONTH-YEAR
+    EDIT-DAY-MONTH-YEAR->>-EDIT-DATE-CCYYMMDD: Combined Validation Result
+    deactivate EDIT-DAY-MONTH-YEAR
+    alt External Validation Enabled
+        EDIT-DATE-CCYYMMDD->>+EDIT-DATE-LE: Perform External Validation
+        activate EDIT-DATE-LE (Optional)
+        EDIT-DATE-LE (Optional)->>+CSUTLDTC: Validate Date Using External Service
+        activate CSUTLDTC (External Service)
+        CSUTLDTC (External Service)->>EDIT-DATE-LE (Optional): External Validation Result
+        deactivate CSUTLDTC (External Service)
+        EDIT-DATE-LE (Optional)->>EDIT-DATE-CCYYMMDD: External Validation Result
+        deactivate EDIT-DATE-LE (Optional)
+    end
+    EDIT-DATE-CCYYMMDD->>+EDIT-DATE-OF-BIRTH: Validate Date of Birth
+    activate EDIT-DATE-OF-BIRTH
+    EDIT-DATE-OF-BIRTH->>-EDIT-DATE-CCYYMMDD: Date of Birth Validation Result
+    deactivate EDIT-DATE-OF-BIRTH
+    EDIT-DATE-CCYYMMDD->>-CSUTLDPY (Date Validation Module): Overall Validation Result
+    deactivate EDIT-DATE-CCYYMMDD
+    CSUTLDPY (Date Validation Module)->>CardDemo Application: Date Validation Result
+    deactivate CSUTLDPY (Date Validation Module)
+    deactivate CardDemo Application

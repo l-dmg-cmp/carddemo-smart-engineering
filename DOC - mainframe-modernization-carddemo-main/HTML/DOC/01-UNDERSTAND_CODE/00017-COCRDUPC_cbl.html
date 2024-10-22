@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00017-COCRDUPC_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h2>Decodificando o Programa de Atualização de Detalhes de Cartão de Crédito: Possibilitando Modificações Seguras</h2>
+<p><strong>Arquivo:</strong>  \src\COCRDUPC.cbl</p>
+<p>Este programa COBOL serve como o mecanismo de backend para atualizar informações de cartão de crédito dentro de um sistema maior. Ele lida com solicitações de usuários, valida dados, interage com o banco de dados e garante que as alterações sejam aplicadas com segurança e precisão.</p>
+<p><strong>Contexto:</strong></p>
+<p>Imagine um portal seguro onde pessoal autorizado pode acessar e atualizar detalhes do cartão de crédito. Este programa atua como o guardião e processador para essas atualizações, garantindo a integridade e segurança dos dados durante todo o processo.</p>
+<p><strong>Ação:</strong></p>
+<ol>
+<li><strong>Recepção da Solicitação:</strong> O programa recebe uma solicitação para visualizar ou atualizar detalhes do cartão de crédito, potencialmente desencadeada por uma ação do usuário em um terminal.</li>
+<li><strong>Recuperação de Dados:</strong> Ele busca as informações existentes do cartão de crédito em um banco de dados (provavelmente VSAM) com base nos números de conta e cartão fornecidos.</li>
+<li><strong>Validação de Entrada:</strong> O programa verifica meticulosamente a entrada do usuário em busca de erros e inconsistências. Por exemplo, ele verifica se o número da conta é numérico e tem 11 dígitos, se o nome do titular do cartão contém apenas letras e espaços e se a data de validade é válida.</li>
+<li><strong>Processamento da Atualização:</strong> Se a entrada passar em todas as verificações de validação, o programa atualiza o registro correspondente no banco de dados. Ele implementa mecanismos de bloqueio para evitar conflitos se vários usuários tentarem modificar o mesmo registro simultaneamente.</li>
+<li><strong>Confirmação e Feedback:</strong> O programa fornece feedback ao usuário, confirmando se a atualização foi bem-sucedida ou se ocorreram erros durante o processo.</li>
+</ol>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Integridade de Dados:</strong> O programa prioriza a precisão dos dados por meio de validação rigorosa de entrada, garantindo que apenas informações válidas e consistentes sejam armazenadas no banco de dados.</li>
+<li><strong>Controle de Concorrência:</strong> Ao usar mecanismos de bloqueio, o programa evita a corrupção de dados que pode surgir de atualizações simultâneas no mesmo registro de cartão de crédito.</li>
+<li><strong>Segurança:</strong> Embora não seja explicitamente detalhado no código, o programa provavelmente interage com outros componentes de segurança para verificar a autorização do usuário antes de conceder acesso a informações confidenciais do cartão de crédito.</li>
+<li><strong>Trilha de Auditoria:</strong> O programa pode registrar todas as ações de atualização, incluindo quem fez as alterações e quando, para fins de auditoria e rastreamento. Esta é uma prática comum em sistemas que lidam com dados financeiros confidenciais.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant Data Analyst
+    participant IDCAMS Utility
+    participant Mainframe System Catalog
+    participant Data Files Inventory Report
+
+    activate Data Analyst
+    Data Analyst->>+IDCAMS Utility: Execute LISTCAT command
+    activate IDCAMS Utility
+    IDCAMS Utility->>+Mainframe System Catalog: Retrieve file information
+    activate Mainframe System Catalog
+    Mainframe System Catalog->>IDCAMS Utility: File information
+    deactivate Mainframe System Catalog
+    IDCAMS Utility->>+Data Files Inventory Report: Generate report
+    activate Data Files Inventory Report
+    Data Files Inventory Report->>IDCAMS Utility: Report generated
+    deactivate Data Files Inventory Report
+    IDCAMS Utility->>Data Analyst: Data Files Inventory Report
+    deactivate IDCAMS Utility
+    deactivate Data Analyst

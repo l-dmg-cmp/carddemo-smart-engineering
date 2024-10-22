@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant CardDemo Application
+    participant Reporting Module
+    participant Transaction Data File
+
+    activate CardDemo Application
+    CardDemo Application->>+Reporting Module: Request Transaction Data
+    activate Reporting Module
+    Reporting Module->>+Transaction Data File: Read Transaction Records
+    activate Transaction Data File
+    Transaction Data File->>Reporting Module: Transaction Records
+    deactivate Transaction Data File
+    Reporting Module->>CardDemo Application: Formatted Transaction Data
+    deactivate Reporting Module
+    deactivate CardDemo Application

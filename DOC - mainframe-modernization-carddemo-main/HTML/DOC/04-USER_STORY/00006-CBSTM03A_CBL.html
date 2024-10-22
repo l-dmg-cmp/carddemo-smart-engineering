@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00006-CBSTM03A_CBL</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>–CONTENT TO TRANSLATE–
+Gerado em: 1 de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Gerador de Extrato de Conta CardDemo - Especificação do Programa</h1>
+<h1><strong>Descrição Resumida:</strong></h1>
+<p>O programa Gerador de Extrato de Conta CardDemo (CBSTM03A.CBL) é um processo em lote que gera extratos de conta para portadores de cartão de crédito. O programa lê dados do cliente, conta e transação de vários arquivos de entrada, realiza cálculos e gera extratos em formato de texto simples e HTML.</p>
+<h1><strong>Histórias do Usuário:</strong></h1>
+<p>Como analista de dados, preciso garantir que apenas registros válidos sejam usados na análise financeira, portanto, preciso de um programa que possa ler e validar dados de várias fontes e gerar extratos de conta precisos.</p>
+<h1><strong>Épico Relacionado:</strong></h1>
+<p>4 - Processamento de Transações</p>
+<h1><strong>Requisitos Funcionais:</strong></h1>
+<ul>
+<li>O programa deve ler os dados do cliente do <code>CUSTFILE</code>.</li>
+<li>O programa deve ler os dados da conta do <code>ACCTFILE</code>.</li>
+<li>O programa deve ler os dados da transação do <code>TRNXFILE</code>.</li>
+<li>O programa deve validar se os dados da transação estão corretamente associados aos dados do cliente e da conta.</li>
+<li>O programa deve calcular as despesas totais de cada conta com base nos dados da transação.</li>
+<li>O programa deve gerar extratos de conta em formato de texto simples, aderindo a um layout predefinido.</li>
+<li>O programa deve gerar extratos de conta em formato HTML, adequados para visualização online.</li>
+<li>O programa deve lidar com operações de E/S de arquivo, incluindo abertura, leitura, gravação e fechamento de arquivos.</li>
+<li>O programa deve implementar mecanismos de tratamento de erros para gerenciar problemas como dados inválidos ou erros de arquivo.</li>
+</ul>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Integridade de Dados:</strong> O programa garante que os dados de diferentes fontes (<code>CUSTFILE</code>, <code>ACCTFILE</code>, <code>TRNXFILE</code>) sejam combinados e apresentados com precisão. Por exemplo, ele garante que as transações estejam vinculadas à conta e ao cliente corretos.</li>
+<li><strong>Clareza e Transparência:</strong> A declaração gerada foi projetada para ser fácil de entender, fornecendo uma visão geral clara de toda a atividade da conta.</li>
+<li><strong>Flexibilidade:</strong> Ao produzir versões em texto simples e HTML, o programa atende a diferentes preferências e métodos de entrega.</li>
+</ul>
+<h1><strong>Requisitos Não Funcionais:</strong></h1>
+<ul>
+<li><strong>Desempenho:</strong> O programa deve processar grandes volumes de transações com eficiência dentro de um prazo razoável.</li>
+<li><strong>Confiabilidade:</strong> O programa deve operar de forma confiável, produzindo resultados precisos e consistentes.</li>
+<li><strong>Manutenção:</strong> O código do programa deve ser bem estruturado, documentado e fácil de entender e manter.</li>
+<li><strong>Segurança:</strong> O programa deve lidar com dados financeiros confidenciais com segurança, incorporando controles de acesso e criptografia de dados conforme necessário.</li>
+</ul>
+<h1><strong>Critérios de Aceitação:</strong></h1>
+<ul>
+<li>O programa lê e processa com sucesso os dados do cliente, conta e transação dos arquivos de entrada.</li>
+<li>O programa valida corretamente a integridade dos dados, garantindo que as transações estejam vinculadas aos clientes e contas corretos.</li>
+<li>O programa calcula com precisão as despesas totais de cada conta com base no histórico de transações.</li>
+<li>O programa gera instruções de texto simples e HTML que aderem aos layouts especificados.</li>
+<li>O programa lida com erros normalmente, registrando problemas e saindo normalmente sem corrupção de dados.</li>
+</ul>
+<h1><strong>Melhorias de Código:</strong></h1>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Aprimore o tratamento de erros fornecendo mensagens de erro mais específicas e implementando um mecanismo centralizado de registro de erros.</li>
+<li><strong>Documentação:</strong> Melhore a legibilidade e manutenção do código adicionando mais comentários em linha explicando a lógica complexa e as estruturas de dados.</li>
+<li><strong>Otimização de Desempenho:</strong> Investigue gargalos de desempenho, potencialmente usando técnicas de classificação ou indexação para grandes conjuntos de dados.</li>
+</ul>
+<h1><strong>Melhorias de Segurança:</strong></h1>
+<ul>
+<li><strong>Permissões de Arquivo:</strong> Implemente permissões de arquivo rígidas para restringir o acesso a arquivos de dados confidenciais.</li>
+<li><strong>Criptografia de Dados:</strong> Considere criptografar dados confidenciais em repouso e em trânsito para proteger as informações do cliente.</li>
+<li><strong>Auditoria:</strong> Implemente um trilha de auditoria para rastrear a execução do programa, acesso a dados e quaisquer modificações feitas em dados confidenciais.</li>
+</ul>
+<h1><strong>Diagrama Conceitual:</strong></h1>
+<img src="00006-CBSTM03A_CBL_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

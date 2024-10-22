@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00046-CVACT03Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Sistema de Gerenciamento de Cartão de Crédito - Especificação de Dados de Referência Cruzada do Cartão</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Sistema de Gerenciamento de Cartão de Crédito - Especificação de Dados de Referência Cruzada do Cartão</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li>Arquivo: \CVACT03Y.cpy</li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve a estrutura e a função do Registro de Referência Cruzada do Cartão dentro do Sistema de Gerenciamento de Cartão de Crédito. Este registro atua como um elo entre um cartão de crédito, seu titular (o cliente) e sua conta associada.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>CardDemo_v1.0-15-g27d6c6f-68: Versão inicial (19 de julho de 2022)</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O Registro de Referência Cruzada do Cartão armazena as informações essenciais necessárias para conectar um cartão de crédito a um cliente específico e sua conta. Este processo garante:</p>
+<ol>
+<li><strong>Identificação do Cartão:</strong> Cada cartão de crédito é identificado exclusivamente por seu número.</li>
+<li><strong>Associação do Cliente:</strong> O sistema pode determinar facilmente o cliente que possui um determinado cartão de crédito.</li>
+<li><strong>Vinculação de Conta:</strong> A conta específica associada a um cartão de crédito é claramente definida.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Número do Cartão de Crédito:</strong> Um número de cartão de crédito válido de 16 dígitos.</li>
+<li><strong>ID do Cliente:</strong> Um identificador exclusivo para o cliente.</li>
+<li><strong>ID da Conta:</strong> Um identificador exclusivo para a conta.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Número do Cartão Exclusivo:</strong> Cada número de cartão de crédito deve ser exclusivo no sistema, garantindo que apenas um cliente e uma conta estejam vinculados a ele.</li>
+<li><strong>ID do Cliente Válido:</strong> O ID do Cliente deve existir no banco de dados de clientes, garantindo que o cartão esteja vinculado a um cliente válido.</li>
+<li><strong>ID da Conta Válido:</strong> O ID da Conta deve existir no banco de dados de contas, garantindo que o cartão esteja associado a uma conta ativa.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>XREF-CARD-NUM</code>:</strong> Armazena o número do cartão de crédito de 16 dígitos (formato de texto).</li>
+<li><strong><code>XREF-CUST-ID</code>:</strong> Armazena o identificador exclusivo de 9 dígitos para o cliente (formato numérico).</li>
+<li><strong><code>XREF-ACCT-ID</code>:</strong> Armazena o identificador exclusivo de 11 dígitos para a conta (formato numérico).</li>
+<li><strong><code>FILLER</code>:</strong> Espaço não utilizado reservado para uso futuro ou compatibilidade do sistema (formato de texto).</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Processamento de Transações:</strong> Este registro é crucial para atribuir transações ao cliente e conta corretos.</li>
+<li><strong>Gerenciamento de Clientes:</strong> Fornece um link direto dos dados do cliente para as informações do cartão de crédito.</li>
+<li><strong>Gerenciamento de Contas:</strong> Permite acesso aos detalhes do cartão de crédito diretamente de uma conta.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XREF-CARD-NUM</td>
+<td>Texto (X(16))</td>
+<td>O número do cartão de crédito de 16 dígitos.</td>
+</tr>
+<tr>
+<td>XREF-CUST-ID</td>
+<td>Número (9(09))</td>
+<td>O identificador exclusivo de 9 dígitos para o cliente.</td>
+</tr>
+<tr>
+<td>XREF-ACCT-ID</td>
+<td>Número (9(11))</td>
+<td>O identificador exclusivo de 11 dígitos para a conta.</td>
+</tr>
+<tr>
+<td>FILLER</td>
+<td>Texto (X(14))</td>
+<td>Espaço não utilizado.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>Banco de Dados de Clientes:</strong> O sistema onde as informações do cliente são armazenadas e gerenciadas.</li>
+<li><strong>Banco de Dados de Contas:</strong> O sistema onde as informações da conta são armazenadas e gerenciadas.</li>
+</ul>
+<p><strong>Considerações Adicionais:</strong></p>
+<ul>
+<li><strong>Segurança de Dados:</strong> Implemente medidas de segurança robustas para proteger esses dados confidenciais, incluindo criptografia e controle de acesso.</li>
+<li><strong>Integridade de Dados:</strong> Garanta a consistência dos dados por meio de regras de validação e restrições de banco de dados.</li>
+<li><strong>Otimização de Desempenho:</strong> Projete a estrutura de dados e os métodos de acesso para um desempenho ideal, especialmente para transações de alto volume.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+sequenceDiagram
+    participant Credit Card Processing System
+    participant CCRDUP Program
+    participant Input Data File
+    participant Output Report File
+
+    activate Credit Card Processing System
+    Credit Card Processing System->>+CCRDUP Program: Initiate Duplicate Check
+    activate CCRDUP Program
+    CCRDUP Program->>+Input Data File: Open
+    Input Data File->>CCRDUP Program: File Opened
+    loop For Each Record in Input
+        CCRDUP Program->>+Input Data File: Read Record
+        Input Data File->>CCRDUP Program: Credit Card Data
+        CCRDUP Program->>CCRDUP Program: Perform Duplicate Check Logic
+        alt Duplicate Found
+            CCRDUP Program->>+Output Report File: Write Duplicate Record Details
+            Output Report File->>CCRDUP Program: Write Successful
+        else No Duplicate Found
+            CCRDUP Program->>CCRDUP Program: Continue Processing
+        end
+    end
+    CCRDUP Program->>+Input Data File: Close
+    Input Data File->>CCRDUP Program: File Closed
+    CCRDUP Program->>+Output Report File: Close
+    Output Report File->>-CCRDUP Program: File Closed
+    CCRDUP Program->>Credit Card Processing System: Duplicate Check Complete
+    deactivate CCRDUP Program
+    deactivate Credit Card Processing System

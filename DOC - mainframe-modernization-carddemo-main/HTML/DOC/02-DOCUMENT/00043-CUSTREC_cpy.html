@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00043-CUSTREC_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h1>Especificação do Registro de Dados do Cliente</h1>
+<h2>Título do Documento: CardDemo - Especificação da Estrutura de Dados do Cliente</h2>
+<h2>Arquivo</h2>
+<ul>
+<li><code>CUSTREC.cpy</code></li>
+</ul>
+<h2>Sumário</h2>
+<p>Este documento descreve a estrutura das informações do cliente dentro da aplicação CardDemo. Esta estrutura, definida no arquivo <code>CUSTREC.cpy</code>, serve como um modelo de como os dados do cliente são organizados e armazenados. Compreender esta estrutura é crucial para qualquer pessoa que trabalhe com dados de clientes no sistema CardDemo, incluindo desenvolvedores, testadores e analistas de negócios.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>CardDemo_v1.0-15-g27d6c6f-68: Versão inicial (19 de julho de 2022)</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O arquivo <code>CUSTREC.cpy</code> define uma estrutura de dados COBOL chamada <code>CUSTOMER-RECORD</code>. Esta estrutura atua como um modelo para armazenar informações sobre cada cliente. Cada campo dentro do <code>CUSTOMER-RECORD</code> representa um atributo específico do cliente.</p>
+<h2>Requisitos para Iniciar o Processo</h2>
+<p>Esta estrutura de dados é fundamental para a aplicação CardDemo. Qualquer processo que envolva dados do cliente dependerá desta estrutura.</p>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Tipos de Dados:</strong> Cada campo no <code>CUSTOMER-RECORD</code> possui um tipo de dado definido (por exemplo, <code>PIC 9(09)</code> para dados numéricos, <code>PIC X(25)</code> para dados de texto). Isso garante a consistência e a precisão dos dados.</li>
+<li><strong>ID do Cliente Exclusivo:</strong> O campo <code>CUST-ID</code> provavelmente se destina a ser um identificador exclusivo para cada cliente.</li>
+<li><strong>Regras de Negócio:</strong> Regras de negócio específicas podem ditar como determinados campos são preenchidos ou usados. Por exemplo, pode haver regras sobre validação de pontuação de crédito ou verificação de endereço.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>CUSTOMER-RECORD</code>:</strong> A estrutura de dados principal que contém todas as informações do cliente.</li>
+<li><strong><code>CUST-ID</code>:</strong> Um identificador numérico exclusivo para cada cliente.</li>
+<li><strong><code>CUST-FIRST-NAME</code>, <code>CUST-MIDDLE-NAME</code>, <code>CUST-LAST-NAME</code>:</strong> Campos para armazenar o nome completo do cliente.</li>
+<li><strong><code>CUST-ADDR-LINE-1</code>, <code>CUST-ADDR-LINE-2</code>, <code>CUST-ADDR-LINE-3</code>:</strong> Campos para armazenar o endereço do cliente.</li>
+<li><strong><code>CUST-ADDR-STATE-CD</code>, <code>CUST-ADDR-COUNTRY-CD</code>, <code>CUST-ADDR-ZIP</code>:</strong> Campos para armazenar o estado, país e CEP do cliente.</li>
+<li><strong><code>CUST-PHONE-NUM-1</code>, <code>CUST-PHONE-NUM-2</code>:</strong> Campos para armazenar os números de telefone do cliente.</li>
+<li><strong><code>CUST-SSN</code>:</strong> Número de Segurança Social (SSN) do cliente.</li>
+<li><strong><code>CUST-GOVT-ISSUED-ID</code>:</strong> Um número de identificação emitido pelo governo.</li>
+<li><strong><code>CUST-DOB-YYYYMMDD</code>:</strong> Data de nascimento do cliente.</li>
+<li><strong><code>CUST-EFT-ACCOUNT-ID</code>:</strong> ID da conta de Transferência Eletrônica de Fundos (EFT) do cliente.</li>
+<li><strong><code>CUST-PRI-CARD-HOLDER-IND</code>:</strong> Um indicador se o cliente é o titular principal do cartão.</li>
+<li><strong><code>CUST-FICO-CREDIT-SCORE</code>:</strong> Pontuação de crédito FICO do cliente.</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Sensibilidade dos Dados:</strong> O <code>CUSTOMER-RECORD</code> contém informações pessoais confidenciais. O acesso a esses dados deve ser estritamente controlado e protegido de acordo com as regulamentações de privacidade de dados relevantes e as melhores práticas de segurança.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Aplicativos Voltados para o Cliente:</strong> Esta estrutura de dados provavelmente sustenta como os dados do cliente são exibidos e gerenciados em várias partes da aplicação CardDemo.</li>
+<li><strong>Relatórios e Análise:</strong> Esta estrutura seria essencial para gerar relatórios e realizar análises de dados do cliente.</li>
+</ul>
+<h2>Modelo de Dados</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CUST-ID</code></td>
+<td>Numérico (9 dígitos)</td>
+<td>Identificador exclusivo do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-FIRST-NAME</code></td>
+<td>Texto (25 caracteres)</td>
+<td>Primeiro nome do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-MIDDLE-NAME</code></td>
+<td>Texto (25 caracteres)</td>
+<td>Nome do meio do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-LAST-NAME</code></td>
+<td>Texto (25 caracteres)</td>
+<td>Sobrenome do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-ADDR-LINE-1</code></td>
+<td>Texto (50 caracteres)</td>
+<td>Linha de endereço 1 do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-ADDR-LINE-2</code></td>
+<td>Texto (50 caracteres)</td>
+<td>Linha de endereço 2 do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-ADDR-LINE-3</code></td>
+<td>Texto (50 caracteres)</td>
+<td>Linha de endereço 3 do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-ADDR-STATE-CD</code></td>
+<td>Texto (2 caracteres)</td>
+<td>Código do estado do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-ADDR-COUNTRY-CD</code></td>
+<td>Texto (3 caracteres)</td>
+<td>Código do país do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-ADDR-ZIP</code></td>
+<td>Texto (10 caracteres)</td>
+<td>CEP do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-PHONE-NUM-1</code></td>
+<td>Texto (15 caracteres)</td>
+<td>Número de telefone principal do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-PHONE-NUM-2</code></td>
+<td>Texto (15 caracteres)</td>
+<td>Número de telefone secundário do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-SSN</code></td>
+<td>Numérico (9 dígitos)</td>
+<td>Número de Segurança Social do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-GOVT-ISSUED-ID</code></td>
+<td>Texto (20 caracteres)</td>
+<td>ID emitido pelo governo do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-DOB-YYYYMMDD</code></td>
+<td>Texto (10 caracteres)</td>
+<td>Data de nascimento do cliente (AAAA/MM/DD).</td>
+</tr>
+<tr>
+<td><code>CUST-EFT-ACCOUNT-ID</code></td>
+<td>Texto (10 caracteres)</td>
+<td>ID da conta de Transferência Eletrônica de Fundos do cliente.</td>
+</tr>
+<tr>
+<td><code>CUST-PRI-CARD-HOLDER-IND</code></td>
+<td>Texto (1 caractere)</td>
+<td>Indicador se o cliente é o titular principal do cartão.</td>
+</tr>
+<tr>
+<td><code>CUST-FICO-CREDIT-SCORE</code></td>
+<td>Numérico (3 dígitos)</td>
+<td>Pontuação de crédito FICO do cliente.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li>É provável que esta estrutura de dados seja referenciada por vários programas e módulos dentro da aplicação CardDemo.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

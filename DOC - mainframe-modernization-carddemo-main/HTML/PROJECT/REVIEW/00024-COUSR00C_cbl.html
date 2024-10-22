@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00024-COUSR00C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>–CONTENT TO TRANSLATE–
+Gerado em: 1 de outubro de 2024</p>
+<h2>Revisão de Análise Técnica</h2>
+<p><strong>Arquivo:</strong>  \src\COUSR00C.cbl</p>
+<p><strong>Título:</strong>  Programa de Lista de Usuários (COBOL - CICS)</p>
+<p><strong>Resumo:</strong></p>
+<p>Este programa COBOL, <code>COUSR00C.cbl</code>, faz parte da aplicação “CardDemo” e é executado dentro de um ambiente CICS. Ele recupera e exibe uma lista de usuários de um arquivo chamado “USRSEC”. O programa suporta paginação (teclas PF7 e PF8) e permite que os usuários selecionem um usuário para ações de atualização (U) ou exclusão (D), transferindo o controle para outros programas (COUSR02C ou COUSR03C) para essas operações.</p>
+<p><strong>Tecnologia:</strong></p>
+<ul>
+<li><strong>Linguagem de Programação:</strong> COBOL</li>
+<li><strong>Framework/Biblioteca:</strong> CICS (Customer Information Control System)</li>
+<li><strong>Banco de Dados:</strong>
+<ul>
+<li><strong>VSAM (Provável):</strong> O arquivo <code>USRSEC</code> é provavelmente um arquivo VSAM (Virtual Storage Access Method), um método comum de armazenamento de dados em sistemas mainframe IBM onde o CICS é normalmente usado.</li>
+</ul>
+</li>
+<li><strong>Outras Ferramentas:</strong> <code>Não disponível</code></li>
+</ul>
+<p><strong>Referência, Classe e Método:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Referência</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>COCOM01Y</code></td>
+<td>Provavelmente contém uma estrutura de dados (<code>CDEMO-CU00-INFO</code>) relacionada à comunicação dentro da aplicação CardDemo, especificamente para a transação CU00.</td>
+</tr>
+<tr>
+<td><code>COUSR00</code></td>
+<td>Provavelmente define a estrutura <code>SEC-USER-DATA</code> que representa um registro no arquivo USRSEC, contendo detalhes do usuário.</td>
+</tr>
+<tr>
+<td><code>COTTL01Y</code></td>
+<td>Provavelmente contém estruturas de dados ou variáveis para títulos de tela e cabeçalhos.</td>
+</tr>
+<tr>
+<td><code>CSDAT01Y</code></td>
+<td>Provavelmente fornece estruturas de dados ou variáveis relacionadas à data, como sugerido por <code>WS-CURDATE-DATA</code>.</td>
+</tr>
+<tr>
+<td><code>CSMSG01Y</code></td>
+<td>Provavelmente contém estruturas de dados relacionadas a mensagens, indicado pelo uso de <code>WS-MESSAGE</code>.</td>
+</tr>
+<tr>
+<td><code>CSUSR01Y</code></td>
+<td>Pode definir estruturas de dados relacionadas ao usuário, possivelmente usadas para exibição de informações do usuário.</td>
+</tr>
+<tr>
+<td><code>DFHAID</code></td>
+<td>Um copybook CICS padrão fornecendo nomes simbólicos para teclas de função CICS (por exemplo, DFHENTER, DFHPF3).</td>
+</tr>
+<tr>
+<td><code>DFHBMSCA</code></td>
+<td>Um copybook CICS padrão definindo a área de comunicação (<code>DFHCOMMAREA</code>) usada para troca de dados entre programas.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Não disponível</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método (Público)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Não disponível</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método (Privado)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Não disponível</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

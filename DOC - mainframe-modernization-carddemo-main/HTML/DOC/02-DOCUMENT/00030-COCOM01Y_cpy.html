@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00030-COCOM01Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Aplicação CardDemo - Especificação da Área de Comunicação Entre Programas</h1>
+<h2>Título do Documento: CardDemo Application - Communication Area (COCOM01Y) Specification</h2>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve a estrutura e função do <code>CARDDEMO-COMMAREA</code>, uma estrutura de dados padronizada usada para comunicação entre diferentes programas dentro da aplicação CardDemo. Esta área de comunicação garante a troca de dados sem problemas e mantém a integridade dos dados em todo o sistema de gerenciamento de cartão de crédito.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>CardDemo_v1.0-15-g27d6c6f-68: Versão inicial (19 de julho de 2022)</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O <code>CARDDEMO-COMMAREA</code> atua como um contêiner para informações que precisam ser passadas entre diferentes programas dentro da aplicação CardDemo. Quando um programa precisa enviar dados para outro, ele preenche esta área de comunicação com as informações relevantes. O programa receptor então extrai e utiliza esses dados. Este processo garante consistência e clareza na troca de dados.</p>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Programa de Chamada:</strong> O programa que inicia a transferência de dados precisa preencher o <code>CARDDEMO-COMMAREA</code> com as informações relevantes.</li>
+<li><strong>Programa Chamado:</strong> O programa que recebe os dados precisa ser capaz de interpretar e processar as informações armazenadas no <code>CARDDEMO-COMMAREA</code>.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Validação de Tipo de Dados:</strong> Cada campo no <code>CARDDEMO-COMMAREA</code> possui um tipo de dados definido (por exemplo, PIC X para alfanumérico, PIC 9 para numérico). Os programas que preenchem a área de comunicação devem garantir que os tipos de dados sejam respeitados.</li>
+<li><strong>Validação de Tamanho do Campo:</strong> Cada campo possui um tamanho especificado. Os programas devem garantir que os dados inseridos nesses campos não excedam o tamanho definido.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Estrutura de Dados:</strong></p>
+<ul>
+<li>
+<p><strong><code>CARDDEMO-COMMAREA</code>:</strong> A estrutura de dados principal contendo todas as outras informações.</p>
+<ul>
+<li>
+<p><strong><code>CDEMO-GENERAL-INFO</code>:</strong> Contém informações gerais sobre a transação ou operação.</p>
+<ul>
+<li><strong><code>CDEMO-FROM-TRANID</code>:</strong> ID da transação do programa remetente.</li>
+<li><strong><code>CDEMO-FROM-PROGRAM</code>:</strong> Nome do programa remetente.</li>
+<li><strong><code>CDEMO-TO-TRANID</code>:</strong> ID da transação do programa receptor.</li>
+<li><strong><code>CDEMO-TO-PROGRAM</code>:</strong> Nome do programa receptor.</li>
+<li><strong><code>CDEMO-USER-ID</code>:</strong> ID do usuário que está iniciando a transação.</li>
+<li><strong><code>CDEMO-USER-TYPE</code>:</strong> Tipo de usuário (Administrador ou Regular).</li>
+<li><strong><code>CDEMO-PGM-CONTEXT</code>:</strong> Indica se o programa está sendo inserido pela primeira vez ou re-inserido.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>CDEMO-CUSTOMER-INFO</code>:</strong> Contém informações específicas do cliente.</p>
+<ul>
+<li><strong><code>CDEMO-CUST-ID</code>:</strong> Identificador único do cliente.</li>
+<li><strong><code>CDEMO-CUST-FNAME</code>:</strong> Primeiro nome do cliente.</li>
+<li><strong><code>CDEMO-CUST-MNAME</code>:</strong> Nome do meio do cliente.</li>
+<li><strong><code>CDEMO-CUST-LNAME</code>:</strong> Sobrenome do cliente.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>CDEMO-ACCOUNT-INFO</code>:</strong> Contém informações relacionadas à conta.</p>
+<ul>
+<li><strong><code>CDEMO-ACCT-ID</code>:</strong> Identificador único da conta.</li>
+<li><strong><code>CDEMO-ACCT-STATUS</code>:</strong> Status atual da conta.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>CDEMO-CARD-INFO</code>:</strong> Contém informações do cartão de crédito.</p>
+<ul>
+<li><strong><code>CDEMO-CARD-NUM</code>:</strong> Número do cartão de crédito associado à conta.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>CDEMO-MORE-INFO</code>:</strong> Informações adicionais para controle de fluxo do programa.</p>
+<ul>
+<li><strong><code>CDEMO-LAST-MAP</code>:</strong> Último nome de mapa usado.</li>
+<li><strong><code>CDEMO-LAST-MAPSET</code>:</strong> Último conjunto de mapas usado.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Segurança</h2>
+<p>Embora não esteja explicitamente definido neste trecho de código, as seguintes considerações de segurança são importantes:</p>
+<ul>
+<li><strong>Validação de Dados:</strong> A validação rigorosa de dados é crucial para evitar vulnerabilidades como injeção de SQL ou ataques de estouro de buffer.</li>
+<li><strong>Controle de Acesso:</strong> O acesso a informações confidenciais dentro do <code>CARDDEMO-COMMAREA</code> (como números de cartão de crédito) deve ser restrito com base nas funções e permissões do usuário.</li>
+<li><strong>Criptografia de Dados:</strong> Considere criptografar dados confidenciais dentro da área de comunicação para adicionar uma camada extra de segurança.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Todos os Programas dentro do CardDemo:</strong> Esta área de comunicação é fundamental para a aplicação CardDemo. Quaisquer alterações em sua estrutura ou definições de dados exigiriam atualizações em todos os programas que interagem com ela.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Nome do Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CDEMO-FROM-TRANID</td>
+<td>Alfanumérico</td>
+<td>ID da transação do programa remetente.</td>
+</tr>
+<tr>
+<td>CDEMO-FROM-PROGRAM</td>
+<td>Alfanumérico</td>
+<td>Nome do programa remetente.</td>
+</tr>
+<tr>
+<td>CDEMO-TO-TRANID</td>
+<td>Alfanumérico</td>
+<td>ID da transação do programa receptor.</td>
+</tr>
+<tr>
+<td>CDEMO-TO-PROGRAM</td>
+<td>Alfanumérico</td>
+<td>Nome do programa receptor.</td>
+</tr>
+<tr>
+<td>CDEMO-USER-ID</td>
+<td>Alfanumérico</td>
+<td>ID do usuário que está iniciando a transação.</td>
+</tr>
+<tr>
+<td>CDEMO-USER-TYPE</td>
+<td>Alfanumérico</td>
+<td>Tipo de usuário (Administrador ou Regular).</td>
+</tr>
+<tr>
+<td>CDEMO-PGM-CONTEXT</td>
+<td>Numérico</td>
+<td>Contexto de entrada/re-entrada do programa.</td>
+</tr>
+<tr>
+<td>CDEMO-CUST-ID</td>
+<td>Numérico</td>
+<td>Identificador único do cliente.</td>
+</tr>
+<tr>
+<td>CDEMO-CUST-FNAME</td>
+<td>Alfanumérico</td>
+<td>Primeiro nome do cliente.</td>
+</tr>
+<tr>
+<td>CDEMO-CUST-MNAME</td>
+<td>Alfanumérico</td>
+<td>Nome do meio do cliente.</td>
+</tr>
+<tr>
+<td>CDEMO-CUST-LNAME</td>
+<td>Alfanumérico</td>
+<td>Sobrenome do cliente.</td>
+</tr>
+<tr>
+<td>CDEMO-ACCT-ID</td>
+<td>Numérico</td>
+<td>Identificador único da conta.</td>
+</tr>
+<tr>
+<td>CDEMO-ACCT-STATUS</td>
+<td>Alfanumérico</td>
+<td>Status atual da conta.</td>
+</tr>
+<tr>
+<td>CDEMO-CARD-NUM</td>
+<td>Numérico</td>
+<td>Número do cartão de crédito associado à conta.</td>
+</tr>
+<tr>
+<td>CDEMO-LAST-MAP</td>
+<td>Alfanumérico</td>
+<td>Último nome de mapa usado.</td>
+</tr>
+<tr>
+<td>CDEMO-LAST-MAPSET</td>
+<td>Alfanumérico</td>
+<td>Último conjunto de mapas usado.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>Padrões de Programação COBOL:</strong> A adesão aos padrões de programação COBOL é essencial para definições de tipo e tamanho de dados.</li>
+<li><strong>Arquitetura da Aplicação CardDemo:</strong> Entender a arquitetura geral da aplicação é crucial para a utilização correta da área de comunicação.</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li><code>COCOM01Y.cpy</code></li>
+</ul>
+<p>Esta área de comunicação padronizada é um componente crítico da aplicação CardDemo, facilitando a troca suave de dados entre seus diferentes módulos. Manter sua integridade e segurança é fundamental para a funcionalidade e confiabilidade geral da aplicação.</p>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

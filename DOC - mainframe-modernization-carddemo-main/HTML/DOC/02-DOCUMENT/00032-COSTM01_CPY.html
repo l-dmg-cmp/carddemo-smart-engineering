@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00032-COSTM01_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Estrutura de Relatórios de Transações CardDemo</h1>
+<h2>Título do Documento: Estrutura de Relatórios de Transações CardDemo - Especificação de Layout de Dados</h2>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve a estrutura dos dados de transações utilizados para gerar relatórios no sistema CardDemo. Este formato padronizado garante relatórios claros e consistentes em todas as funcionalidades.</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>Versão 1.0: Versão Inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O sistema CardDemo utiliza uma estrutura de dados predefinida, <code>TRNX-RECORD</code>, para representar transações individuais de cartão de crédito/débito para fins de relatórios. Esta estrutura é dividida em duas seções principais:</p>
+<ol>
+<li><strong><code>TRNX-KEY</code>:</strong> Identifica exclusivamente cada transação usando o número do cartão (<code>TRNX-CARD-NUM</code>) e um ID de transação exclusivo (<code>TRNX-ID</code>). Isso permite a recuperação e o rastreamento eficientes de transações individuais.</li>
+<li><strong><code>TRNX-REST</code>:</strong> Contém informações detalhadas sobre a transação, incluindo:
+<ul>
+<li>Tipo de Transação (<code>TRNX-TYPE-CD</code>): Categoriza a transação (por exemplo, compra, reembolso).</li>
+<li>Categoria de Transação (<code>TRNX-CAT-CD</code>): Classifica ainda mais a transação (por exemplo, mantimentos, viagens).</li>
+<li>Origem da Transação (<code>TRNX-SOURCE</code>): Identifica a origem da transação (por exemplo, online, terminal POS).</li>
+<li>Descrição da Transação (<code>TRNX-DESC</code>): Fornece uma breve explicação da transação.</li>
+<li>Valor da Transação (<code>TRNX-AMT</code>): Registra o valor monetário da transação.</li>
+<li>Informações do Comerciante (<code>TRNX-MERCHANT-ID</code>, <code>TRNX-MERCHANT-NAME</code>, <code>TRNX-MERCHANT-CITY</code>, <code>TRNX-MERCHANT-ZIP</code>): Armazena detalhes sobre o comerciante envolvido na transação.</li>
+<li>Timestamps da Transação (<code>TRNX-ORIG-TS</code>, <code>TRNX-PROC-TS</code>): Registra os horários de início e processamento da transação, facilitando o rastreamento e a análise cronológicos.</li>
+</ul>
+</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Dados de Transação:</strong> O sistema deve capturar todos os detalhes necessários da transação, conforme definido na estrutura <code>TRNX-RECORD</code>.</li>
+<li><strong>Módulo de Geração de Relatórios:</strong> Um módulo ou componente capaz de processar e formatar os dados da transação de acordo com a estrutura definida para geração de relatórios.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Integridade de Dados:</strong> Todos os dados de transações devem estar em conformidade com os tipos de dados e comprimentos especificados definidos na estrutura <code>TRNX-RECORD</code> para garantir a integridade dos dados.</li>
+<li><strong>Validação de Dados:</strong> O sistema deve implementar regras de validação para garantir a precisão e consistência dos dados de transações (por exemplo, tipos e categorias de transações válidos, formatos válidos de data e hora).</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>TRNX-RECORD</code></strong>: Uma estrutura de dados que representa uma única transação.</li>
+<li><strong><code>TRNX-KEY</code></strong>: Uma subestrutura dentro de <code>TRNX-RECORD</code> que identifica exclusivamente uma transação.</li>
+<li><strong><code>TRNX-REST</code></strong>: Uma subestrutura dentro de <code>TRNX-RECORD</code> que contém informações detalhadas sobre a transação.</li>
+<li><strong><code>TRNX-CARD-NUM</code></strong>: Um campo de 16 caracteres que representa o número do cartão de crédito/débito.</li>
+<li><strong><code>TRNX-ID</code></strong>: Um campo de 16 caracteres que serve como um identificador exclusivo para a transação.</li>
+<li><strong><code>TRNX-TYPE-CD</code></strong>: Um código de 2 caracteres que representa o tipo de transação.</li>
+<li><strong><code>TRNX-CAT-CD</code></strong>: Um código de 4 dígitos que representa a categoria da transação.</li>
+<li><strong><code>TRNX-SOURCE</code></strong>: Um campo de 10 caracteres indicando a origem da transação.</li>
+<li><strong><code>TRNX-DESC</code></strong>: Um campo de 100 caracteres fornecendo uma descrição da transação.</li>
+<li><strong><code>TRNX-AMT</code></strong>: Um campo numérico com duas casas decimais representando o valor da transação.</li>
+<li><strong><code>TRNX-MERCHANT-ID</code></strong>: Um campo de 9 dígitos que representa o identificador exclusivo do comerciante.</li>
+<li><strong><code>TRNX-MERCHANT-NAME</code></strong>: Um campo de 50 caracteres contendo o nome do comerciante.</li>
+<li><strong><code>TRNX-MERCHANT-CITY</code></strong>: Um campo de 50 caracteres indicando a cidade da localização do comerciante.</li>
+<li><strong><code>TRNX-MERCHANT-ZIP</code></strong>: Um campo de 10 caracteres que representa o CEP da localização do comerciante.</li>
+<li><strong><code>TRNX-ORIG-TS</code></strong>: Um campo de 26 caracteres armazenando a data e hora do início da transação.</li>
+<li><strong><code>TRNX-PROC-TS</code></strong>: Um campo de 26 caracteres armazenando a data e hora do processamento da transação.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Módulos de Relatórios:</strong> Esta estrutura de dados de transações padronizada impacta diretamente quaisquer módulos de relatórios dentro do CardDemo, garantindo consistência na formatação e apresentação de dados em todos os relatórios.</li>
+<li><strong>Análise de Dados:</strong> Os dados estruturados facilitam a análise eficiente de dados, fornecendo um formato consistente para consultar e agregar informações de transações.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Nome do Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TRNX-CARD-NUM</code></td>
+<td>Alfanumérico</td>
+<td>Número do cartão de crédito/débito (até 16 dígitos)</td>
+</tr>
+<tr>
+<td><code>TRNX-ID</code></td>
+<td>Alfanumérico</td>
+<td>Identificador de transação exclusivo (até 16 caracteres)</td>
+</tr>
+<tr>
+<td><code>TRNX-TYPE-CD</code></td>
+<td>Código (2)</td>
+<td>Código do tipo de transação (por exemplo, “PR” para Compra, “RF” para Reembolso)</td>
+</tr>
+<tr>
+<td><code>TRNX-CAT-CD</code></td>
+<td>Código (4)</td>
+<td>Código da categoria de transação (por exemplo, “FOOD” para Mantimentos, “TRVL” para Viagens)</td>
+</tr>
+<tr>
+<td><code>TRNX-SOURCE</code></td>
+<td>Alfanumérico</td>
+<td>Origem da transação (por exemplo, “ONLINE”, “POS”, “ATM”)</td>
+</tr>
+<tr>
+<td><code>TRNX-DESC</code></td>
+<td>Alfanumérico</td>
+<td>Descrição da transação (até 100 caracteres)</td>
+</tr>
+<tr>
+<td><code>TRNX-AMT</code></td>
+<td>Numérico</td>
+<td>Valor da transação (com 2 casas decimais)</td>
+</tr>
+<tr>
+<td><code>TRNX-MERCHANT-ID</code></td>
+<td>Numérico</td>
+<td>Identificador do comerciante (até 9 dígitos)</td>
+</tr>
+<tr>
+<td><code>TRNX-MERCHANT-NAME</code></td>
+<td>Alfanumérico</td>
+<td>Nome do comerciante (até 50 caracteres)</td>
+</tr>
+<tr>
+<td><code>TRNX-MERCHANT-CITY</code></td>
+<td>Alfanumérico</td>
+<td>Cidade do comerciante (até 50 caracteres)</td>
+</tr>
+<tr>
+<td><code>TRNX-MERCHANT-ZIP</code></td>
+<td>Alfanumérico</td>
+<td>CEP do comerciante (até 10 caracteres)</td>
+</tr>
+<tr>
+<td><code>TRNX-ORIG-TS</code></td>
+<td>Timestamp</td>
+<td>Timestamp de início da transação</td>
+</tr>
+<tr>
+<td><code>TRNX-PROC-TS</code></td>
+<td>Timestamp</td>
+<td>Timestamp de processamento da transação</td>
+</tr>
+</tbody>
+</table>
+<h2>Referências Principais</h2>
+<ul>
+<li><strong>Sistema de Relatórios CardDemo:</strong> O sistema principal que utiliza esta estrutura de dados para gerar relatórios de transações.</li>
+</ul>
+<p><strong>Considerações Adicionais:</strong></p>
+<ul>
+<li><strong>Dicionário de Dados:</strong> Manter um dicionário de dados abrangente que defina cada campo de dados e seus valores permitidos será benéfico para o gerenciamento e a consistência dos dados.</li>
+<li><strong>Segurança de Dados:</strong> Implementar medidas de segurança de dados apropriadas para proteger dados confidenciais de transações contra acesso não autorizado e modificações.</li>
+<li><strong>Otimização de Desempenho:</strong> Considerar as implicações de desempenho ao lidar com grandes volumes de dados de transações e implementar estratégias de otimização conforme necessário.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

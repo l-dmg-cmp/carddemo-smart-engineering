@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00049-CVTRA01Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Sistema de Relatório de Saldo de Categoria de Transação</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Especificação de Extração de Saldo de Categoria de Transação</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li><code>\CVTRA01Y.cpy</code></li>
+</ul>
+<h2>Descrição resumida</h2>
+<p>Este documento descreve a estrutura e os elementos de dados dentro do registro <code>TRAN-CAT-BAL-RECORD</code>, que é crucial para entender como o sistema armazena e rastreia saldos para várias categorias de transação. Esta informação é vital para relatórios financeiros e análise.</p>
+<h2>Histórico da versão</h2>
+<ul>
+<li>CardDemo_v1.0-15-g27d6c6f-68: Versão inicial - 19 de julho de 2022</li>
+</ul>
+<h2>Descrição do processo</h2>
+<p>O sistema usa a estrutura <code>TRAN-CAT-BAL-RECORD</code> para manter um registro detalhado do saldo para cada categoria de transação. Esta estrutura garante que cada transação seja categorizada por conta, tipo e um código de categoria específico, e que um saldo corrente seja mantido para cada combinação exclusiva.</p>
+<h2>Requisitos para iniciar o processo</h2>
+<ol>
+<li><strong>Dados de transação:</strong> O sistema requer dados de transação precisos e oportunos, incluindo o ID da conta, código do tipo de transação, código da categoria e valor da transação.</li>
+<li><strong>Dados da conta:</strong> O acesso às informações da conta é necessário para validar IDs de conta e recuperar detalhes relevantes da conta.</li>
+<li><strong>Mapeamento de categoria de transação:</strong> Uma tabela de mapeamento ou lógica é necessária para associar cada transação ao seu código de categoria correspondente.</li>
+</ol>
+<h2>Validações e regras</h2>
+<ul>
+<li><strong>Validação de ID de conta:</strong> O sistema deve validar o ID da conta em relação aos registros de conta existentes para evitar erros e garantir a integridade dos dados.</li>
+<li><strong>Validação do tipo de transação:</strong> O código do tipo de transação deve ser validado em relação a uma lista predefinida de códigos válidos.</li>
+<li><strong>Validação do código da categoria:</strong> O código da categoria deve ser validado para garantir que esteja alinhado com as categorias de transação definidas.</li>
+<li><strong>Cálculo de saldo:</strong> O sistema deve calcular e atualizar com precisão o saldo para cada categoria de transação com base no valor da transação.</li>
+</ul>
+<h2>Detalhes técnicos</h2>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>TRANCAT-ACCT-ID</code>:</strong> Um número de 11 dígitos que identifica exclusivamente cada conta.</li>
+<li><strong><code>TRANCAT-TYPE-CD</code>:</strong> Um código de 2 caracteres (por exemplo, ‘SA’, ‘CH’) representando o tipo de conta ou transação.</li>
+<li><strong><code>TRANCAT-CD</code>:</strong> Um código de 4 dígitos (por exemplo, ‘0001’, ‘0002’) que categoriza a transação em um tipo específico dentro de sua categoria mais ampla.</li>
+<li><strong><code>TRAN-CAT-BAL</code>:</strong> Um campo numérico com até 9 dígitos e 2 casas decimais que armazena o saldo calculado para cada categoria de transação específica.</li>
+</ul>
+<h2>Impacto em outros sistemas</h2>
+<ul>
+<li><strong>Sistemas de relatórios:</strong> Esses dados são essenciais para gerar relatórios financeiros precisos, incluindo balanços patrimoniais, demonstrações de resultados e demonstrações de fluxo de caixa.</li>
+<li><strong>Sistemas analíticos:</strong> As informações de saldo da categoria de transação podem ser usadas para análise de tendências, identificando padrões de gastos e tomando decisões financeiras informadas.</li>
+<li><strong>Sistemas de auditoria:</strong> Esses dados são cruciais para trilhas de auditoria, garantindo a precisão e responsabilidade das transações financeiras.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Nome do Campo</th>
+<th style="text-align:left">Tipo</th>
+<th style="text-align:left">Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>TRANCAT-ACCT-ID</code></td>
+<td style="text-align:left">Numérico (11)</td>
+<td style="text-align:left">O número da conta associado à transação.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>TRANCAT-TYPE-CD</code></td>
+<td style="text-align:left">Texto (2)</td>
+<td style="text-align:left">Um código especificando o tipo de conta ou transação (por exemplo, ‘SA’ para poupança, ‘CH’ para corrente).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>TRANCAT-CD</code></td>
+<td style="text-align:left">Numérico (4)</td>
+<td style="text-align:left">Um código mais específico para a categoria de transação (por exemplo, ‘0001’ para saques em caixas eletrônicos, ‘0002’ para transferências online).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>TRAN-CAT-BAL</code></td>
+<td style="text-align:left">Decimal (9,2)</td>
+<td style="text-align:left">O saldo real para a categoria de transação específica.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais referências</h2>
+<ul>
+<li><strong>Sistema de processamento de transações:</strong> O sistema que captura e processa os dados da transação inicial.</li>
+<li><strong>Sistema de gerenciamento de contas:</strong> O sistema que gerencia as informações da conta e fornece detalhes da conta.</li>
+<li><strong>Sistema de relatórios financeiros:</strong> O sistema que usa esses dados para gerar relatórios financeiros.</li>
+</ul>
+<p>Esta especificação detalhada ajudará sua equipe a desenvolver um programa para extrair, processar e utilizar efetivamente as informações de saldo da categoria de transação armazenadas no sistema.</p>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

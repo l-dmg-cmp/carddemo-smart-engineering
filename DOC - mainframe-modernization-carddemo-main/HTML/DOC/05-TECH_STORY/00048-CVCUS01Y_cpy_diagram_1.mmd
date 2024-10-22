@@ -1,0 +1,29 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant COBOL Program
+    participant Input File CVCUS01Y.cpy
+    participant Output File
+    participant Error Log
+
+    activate COBOL Program
+
+    COBOL Program->>+Input File CVCUS01Y.cpy: Open
+    Input File CVCUS01Y.cpy->>COBOL Program: Open Successful
+
+    loop For Each Customer Record
+        COBOL Program->>+Input File CVCUS01Y.cpy: Read Record
+        Input File CVCUS01Y.cpy->>COBOL Program: Customer Record Data        
+        alt Customer Data is Valid            
+            COBOL Program->>+Output File: Write Record
+            Output File->>COBOL Program: Write Successful
+        else Customer Data is Invalid
+            COBOL Program->>+Error Log: Log Error (Invalid Data)
+            Error Log-->>-COBOL Program: Log Successful
+        end
+    end
+    
+    COBOL Program->>+Output File: Close
+    Output File->>-COBOL Program: Close Successful
+    COBOL Program->>+Input File CVCUS01Y.cpy: Close
+    Input File CVCUS01Y.cpy->>-COBOL Program: Close Successful
+    deactivate COBOL Program

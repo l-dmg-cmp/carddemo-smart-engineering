@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant CBACT03C
+    participant XREFFILE-FILE
+    
+    activate CBACT03C
+    CBACT03C->>+XREFFILE-FILE: Open
+    XREFFILE-FILE->>CBACT03C: File Opened
+    
+    loop For Each Record in File
+        CBACT03C->>+XREFFILE-FILE: Read Record
+        alt Record Found
+            XREFFILE-FILE->>CBACT03C: Record Data
+            CBACT03C->>CBACT03C: Display Record
+        else No More Records
+            XREFFILE-FILE->>CBACT03C: End of File
+        end
+    end
+    
+    CBACT03C->>+XREFFILE-FILE: Close
+    XREFFILE-FILE-->>-CBACT03C: File Closed
+    deactivate CBACT03C

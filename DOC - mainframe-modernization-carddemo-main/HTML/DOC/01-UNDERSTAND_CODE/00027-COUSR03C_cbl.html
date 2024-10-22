@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00027-COUSR03C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h2>Decodificando a Exclusão de Usuário em CardDemo: Uma análise de COUSR03C</h2>
+<p><strong>Arquivo:</strong> \src\COUSR03C.cbl</p>
+<p><strong>Contexto:</strong></p>
+<p>Este código forma a espinha dorsal do processo de exclusão de usuário dentro da aplicação CardDemo, um sistema provavelmente usado para gerenciar operações de cartão de crédito. Pense nisso como o equivalente digital de remover o cartão de acesso de um usuário.</p>
+<p><strong>Ação:</strong></p>
+<ol>
+<li><strong>Identificação do Usuário:</strong> O processo começa quando um usuário autorizado (provavelmente um administrador) deseja remover um usuário do sistema. Eles fornecem o ID do Usuário da conta a ser excluída.</li>
+<li><strong>Verificação de Confirmação:</strong> Antes de prosseguir, o sistema recupera e exibe os detalhes do usuário especificado, permitindo que o administrador confirme se está excluindo a conta correta.</li>
+<li><strong>Execução da Exclusão:</strong> Após a confirmação (normalmente pressionando uma tecla de função específica), o código remove o registro do usuário do arquivo ‘USRSEC’ (provavelmente onde as credenciais do usuário são armazenadas).</li>
+<li><strong>Comunicação do Resultado:</strong> O sistema então confirma a exclusão bem-sucedida, fornecendo uma mensagem clara ao administrador. Quaisquer erros encontrados durante o processo, como um ID de Usuário inválido, também são comunicados.</li>
+</ol>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Segurança e Autorização:</strong> Somente usuários autorizados devem poder excluir contas, garantindo a segurança do sistema. Isso geralmente envolve uma etapa de autenticação antes de acessar esta funcionalidade.</li>
+<li><strong>Integridade de Dados:</strong> O sistema confirma o ID do Usuário antes da exclusão para evitar a remoção acidental da conta errada, mantendo a integridade do banco de dados de usuários.</li>
+<li><strong>Trilha de Auditoria:</strong> Embora não seja explicitamente mostrado neste código, a exclusão de um usuário deve ser idealmente registrada para fins de auditoria. Este registro incluiria detalhes como quem excluiu a conta e quando, crucial para rastrear ações dentro do sistema.</li>
+<li><strong>Desativação de Usuário vs. Exclusão:</strong> As empresas geralmente têm políticas relacionadas à retenção de dados do usuário. Em vez da exclusão permanente, considere um sinalizador de ‘desativação’ que torna a conta inutilizável sem remover os dados em si. Essa abordagem pode ser útil para fins de conformidade e relatórios.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

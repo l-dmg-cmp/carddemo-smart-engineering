@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00062-COCRDSL_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de Outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Especificação do Programa de Exibição de Dados de Cartão de Crédito</h1>
+<h1><strong>Descrição Resumida:</strong></h1>
+<p>Este programa define como as informações do cartão de crédito são estruturadas para exibição em uma interface de usuário, garantindo uma apresentação clara e consistente de dados confidenciais.</p>
+<h1><strong>Histórias do Usuário:</strong></h1>
+<p>Como representante de atendimento ao cliente, preciso visualizar as informações do cartão de crédito na minha tela de forma clara e organizada, para que eu possa ajudar os clientes com eficiência e precisão.</p>
+<h1><strong>Épico Relacionado:</strong></h1>
+<p>3 - Gestão de Cartão de Crédito</p>
+<h1><strong>Requisitos Funcionais:</strong></h1>
+<ul>
+<li>Definir uma estrutura padrão (<code>CCRDSLAI</code>) para armazenar dados brutos do cartão de crédito, incluindo o nome da transação, nome do titular do cartão, IDs da conta e do cartão, data de validade e mensagens geradas pelo sistema.</li>
+<li>Definir uma estrutura orientada à exibição (<code>CCRDSLAO</code>) que espelhe <code>CCRDSLAI</code>, mas adicione atributos para cada campo para controlar a apresentação visual, como cor, destaque e posicionamento na tela.</li>
+<li>Garantir que dados confidenciais, como o número completo do cartão de crédito, sejam mascarados ou truncados para fins de segurança quando exibidos.</li>
+</ul>
+<h1><strong>Requisitos Não Funcionais:</strong></h1>
+<ul>
+<li><strong>Usabilidade:</strong> As informações exibidas devem ser fáceis de ler e entender, com etiquetas claras e agrupamento lógico de campos.</li>
+<li><strong>Desempenho:</strong> O programa deve recuperar e exibir os dados do cartão de crédito de forma rápida e eficiente, sem atrasos perceptíveis.</li>
+<li><strong>Manutenibilidade:</strong> O código deve ser bem documentado e estruturado para facilitar atualizações e modificações.</li>
+<li><strong>Segurança:</strong> O programa deve aderir às melhores práticas de segurança, particularmente em relação à exibição de dados confidenciais do titular do cartão, com máscara ou truncamento apropriados.</li>
+</ul>
+<h1><strong>Critérios de Aceitação:</strong></h1>
+<ul>
+<li>O programa define com sucesso as estruturas de dados <code>CCRDSLAI</code> e <code>CCRDSLAO</code> com todos os campos e atributos de exibição necessários.</li>
+<li>O programa compila sem erros e se integra perfeitamente à interface do usuário.</li>
+<li>As informações do cartão de crédito são exibidas com precisão e completamente, com dados confidenciais mascarados adequadamente.</li>
+<li>O formato de exibição é claro, consistente e adere aos atributos de exibição definidos.</li>
+</ul>
+<h1><strong>Melhorias de Código:</strong></h1>
+<ul>
+<li>Implementar um mecanismo de registro para registrar instâncias de dados de cartão de crédito sendo acessados ​​e exibidos, incluindo IDs de usuário e timestamps, para fins de auditoria e segurança.</li>
+<li>Adicionar tratamento de erros para gerenciar situações em que os dados estão ausentes ou inválidos, exibindo mensagens amigáveis ​​ao usuário em vez de falhas no programa.</li>
+<li>Explorar o uso de um dicionário de dados para gerenciar centralmente as definições de campo de dados e atributos de exibição para melhor consistência e manutenção.</li>
+</ul>
+<h1><strong>Melhorias de Segurança:</strong></h1>
+<ul>
+<li>Implementar medidas rígidas de controle de acesso para garantir que apenas pessoal autorizado possa visualizar as informações do cartão de crédito.</li>
+<li>Considere técnicas adicionais de mascaramento de dados, como exibir apenas os últimos quatro dígitos do número do cartão de crédito, para aumentar ainda mais a segurança.</li>
+<li>Revisar e atualizar regularmente as medidas de segurança de acordo com as melhores práticas do setor e as ameaças em evolução.</li>
+</ul>
+<h1><strong>Diagrama Conceitual:</strong></h1>
+<img src="00062-COCRDSL_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

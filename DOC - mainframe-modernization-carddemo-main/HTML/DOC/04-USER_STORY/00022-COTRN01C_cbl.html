@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00022-COTRN01C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>CardDemo Recuperação de Detalhes de Transação - Especificação do Programa</h1>
+<h2>Descrição Resumida:</h2>
+<p>Este programa, parte da aplicação CardDemo, permite que representantes de call center visualizem os detalhes de uma transação específica de cartão de crédito usando seu ID único. Isso auxilia no atendimento ao cliente e na verificação de transações.</p>
+<h2>Histórias do Usuário:</h2>
+<p>Como representante de call center, preciso acessar e visualizar rapidamente os detalhes de uma transação específica para que eu possa responder às perguntas dos clientes com precisão e eficiência.</p>
+<h2>Épico Relacionado:</h2>
+<p>4 - Processamento de Transações</p>
+<h2>Requisitos Funcionais:</h2>
+<ol>
+<li><strong>Entrada de ID de Transação:</strong>
+<ul>
+<li>O sistema deve permitir que o usuário insira um ID de transação.</li>
+<li>O sistema deve validar se o campo de entrada não está vazio.</li>
+</ul>
+</li>
+<li><strong>Recuperação de Dados de Transação:</strong>
+<ul>
+<li>O sistema deve recuperar o registro de transação do banco de dados ‘TRANSACT’ que corresponda ao ID de transação inserido.</li>
+</ul>
+</li>
+<li><strong>Exibição de Detalhes de Transação:</strong>
+<ul>
+<li>Se uma transação correspondente for encontrada, o sistema deve exibir os seguintes detalhes:
+<ul>
+<li>ID da transação</li>
+<li>Número do cartão de crédito</li>
+<li>Tipo de transação</li>
+<li>Categoria da transação</li>
+<li>Origem da transação</li>
+<li>Valor da transação</li>
+<li>Descrição da transação</li>
+<li>Timestamp de origem da transação</li>
+<li>Timestamp de processamento da transação</li>
+<li>ID do comerciante</li>
+<li>Nome do comerciante</li>
+<li>Cidade do comerciante</li>
+<li>CEP do comerciante</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Tratamento de Erros:</strong>
+<ul>
+<li>Se o ID de transação inserido estiver vazio, o sistema deve exibir uma mensagem de erro “Tran ID can NOT be empty…”.</li>
+<li>Se nenhuma transação correspondente for encontrada, o sistema deve exibir uma mensagem de erro “Transaction ID NOT found…”.</li>
+<li>Se ocorrer um erro durante o acesso ao banco de dados, o sistema deve exibir uma mensagem de erro “Unable to lookup Transaction…”.</li>
+</ul>
+</li>
+<li><strong>Navegação:</strong>
+<ul>
+<li>O sistema deve permitir que o usuário navegue de volta para a tela anterior.</li>
+<li>O sistema deve permitir que o usuário limpe o campo de entrada.</li>
+</ul>
+</li>
+</ol>
+<h2>Requisitos Não Funcionais:</h2>
+<ol>
+<li><strong>Desempenho:</strong>
+<ul>
+<li>O sistema deve recuperar e exibir os detalhes da transação em 3 segundos.</li>
+</ul>
+</li>
+<li><strong>Segurança:</strong>
+<ul>
+<li>Somente usuários autorizados devem poder acessar o sistema.</li>
+<li>O sistema deve apenas recuperar e exibir dados do banco de dados ‘TRANSACT’.</li>
+</ul>
+</li>
+<li><strong>Usabilidade:</strong>
+<ul>
+<li>O sistema deve ser fácil de usar e navegar.</li>
+<li>O sistema deve exibir mensagens de erro de forma clara e concisa.</li>
+</ul>
+</li>
+</ol>
+<h2>Critérios de Aceitação:</h2>
+<ol>
+<li>O sistema deve recuperar e exibir com sucesso os detalhes da transação para um ID de transação válido.</li>
+<li>O sistema deve exibir mensagens de erro apropriadas para entradas inválidas ou erros do sistema.</li>
+<li>O sistema deve ser acessível apenas a usuários autorizados.</li>
+<li>O sistema deve atender aos requisitos de desempenho e usabilidade definidos.</li>
+</ol>
+<h2>Melhorias de Código:</h2>
+<ol>
+<li><strong>Tratamento de Erros Centralizado:</strong> Implemente uma rotina de tratamento de erros centralizada para gerenciar diferentes cenários de erro normalmente e fornecer mensagens de erro consistentes.</li>
+<li><strong>Modularidade de Código:</strong> Refatore o código em módulos/funções menores e reutilizáveis para melhorar a legibilidade e a manutenção do código.</li>
+<li><strong>Validação de Dados:</strong> Implemente verificações de validação de dados para o ID de transação inserido para evitar erros comuns de entrada de dados.</li>
+</ol>
+<h2>Melhorias de Segurança:</h2>
+<ol>
+<li><strong>Limpeza de Entrada:</strong> Limpe as entradas do usuário para evitar vulnerabilidades baseadas em injeção.</li>
+<li><strong>Autenticação e Autorização:</strong> Implemente mecanismos robustos de autenticação e autorização para controlar o acesso ao sistema e seus dados.</li>
+<li><strong>Registro:</strong> Implemente o registro de auditoria para rastrear ações do usuário e eventos do sistema para auditoria de segurança e solução de problemas.</li>
+</ol>
+<h2>Diagrama Conceitual:</h2>
+<img src="00022-COTRN01C_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

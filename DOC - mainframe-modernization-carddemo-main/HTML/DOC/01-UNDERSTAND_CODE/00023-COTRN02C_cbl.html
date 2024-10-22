@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00023-COTRN02C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h2>Adicionando Novas Transações: Um Olhar sobre o Programa COTRN02C</h2>
+<p><strong>Arquivo:</strong> <code>\src\COTRN02C.cbl</code></p>
+<p>Este código lida com a adição de novas transações ao aplicativo CardDemo. Ele garante que as informações inseridas pelo usuário sejam precisas e completas antes de registrar a transação.</p>
+<p><strong>Contexto:</strong></p>
+<p>Pense neste código como o formulário digital que você preenche ao fazer uma compra com seu cartão de crédito. Ele captura todos os detalhes essenciais da transação, como data, valor, comerciante e informações do seu cartão.</p>
+<p><strong>Ação:</strong></p>
+<ol>
+<li><strong>Entrada de Dados:</strong> O usuário insere os detalhes da transação (tipo de transação, categoria, valor, detalhes do comerciante, etc.) em uma tela.</li>
+<li><strong>Validação de Entrada:</strong> O código verifica se as informações inseridas seguem regras específicas:
+<ul>
+<li><strong>Os números da conta e do cartão são válidos?</strong> - Ele verifica isso cruzando as informações com os dados da conta e do cartão.</li>
+<li><strong>O valor da transação está no formato correto?</strong></li>
+<li><strong>As datas foram inseridas corretamente?</strong></li>
+<li><strong>Todos os campos obrigatórios foram preenchidos?</strong></li>
+</ul>
+</li>
+<li><strong>Registro de Transação:</strong> Se todas as informações estiverem corretas, o código gera um ID de transação exclusivo e salva os detalhes da transação no arquivo TRANSACT. Ele confirma ao usuário a adição bem-sucedida da transação.</li>
+<li><strong>Tratamento de Erros:</strong> Se alguma informação estiver incorreta ou faltando, o código destaca o erro e orienta o usuário a corrigi-lo.</li>
+</ol>
+<p><strong>Regras de Negócio:</strong></p>
+<ul>
+<li><strong>Integridade de Dados:</strong> O código garante a precisão dos dados validando a entrada do usuário em relação a formatos e regras predefinidos, garantindo a confiabilidade dos registros de transações.</li>
+<li><strong>Unicidade da Transação:</strong> Cada transação recebe um ID exclusivo, evitando duplicações e garantindo que cada transação seja rastreável.</li>
+<li><strong>Dados Obrigatórios:</strong> O código exige que campos específicos sejam preenchidos, garantindo que todas as informações essenciais da transação sejam capturadas.</li>
+<li><strong>Validação em Tempo Real:</strong> A validação ocorre à medida que o usuário insere as informações, fornecendo feedback imediato e uma experiência de usuário mais tranquila.</li>
+<li><strong>Auditabilidade:</strong> Ao registrar os detalhes da transação e os timestamps, o sistema mantém um histórico auditável de todas as transações.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

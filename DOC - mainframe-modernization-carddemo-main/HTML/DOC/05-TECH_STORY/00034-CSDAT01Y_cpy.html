@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00034-CSDAT01Y_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>–CONTENT TO TRANSLATE–
+Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Aplicativo CardDemo - Especificação Padrão de Data e Hora</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve o formato padronizado para manipulação de informações de data e hora no aplicativo CardDemo. Ele garante consistência e precisão na gravação, exibição e processamento de datas e horas em todas as funcionalidades do sistema.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como desenvolvedor trabalhando com dados de data e hora no aplicativo CardDemo, preciso de um formato padronizado para representar e manipular datas e horas para garantir consistência e precisão em todos os módulos.</p>
+<p><strong>Épico Relacionado:</strong> 9 - Utilitários do Sistema</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Armazenamento de Data e Hora:</strong> O copybook <code>CSDAT01Y.cpy</code> define uma estrutura padrão (<code>WS-DATE-TIME</code>) para armazenar informações de data e hora.
+<ul>
+<li>Inclui campos separados para ano, mês, dia, hora, minuto, segundo e milissegundos.</li>
+</ul>
+</li>
+<li><strong>Flexibilidade de Formato:</strong> O código suporta vários formatos de exibição para datas e horas:
+<ul>
+<li>Datas: <code>YYYY-MM-DD</code> (ex: 2024-10-26) e <code>MM/DD/YY</code> (ex: 10/26/24)</li>
+<li>Horas: <code>HH:MM:SS</code> (ex: 15:30:45)</li>
+</ul>
+</li>
+<li><strong>Representação Interna:</strong> O código lida com a conversão entre esses formatos legíveis por humanos e uma representação interna consistente.
+<ul>
+<li>Essa representação interna é provavelmente um formato numérico que o sistema pode usar com eficiência para cálculos e comparações.</li>
+</ul>
+</li>
+<li><strong>Regras de Negócio:</strong>
+<ul>
+<li><strong>Precisão:</strong> Todos os módulos devem aderir aos formatos definidos para garantir o registro e processamento precisos de data e hora.</li>
+<li><strong>Consistência:</strong> O mesmo formato deve ser usado de forma consistente em todo o aplicativo para evitar discrepâncias e garantir a integridade dos dados.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li>N/A - Este código define uma estrutura de dados, não um modelo de negócios.</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li>N/A - Este código define uma estrutura de dados e não contém configurações.</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Fuso Horário:</strong> A especificação não menciona o gerenciamento de fuso horário. Adicione tratamento explícito para fusos horários, especialmente se o aplicativo lida com transações em diferentes locais geográficos.</li>
+<li><strong>Horário de Verão (DST):</strong> Incorpore ajustes de DST para garantir a cronometragem precisa durante as transições do DST.</li>
+<li><strong>Tratamento de Erros:</strong> Implemente verificações para valores de data/hora inválidos (por exemplo, 30 de fevereiro) e defina procedimentos adequados de tratamento de erros.</li>
+<li><strong>Documentação:</strong> Adicione comentários abrangentes ao copybook explicando a finalidade de cada campo, os formatos suportados e quaisquer regras de negócios relevantes.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li>N/A - Este código define uma estrutura de dados e não está diretamente relacionado à segurança.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00034-CSDAT01Y_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

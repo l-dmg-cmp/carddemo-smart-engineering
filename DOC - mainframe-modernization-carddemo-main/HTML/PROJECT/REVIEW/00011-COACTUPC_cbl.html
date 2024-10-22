@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00011-COACTUPC_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h2>Revisão de Análise Técnica</h2>
+<p><strong>Arquivo:</strong>  COACTUPC.cbl</p>
+<p><strong>Título:</strong>  Programa de Atualização de Conta</p>
+<p><strong>Resumo:</strong></p>
+<p>O programa COACTUPC é um programa COBOL que fornece uma interface CICS para atualizar informações de contas de clientes. Ele interage com os arquivos Account Master, Customer Master e Card Data. O programa permite que os usuários pesquisem uma conta, visualizem seus detalhes, façam alterações e confirmem essas alterações no banco de dados. O programa executa várias validações de dados para garantir a integridade dos dados.</p>
+<p><strong>Tecnologia:</strong></p>
+<ul>
+<li><strong>Linguagem de Programação:</strong> COBOL</li>
+<li><strong>Framework/Biblioteca:</strong>  CICS</li>
+<li><strong>Banco de dados:</strong> Os arquivos VSAM (Virtual Storage Access Method) estão implícitos nos comandos CICS READ, que são comumente usados para acessar conjuntos de dados VSAM.</li>
+<li><strong>Outras Ferramentas:</strong> <code>Not available</code></li>
+</ul>
+<p><strong>Referência, Classe e Método:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CSUTLDWY</code></td>
+<td>Variáveis de edição de data genérica CCYYMMDD.</td>
+</tr>
+<tr>
+<td><code>CVCRD01Y</code></td>
+<td>Variáveis de área de trabalho comuns.</td>
+</tr>
+<tr>
+<td><code>CSLKPCDY</code></td>
+<td>Códigos de área de telefone da América do Norte.</td>
+</tr>
+<tr>
+<td><code>DFHBMSCA</code></td>
+<td>Copybook fornecido pela IBM para macros BMS.</td>
+</tr>
+<tr>
+<td><code>DFHAID</code></td>
+<td>Copybook fornecido pela IBM para definir campos AID (Attention Identifier).</td>
+</tr>
+<tr>
+<td><code>COTTL01Y</code></td>
+<td>Títulos de tela.</td>
+</tr>
+<tr>
+<td><code>COACTUP</code></td>
+<td>Layout da tela de atualização da conta.</td>
+</tr>
+<tr>
+<td><code>CSDAT01Y</code></td>
+<td>Data atual.</td>
+</tr>
+<tr>
+<td><code>CSMSG01Y</code></td>
+<td>Mensagens comuns.</td>
+</tr>
+<tr>
+<td><code>CSMSG02Y</code></td>
+<td>Variáveis Abend.</td>
+</tr>
+<tr>
+<td><code>CSUSR01Y</code></td>
+<td>Dados do usuário conectado.</td>
+</tr>
+<tr>
+<td><code>CVACT01Y</code></td>
+<td>LAYOUT DO REGISTRO ACCT.</td>
+</tr>
+<tr>
+<td><code>CVACT03Y</code></td>
+<td>LAYOUT DE REFERÊNCIA CRUZADA DO CARTÃO.</td>
+</tr>
+<tr>
+<td><code>CVCUS01Y</code></td>
+<td>LAYOUT DO CLIENTE.</td>
+</tr>
+<tr>
+<td><code>COCOM01Y</code></td>
+<td>Copybook da Commarea do aplicativo.</td>
+</tr>
+<tr>
+<td><code>CSSTRPFY</code></td>
+<td>Código comum para armazenar PFKey.</td>
+</tr>
+<tr>
+<td><code>CSUTLDPY</code></td>
+<td>Rotinas comuns de data.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método(Público)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método(Privado)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0000-MAIN</code></td>
+<td>Procedimento principal do programa. Manipula a inicialização do programa, processamento de entrada, tomada de decisão e término do programa.</td>
+</tr>
+<tr>
+<td><code>COMMON-RETURN</code></td>
+<td>Ponto de retorno comum para o programa. Move dados para a commarea e emite um comando CICS RETURN.</td>
+</tr>
+<tr>
+<td><code>0000-MAIN-EXIT</code></td>
+<td>Ponto de saída para o procedimento principal.</td>
+</tr>
+<tr>
+<td><code>1000-PROCESS-INPUTS</code></td>
+<td>Processa entradas do usuário a partir do mapa.</td>
+</tr>
+<tr>
+<td><code>1100-RECEIVE-MAP</code></td>
+<td>Recebe entrada do usuário a partir do mapa.</td>
+</tr>
+<tr>
+<td><code>1200-EDIT-MAP-INPUTS</code></td>
+<td>Edita e valida a entrada do usuário recebida do mapa.</td>
+</tr>
+<tr>
+<td><code>1205-COMPARE-OLD-NEW</code></td>
+<td>Compara os valores antigos e novos dos dados da conta e do cliente para determinar se alguma alteração foi feita.</td>
+</tr>
+<tr>
+<td><code>1210-EDIT-ACCOUNT</code></td>
+<td>Valida o número da conta inserido pelo usuário.</td>
+</tr>
+<tr>
+<td><code>1215-EDIT-MANDATORY</code></td>
+<td>Verifica se um campo obrigatório foi fornecido.</td>
+</tr>
+<tr>
+<td><code>1220-EDIT-YESNO</code></td>
+<td>Valida um campo Sim/Não.</td>
+</tr>
+<tr>
+<td><code>1225-EDIT-ALPHA-REQD</code></td>
+<td>Valida um campo alfabético obrigatório.</td>
+</tr>
+<tr>
+<td><code>1230-EDIT-ALPHANUM-REQD</code></td>
+<td>Valida um campo alfanumérico obrigatório.</td>
+</tr>
+<tr>
+<td><code>1235-EDIT-ALPHA-OPT</code></td>
+<td>Valida um campo alfabético opcional.</td>
+</tr>
+<tr>
+<td><code>1240-EDIT-ALPHANUM-OPT</code></td>
+<td>Valida um campo alfanumérico opcional.</td>
+</tr>
+<tr>
+<td><code>1245-EDIT-NUM-REQD</code></td>
+<td>Valida um campo numérico obrigatório.</td>
+</tr>
+<tr>
+<td><code>1250-EDIT-SIGNED-9V2</code></td>
+<td>Valida um campo numérico assinado com 2 casas decimais.</td>
+</tr>
+<tr>
+<td><code>1260-EDIT-US-PHONE-NUM</code></td>
+<td>Valida um número de telefone dos EUA.</td>
+</tr>
+<tr>
+<td><code>EDIT-AREA-CODE</code></td>
+<td>Edita e valida a parte do código de área de um número de telefone dos EUA.</td>
+</tr>
+<tr>
+<td><code>EDIT-US-PHONE-PREFIX</code></td>
+<td>Edita e valida a parte do prefixo (troca) de um número de telefone dos EUA.</td>
+</tr>
+<tr>
+<td><code>EDIT-US-PHONE-LINENUM</code></td>
+<td>Edita e valida a parte do número da linha de um número de telefone dos EUA.</td>
+</tr>
+<tr>
+<td><code>EDIT-US-PHONE-EXIT</code></td>
+<td>Ponto de saída para a rotina de edição de número de telefone dos EUA.</td>
+</tr>
+<tr>
+<td><code>1265-EDIT-US-SSN</code></td>
+<td>Valida um número de Seguro Social dos EUA.</td>
+</tr>
+<tr>
+<td><code>1270-EDIT-US-STATE-CD</code></td>
+<td>Valida um código de estado dos EUA.</td>
+</tr>
+<tr>
+<td><code>1275-EDIT-FICO-SCORE</code></td>
+<td>Valida uma pontuação de crédito FICO.</td>
+</tr>
+<tr>
+<td><code>1280-EDIT-US-STATE-ZIP-CD</code></td>
+<td>Executa uma validação básica da combinação de código de estado e CEP dos EUA.</td>
+</tr>
+<tr>
+<td><code>2000-DECIDE-ACTION</code></td>
+<td>Determina a ação apropriada a ser tomada com base na entrada do usuário e no estado do programa.</td>
+</tr>
+<tr>
+<td><code>3000-SEND-MAP</code></td>
+<td>Envia o mapa para o terminal do usuário.</td>
+</tr>
+<tr>
+<td><code>3100-SCREEN-INIT</code></td>
+<td>Inicializa a tela com os valores padrão e informações do programa.</td>
+</tr>
+<tr>
+<td><code>3200-SETUP-SCREEN-VARS</code></td>
+<td>Configura as variáveis de tela com base no estado do programa e na entrada do usuário.</td>
+</tr>
+<tr>
+<td><code>3201-SHOW-INITIAL-VALUES</code></td>
+<td>Define os valores iniciais para os campos da tela.</td>
+</tr>
+<tr>
+<td><code>3202-SHOW-ORIGINAL-VALUES</code></td>
+<td>Exibe os valores originais dos dados da conta e do cliente na tela.</td>
+</tr>
+<tr>
+<td><code>3203-SHOW-UPDATED-VALUES</code></td>
+<td>Exibe os valores atualizados dos dados da conta e do cliente na tela.</td>
+</tr>
+<tr>
+<td><code>3250-SETUP-INFOMSG</code></td>
+<td>Configura a mensagem de informação a ser exibida ao usuário.</td>
+</tr>
+<tr>
+<td><code>3300-SETUP-SCREEN-ATTRS</code></td>
+<td>Configura os atributos da tela, incluindo proteção de campo e cor.</td>
+</tr>
+<tr>
+<td><code>3310-PROTECT-ALL-ATTRS</code></td>
+<td>Protege todos os campos na tela.</td>
+</tr>
+<tr>
+<td><code>3320-UNPROTECT-FEW-ATTRS</code></td>
+<td>Desprotege campos específicos na tela com base no estado do programa.</td>
+</tr>
+<tr>
+<td><code>3390-SETUP-INFOMSG-ATTRS</code></td>
+<td>Configura os atributos para o campo de mensagem de informação.</td>
+</tr>
+<tr>
+<td><code>3400-SEND-SCREEN</code></td>
+<td>Envia o mapa para o terminal do usuário.</td>
+</tr>
+<tr>
+<td><code>9000-READ-ACCT</code></td>
+<td>Lê os dados da conta com base no número da conta.</td>
+</tr>
+<tr>
+<td><code>9200-GETCARDXREF-BYACCT</code></td>
+<td>Lê o arquivo Card Cross Reference por número de conta.</td>
+</tr>
+<tr>
+<td><code>9300-GETACCTDATA-BYACCT</code></td>
+<td>Lê os dados da conta do arquivo Account Master por número de conta.</td>
+</tr>
+<tr>
+<td><code>9400-GETCUSTDATA-BYCUST</code></td>
+<td>Lê os dados do cliente do arquivo Customer Master por ID do cliente.</td>
+</tr>
+<tr>
+<td><code>9500-STORE-FETCHED-DATA</code></td>
+<td>Armazena os dados da conta e do cliente buscados na commarea.</td>
+</tr>
+<tr>
+<td><code>9600-WRITE-PROCESSING</code></td>
+<td>Manipula o processo de atualização para dados de conta e cliente.</td>
+</tr>
+<tr>
+<td><code>9700-CHECK-CHANGE-IN-REC</code></td>
+<td>Verifica se o registro da conta ou do cliente foi alterado por outro usuário desde que foi lido pela última vez.</td>
+</tr>
+<tr>
+<td><code>ABEND-ROUTINE</code></td>
+<td>Manipula os abends do programa (terminações anormais).</td>
+</tr>
+<tr>
+<td><code>EDIT-DATE-CCYYMMDD</code></td>
+<td>Edita uma data no formato CCYYMMDD.</td>
+</tr>
+<tr>
+<td><code>EDIT-DATE-OF-BIRTH</code></td>
+<td>Edita uma data de nascimento.</td>
+</tr>
+</tbody>
+</table>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

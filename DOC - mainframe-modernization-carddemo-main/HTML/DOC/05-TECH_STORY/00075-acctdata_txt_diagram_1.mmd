@@ -1,0 +1,30 @@
+sequenceDiagram
+    participant COBOL Program
+    participant Input File acctdata
+    participant Output File output
+    participant Error Log
+
+    activate COBOL Program
+    COBOL Program->>+Input File acctdata: Open
+    Input File acctdata->>COBOL Program: Open Successful
+
+    loop For Each Line in Input File
+        COBOL Program->>+Input File acctdata: Read Record
+        Input File acctdata->>COBOL Program: Account Data
+        
+        activate COBOL Program
+        COBOL Program->>COBOL Program: Validate Account Data
+                alt Validation Successful
+            COBOL Program->>+Output File output: Write Record
+            Output File output->>COBOL Program: Write Successful
+        else Validation Failed
+            COBOL Program->>+Error Log: Write Error
+            Error Log-->>-COBOL Program: Write Successful
+        end
+    end
+
+    COBOL Program->>+Input File acctdata: Close
+    Input File acctdata->>-COBOL Program: Close Successful
+    COBOL Program->>+Output File output: Close
+    Output File output->>-COBOL Program: Close Successful
+    deactivate COBOL Program

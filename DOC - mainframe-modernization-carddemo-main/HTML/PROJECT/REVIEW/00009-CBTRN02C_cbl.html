@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00009-CBTRN02C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<h2>Revisão de Análise Técnica</h2>
+<p><strong>Arquivo:</strong>  \src\CBTRN02C.cbl</p>
+<p><strong>Título:</strong>  Processo de Lote de Postagem de Transações</p>
+<p><strong>Resumo:</strong></p>
+<p>Este programa COBOL processa transações diárias de um arquivo sequencial (<code>DALYTRAN-FILE</code>), realizando validações com dados de referência cruzada e contas antes de atualizar saldos de transações e contas em arquivos indexados. As transações rejeitadas são gravadas em um arquivo separado (<code>DALYREJS-FILE</code>) com códigos de motivo.</p>
+<p><strong>Tecnologia:</strong></p>
+<ul>
+<li><strong>Linguagem de Programação:</strong> COBOL</li>
+<li><strong>Framework/Biblioteca:</strong> <code>Not available</code></li>
+<li><strong>Banco de dados:</strong>
+<ul>
+<li><strong>DB2 (Presumido):</strong> O programa usa um formato de data e hora (<code>DB2-FORMAT-TS</code>) e o constrói de uma maneira típica para bancos de dados DB2. Isso sugere interação com o DB2, embora não seja explicitamente declarado.</li>
+</ul>
+</li>
+<li><strong>Outras Ferramentas:</strong> <code>Not available</code></li>
+</ul>
+<p><strong>Referência, Classe e Método:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CVTRA06Y</code></td>
+<td>Provavelmente contém códigos de status de arquivo para <code>DALYTRAN-FILE</code>.</td>
+</tr>
+<tr>
+<td><code>CVTRA05Y</code></td>
+<td>Provavelmente contém códigos de status de arquivo para <code>TRANFILE</code>.</td>
+</tr>
+<tr>
+<td><code>CVACT03Y</code></td>
+<td>Provavelmente contém códigos de status de arquivo para <code>XREFFILE</code>.</td>
+</tr>
+<tr>
+<td><code>CVACT01Y</code></td>
+<td>Provavelmente contém códigos de status de arquivo para <code>ACCTFILE</code>.</td>
+</tr>
+<tr>
+<td><code>CVTRA01Y</code></td>
+<td>Provavelmente contém códigos de status de arquivo para <code>TCATBALF</code>.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método (Público)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Not available</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Método (Privado)</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0000-DALYTRAN-OPEN</code></td>
+<td>Abre o arquivo de entrada de transações diárias (<code>DALYTRAN-FILE</code>).</td>
+</tr>
+<tr>
+<td><code>0100-TRANFILE-OPEN</code></td>
+<td>Abre o arquivo de saída de transações (<code>TRANSACT-FILE</code>).</td>
+</tr>
+<tr>
+<td><code>0200-XREFFILE-OPEN</code></td>
+<td>Abre o arquivo de entrada de referência cruzada (<code>XREF-FILE</code>).</td>
+</tr>
+<tr>
+<td><code>0300-DALYREJS-OPEN</code></td>
+<td>Abre o arquivo de saída de rejeições diárias (<code>DALYREJS-FILE</code>).</td>
+</tr>
+<tr>
+<td><code>0400-ACCTFILE-OPEN</code></td>
+<td>Abre o arquivo mestre da conta (<code>ACCOUNT-FILE</code>) no modo I-O (atualização).</td>
+</tr>
+<tr>
+<td><code>0500-TCATBALF-OPEN</code></td>
+<td>Abre o arquivo de saldo da categoria de transação (<code>TCATBAL-FILE</code>) no modo I-O (atualização).</td>
+</tr>
+<tr>
+<td><code>1000-DALYTRAN-GET-NEXT</code></td>
+<td>Lê o próximo registro do arquivo de transações diárias; define o sinalizador <code>END-OF-FILE</code> se o final do arquivo for atingido.</td>
+</tr>
+<tr>
+<td><code>1500-VALIDATE-TRAN</code></td>
+<td>Orquestra a validação da transação; atualmente realiza pesquisas de referência cruzada e de conta.</td>
+</tr>
+<tr>
+<td><code>1500-A-LOOKUP-XREF</code></td>
+<td>Valida o número do cartão da transação em relação ao arquivo de referência cruzada.</td>
+</tr>
+<tr>
+<td><code>1500-B-LOOKUP-ACCT</code></td>
+<td>Valida os detalhes da conta usando dados do arquivo mestre da conta. Verifica se há excesso de limite e expiração.</td>
+</tr>
+<tr>
+<td><code>2000-POST-TRANSACTION</code></td>
+<td>Posta uma transação validada: atualiza o saldo da categoria da transação, o saldo da conta e grava a transação no arquivo de transações.</td>
+</tr>
+<tr>
+<td><code>2500-WRITE-REJECT-REC</code></td>
+<td>Grava um registro de transação rejeitado no arquivo de rejeições diárias, juntamente com o motivo da falha de validação.</td>
+</tr>
+<tr>
+<td><code>2700-UPDATE-TCATBAL</code></td>
+<td>Atualiza o saldo para a categoria de transação específica; cria um novo registro se nenhum existir.</td>
+</tr>
+<tr>
+<td><code>2700-A-CREATE-TCATBAL-REC</code></td>
+<td>Cria um novo registro de saldo de categoria de transação.</td>
+</tr>
+<tr>
+<td><code>2700-B-UPDATE-TCATBAL-REC</code></td>
+<td>Atualiza um registro de saldo de categoria de transação existente.</td>
+</tr>
+<tr>
+<td><code>2800-UPDATE-ACCOUNT-REC</code></td>
+<td>Atualiza o saldo da conta no arquivo mestre da conta com base no valor da transação.</td>
+</tr>
+<tr>
+<td><code>2900-WRITE-TRANSACTION-FILE</code></td>
+<td>Grava o registro de transação no arquivo de transações.</td>
+</tr>
+<tr>
+<td><code>9000-DALYTRAN-CLOSE</code></td>
+<td>Fecha o arquivo de transações diárias.</td>
+</tr>
+<tr>
+<td><code>9100-TRANFILE-CLOSE</code></td>
+<td>Fecha o arquivo de transações.</td>
+</tr>
+<tr>
+<td><code>9200-XREFFILE-CLOSE</code></td>
+<td>Fecha o arquivo de referência cruzada.</td>
+</tr>
+<tr>
+<td><code>9300-DALYREJS-CLOSE</code></td>
+<td>Fecha o arquivo de rejeições diárias.</td>
+</tr>
+<tr>
+<td><code>9400-ACCTFILE-CLOSE</code></td>
+<td>Fecha o arquivo mestre da conta.</td>
+</tr>
+<tr>
+<td><code>9500-TCATBALF-CLOSE</code></td>
+<td>Fecha o arquivo de saldo da categoria de transação.</td>
+</tr>
+<tr>
+<td><code>Z-GET-DB2-FORMAT-TIMESTAMP</code></td>
+<td>Recupera a data atual e a formata em uma string de data e hora compatível com DB2.</td>
+</tr>
+<tr>
+<td><code>9999-ABEND-PROGRAM</code></td>
+<td>Finaliza (termina anormalmente) o programa com um código especificado.</td>
+</tr>
+<tr>
+<td><code>9910-DISPLAY-IO-STATUS</code></td>
+<td>Exibe informações formatadas sobre o status do arquivo.</td>
+</tr>
+</tbody>
+</table>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

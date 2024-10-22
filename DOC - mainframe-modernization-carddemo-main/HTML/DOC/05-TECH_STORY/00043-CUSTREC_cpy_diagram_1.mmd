@@ -1,0 +1,23 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant COBOL Program
+    participant CUSTREC
+
+    activate COBOL Program
+    COBOL Program->>+CUSTREC: Open Customer File
+    CUSTREC-->>-COBOL Program: Open Successful
+
+    loop For Each Customer Record
+        COBOL Program->>+CUSTREC: Read Customer Record
+        CUSTREC-->>-COBOL Program: Customer Record Data        
+        alt Customer Name is Valid            
+            COBOL Program->>+CUST0001: Write Valid Customer Record
+            CUST0001-->>-COBOL Program: Write Successful
+        else Customer Name is Invalid
+            COBOL Program->>COBOL Program: Log Error (Invalid Name)
+        end
+    end
+    
+    COBOL Program->>+CUST0001: Close Customer File
+    CUST0001->>-COBOL Program: Close Successful    
+    deactivate COBOL Program

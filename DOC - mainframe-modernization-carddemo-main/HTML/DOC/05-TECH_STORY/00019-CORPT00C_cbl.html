@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00019-CORPT00C_cbl</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Título do Documento:</strong> Submissão de Relatório de Transações CardDemo - Especificação do Programa</h1>
+<h2><strong>Descrição Resumida:</strong></h2>
+<p>Este documento descreve as especificações para um programa COBOL que facilita o envio online de trabalhos em lote para gerar relatórios de transações. Os usuários podem selecionar períodos predefinidos de relatório (mensal, anual) ou definir um intervalo de datas personalizado. O programa valida as entradas do usuário, constrói instruções JCL (Job Control Language) com base nas seleções e envia o trabalho para uma fila para processamento em lote.</p>
+<h2><strong>Histórias do Usuário:</strong></h2>
+<p>Como analista de negócios, preciso gerar relatórios de transações resumidos para períodos específicos para analisar tendências e desempenho.</p>
+<h2><strong>Épico Relacionado:</strong></h2>
+<p>5 - Relatórios e Análise</p>
+<h2><strong>Requisitos Técnicos:</strong></h2>
+<ul>
+<li><strong>Seleção do Tipo de Relatório:</strong> O programa apresenta ao usuário opções para escolher entre três tipos de relatório: Mensal, Anual ou Personalizado.
+<ul>
+<li><strong>Relatório Mensal:</strong> Gera um relatório para o mês atual.</li>
+<li><strong>Relatório Anual:</strong> Gera um relatório para o ano atual.</li>
+<li><strong>Relatório Personalizado:</strong> Permite que o usuário especifique uma data de início e uma data de término para o relatório.</li>
+</ul>
+</li>
+<li><strong>Validação da Entrada de Data:</strong> O programa valida as datas inseridas pelo usuário para relatórios personalizados.
+<ul>
+<li><strong>Validação de Formato:</strong> Garante que as datas inseridas estejam em conformidade com o formato <code>YYYY-MM-DD</code>.</li>
+<li><strong>Validação Lógica:</strong> Verifica se a data de início não é posterior à data de término.</li>
+<li><strong>Validade da Data:</strong> Verifica se as datas inseridas são datas de calendário válidas.</li>
+</ul>
+</li>
+<li><strong>Geração de JCL:</strong> O programa constrói dinamicamente instruções JCL para o trabalho em lote com base nas seleções do usuário.
+<ul>
+<li><strong>Parâmetros do Relatório:</strong> O JCL inclui parâmetros para a data de início e término do relatório, que são preenchidos com base na entrada do usuário.</li>
+</ul>
+</li>
+<li><strong>Submissão de Trabalho:</strong> O programa envia o JCL gerado para um TDQ chamado <code>JOBS</code> para processamento em lote.</li>
+<li><strong>Confirmação do Usuário:</strong> Antes de enviar o trabalho, o programa solicita ao usuário que confirme sua solicitação.</li>
+<li><strong>Tratamento de Erros:</strong> O programa inclui mecanismos de tratamento de erros para lidar normalmente com entradas inválidas ou erros do sistema durante o envio do trabalho.</li>
+<li><strong>Interação com a Tela:</strong> O programa interage com o usuário por meio de mapas CICS, fornecendo uma interface orientada por menu para seleção de relatório e entrada de data.
+<ul>
+<li>O programa usa o mapa <code>CORPT0A</code> e o conjunto de mapas <code>CORPT00</code> para tratamento de tela.</li>
+</ul>
+</li>
+<li><strong>Dependências Externas:</strong>
+<ul>
+<li><code>CSUTLDTC</code>: Um programa utilitário usado para validação de data.</li>
+<li><code>TRANREPT</code>: O programa em lote responsável por gerar o relatório de transações.</li>
+</ul>
+</li>
+</ul>
+<h2><strong>Modelos Relacionados</strong></h2>
+<p>Não disponível.</p>
+<h2><strong>Configurações:</strong></h2>
+<ul>
+<li><code>WS-TRANSACT-FILE</code>: <code>TRANSACT</code> (Nome do arquivo para o arquivo de transação)</li>
+<li><code>WS-DATE-FORMAT</code>: <code>YYYY-MM-DD</code> (Formato de data)</li>
+<li><code>JOB-DATA</code>:
+<ul>
+<li><code>JOB-DATA-1</code>: Contém o modelo JCL para o trabalho de geração do relatório.
+<ul>
+<li><code>PARM-START-DATE-1</code>: Parâmetro de data de início no JCL (passado de <code>WS-START-DATE</code>).</li>
+<li><code>PARM-END-DATE-1</code>: Parâmetro de data de término no JCL (passado de <code>WS-END-DATE</code>).</li>
+<li><code>PARM-START-DATE-2</code>: Parâmetro de data de início no JCL (passado de <code>WS-START-DATE</code>).</li>
+<li><code>PARM-END-DATE-2</code>: Parâmetro de data de término no JCL (passado de <code>WS-END-DATE</code>).</li>
+</ul>
+</li>
+<li><code>JOB-DATA-2</code>: Redefine <code>JOB-DATA-1</code> para acessar linhas JCL individuais.</li>
+</ul>
+</li>
+<li><code>CSUTLDTC-PARM</code>:
+<ul>
+<li><code>CSUTLDTC-DATE</code>: Data de entrada para validação (passada de <code>WS-START-DATE</code> ou <code>WS-END-DATE</code>).</li>
+<li><code>CSUTLDTC-DATE-FORMAT</code>: Formato de data usado para validação (passado de <code>WS-DATE-FORMAT</code>).</li>
+</ul>
+</li>
+<li><code>WS-REPORT-NAME</code>: Armazena o nome do tipo de relatório selecionado (por exemplo, “Mensal”, “Anual”, “Personalizado”).</li>
+<li><code>WS-START-DATE</code>: Armazena a data de início do relatório.</li>
+<li><code>WS-END-DATE</code>: Armazena a data de término do relatório.</li>
+</ul>
+<h2><strong>Melhorias de Código:</strong></h2>
+<ul>
+<li><strong>Modularização:</strong> Divida o parágrafo <code>PROCESS-ENTER-KEY</code> em parágrafos menores e mais gerenciáveis para cada tipo de relatório. Isso melhora a legibilidade e a manutenção do código.</li>
+<li><strong>Consolidar a Validação de Data:</strong> Crie um parágrafo separado para a lógica de validação de data, que pode ser reutilizado para as datas de início e término, reduzindo a duplicação de código.</li>
+<li><strong>Aprimorar Mensagens de Erro:</strong> Forneça mensagens de erro mais informativas ao usuário, indicando o problema específico com sua entrada. Por exemplo, em vez de “Data inválida”, especifique “Formato de data inválido. Use AAAA-MM-DD.”</li>
+<li><strong>Log:</strong> Implemente um mecanismo de log para registrar envios de trabalhos bem-sucedidos, erros encontrados e outros eventos relevantes. Isso auxilia na depuração e monitoramento da atividade do sistema.</li>
+</ul>
+<h2><strong>Melhorias de Segurança:</strong></h2>
+<ul>
+<li><strong>Limpeza de Entrada:</strong> Implemente a limpeza de entrada para evitar vulnerabilidades como injeção de SQL ou cross-site scripting (XSS) se o aplicativo lidar com a entrada do usuário dinamicamente no futuro.</li>
+<li><strong>Controle de Acesso:</strong> Imponha medidas rígidas de controle de acesso para restringir a funcionalidade de geração de relatórios apenas a usuários autorizados.</li>
+</ul>
+<p><em><strong>IMPORTANTE: Qualquer nome ou valor no resultado precisa ser colocado entre crases como <code>exemplo</code>.</strong></em></p>
+<h2><strong>Diagrama Conceitual:</strong></h2>
+<img src="00019-CORPT00C_cbl_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

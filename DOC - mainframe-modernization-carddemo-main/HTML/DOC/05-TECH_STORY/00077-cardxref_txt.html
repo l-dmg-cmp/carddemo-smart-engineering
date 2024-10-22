@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00077-cardxref_txt</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Validação e Processamento de Índice de Cartão</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve as especificações para um programa que valida e processa informações de cartão de crédito de um arquivo chamado <code>cardxref.txt</code>. O programa lê cada linha do arquivo, valida o formato, extrai o número do cartão e o contador e grava os registros válidos em um arquivo de saída. O programa visa garantir a integridade dos dados e preparar as informações para uso em outras partes do sistema de gerenciamento de cartão de crédito.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como analista de dados, preciso garantir que apenas registros válidos de cartão de crédito sejam usados para análise e relatórios. Este programa me ajuda a conseguir isso validando os dados e fornecendo um arquivo de saída limpo.</p>
+<p><strong>Épico Relacionado:</strong> 10 - Gerenciamento de Arquivos de Dados</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Leitura e Validação de Arquivo:</strong> Este módulo lê o arquivo de entrada (<code>cardxref.txt</code>) e valida cada registro.
+<ul>
+<li>Entrada: Cada linha do arquivo, representando um registro de cartão de crédito.</li>
+<li>Validação:
+<ul>
+<li>Verifique se a linha tem exatamente 21 caracteres de comprimento.</li>
+<li>Verifique se os primeiros 19 caracteres são numéricos (representando o número do cartão).</li>
+<li>Verifique se os últimos 2 caracteres são numéricos (representando o contador).</li>
+</ul>
+</li>
+<li>Saída: Uma lista de registros válidos e inválidos com suas respectivas mensagens de erro.</li>
+</ul>
+</li>
+<li><strong>Extração de Dados:</strong> Este módulo extrai o número do cartão e o contador de cada registro válido.
+<ul>
+<li>Entrada: Registro de cartão de crédito válido (21 caracteres).</li>
+<li>Extração:
+<ul>
+<li>Extraia os primeiros 19 caracteres como o <code>cardNumber</code>.</li>
+<li>Extraia os últimos 2 caracteres como o <code>counter</code>.</li>
+</ul>
+</li>
+<li>Saída: Um registro estruturado contendo o <code>cardNumber</code> e o <code>counter</code>.</li>
+</ul>
+</li>
+<li><strong>Gravação de Arquivo de Saída:</strong> Este módulo grava as informações do cartão extraídas em um arquivo de saída.
+<ul>
+<li>Entrada: Uma lista de registros estruturados, cada um contendo um <code>cardNumber</code> e um <code>counter</code>.</li>
+<li>Saída: Um arquivo contendo as informações do cartão de crédito validadas e extraídas no formato especificado.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados</strong></p>
+<ul>
+<li>CreditCard: Representa um registro de cartão de crédito.
+<ul>
+<li><code>cardNumber</code>: <code>String</code> - O número do cartão de crédito de 19 dígitos.</li>
+<li><code>counter</code>: <code>Integer</code> - O contador de 2 dígitos associado ao cartão.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><code>INPUT_FILE_PATH</code>: <code>String</code> - O caminho para o arquivo de entrada (<code>cardxref.txt</code>).</li>
+<li><code>OUTPUT_FILE_PATH</code>: <code>String</code> - O caminho para o arquivo de saída.</li>
+<li><code>RECORD_LENGTH</code>: <code>Integer</code> - O comprimento esperado de cada registro no arquivo de entrada (21).</li>
+<li><code>CARD_NUMBER_LENGTH</code>: <code>Integer</code> - O comprimento esperado do número do cartão (19).</li>
+<li><code>COUNTER_LENGTH</code>: <code>Integer</code> - O comprimento esperado do contador (2).</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implemente um mecanismo abrangente de tratamento de erros para capturar e registrar diferentes tipos de erros, como arquivo não encontrado, formato de registro inválido e erros de gravação.</li>
+<li><strong>Log:</strong> Adicione um log detalhado para rastrear a execução do programa, incluindo o número de registros processados, registros válidos e inválidos e quaisquer erros encontrados.</li>
+<li><strong>Otimização de Desempenho:</strong> Se espera-se que o arquivo de entrada seja muito grande, considere otimizar as operações de leitura e gravação de arquivo para melhor desempenho. Isso pode incluir ler e processar o arquivo em partes ou usar fluxos armazenados em buffer.</li>
+<li><strong>Modularidade de Código:</strong> Divida o código em módulos ou funções menores e reutilizáveis para melhorar a organização e a manutenção do código.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Permissões de Arquivo:</strong> Certifique-se de que o programa tenha apenas as permissões de leitura necessárias para o arquivo de entrada e permissões de gravação para o arquivo de saída.</li>
+<li><strong>Criptografia de Dados:</strong> Se o arquivo de entrada contiver informações confidenciais do cartão de crédito, considere criptografar o arquivo em repouso e descriptografá-lo na memória do programa para processamento.</li>
+<li><strong>Validação de Entrada:</strong> Implemente uma validação de entrada mais rigorosa para evitar vulnerabilidades como travessia de diretório ou injeção de SQL, especialmente se os caminhos dos arquivos forem obtidos da entrada do usuário.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00077-cardxref_txt_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00068-COTRN01_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1><strong>Especificação de Registro de Transação de Cartão de Crédito</strong></h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: Registro de Transação de Cartão de Crédito - Especificação da Estrutura de Dados</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li>Arquivo: <code>\src\COTRN01.CPY</code></li>
+</ul>
+<h2>Descrição resumida</h2>
+<p>Este documento descreve a estrutura de um registro de transação de cartão de crédito dentro do nosso sistema. Pense nisso como o formato digital padronizado usado para capturar todos os detalhes essenciais sempre que um cartão de crédito é passado ou usado online.</p>
+<h2>Histórico da Versão</h2>
+<ul>
+<li>Versão 1.0: Versão inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>Este código define como organizamos e armazenamos informações críticas sobre cada transação de cartão de crédito. Ele garante que, independentemente de onde a transação aconteça (online, em loja física, etc.), capturemos dados de forma consistente para processamento, análise e manutenção de registros.</p>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Fonte da Transação:</strong> Pode ser uma loja online, um terminal de ponto de venda físico ou qualquer sistema que inicie uma transação de cartão de crédito.</li>
+<li><strong>Dados da Transação:</strong> Informações básicas sobre a própria transação, incluindo o número do cartão, valor da transação, data e hora.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Validação de Tipo de Dados:</strong> Especificamos o tipo de dados que cada campo deve conter (números, texto, datas). Isso garante a integridade dos dados e ajuda a prevenir erros durante o processamento.</li>
+<li><strong>Validação de Tamanho do Campo:</strong> Cada campo de dados tem um comprimento máximo para garantir consistência e armazenamento eficiente.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Estrutura de Dados:</strong></p>
+<ul>
+<li><strong><code>COTRN1AI</code>:</strong> O layout principal para o registro de transação, usando uma combinação de formatos de caractere e decimal compactado para armazenamento eficiente de dados.</li>
+<li><strong><code>COTRN1AO</code>:</strong> Um layout alternativo, redefinindo campos de dados usando diferentes formatos de caractere, para suportar várias necessidades de processamento.</li>
+</ul>
+<p><strong>Campos de Dados Chave:</strong></p>
+<ul>
+<li><strong><code>TRNIDINI</code>:</strong> ID de Transação Único</li>
+<li><strong><code>CARDNUMI</code>:</strong> Número do Cartão de Crédito</li>
+<li><strong><code>TTYPCDI</code>:</strong> Código do Tipo de Transação (por exemplo, compra, reembolso)</li>
+<li><strong><code>TRNSRCI</code>:</strong> Origem da Transação (por exemplo, online, em loja)</li>
+<li><strong><code>TDESCI</code>:</strong> Descrição da Transação</li>
+<li><strong><code>TRNAMTI</code>:</strong> Valor da Transação</li>
+<li><strong><code>MIDI</code>:</strong> ID do Comerciante</li>
+<li><strong><code>MNAMEI</code>:</strong> Nome do Comerciante</li>
+<li><strong><code>ERRMSGI</code>:</strong> Mensagem de Erro (se ocorrer algum problema)</li>
+</ul>
+<h2>Segurança</h2>
+<ul>
+<li><strong>Segurança de Dados:</strong> Embora não seja explicitamente definido neste trecho de código, o sistema mais amplo deve implementar medidas de segurança apropriadas (criptografia, controle de acesso) para proteger dados confidenciais de transações.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Sistema de Processamento de Transações:</strong> Este formato de registro é crucial para autorizar, processar e liquidar transações.</li>
+<li><strong>Sistema de Detecção de Fraude:</strong> Esses dados alimentam sistemas que analisam transações em busca de padrões suspeitos.</li>
+<li><strong>Relatórios e Análise:</strong> Essas informações são usadas para gerar relatórios sobre volume de transações, tendências e outras métricas de negócios importantes.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRNIDINI</td>
+<td>Alfanumérico</td>
+<td>Identificador exclusivo para a transação.</td>
+</tr>
+<tr>
+<td>CARDNUMI</td>
+<td>Alfanumérico</td>
+<td>Número do cartão de crédito usado na transação.</td>
+</tr>
+<tr>
+<td>TTYPCDI</td>
+<td>Alfanumérico</td>
+<td>Código que indica o tipo de transação (por exemplo, compra, reembolso).</td>
+</tr>
+<tr>
+<td>TRNSRCI</td>
+<td>Alfanumérico</td>
+<td>Origem da transação (por exemplo, online, terminal POS).</td>
+</tr>
+<tr>
+<td>TDESCI</td>
+<td>Alfanumérico</td>
+<td>Descrição da transação.</td>
+</tr>
+<tr>
+<td>TRNAMTI</td>
+<td>Alfanumérico</td>
+<td>Valor da transação.</td>
+</tr>
+<tr>
+<td>MIDI</td>
+<td>Alfanumérico</td>
+<td>Identificador exclusivo do comerciante envolvido.</td>
+</tr>
+<tr>
+<td>MNAMEI</td>
+<td>Alfanumérico</td>
+<td>Nome do comerciante.</td>
+</tr>
+<tr>
+<td>ERRMSGI</td>
+<td>Alfanumérico</td>
+<td>Mensagem indicando quaisquer erros encontrados durante a transação.</td>
+</tr>
+<tr>
+<td>TRNNAMEI</td>
+<td>Alfanumérico</td>
+<td>Nome da transação.</td>
+</tr>
+<tr>
+<td>TITLE01I</td>
+<td>Alfanumérico</td>
+<td>Primeiro título da transação.</td>
+</tr>
+<tr>
+<td>CURDATEI</td>
+<td>Alfanumérico</td>
+<td>Data da transação.</td>
+</tr>
+<tr>
+<td>PGMNAMEI</td>
+<td>Alfanumérico</td>
+<td>Nome do programa associado à transação.</td>
+</tr>
+<tr>
+<td>TITLE02I</td>
+<td>Alfanumérico</td>
+<td>Segundo título da transação.</td>
+</tr>
+<tr>
+<td>CURTIMEI</td>
+<td>Alfanumérico</td>
+<td>Hora da transação.</td>
+</tr>
+<tr>
+<td>TRNIDI</td>
+<td>Alfanumérico</td>
+<td>ID de transação secundária.</td>
+</tr>
+<tr>
+<td>TCATCDI</td>
+<td>Alfanumérico</td>
+<td>Código da categoria da transação.</td>
+</tr>
+<tr>
+<td>TORIGDTI</td>
+<td>Alfanumérico</td>
+<td>Data e hora de origem da transação.</td>
+</tr>
+<tr>
+<td>TPROCDTI</td>
+<td>Alfanumérico</td>
+<td>Data e hora de processamento da transação.</td>
+</tr>
+<tr>
+<td>MCITYI</td>
+<td>Alfanumérico</td>
+<td>Cidade do comerciante.</td>
+</tr>
+<tr>
+<td>MZIPI</td>
+<td>Alfanumérico</td>
+<td>Código postal do comerciante.</td>
+</tr>
+</tbody>
+</table>
+<h2>Principais Referências</h2>
+<ul>
+<li><strong>Sistema de Processamento de Transações:</strong> O sistema principal responsável por lidar com transações de cartão de crédito.</li>
+<li><strong>Dicionário de Dados:</strong> Um documento abrangente que define todos os elementos e estruturas de dados dentro do sistema.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

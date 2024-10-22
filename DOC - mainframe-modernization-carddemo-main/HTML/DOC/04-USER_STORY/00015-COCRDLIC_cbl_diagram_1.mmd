@@ -1,0 +1,59 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant User
+    participant COCRDLIC Program
+    participant CARDDAT File
+    participant COMMAREA
+    participant Card Detail Program
+    participant Card Update Program
+
+    activate User
+    User->>+COCRDLIC Program: Request Credit Card List
+    activate COCRDLIC Program
+    COCRDLIC Program->>+COMMAREA: Retrieve User Role and Account ID
+    COMMAREA-->>-COCRDLIC Program: User Role, Account ID
+    COCRDLIC Program->>+CARDDAT File: Open
+    CARDDAT File->>COCRDLIC Program: Open Successful
+
+    loop While More Records
+        COCRDLIC Program->>+CARDDAT File: Read Record
+        CARDDAT File->>COCRDLIC Program: Card Record
+        COCRDLIC Program->>COCRDLIC Program: Apply Filter (Account ID, Card Number, User Role)
+        alt Record Matches Filter
+            COCRDLIC Program->>COCRDLIC Program: Add Record to Display List
+        end
+    end
+    COCRDLIC Program->>+COCRDLIC Program: Prepare Screen Data (Pagination)
+    COCRDLIC Program->>User: Display Credit Card List
+    deactivate CARDDAT File
+    User->>+COCRDLIC Program: User Input (F7, F8, Selection)
+    alt F7 Pressed (Previous Page)
+        COCRDLIC Program->>+COCRDLIC Program: Calculate Previous Page Start Key
+        COCRDLIC Program->>+CARDDAT File: Open
+        CARDDAT File->>COCRDLIC Program: Open Successful
+        COCRDLIC Program->>+CARDDAT File: Read Records (Previous Page)
+        CARDDAT File->>COCRDLIC Program: Card Records
+        COCRDLIC Program->>User: Display Previous Page
+        deactivate CARDDAT File
+    else F8 Pressed (Next Page)
+        COCRDLIC Program->>+COCRDLIC Program: Calculate Next Page Start Key
+        COCRDLIC Program->>+CARDDAT File: Open
+        CARDDAT File->>COCRDLIC Program: Open Successful
+        COCRDLIC Program->>+CARDDAT File: Read Records (Next Page)
+        CARDDAT File->>COCRDLIC Program: Card Records
+        COCRDLIC Program->>User: Display Next Page
+        deactivate CARDDAT File
+    else Card Selected for Detail View
+        COCRDLIC Program->>+COMMAREA: Store Selected Card Details
+        COMMAREA-->>-COCRDLIC Program: Stored Successfully
+                activate Card Detail Program
+        COCRDLIC Program->>+Card Detail Program: Transfer Control
+        Card Detail Program->>User: Display Card Details
+    else Card Selected for Update
+        COCRDLIC Program->>+COMMAREA: Store Selected Card Details
+        COMMAREA-->>-COCRDLIC Program: Stored Successfully
+        deactivate COCRDLIC Program
+        activate Card Update Program
+        COCRDLIC Program->>+Card Update Program: Transfer Control
+        Card Update Program-->>-User: Display Card Update Screen
+    end

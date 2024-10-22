@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00035-CSLKPCDY_cpy</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Data Integrity Guardian - Especificação do Repositório de Códigos de Pesquisa</p>
+<p><strong>Descrição Resumida:</strong>
+Este documento descreve a funcionalidade e as regras de negócios do módulo “Data Integrity Guardian”, com foco específico no repositório de códigos de pesquisa (<code>CSLKPCDY.cpy</code>). Este módulo desempenha um papel crucial na manutenção da precisão e consistência dos dados, definindo valores aceitáveis para códigos de área de telefone, códigos de estado dos EUA e combinações de código de estado dos EUA + primeiros dois dígitos do CEP. Isso garante que apenas dados válidos e padronizados entrem no sistema.</p>
+<p><strong>Histórias do Usuário:</strong>
+Como analista de dados, preciso ter certeza de que apenas códigos de área de telefone, códigos de estado dos EUA e códigos postais válidos sejam usados em nossos sistemas para manter a integridade dos dados e garantir uma análise precisa.</p>
+<p><strong>Épico Relacionado:</strong> 9 - Utilitários do Sistema</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li><strong>Validação de Código de Área de Telefone:</strong> Esta validação garante que qualquer número de telefone inserido no sistema esteja de acordo com o Plano de Numeração Norte-Americano estabelecido.
+<ul>
+<li>Entrada: Um código de área de telefone de três caracteres (<code>XXX</code>).</li>
+<li>Cálculo: O sistema verifica se o código de área inserido está presente na lista <code>VALID-PHONE-AREA-CODE</code> dentro do arquivo <code>CSLKPCDY.cpy</code>.</li>
+<li>Saída: Um valor booleano indicando se o código de área é válido (<code>TRUE</code>) ou não (<code>FALSE</code>).</li>
+</ul>
+</li>
+<li><strong>Validação de Código de Estado dos EUA:</strong> Esta validação garante que todos os códigos de estado usados sejam as abreviações padrão de duas letras.
+<ul>
+<li>Entrada: Um código de estado dos EUA de dois caracteres (<code>XX</code>).</li>
+<li>Cálculo: O sistema verifica se o código de estado inserido existe na lista <code>VALID-US-STATE-CODE</code> dentro do arquivo <code>CSLKPCDY.cpy</code>.</li>
+<li>Saída: Um valor booleano indicando se o código de estado é válido (<code>TRUE</code>) ou não (<code>FALSE</code>).</li>
+</ul>
+</li>
+<li><strong>Validação de Estado + CEP:</strong> Esta validação garante que o código de estado inserido e os primeiros dois dígitos do CEP sejam geograficamente compatíveis.
+<ul>
+<li>Entrada:
+<ul>
+<li>Um código de estado dos EUA de dois caracteres (<code>XX</code>).</li>
+<li>Os primeiros dois dígitos do CEP (<code>XX</code>).</li>
+</ul>
+</li>
+<li>Cálculo: O sistema combina o código do estado e os primeiros dois dígitos do CEP (<code>XXXX</code>) e verifica se essa combinação está presente na lista <code>VALID-US-STATE-ZIP-CD2-COMBO</code> dentro do arquivo <code>CSLKPCDY.cpy</code>.</li>
+<li>Saída: Um valor booleano indicando se a combinação de estado e CEP é válida (<code>TRUE</code>) ou não (<code>FALSE</code>).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados</strong></p>
+<ul>
+<li>N/A</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li><code>CSLKPCDY.cpy</code>: Este arquivo contém as seguintes listas:
+<ul>
+<li><code>VALID-PHONE-AREA-CODE</code>: Lista de códigos de área de telefone norte-americanos válidos.</li>
+<li><code>VALID-US-STATE-CODE</code>: Lista de códigos de estado dos EUA válidos.</li>
+<li><code>VALID-US-STATE-ZIP-CD2-COMBO</code>: Lista de combinações válidas de códigos de estado dos EUA e os primeiros dois dígitos dos códigos postais.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implemente códigos de erro e mensagens padronizados para cada regra de validação para fornecer feedback mais específico aos usuários.</li>
+<li><strong>Log:</strong> Registre as validações bem-sucedidas e as falhas de validação para fins de auditoria e solução de problemas.</li>
+<li><strong>Atualizações Dinâmicas:</strong> Explore maneiras de atualizar as listas de pesquisa dinamicamente (por exemplo, de uma fonte externa) para acomodar alterações em códigos de área, códigos de estado ou regulamentos de CEP.</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li><strong>Controle de Acesso:</strong> Implemente controles de acesso rígidos para evitar modificações não autorizadas no arquivo <code>CSLKPCDY.cpy</code>.</li>
+<li><strong>Verificações de Integridade:</strong> Implemente somas de verificação ou outras verificações de integridade para o arquivo <code>CSLKPCDY.cpy</code> para detectar quaisquer alterações não autorizadas.</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00035-CSLKPCDY_cpy_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

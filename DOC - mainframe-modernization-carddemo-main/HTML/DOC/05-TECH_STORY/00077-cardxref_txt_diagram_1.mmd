@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant Card Index Validation Program
+    participant Card Index File
+    participant Validated Card Index File
+
+    activate Card Index Validation Program
+    Card Index Validation Program->>+Card Index File: Open
+    Card Index File->>Card Index Validation Program: Open Successful
+    
+    loop For Each Line in File
+        Card Index Validation Program->>+Card Index File: Read Line
+        Card Index File->>Card Index Validation Program: Line Data
+        alt Valid Line Format
+            Card Index Validation Program->>Card Index Validation Program: Extract Card Number and Counter
+            Card Index Validation Program->>+Validated Card Index File: Write Record
+            Validated Card Index File->>Card Index Validation Program: Write Successful
+        else Invalid Line Format
+            Card Index Validation Program->>Card Index Validation Program: Log Error (Invalid Format)
+        end
+    end
+
+    Card Index Validation Program->>+Card Index File: Close
+    Card Index File->>Card Index Validation Program: Close Successful
+    Card Index Validation Program->>+Validated Card Index File: Close
+    Validated Card Index File->>-Card Index Validation Program: Close Successful
+    deactivate Card Index Validation Program

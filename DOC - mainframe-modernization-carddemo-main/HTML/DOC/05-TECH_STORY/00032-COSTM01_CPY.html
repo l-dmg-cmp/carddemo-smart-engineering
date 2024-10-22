@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00032-COSTM01_CPY</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1 de outubro de 2024</p>
+<p><strong>Título do Documento:</strong> Estrutura de Dados de Transações CardDemo</p>
+<p><strong>Descrição Resumida:</strong></p>
+<p>Este documento detalha o arquivo <code>COSTM01.CPY</code>, descrevendo a estrutura de dados utilizada para representar transações de cartão de crédito/débito dentro da aplicação CardDemo, especificamente para fins de relatórios. Ele enfatiza a organização de detalhes chave da transação, incluindo identificação, tipo, valor, informações do comerciante e timestamps.</p>
+<p><strong>Histórias do Usuário:</strong></p>
+<p>Como analista de dados, preciso de um formato padronizado para dados de transações para que eu possa gerar relatórios e analisar padrões de transações facilmente.</p>
+<p><strong>Épico Relacionado:</strong> 4 - Processamento de Transações</p>
+<p><strong>Requisitos Técnicos:</strong></p>
+<ul>
+<li>
+<p><strong>Definição da Estrutura de Dados:</strong></p>
+<ul>
+<li>Um copybook COBOL chamado <code>COSTM01.CPY</code> define a estrutura de dados <code>TRNX-RECORD</code>.</li>
+<li><code>TRNX-RECORD</code> é subdividido em:
+<ul>
+<li><code>TRNX-KEY</code>: Contém campos para identificar exclusivamente uma transação.
+<ul>
+<li><code>TRNX-CARD-NUM</code> (PIC X(16)): Número do cartão de crédito/débito.</li>
+<li><code>TRNX-ID</code> (PIC X(16)): Identificador único da transação.</li>
+</ul>
+</li>
+<li><code>TRNX-REST</code>: Contém informações detalhadas sobre a transação.
+<ul>
+<li><code>TRNX-TYPE-CD</code> (PIC X(02)): Código do tipo de transação.</li>
+<li><code>TRNX-CAT-CD</code> (PIC 9(04)): Código da categoria da transação.</li>
+<li><code>TRNX-SOURCE</code> (PIC X(10)): Origem da transação (ex.: ONLINE, POS, ATM).</li>
+<li><code>TRNX-DESC</code> (PIC X(100)): Descrição da transação.</li>
+<li><code>TRNX-AMT</code> (PIC S9(09)V99): Valor da transação (com sinal, com 2 casas decimais).</li>
+<li><code>TRNX-MERCHANT-ID</code> (PIC 9(09)): Identificador do comerciante.</li>
+<li><code>TRNX-MERCHANT-NAME</code> (PIC X(50)): Nome do comerciante.</li>
+<li><code>TRNX-MERCHANT-CITY</code> (PIC X(50)): Cidade do comerciante.</li>
+<li><code>TRNX-MERCHANT-ZIP</code> (PIC X(10)): CEP do comerciante.</li>
+<li><code>TRNX-ORIG-TS</code> (PIC X(26)): Timestamp de início da transação.</li>
+<li><code>TRNX-PROC-TS</code> (PIC X(26)): Timestamp de processamento da transação.</li>
+<li><code>FILLER</code> (PIC X(20)): Espaço reservado para alinhamento.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Validação de Dados:</strong></p>
+<ul>
+<li>Implementar regras de validação para campos críticos:
+<ul>
+<li><code>TRNX-CARD-NUM</code>: Verificar o formato válido do número do cartão de crédito (ex.: usando o algoritmo de Luhn).</li>
+<li><code>TRNX-TYPE-CD</code>: Validar em relação a uma lista de códigos de tipo de transação permitidos.</li>
+<li><code>TRNX-CAT-CD</code>: Validar em relação a uma lista de códigos de categoria de transação permitidos.</li>
+<li><code>TRNX-AMT</code>: Garantir que o valor esteja dentro de um intervalo razoável e tenha o sinal correto.</li>
+<li><code>TRNX-MERCHANT-ID</code>: Validar em relação a um banco de dados de comerciantes ou a uma lista de IDs de comerciante conhecidos.</li>
+<li><code>TRNX-ORIG-TS</code> e <code>TRNX-PROC-TS</code>: Validar o formato correto de data e hora.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Modelos Relacionados:</strong></p>
+<ul>
+<li><strong>Transaction:</strong> Representa uma única transação de cartão de crédito/débito.
+<ul>
+<li><code>cardNumber</code>: <code>String</code> -  Número do cartão de crédito/débito.</li>
+<li><code>transactionId</code>: <code>String</code> - Identificador único da transação.</li>
+<li><code>typeCode</code>: <code>String</code> - Código do tipo de transação (ex.: “PR” para compra).</li>
+<li><code>categoryCode</code>: <code>String</code> - Código da categoria da transação (ex.: “FOOD” para supermercado).</li>
+<li><code>source</code>: <code>String</code> - Origem da transação (ex.: “ONLINE”, “POS”).</li>
+<li><code>description</code>: <code>String</code> - Descrição da transação.</li>
+<li><code>amount</code>: <code>Decimal</code> - Valor da transação.</li>
+<li><code>merchantId</code>: <code>String</code> - Identificador do comerciante.</li>
+<li><code>merchantName</code>: <code>String</code> - Nome do comerciante.</li>
+<li><code>merchantCity</code>: <code>String</code> - Cidade do comerciante.</li>
+<li><code>merchantZip</code>: <code>String</code> - CEP do comerciante.</li>
+<li><code>initiationTimestamp</code>: <code>DateTime</code> - Timestamp de início da transação.</li>
+<li><code>processingTimestamp</code>: <code>DateTime</code> - Timestamp de processamento da transação.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configurações:</strong></p>
+<ul>
+<li>
+<p><strong>Códigos de Tipo de Transação:</strong></p>
+<ul>
+<li>Arquivo: <code>TRAN-TYPES.dat</code></li>
+<li>Valores:
+<ul>
+<li><code>PR</code>: Compra</li>
+<li><code>RF</code>: Reembolso</li>
+<li><code>AU</code>: Autorização</li>
+<li>… (outros tipos de transação)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Códigos de Categoria de Transação:</strong></p>
+<ul>
+<li>Arquivo: <code>TRAN-CATS.dat</code></li>
+<li>Valores:
+<ul>
+<li><code>FOOD</code>: Supermercado</li>
+<li><code>GAS</code>: Combustível</li>
+<li><code>TRVL</code>: Viagem</li>
+<li>… (outras categorias de transação)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Melhorias de Código:</strong></p>
+<ul>
+<li>
+<p><strong>Tratamento de Erros:</strong></p>
+<ul>
+<li>Implementar um mecanismo abrangente de tratamento de erros para capturar e registrar erros de validação.</li>
+<li>Fornecer mensagens de erro informativas ao usuário ou arquivo de log.</li>
+</ul>
+</li>
+<li>
+<p><strong>Documentação:</strong></p>
+<ul>
+<li>Adicionar comentários ao copybook para explicar o propósito de cada campo e estrutura de dados.</li>
+<li>Criar documentação externa que descreva a estrutura geral e o uso dos dados de transações.</li>
+</ul>
+</li>
+<li>
+<p><strong>Otimização de Desempenho:</strong></p>
+<ul>
+<li>Se lidar com grandes volumes de dados de transações, considere o uso de técnicas de manipulação de arquivos otimizadas para desempenho.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Melhorias de Segurança:</strong></p>
+<ul>
+<li>
+<p><strong>Criptografia de Dados:</strong></p>
+<ul>
+<li>Criptografar dados confidenciais de transações, como números de cartão de crédito, tanto em trânsito quanto em repouso.</li>
+</ul>
+</li>
+<li>
+<p><strong>Controle de Acesso:</strong></p>
+<ul>
+<li>Implementar medidas adequadas de controle de acesso para restringir o acesso aos dados de transações com base em funções e permissões do usuário.</li>
+</ul>
+</li>
+<li>
+<p><strong>Auditoria:</strong></p>
+<ul>
+<li>Registrar todos os acessos e modificações aos dados de transações para fins de auditoria e monitoramento de segurança.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Diagrama Conceitual:</strong></p>
+<img src="00032-COSTM01_CPY_diagram_1.svg" alt="Mermaid Diagram 1" style="max-width: 100%; height: auto;"><p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

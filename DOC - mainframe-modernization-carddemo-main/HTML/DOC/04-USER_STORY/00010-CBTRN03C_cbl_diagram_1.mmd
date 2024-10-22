@@ -1,0 +1,81 @@
+sequenceDiagram
+    %%Indicates the Participants involved in the process
+    participant CBTRN03C
+    participant TRANSACT-FILE
+    participant XREF-FILE
+    participant TRANTYPE-FILE
+    participant TRANCATG-FILE
+    participant DATE-PARMS-FILE
+    participant REPORT-FILE
+
+    activate CBTRN03C
+    CBTRN03C->>+TRANSACT-FILE: Open
+    TRANSACT-FILE->>CBTRN03C: Open Successful
+    CBTRN03C->>+XREF-FILE: Open
+    XREF-FILE->>CBTRN03C: Open Successful
+    CBTRN03C->>+TRANTYPE-FILE: Open
+    TRANTYPE-FILE->>CBTRN03C: Open Successful
+    CBTRN03C->>+TRANCATG-FILE: Open
+    TRANCATG-FILE->>CBTRN03C: Open Successful
+    CBTRN03C->>+DATE-PARMS-FILE: Open
+    DATE-PARMS-FILE->>CBTRN03C: Open Successful
+    CBTRN03C->>+REPORT-FILE: Open
+    REPORT-FILE->>CBTRN03C: Open Successful
+
+    CBTRN03C->>+DATE-PARMS-FILE: Read Start & End Dates
+    DATE-PARMS-FILE->>CBTRN03C: Start & End Dates
+
+    loop For Each Transaction in TRANSACT-FILE
+        CBTRN03C->>+TRANSACT-FILE: Read Transaction Record
+        TRANSACT-FILE->>CBTRN03C: Transaction Record Data
+        
+        CBTRN03C->>+XREF-FILE: Read Account ID (Key: Card Number)
+        XREF-FILE->>CBTRN03C: Account ID
+
+        CBTRN03C->>+TRANTYPE-FILE: Read Transaction Type Description (Key: Transaction Type Code)
+        TRANTYPE-FILE->>CBTRN03C: Transaction Type Description
+
+        CBTRN03C->>+TRANCATG-FILE: Read Transaction Category Description (Key: Transaction Type & Category Code)
+        TRANCATG-FILE->>CBTRN03C: Transaction Category Description
+
+        CBTRN03C->>CBTRN03C: Format Transaction Details
+
+        alt Transaction Date within Range
+            CBTRN03C->>+REPORT-FILE: Write Transaction Details
+            REPORT-FILE->>CBTRN03C: Write Successful
+        else Transaction Date Out of Range
+            CBTRN03C->>CBTRN03C: Skip Transaction
+        end
+
+        CBTRN03C->>CBTRN03C: Update Page Total
+        CBTRN03C->>CBTRN03C: Update Account Total
+        CBTRN03C->>CBTRN03C: Update Grand Total
+
+        alt Page Total Reached
+            CBTRN03C->>+REPORT-FILE: Write Page Total
+            REPORT-FILE->>CBTRN03C: Write Successful
+            CBTRN03C->>CBTRN03C: Reset Page Total
+        end
+
+        alt Account Changed
+            CBTRN03C->>+REPORT-FILE: Write Account Total
+            REPORT-FILE->>CBTRN03C: Write Successful
+            CBTRN03C->>CBTRN03C: Reset Account Total
+        end
+    end
+    CBTRN03C->>+REPORT-FILE: Write Grand Total
+    REPORT-FILE->>CBTRN03C: Write Successful
+    
+    CBTRN03C->>+TRANSACT-FILE: Close
+    TRANSACT-FILE->>CBTRN03C: Close Successful
+    CBTRN03C->>+XREF-FILE: Close
+    XREF-FILE->>CBTRN03C: Close Successful
+    CBTRN03C->>+TRANTYPE-FILE: Close
+    TRANTYPE-FILE->>CBTRN03C: Close Successful
+    CBTRN03C->>+TRANCATG-FILE: Close
+    TRANCATG-FILE->>CBTRN03C: Close Successful
+    CBTRN03C->>+DATE-PARMS-FILE: Close
+    DATE-PARMS-FILE->>CBTRN03C: Close Successful
+    CBTRN03C->>+REPORT-FILE: Close
+    REPORT-FILE-->>-CBTRN03C: Close Successful
+    deactivate CBTRN03C

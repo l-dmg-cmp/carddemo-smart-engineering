@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant COTRN01C
+    participant TRANSACT
+
+    activate COTRN01C
+    COTRN01C->>+COTRN01C: Initialize Variables
+    COTRN01C->>+COTRN01C: Receive Transaction ID Input
+    COTRN01C->>+TRANSACT: Read Transaction Record
+    alt Transaction Found
+        TRANSACT->>COTRN01C: Transaction Data
+        COTRN01C->>+COTRN01C: Populate Screen Fields
+        COTRN01C->>+COTRN01C: Display Transaction Details
+    else Transaction Not Found
+        TRANSACT->>-COTRN01C: Not Found
+        COTRN01C->>+COTRN01C: Display Error Message
+    end
+    deactivate COTRN01C

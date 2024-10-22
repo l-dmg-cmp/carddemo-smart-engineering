@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>00006-CBSTM03A_CBL</title>
+    <!-- Incluindo o Bootstrap CSS a partir de CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o Highlight.js CSS para destaque de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Estilos personalizados podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Gerado em: 1º de outubro de 2024</p>
+<h1>Geração de Extrato de Conta CardDemo</h1>
+<h2>Título</h2>
+<ul>
+<li>Título do Documento: CardDemo Geração de Extrato de Conta - Especificação do Programa</li>
+</ul>
+<h2>Arquivo</h2>
+<ul>
+<li>Arquivo: \src\CBSTM03A.CBL</li>
+</ul>
+<h2>Descrição Resumida</h2>
+<p>Este documento descreve as especificações para o programa de Geração de Extrato de Conta CardDemo (CBSTM03A.CBL). Este programa é um processo em lote responsável por gerar extratos de conta para portadores de cartão de crédito. O programa recupera dados do cliente, da conta e de transações de várias fontes, calcula as despesas totais e produz extratos em dois formatos: texto simples (extrato bancário tradicional) e HTML (para visualização online).</p>
+<h2>Histórico de Versões</h2>
+<ul>
+<li>Versão 1.0: Versão Inicial</li>
+</ul>
+<h2>Descrição do Processo</h2>
+<p>O programa de Geração de Extrato de Conta executa as seguintes etapas:</p>
+<ol>
+<li><strong>Coleta de Dados:</strong> Coleta dados do cliente, detalhes da conta e histórico de transações de fontes de dados separadas com base no número da conta.</li>
+<li><strong>Organização e Formatação de Dados:</strong> Estrutura os dados coletados em um formato claro e legível, preparando-os para apresentação no extrato.</li>
+<li><strong>Processamento de Transações:</strong> Lista as transações individuais em ordem cronológica, incluindo detalhes como data, descrição e valor.</li>
+<li><strong>Cálculo da Despesa Total:</strong> Calcula as despesas totais incorridas pelo titular da conta durante o período do extrato.</li>
+<li><strong>Geração de Extrato:</strong> Produz duas versões do extrato: texto simples e HTML.</li>
+</ol>
+<h2>Requisitos para Iniciar o Processo</h2>
+<ol>
+<li><strong>Arquivo de Transações (TRNXFILE):</strong> Este arquivo contém registros de transações para todos os clientes.</li>
+<li><strong>Arquivo de Referência Cruzada (XREFFILE):</strong> Este arquivo vincula IDs de clientes, IDs de contas e números de cartão de crédito.</li>
+<li><strong>Arquivo do Cliente (CUSTFILE):</strong> Este arquivo armazena informações do cliente, como nomes, endereços e pontuações de crédito.</li>
+<li><strong>Arquivo de Conta (ACCTFILE):</strong> Este arquivo contém dados específicos da conta, como IDs de conta e saldos atuais.</li>
+</ol>
+<h2>Validações e Regras</h2>
+<ul>
+<li><strong>Integridade de Dados:</strong> Garante a consistência dos dados em diferentes fontes, como a correspondência de transações com as contas e clientes corretos.</li>
+<li><strong>Clareza e Transparência:</strong> Apresenta informações em um formato fácil de entender para fornecer uma visão geral clara da atividade da conta.</li>
+<li><strong>Flexibilidade:</strong> Atende a diferentes preferências de entrega, gerando extratos em formato de texto simples e HTML.</li>
+<li><strong>Confidencialidade:</strong> Embora não seja explicitamente definido, o sistema deve incorporar medidas de segurança para proteger dados financeiros confidenciais.</li>
+</ul>
+<h2>Detalhes Técnicos</h2>
+<p><strong>Programa Principal:</strong></p>
+<ul>
+<li><strong><code>CBSTM03A</code>:</strong> O principal programa COBOL responsável por orquestrar o processo de geração do extrato da conta.</li>
+</ul>
+<p><strong>Sub-rotinas:</strong></p>
+<ul>
+<li><strong><code>CBSTM03B</code>:</strong> Uma sub-rotina utilitária usada para operações de E/S de arquivo, como abrir, ler e fechar arquivos.</li>
+</ul>
+<p><strong>Estruturas de Dados:</strong></p>
+<ul>
+<li><strong><code>STATEMENT-LINES</code>:</strong> Define a estrutura e o layout do extrato de texto simples.</li>
+<li><strong><code>HTML-LINES</code>:</strong> Define a estrutura e o layout do extrato HTML.</li>
+<li><strong><code>WS-TRNX-TABLE</code>:</strong> Uma tabela bidimensional usada para armazenar e organizar dados de transações recuperados do arquivo de transações.</li>
+</ul>
+<p><strong>Variáveis:</strong></p>
+<ul>
+<li><strong><code>WS-FL-DD</code>:</strong> Mantém o código do arquivo indicando o arquivo atual sendo processado.</li>
+<li><strong><code>WS-SAVE-CARD</code>:</strong> Armazena o número do cartão de crédito do cliente atual sendo processado.</li>
+<li><strong><code>CR-CNT</code>:</strong> Conta o número de registros de cartão de crédito processados.</li>
+<li><strong><code>TR-CNT</code>:</strong> Conta o número de transações processadas para um cartão específico.</li>
+<li><strong><code>WS-TOTAL-AMT</code>:</strong> Acumula o valor total da transação para o extrato atual.</li>
+</ul>
+<p><strong>Métodos:</strong></p>
+<ul>
+<li><strong><code>1000-XREFFILE-GET-NEXT</code>:</strong> Recupera o próximo registro do arquivo de referência cruzada.</li>
+<li><strong><code>2000-CUSTFILE-GET</code>:</strong> Recupera o registro do cliente com base no ID do cliente.</li>
+<li><strong><code>3000-ACCTFILE-GET</code>:</strong> Recupera o registro da conta com base no ID da conta.</li>
+<li><strong><code>4000-TRNXFILE-GET</code>:</strong> Recupera e processa transações para um cartão de crédito específico.</li>
+<li><strong><code>5000-CREATE-STATEMENT</code>:</strong> Inicializa e preenche as estruturas de dados do extrato.</li>
+<li><strong><code>6000-WRITE-TRANS</code>:</strong> Grava os detalhes da transação individual no extrato.</li>
+<li><strong><code>8100-FILE-OPEN</code>:</strong> Abre os arquivos necessários (TRNXFILE, XREFFILE, CUSTFILE, ACCTFILE).</li>
+<li><strong><code>9100-TRNXFILE-CLOSE</code></strong> a <strong><code>9400-ACCTFILE-CLOSE</code>:</strong> Fecha os arquivos abertos.</li>
+</ul>
+<h2>Impacto em Outros Sistemas</h2>
+<ul>
+<li><strong>Sistema de Impressão:</strong> Os extratos de texto simples gerados podem ser enviados para um sistema de impressão para distribuição de mala direta física.</li>
+<li><strong>Sistema de Banco Online:</strong> Os extratos HTML gerados podem ser fornecidos como entrada para o sistema de banco online para acesso online pelos clientes.</li>
+<li><strong>Sistemas de Relatórios:</strong> Os dados de transações processados pelo programa podem ser usados por sistemas de relatórios para gerar vários relatórios de negócios.</li>
+</ul>
+<h2>Modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Campo de Nome</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CARD-XREF-RECORD</code></td>
+<td>Registro</td>
+<td>Contém informações de referência cruzada (ID do cliente, ID da conta, número do cartão).</td>
+</tr>
+<tr>
+<td><code>CUSTOMER-RECORD</code></td>
+<td>Registro</td>
+<td>Contém informações do cliente (nome, endereço, pontuação de crédito).</td>
+</tr>
+<tr>
+<td><code>ACCOUNT-RECORD</code></td>
+<td>Registro</td>
+<td>Contém detalhes da conta (ID da conta, saldo atual).</td>
+</tr>
+<tr>
+<td><code>TRNX-RECORD</code></td>
+<td>Registro</td>
+<td>Representa um registro de transação (número do cartão, ID da transação, detalhes, valor).</td>
+</tr>
+</tbody>
+</table>
+<h2>Referências Principais</h2>
+<ul>
+<li><strong><code>CBSTM03B</code>:</strong> Sub-rotina para operações de E/S de arquivo.</li>
+<li><strong><code>COSTM01</code>, <code>CVACT03Y</code>, <code>CUSTREC</code>, <code>CVACT01Y</code>:</strong> Copybooks COBOL contendo estruturas de dados e definições.</li>
+</ul>
+<p><strong>Considerações Adicionais:</strong></p>
+<ul>
+<li><strong>Tratamento de Erros:</strong> Implemente o tratamento de erros abrangente para gerenciar erros de arquivo, inconsistências de dados e outras situações inesperadas.</li>
+<li><strong>Otimização de Desempenho:</strong> Otimize o programa para processamento eficiente de grandes volumes de transações, potencialmente usando técnicas como classificação e indexação.</li>
+<li><strong>Segurança:</strong> Implemente medidas de segurança adequadas para restringir o acesso a dados confidenciais e garantir a confidencialidade dos dados.</li>
+</ul>
+<p>–Made by “Smart Engineering” (by Compass.UOL)–</p>
+
+    </div>
+    <!-- Incluindo o jQuery e o Bootstrap JS a partir de CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o Highlight.js JS para destaque de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>
